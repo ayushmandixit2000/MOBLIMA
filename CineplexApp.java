@@ -9,16 +9,18 @@ public class CineplexApp {
                 printHRPSTitle();
                 String option = sc.next();
                 if(option == "A"){
-                    adminpanel a = new adminpanel;
+                    adminpanel admin = new adminpanel();
                     System.out.println("Please key in the password");
                     String password = sc.next();
-                    if(password != a.getpassword){
+                    if(password != admin.getpassword){
                         break;
                     }
+                    adminpanel.viewapp();
                 }
 
                 if(option  == "C"){
-
+                    customerpanel customerui = new customerpanel();
+                    customerui.viewapp();
                 }
 
                 if(option == "Q"){
