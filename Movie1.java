@@ -14,7 +14,7 @@ enum movieRating {
     M18 // pls add more
 }
 
-public class Movie {
+public class Movie1 {
     private String movieID;
     private String title;
     private showStatus status;
@@ -26,7 +26,7 @@ public class Movie {
     private int sales;
     private movieReviews reviews;
 
-    public Movie(String movieID, String title, showStatus status, String synopsis, String director, String[] cast,
+    public Movie1(String movieID, String title, showStatus status, String synopsis, String director, String[] cast,
             movieType type, movieRating rating, int sales, movieReviews reviews) {
         this.movieID = movieID;
         this.title = title;
