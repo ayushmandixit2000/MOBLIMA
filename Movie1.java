@@ -10,8 +10,12 @@ enum movieType {
 }
 
 enum movieRating {
+    G,
     PG,
-    M18 // pls add more
+    PGThirteen,
+    NCSixteen,
+    MEighteen,
+    RTwentyOne // pls add more
 }
 
 public class Movie1 {
