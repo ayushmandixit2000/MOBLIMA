@@ -5,29 +5,33 @@ import java.util.Scanner;
 public class CineplexApp {
         public static void main(String[] args) {
             Scanner sc = new Scanner(System.in);
-            while(true){
+            boolean quit = false;
+            while(!quit){
                 printHRPSTitle();
-                String option = sc.next();
-                if(option == "A"){
+                int option = sc.nextInt();
+                if(option == 2){
                     adminpanel admin = new adminpanel();
                     System.out.println("Please key in the password");
                     String password = sc.next();
-                    if(password != admin.getpassword){
-                        break;
+                    if(password != admin.getPassword()){
+                        System.out.println("Incorrect Password");
                     }
-                    adminpanel.viewapp();
+
+                    else{
+                        admin.viewapp();
+                    }
                 }
 
-                if(option  == "C"){
+                if(option  == 1){
                     customerpanel customerui = new customerpanel();
                     customerui.viewapp();
                 }
 
-                if(option == "Q"){
-                    break;
+                if(option == 3){
+                    System.out.println("Program closing ... Thank you for using MOBLIMA!");
+                    quit = true;
                 }
             }
-            System.out.println("Program closing ... Thank you for using MOBLIMA!");
     }
 
     private static void printHRPSTitle() {
@@ -45,9 +49,9 @@ public class CineplexApp {
         System.out.println("║                                                                                                     ║");
         System.out.println("║                      Welcome to Movie Booking and Listing Management Application!                   ║");
         System.out.println("║                                                                                                     ║");
-        System.out.println("║                      Key in C to contiue                                                            ║");
-        System.out.println("║                      Key in A to access Admin Panel                                                 ║");
-        System.out.println("║                      Key in Q to quit the apllication                                               ║");
+        System.out.println("║                      1: Contiue on MOBLIMA                                                          ║");
+        System.out.println("║                      2: Access Admin Panel                                                          ║");
+        System.out.println("║                      3: Quit the apllication                                                        ║");
         System.out.println("╚═════════════════════════════════════════════════════════════════════════════════════════════════════╝");
     }
 }
