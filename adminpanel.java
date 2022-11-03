@@ -5,9 +5,9 @@ import javax.swing.SortingFocusTraversalPolicy;
 public class adminpanel {
     private String password = "inshallah";
 
-    public adminpanel(String password){
-        this.password = password;
+    public adminpanel(){
     }
+
     public String getPassword(){
         return this.password;
     }
