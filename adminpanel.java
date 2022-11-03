@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-import javax.swing.SortingFocusTraversalPolicy;
 
 public class adminpanel {
     private String password = "inshallah";
@@ -14,13 +13,13 @@ public class adminpanel {
 
     public void viewapp(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Welcome to MOBLIMA\nPlease key in your password: ");
-        String userPassword = sc.next();
-        if (userPassword != this.getPassword()){
-            System.out.println("Incorrect Password.\nExiting...");
-            sc.close();
-            return;
-        }
+        // System.out.println("Welcome to MOBLIMA\nPlease key in your password: ");
+        // String userPassword = sc.next();
+        // if (userPassword != this.getPassword()){
+        //     System.out.println("Incorrect Password.\nExiting...");
+        //     sc.close();
+        //     return;
+        // }
         boolean exit = false;
         int option;
         while(!exit){

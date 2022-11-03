@@ -13,7 +13,8 @@ public class CineplexApp {
                     adminpanel admin = new adminpanel();
                     System.out.println("Please key in the password");
                     String password = sc.next();
-                    if(password != admin.getPassword()){
+                    Boolean passwordMatches = password.equals(admin.getPassword());
+                    if(!passwordMatches){
                         System.out.println("Incorrect Password");
                     }
 
