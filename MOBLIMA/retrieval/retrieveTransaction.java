@@ -9,9 +9,7 @@ import java.util.StringTokenizer;
 
 import MOBLIMA.dataStructure.Transaction;
 
-public class retrieveTransaction {
-    public static final String SEPARATOR = "|";
-
+public class retrieveTransaction extends retrieve {
     public static ArrayList readTransaction(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
         ArrayList alr = new ArrayList();// to store data
@@ -37,19 +35,6 @@ public class retrieveTransaction {
             alr.add(t);
         }
         return alr;
-    }
-
-    public static List read(String fileName) throws IOException {
-        List data = new ArrayList();
-        Scanner scanner = new Scanner(new FileInputStream(fileName));
-        try {
-            while (scanner.hasNextLine()) {
-                data.add(scanner.nextLine());
-            }
-        } finally {
-            scanner.close();
-        }
-        return data;
     }
 
     public static void main(String[] aArgs) {

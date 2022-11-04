@@ -54,7 +54,5 @@ public class retrieveCode {
             Transaction t = (Transaction) transactionArray.get(i);
             System.out.println("Transaction " + t.getTransactionId());
         }
-
     }
-
 }
