@@ -31,7 +31,6 @@ public class retrieveCinema {
         return alr;
     }
 
-    /** Read the contents of the given file. */
     public static List read(String fileName) throws IOException {
         List data = new ArrayList();
         Scanner scanner = new Scanner(new FileInputStream(fileName));
