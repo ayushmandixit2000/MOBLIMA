@@ -13,13 +13,6 @@ public class adminpanel {
 
     public void viewapp(){
         Scanner sc = new Scanner(System.in);
-        // System.out.println("Welcome to MOBLIMA\nPlease key in your password: ");
-        // String userPassword = sc.next();
-        // if (userPassword != this.getPassword()){
-        //     System.out.println("Incorrect Password.\nExiting...");
-        //     sc.close();
-        //     return;
-        // }
         boolean exit = false;
         int option;
         while(!exit){
@@ -56,6 +49,7 @@ public class adminpanel {
                 switch(optionShowtimes){
                     case 1:
                     System.out.println("Create Movie Showtimes");
+
                     break;
                     case 2:
                     System.out.println("Update Movie Showtimes");
@@ -73,7 +67,6 @@ public class adminpanel {
                 System.out.println("Exiting...");
                 exit = true;
                 sc.close();
-                return;
             }
         }
     }
