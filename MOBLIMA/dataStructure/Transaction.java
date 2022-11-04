@@ -14,13 +14,12 @@ public class Transaction {
     private String arrayOfTicketCatgeory;// array of integers
     private String arrayOfSeatAllocation;// array of seat allocation tuple
 
-    public Transaction(String tid, String pd, int pt, String uid, int mid, String d, int t, String c, int tc, int tickCount,
+    public Transaction(String tid, String pd, int pt, String uid, String d, int t, String c, int tc, int tickCount,
             String arrayCat, String arraySeats) {
         transactionId = tid;
         purchaseDate = pd;
         purchaseTime = pt;
         userId = uid;
-        movieId= mid;
         date = d;
         time = t;
         cinema = c;

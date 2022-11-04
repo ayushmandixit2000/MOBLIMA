@@ -1,12 +1,17 @@
 package MOBLIMA.retrieval;
 
 import java.io.IOException;
+import java.io.FileInputStream;
+import java.util.Scanner;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import MOBLIMA.dataStructure.MovieGoer;
 
-public class retrieveMovieGoer extends retrieve {
+public class retrieveMovieGoer {
+    public static final String SEPARATOR = "|";
+
     public static ArrayList readMovieGoer(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
         ArrayList alr = new ArrayList();// to store data
@@ -24,6 +29,20 @@ public class retrieveMovieGoer extends retrieve {
             alr.add(m);
         }
         return alr;
+    }
+
+    /** Read the contents of the given file. */
+    public static List read(String fileName) throws IOException {
+        List data = new ArrayList();
+        Scanner scanner = new Scanner(new FileInputStream(fileName));
+        try {
+            while (scanner.hasNextLine()) {
+                data.add(scanner.nextLine());
+            }
+        } finally {
+            scanner.close();
+        }
+        return data;
     }
 
     public static void main(String[] aArgs) {
