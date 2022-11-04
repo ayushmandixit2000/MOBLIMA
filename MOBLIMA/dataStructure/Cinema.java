@@ -1,23 +1,23 @@
 package MOBLIMA.dataStructure;
 
 public class Cinema {
-    private String cineplex;
-    private int cinema;
+    private String cinema;
+    private int cineplex;
     private int movieClass;
     private String layout; // int[][]
 
-    public Cinema(String cp, int c, int mc, String l) {
-        cineplex = cp;
+    public Cinema( String c,int cp,int mc, String l) {
         cinema = c;
+        cineplex = cp;
         movieClass = mc;
         layout = l;
     }
 
-    public String getCineplex() {
+    public int getCineplex() {
         return cineplex;
     }
 
-    public int getCinema() {
+    public String getCinema() {
         return cinema;
     }
 
