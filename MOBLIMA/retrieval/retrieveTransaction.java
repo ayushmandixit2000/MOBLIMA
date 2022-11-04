@@ -30,8 +30,9 @@ public class retrieveTransaction extends retrieve {
             int ticketCount = Integer.parseInt(star.nextToken().trim());
             String arrayOfTicketCatgeory = star.nextToken().trim();
             String arrayOfSeatAllocation = star.nextToken().trim();
-            Transaction t = new Transaction(transactionId, purchaseDate, time, userId, date, totalCost, cinema,
-                    ticketCount, i, arrayOfTicketCatgeory, arrayOfSeatAllocation);
+            Transaction t = new Transaction(transactionId, purchaseDate, purchaseTime, userId, movieId, date, time,
+                    cinema,
+                    totalCost, ticketCount, arrayOfTicketCatgeory, arrayOfSeatAllocation);
             alr.add(t);
         }
         return alr;

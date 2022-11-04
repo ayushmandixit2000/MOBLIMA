@@ -21,10 +21,11 @@ public class retrieveMovie extends retrieve {
             String cast = star.nextToken().trim(); // still need to split based on ,
             String synopsis = star.nextToken().trim();
             int movieRating = Integer.parseInt(star.nextToken().trim());
+            int movieType = Integer.parseInt(star.nextToken().trim());
             int sales = Integer.parseInt(star.nextToken().trim());
             int isDeleted = Integer.parseInt(star.nextToken().trim());
 
-            Movie m = new Movie(movieId, title, showStatus, director, cast, synopsis, movieRating, sales,
+            Movie m = new Movie(movieId, title, showStatus, director, cast, synopsis, movieRating, movieType, sales,
                     isDeleted);
             alr.add(m);
         }
