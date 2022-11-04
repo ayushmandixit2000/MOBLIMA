@@ -10,7 +10,7 @@ import MOBLIMA.dataStructure.Review;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.dataStructure.Transaction;
 
-public class retrieve {
+public class retrieveCode {
     public static void main(String[] args) throws IOException {
 
         String filename = "MOBLIMA/databases/Cinema.txt";
