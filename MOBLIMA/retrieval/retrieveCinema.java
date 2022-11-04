@@ -6,9 +6,10 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-import MOBLIMA.dataStructure.Showtime;
 
-public class retrieveShowtime {
+import MOBLIMA.dataStructure.Cinema;
+
+public class retrieveCinema {
     public static final String SEPARATOR = "|";
 
     public static ArrayList readShowtime(String filename) throws IOException {
@@ -21,13 +22,11 @@ public class retrieveShowtime {
 
             String cineplex = star.nextToken().trim();
             int cinema = Integer.parseInt(star.nextToken().trim());
-            String date = star.nextToken().trim();
-            int timeSlot = Integer.parseInt(star.nextToken().trim());
-            int movieId = Integer.parseInt(star.nextToken().trim());
-            String seating = star.nextToken().trim();
+            int movieClass = Integer.parseInt(star.nextToken().trim());
+            String layout = star.nextToken().trim();
 
-            Showtime s = new Showtime(cineplex, cinema, date, timeSlot, movieId, seating);
-            alr.add(s);
+            Cinema c = new Cinema(cineplex, cinema, movieClass, layout);
+            alr.add(c);
         }
         return alr;
     }
@@ -47,12 +46,12 @@ public class retrieveShowtime {
     }
 
     public static void main(String[] aArgs) {
-        String filename = "MOBLIMA/databases/showtime.txt";
+        String filename = "MOBLIMA/databases/Cinema.txt";
         try {
-            ArrayList al = retrieveShowtime.readShowtime(filename);
+            ArrayList al = retrieveCinema.readShowtime(filename);
             for (int i = 0; i < al.size(); i++) {
-                Showtime s = (Showtime) al.get(i);
-                System.out.println("MovieId " + s.getMovieId());
+                Cinema c = (Cinema) al.get(i);
+                System.out.println("CinemaId " + c.getCinema());
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());

@@ -36,7 +36,6 @@ public class retrieveMovie {
         return alr;
     }
 
-    /** Read the contents of the given file. */
     public static List read(String fileName) throws IOException {
         List data = new ArrayList();
         Scanner scanner = new Scanner(new FileInputStream(fileName));
@@ -51,10 +50,8 @@ public class retrieveMovie {
     }
 
     public static void main(String[] aArgs) {
-        retrieveMovie txtDB = new retrieveMovie();
         String filename = "MOBLIMA/databases/movie.txt";
         try {
-            // read file containing records.
             ArrayList al = retrieveMovie.readMovie(filename);
             for (int i = 0; i < al.size(); i++) {
                 Movie m = (Movie) al.get(i);

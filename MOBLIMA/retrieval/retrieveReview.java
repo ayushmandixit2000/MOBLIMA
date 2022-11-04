@@ -6,12 +6,12 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-import MOBLIMA.dataStructure.Showtime;
+import MOBLIMA.dataStructure.Review;
 
-public class retrieveShowtime {
+public class retrieveReview {
     public static final String SEPARATOR = "|";
 
-    public static ArrayList readShowtime(String filename) throws IOException {
+    public static ArrayList readReview(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
         ArrayList alr = new ArrayList();// to store data
 
@@ -19,20 +19,15 @@ public class retrieveShowtime {
             String st = (String) stringArray.get(i);
             StringTokenizer star = new StringTokenizer(st, SEPARATOR);
 
-            String cineplex = star.nextToken().trim();
-            int cinema = Integer.parseInt(star.nextToken().trim());
-            String date = star.nextToken().trim();
-            int timeSlot = Integer.parseInt(star.nextToken().trim());
             int movieId = Integer.parseInt(star.nextToken().trim());
-            String seating = star.nextToken().trim();
-
-            Showtime s = new Showtime(cineplex, cinema, date, timeSlot, movieId, seating);
-            alr.add(s);
+            int rating = Integer.parseInt(star.nextToken().trim());
+            String review = star.nextToken().trim();
+            Review r = new Review(movieId, rating, review);
+            alr.add(r);
         }
         return alr;
     }
 
-    /** Read the contents of the given file. */
     public static List read(String fileName) throws IOException {
         List data = new ArrayList();
         Scanner scanner = new Scanner(new FileInputStream(fileName));
@@ -47,15 +42,16 @@ public class retrieveShowtime {
     }
 
     public static void main(String[] aArgs) {
-        String filename = "MOBLIMA/databases/showtime.txt";
+        String filename = "MOBLIMA/databases/review.txt";
         try {
-            ArrayList al = retrieveShowtime.readShowtime(filename);
+            ArrayList al = retrieveReview.readReview(filename);
             for (int i = 0; i < al.size(); i++) {
-                Showtime s = (Showtime) al.get(i);
-                System.out.println("MovieId " + s.getMovieId());
+                Review r = (Review) al.get(i);
+                System.out.println("Review: " + r.getReview());
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());
         }
     }
+
 }
