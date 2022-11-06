@@ -19,13 +19,13 @@ public class CineplexApp {
                     }
 
                     else{
-                        admin.viewapp();
+                        admin.viewApp();
                     }
                 }
 
                 if(option  == 1){
                     customerpanel customerui = new customerpanel();
-                    customerui.viewapp();
+                    customerui.viewApp();
                 }
 
                 if(option == 3){

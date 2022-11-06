@@ -1,7 +1,8 @@
 import java.util.Scanner;
+import MOBLIMA.panelInterface.*;
 
 
-public class adminpanel {
+public class adminpanel implements Panel {
     private String password = "inshallah";
 
     public adminpanel(){
@@ -11,7 +12,11 @@ public class adminpanel {
         return this.password;
     }
 
-    public void viewapp(){
+    public void getUserInput(){
+        Scanner sc = new Scanner(System.in);    
+    }
+
+    public void viewApp(){
         Scanner sc = new Scanner(System.in);
         boolean exit = false;
         int option;

@@ -1,9 +1,10 @@
+import MOBLIMA.panelInterface.*;
 import java.util.Scanner;
 
-public class customerpanel {
+public class customerpanel implements Panel {
 
 
-    public void viewapp(){
+    public void viewApp(){
         System.out.println("Welcome to MOBLIMA");
         Scanner scc = new Scanner(System.in);
         loop: while(true){
