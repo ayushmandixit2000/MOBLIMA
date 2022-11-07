@@ -8,7 +8,7 @@ import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.save.saveMovie;
 
 public class Movie implements Serializable {
-    private String movieId;
+    private int movieId;
     private String title;
     private int showStatus;
     private String director;
@@ -21,7 +21,7 @@ public class Movie implements Serializable {
     private int numReviews;
     private int avgRating;
 
-    public Movie(String mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int sa, int id, int nr,
+    public Movie(int mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int sa, int id, int nr,
             int ar) {
         movieId = mid;
         title = t;
@@ -37,7 +37,7 @@ public class Movie implements Serializable {
         avgRating = ar;
     }
 
-    public Movie(String mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int id) {
+    public Movie(int mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int id) {
         movieId = mid;
         title = t;
         showStatus = ss;
@@ -52,7 +52,7 @@ public class Movie implements Serializable {
         avgRating = 0;
     }
 
-    public String getMovieId() {
+    public int getMovieId() {
         return movieId;
     }
 

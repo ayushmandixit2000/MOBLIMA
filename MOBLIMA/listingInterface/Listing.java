@@ -1,7 +1,9 @@
 package MOBLIMA.listingInterface;
 
-public interface Listing {
-    public void displayListing();
+import java.io.IOException;
 
-   // public void getUserInput();
+public interface Listing {
+    public void displayListing() throws IOException;
+
+    // public void getUserInput();
 }

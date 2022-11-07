@@ -20,7 +20,7 @@ public class retrieveMovie {
             String st = (String) stringArray.get(i);
             StringTokenizer star = new StringTokenizer(st, SEPARATOR);
 
-            String movieId = star.nextToken().trim();
+            int movieId = Integer.parseInt(star.nextToken().trim());
             String title = star.nextToken().trim();
             int showStatus = Integer.parseInt(star.nextToken().trim());
             String director = star.nextToken().trim();

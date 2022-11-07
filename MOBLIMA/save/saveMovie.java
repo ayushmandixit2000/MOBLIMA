@@ -48,7 +48,7 @@ public class saveMovie extends save {
         ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
 
         // add new movie
-        Movie m = new Movie("2", "title", 2, "director", new String[] { "cast1", "cast2" }, "synopsis", 1, 1, 0, 0, 0,
+        Movie m = new Movie(2, "title", 2, "director", new String[] { "cast1", "cast2" }, "synopsis", 1, 1, 0, 0, 0,
                 0);
         m.setShowStatus(3);
         movieArray.add(m);

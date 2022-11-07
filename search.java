@@ -17,7 +17,6 @@ public class search {
         boolean found = false;
         String movieid = "";
 
-        System.out.println(movie);
         
 
         String filename = "MOBLIMA/databases/movie.txt";
@@ -27,10 +26,7 @@ public class search {
         for (int i = 0; i < movieArray.size(); i++) {
             Movie m1 = (Movie) movieArray.get(i);
             String m = m1.getTitle().toLowerCase();
-            System.out.println(m);
-            System.out.println(movie);
             found = m.contains(movie);
-            System.out.println( found = m.contains(movie));
             if(found == true){
                 optionlist.add(m1);
                 found = false;
@@ -71,6 +67,7 @@ public class search {
                     else{
                         MovieDetailsListing moviedetails = new MovieDetailsListing();
                         moviedetails.setmovie(m3);
+                        moviedetails.displayListing();
                     }
                 }
             }
