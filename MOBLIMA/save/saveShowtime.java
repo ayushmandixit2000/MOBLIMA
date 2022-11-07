@@ -18,8 +18,6 @@ public class saveShowtime extends save {
             Showtime s = (Showtime) al.get(i); // moving through the object to get the necessary info
             StringBuilder st = new StringBuilder();
 
-            st.append(s.getCineplex());
-            st.append(SEPARATOR);
             st.append(s.getCinema());
             st.append(SEPARATOR);
             st.append(s.getDate());
@@ -58,7 +56,7 @@ public class saveShowtime extends save {
                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1 } };
-        Showtime s = new Showtime("cp", 1, "date", 2000, 1, seating);
+        Showtime s = new Showtime("cinema", "date", 2000, 1, seating);
         showtimeArray.add(s);
 
         // save to same file

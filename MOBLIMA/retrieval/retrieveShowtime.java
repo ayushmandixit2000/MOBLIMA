@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 import MOBLIMA.dataStructure.Showtime;
 
@@ -22,8 +21,7 @@ public class retrieveShowtime {
             String st = (String) stringArray.get(i);
             StringTokenizer star = new StringTokenizer(st, SEPARATOR);
 
-            String cineplex = star.nextToken().trim();
-            int cinema = Integer.parseInt(star.nextToken().trim());
+            String cinema = star.nextToken().trim();
             String date = star.nextToken().trim();
             int timeSlot = Integer.parseInt(star.nextToken().trim());
             int movieId = Integer.parseInt(star.nextToken().trim());
@@ -37,7 +35,7 @@ public class retrieveShowtime {
                 }
             }
 
-            Showtime s = new Showtime(cineplex, cinema, date, timeSlot, movieId, seating);
+            Showtime s = new Showtime(cinema, date, timeSlot, movieId, seating);
             alr.add(s);
         }
         return alr;

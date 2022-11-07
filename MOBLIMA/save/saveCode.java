@@ -72,7 +72,7 @@ public class saveCode {
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0 } };
-                Showtime s = new Showtime("cp", 1, "date", 2000, 1, seating); // add new showtime
+                Showtime s = new Showtime("cp", "date", 2000, 1, seating); // add new showtime
                 showtimeArray.add(s);
                 saveShowtime.saveShowtimeArray(filename, showtimeArray);// overwrite file
 

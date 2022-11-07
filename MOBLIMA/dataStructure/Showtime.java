@@ -1,15 +1,13 @@
 package MOBLIMA.dataStructure;
 
 public class Showtime {
-    private String cineplex;
-    private int cinema;
+    private String cinema;
     private String date;
     private int timeSlot;
     private int movieId;
     private int[][] seating;
 
-    public Showtime(String cp, int c, String d, int t, int m, int[][] s) {
-        cineplex = cp;
+    public Showtime(String c, String d, int t, int m, int[][] s) {
         cinema = c;
         date = d;
         timeSlot = t;
@@ -17,11 +15,7 @@ public class Showtime {
         seating = s;
     }
 
-    public String getCineplex() {
-        return cineplex;
-    }
-
-    public int getCinema() {
+    public String getCinema() {
         return cinema;
     }
 
@@ -39,5 +33,33 @@ public class Showtime {
 
     public int[][] getSeating() {
         return seating;
+    }
+
+    public void setCinema(String cinema) {
+        this.cinema = cinema;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setTimeSlot(int timeSlot) {
+        this.timeSlot = timeSlot;
+    }
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
+    }
+
+    public void setSeating(int[][] seating) {
+        this.seating = seating;
+    }
+
+    public boolean addSeating(int row, int column) {
+        if (this.seating[row][column] == 0) {
+            this.seating[row][column] = 1;
+            return true;
+        }
+        return false;
     }
 }

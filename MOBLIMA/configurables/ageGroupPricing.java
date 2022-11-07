@@ -1,9 +1,9 @@
 package MOBLIMA.configurables;
 
 public class ageGroupPricing {
-    private double priceOfChild;
-    private double priceOfAdult;
-    private double priceOfSnrCitizen;
+    private static double priceOfChild;
+    private static double priceOfAdult;
+    private static double priceOfSnrCitizen;
 
     public ageGroupPricing(double c, double a, double s) {
         priceOfChild = c;
@@ -11,27 +11,27 @@ public class ageGroupPricing {
         priceOfSnrCitizen = s;
     }
 
-    public double getPriceOfChild() {
+    public static double getPriceOfChild() {
         return priceOfChild;
     }
 
-    public double getPriceOfAdult() {
+    public static double getPriceOfAdult() {
         return priceOfAdult;
     }
 
-    public double getPriceOfSnrCitizen() {
+    public static double getPriceOfSnrCitizen() {
         return priceOfSnrCitizen;
     }
 
-    public void setPriceOfChild(double priceOfChild) {
-        this.priceOfChild = priceOfChild;
+    public static void setPriceOfChild(double newChild) {
+        priceOfChild = newChild;
     }
 
-    public void setPriceOfAdult(double priceOfAdult) {
-        this.priceOfAdult = priceOfAdult;
+    public static void setPriceOfAdult(double newAdult) {
+        priceOfAdult = newAdult;
     }
 
-    public void setPriceOfSnrCitizen(double priceOfSnrCitizen) {
-        this.priceOfSnrCitizen = priceOfSnrCitizen;
+    public static void setPriceOfSnrCitizen(double newSC) {
+        priceOfSnrCitizen = newSC;
     }
 }
