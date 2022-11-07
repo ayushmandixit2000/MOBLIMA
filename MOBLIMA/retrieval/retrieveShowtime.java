@@ -10,6 +10,8 @@ import java.util.StringTokenizer;
 import MOBLIMA.dataStructure.Showtime;
 
 public class retrieveShowtime {
+    public static final int ROWS = 9;
+    public static final int COLUMNS = 17;
     public static final String SEPARATOR = "|";
 
     public static ArrayList readShowtime(String filename) throws IOException {
@@ -27,10 +29,10 @@ public class retrieveShowtime {
             int movieId = Integer.parseInt(star.nextToken().trim());
 
             String[] seatinArray = star.nextToken().trim().split("\\.");
-            int[][] seating = new int[seatinArray.length][seatinArray.length];
-            for (int j = 0; j < seatinArray.length; j++) {
+            int[][] seating = new int[ROWS][COLUMNS];
+            for (int j = 0; j < ROWS; j++) {
                 String[] row = seatinArray[j].split("\\,");
-                for (int k = 0; k < seatinArray.length; k++) {
+                for (int k = 0; k < COLUMNS; k++) {
                     seating[j][k] = Integer.valueOf(row[k]);
                 }
             }
@@ -62,7 +64,13 @@ public class retrieveShowtime {
             for (int i = 0; i < al.size(); i++) {
                 Showtime s = (Showtime) al.get(i);
                 System.out.println("MovieId " + s.getMovieId());
-                System.out.println(Arrays.deepToString(s.getSeating()));
+                int[][] array = s.getSeating();
+                for (int k = 0; k < array.length; k++) {
+                    for (int j = 0; j < array[k].length; j++) {
+                        System.out.print(array[k][j] + " ");
+                    }
+                    System.out.println();
+                }
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());

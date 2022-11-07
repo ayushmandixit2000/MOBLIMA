@@ -12,6 +12,8 @@ import MOBLIMA.dataStructure.Cinema;
 
 public class retrieveCinema {
     public static final String SEPARATOR = "|";
+    public static final int ROWS = 9;
+    public static final int COLUMNS = 17;
 
     public static ArrayList readCinema(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
@@ -26,10 +28,10 @@ public class retrieveCinema {
             int movieClass = Integer.parseInt(star.nextToken().trim());
             String layoutString = star.nextToken().trim();
             String[] layoutStringArray = layoutString.split("\\.");
-            int[][] layout = new int[layoutStringArray.length][layoutStringArray.length];
-            for (int j = 0; j < layoutStringArray.length; j++) {
+            int[][] layout = new int[ROWS][COLUMNS];
+            for (int j = 0; j < ROWS; j++) {
                 String[] row = layoutStringArray[j].split(",");
-                for (int k = 0; k < row.length; k++) {
+                for (int k = 0; k < COLUMNS; k++) {
                     layout[j][k] = Integer.valueOf(row[k]);
                 }
             }
@@ -60,7 +62,12 @@ public class retrieveCinema {
                 Cinema c = (Cinema) al.get(i);
                 System.out.println("CinemaId " + c.getCinema());
                 int[][] array = c.getLayout();
-                System.out.println(Arrays.deepToString(array));
+                for (int k = 0; k < array.length; k++) {
+                    for (int j = 0; j < array[k].length; j++) {
+                        System.out.print(array[k][j] + " ");
+                    }
+                    System.out.println();
+                }
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());

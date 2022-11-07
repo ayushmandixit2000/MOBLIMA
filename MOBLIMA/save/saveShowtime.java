@@ -9,6 +9,9 @@ import MOBLIMA.retrieval.retrieveShowtime;
 import java.util.ArrayList;
 
 public class saveShowtime extends save {
+    public static final int ROWS = 9;
+    public static final int COLUMNS = 17;
+
     public static void saveShowtimeArray(String filename, List al) throws IOException {
         List alw = new ArrayList();// to store data
         for (int i = 0; i < al.size(); i++) {
@@ -26,8 +29,8 @@ public class saveShowtime extends save {
             st.append(s.getMovieId());
             st.append(SEPARATOR);
 
-            for (int j = 0; j < s.getSeating().length; j++) {
-                for (int k = 0; k < s.getSeating().length; k++) {
+            for (int j = 0; j < ROWS; j++) {
+                for (int k = 0; k < COLUMNS; k++) {
                     st.append(s.getSeating()[j][k]);
                     st.append(',');
                 }
@@ -46,7 +49,15 @@ public class saveShowtime extends save {
         ArrayList showtimeArray = retrieveShowtime.readShowtime(filename); // retrieve current array
 
         // add new showtime
-        int[][] seating = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+        int[][] seating = { { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1 } };
         Showtime s = new Showtime("cp", 1, "date", 2000, 1, seating);
         showtimeArray.add(s);
 
