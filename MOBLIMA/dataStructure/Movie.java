@@ -3,9 +3,7 @@ package MOBLIMA.dataStructure;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-
-import MOBLIMA.retrieval.retrieveMovie;
-import MOBLIMA.save.saveMovie;
+import MOBLIMA.retrieval.retrieveReview;
 
 public class Movie implements Serializable {
     private int movieId;
@@ -19,10 +17,10 @@ public class Movie implements Serializable {
     private int sales;
     private int isDeleted;
     private int numReviews;
-    private int avgRating;
+    private double avgRating;
 
     public Movie(int mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int sa, int id, int nr,
-            int ar) {
+            double ar) throws IOException {
         movieId = mid;
         title = t;
         showStatus = ss;
@@ -34,10 +32,10 @@ public class Movie implements Serializable {
         sales = sa;
         isDeleted = id;
         numReviews = nr;
-        avgRating = ar;
+        setAvgRating();
     }
 
-    public Movie(int mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int id) {
+    public Movie(int mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int id) throws IOException {
         movieId = mid;
         title = t;
         showStatus = ss;
@@ -50,6 +48,7 @@ public class Movie implements Serializable {
         isDeleted = id;
         numReviews = 0;
         avgRating = 0;
+        setAvgRating();
     }
 
     public int getMovieId() {
@@ -96,9 +95,8 @@ public class Movie implements Serializable {
         return numReviews;
     }
 
-    public int getAvgRating() {
+    public double getAvgRating() {
         return avgRating;
-        // jodi needa implement logic here (check the req from the assignment pdf)
     }
 
     public void setTitle(String title) {
@@ -160,5 +158,20 @@ public class Movie implements Serializable {
 
     public void setNumReviews(int numReviews) {
         this.numReviews = numReviews;
+    }
+
+    public void setAvgRating() throws IOException {
+        if (this.numReviews < 1) {
+            this.avgRating = -1;
+            return;
+        }
+        int sum = 0;
+        String filename = "MOBLIMA/databases/review.txt";
+        ArrayList reviewArray = retrieveReview.readReview(filename);
+        for (int i = 0; i < reviewArray.size(); i++) {
+            Review r = (Review) reviewArray.get(i);
+            sum += r.getRating();
+        }
+        this.avgRating = sum / this.numReviews;
     }
 }

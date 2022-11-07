@@ -1,28 +1,32 @@
 package MOBLIMA.configurables;
 
-public class peakDates {
-    private static int[] peakDates;
+import java.time.LocalDate;
 
-    public peakDates(int[] p) {
+public class peakDates {
+    private static LocalDate[] peakDates; // for public holis
+
+    public peakDates(LocalDate[] p) {
         peakDates = p;
     }
 
-    public int[] getPeakDates() {
+    public LocalDate[] getPeakDates() {
         return peakDates;
     }
 
-    public void setPeakDates(int[] peakDates) {
+    public void setPeakDates(LocalDate[] peakDates) {
         this.peakDates = peakDates;
     }
 
-    public static boolean isPeak(int date) {
+    public static boolean isPeak(LocalDate date) {
         for (int i = 0; i < peakDates.length; i++) {
             if (date == peakDates[i]) {
                 return true;
             }
         }
-        // TODO check for weekends
-        // TODO check for timing
+        String dayOfWeek = date.getDayOfWeek().toString();
+        if ("SATURDAY".equalsIgnoreCase(dayOfWeek) || "SUNDAY".equalsIgnoreCase(dayOfWeek)) {
+            return true;
+        }
         return false;
     }
 }
