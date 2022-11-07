@@ -18,8 +18,11 @@ public class Movie implements Serializable {
     private int movieType;
     private int sales;
     private int isDeleted;
+    private int numReviews;
+    private int avgRating;
 
-    public Movie(String mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int sa, int id) {
+    public Movie(String mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int sa, int id, int nr,
+            int ar) {
         movieId = mid;
         title = t;
         showStatus = ss;
@@ -30,6 +33,8 @@ public class Movie implements Serializable {
         movieType = mt;
         sales = sa;
         isDeleted = id;
+        numReviews = nr;
+        avgRating = ar;
     }
 
     public Movie(String mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int id) {
@@ -43,6 +48,8 @@ public class Movie implements Serializable {
         movieType = mt;
         sales = 0;
         isDeleted = id;
+        numReviews = 0;
+        avgRating = 0;
     }
 
     public String getMovieId() {
@@ -83,6 +90,15 @@ public class Movie implements Serializable {
 
     public int getIsDeleted() {
         return isDeleted;
+    }
+
+    public int getNumReviews() {
+        return numReviews;
+    }
+
+    public int getAvgRating() {
+        return avgRating;
+        // jodi needa implement logic here (check the req from the assignment pdf)
     }
 
     public void setTitle(String title) {
@@ -140,5 +156,9 @@ public class Movie implements Serializable {
 
     public void setIsDeleted(int isDeleted) {
         this.isDeleted = isDeleted;
+    }
+
+    public void setNumReviews(int numReviews) {
+        this.numReviews = numReviews;
     }
 }

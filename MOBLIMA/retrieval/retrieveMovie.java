@@ -30,9 +30,11 @@ public class retrieveMovie {
             int movieType = Integer.parseInt(star.nextToken().trim());
             int sales = Integer.parseInt(star.nextToken().trim());
             int isDeleted = Integer.parseInt(star.nextToken().trim());
+            int numReviews = Integer.parseInt(star.nextToken().trim());
+            int avgRating = Integer.parseInt(star.nextToken().trim());
 
             Movie m = new Movie(movieId, title, showStatus, director, cast, synopsis, movieRating, movieType, sales,
-                    isDeleted);
+                    isDeleted, numReviews, avgRating);
             alr.add(m);
         }
         return alr;

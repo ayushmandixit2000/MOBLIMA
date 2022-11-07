@@ -9,6 +9,7 @@ public class Review {
         movieId = m;
         rating = rt;
         review = r;
+        // jodi logic to increment numReview in movie & calculate new avg
     }
 
     public int getMovieId() {
