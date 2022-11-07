@@ -1,12 +1,15 @@
 package MOBLIMA.retrieval;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import MOBLIMA.dataStructure.Showtime;
+import MOBLIMA.utils.dateTime;
 
 public class retrieveShowtime {
     public static final int ROWS = 9;
@@ -22,8 +25,8 @@ public class retrieveShowtime {
             StringTokenizer star = new StringTokenizer(st, SEPARATOR);
 
             String cinema = star.nextToken().trim();
-            String date = star.nextToken().trim();
-            int timeSlot = Integer.parseInt(star.nextToken().trim());
+            LocalDate date = dateTime.convertDate(star.nextToken().trim());
+            LocalTime timeSlot = dateTime.convertTime(Integer.parseInt(star.nextToken().trim()));
             int movieId = Integer.parseInt(star.nextToken().trim());
 
             String[] seatinArray = star.nextToken().trim().split("\\.");
@@ -69,6 +72,8 @@ public class retrieveShowtime {
                     }
                     System.out.println();
                 }
+                System.out.println(dateTime.convertDate(s.getDate()));
+                System.out.println(dateTime.convertTime(s.getTime()));
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());

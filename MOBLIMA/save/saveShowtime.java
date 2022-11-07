@@ -1,10 +1,13 @@
 package MOBLIMA.save;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrieveShowtime;
+import MOBLIMA.utils.dateTime;
 
 import java.util.ArrayList;
 
@@ -20,9 +23,9 @@ public class saveShowtime extends save {
 
             st.append(s.getCinema());
             st.append(SEPARATOR);
-            st.append(s.getDate());
+            st.append(dateTime.convertDate(s.getDate()));
             st.append(SEPARATOR);
-            st.append(s.getTimeSlot());
+            st.append(dateTime.convertTime(s.getTime()));
             st.append(SEPARATOR);
             st.append(s.getMovieId());
             st.append(SEPARATOR);
@@ -56,7 +59,9 @@ public class saveShowtime extends save {
                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1 } };
-        Showtime s = new Showtime("cinema", "date", 2000, 1, seating);
+        LocalDate date = dateTime.convertDate("2022/12/20");
+        LocalTime time = dateTime.convertTime(1900);
+        Showtime s = new Showtime("cinema", date, time, 1, seating);
         showtimeArray.add(s);
 
         // save to same file

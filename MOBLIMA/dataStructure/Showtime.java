@@ -1,16 +1,19 @@
 package MOBLIMA.dataStructure;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Showtime {
     private String cinema;
-    private String date;
-    private int timeSlot;
+    private LocalDate date;
+    private LocalTime time;
     private int movieId;
     private int[][] seating;
 
-    public Showtime(String c, String d, int t, int m, int[][] s) {
+    public Showtime(String c, LocalDate d, LocalTime t, int m, int[][] s) {
         cinema = c;
         date = d;
-        timeSlot = t;
+        time = t;
         movieId = m;
         seating = s;
     }
@@ -19,12 +22,12 @@ public class Showtime {
         return cinema;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public int getTimeSlot() {
-        return timeSlot;
+    public LocalTime getTime() {
+        return time;
     }
 
     public int getMovieId() {
@@ -39,12 +42,12 @@ public class Showtime {
         this.cinema = cinema;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public void setTimeSlot(int timeSlot) {
-        this.timeSlot = timeSlot;
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
     public void setMovieId(int movieId) {

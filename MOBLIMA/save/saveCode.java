@@ -1,6 +1,9 @@
 package MOBLIMA.save;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieGoer;
@@ -13,6 +16,7 @@ import MOBLIMA.retrieval.retrieveMovieGoer;
 import MOBLIMA.retrieval.retrieveReview;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.retrieval.retrieveTransaction;
+import MOBLIMA.utils.dateTime;
 
 import java.util.ArrayList;
 
@@ -72,7 +76,9 @@ public class saveCode {
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0 } };
-                Showtime s = new Showtime("cp", "date", 2000, 1, seating); // add new showtime
+                LocalDate date = dateTime.convertDate("2022/12/20");
+                LocalTime time = dateTime.convertTime(1900);
+                Showtime s = new Showtime("cinema", date, time, 1, seating); // add new showtime
                 showtimeArray.add(s);
                 saveShowtime.saveShowtimeArray(filename, showtimeArray);// overwrite file
 
