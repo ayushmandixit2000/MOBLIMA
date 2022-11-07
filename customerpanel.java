@@ -6,6 +6,7 @@ import java.util.Scanner;
 import MOBLIMA.retrieval.retrieveMovieGoer;
 import MOBLIMA.save.saveMovieGoer;
 import MOBLIMA.dataStructure.MovieGoer;
+import MOBLIMA.facade.pastTransactionsFacade;
 
 public class customerpanel implements Panel {
 
@@ -60,7 +61,7 @@ public class customerpanel implements Panel {
                 System.out.println("\nPlease select your desired action (key in the coresponding number)");
                 System.out.println("1: Search for a movie");
                 System.out.println("2: List movies");
-                System.out.println("3: View movie detailes");
+                System.out.println("3: View movie details");
                 System.out.println("4: Check seat availability");
                 System.out.println("5: Book and purchase ticket");
                 System.out.println("6: View booking history");
@@ -82,9 +83,17 @@ public class customerpanel implements Panel {
                         break;
 
                     case 3:
-                        moviedetailui md = new moviedetailui();
-                        md.begin();
+                        search searchmovie1 = new search();
+                        searchmovie1.findmovie();
                         break;
+
+                    case 6:
+                        pastTransactionsFacade pt = new pastTransactionsFacade();
+                        pt.setuserid(userid);
+                        pt.display();
+                        break;
+
+
 
                     // case 2:
                     // movie.viewdetails();

@@ -25,7 +25,7 @@ public class ReviewListing implements Listing {
         for (int i = 0; i < reviewArray.size(); i++) {
             Review r = (Review) reviewArray.get(i);
             if(r.getMovieId() == movid){
-            System.out.println("Review: " + r.getReview());
+            System.out.println("\nRating out of 5: " + r.getRating() + " || Review: " + r.getReview());
             }
         }
     }

@@ -11,7 +11,7 @@ public class search {
 
     public void findmovie() throws IOException {
         Scanner scc = new Scanner(System.in);
-        System.out.println("\nPlease key in the movie you would like to watch: ");
+        System.out.println("\nPlease key in the movie you would like to inquire about: ");
         String movie1 = scc.next();
         String movie = movie1.toLowerCase();
         boolean found = false;
@@ -53,22 +53,11 @@ public class search {
                     Movie m3 = (Movie) optionlist.get(j);
                     System.out.println("\nYou have Selected: " + m3.getTitle());
 
-                    System.out.println("\nWould you like to find out more about this movie?");
-                    System.out.println("\n1: Yes");
-                    System.out.println("\n2: No");
-
-                    int nextopt = scc.nextInt();
-
-                    if(nextopt != 1){
-                        System.out.println("exiting...");
-                        break;
-                    }
-
-                    else{
-                        MovieDetailsListing moviedetails = new MovieDetailsListing();
-                        moviedetails.setmovie(m3);
-                        moviedetails.displayListing();
-                    }
+                    
+                    MovieDetailsListing moviedetails = new MovieDetailsListing();
+                    moviedetails.setmovie(m3);
+                    moviedetails.displayListing();
+                    
                 }
             }
 
