@@ -32,6 +32,7 @@ public class CineplexApp {
                 quit = true;
             }
         }
+        sc.close();
     }
 
     private static void printHRPSTitle() {

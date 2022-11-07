@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import MOBLIMA.panelInterface.*;
+import MOBLIMA.create.*;
 
 
 public class adminpanel implements Panel {
@@ -36,6 +37,8 @@ public class adminpanel implements Panel {
                 switch(optionListing){
                     case 1:
                     System.out.println("Create Movie Listing");
+                    createMovie newMovie = new createMovie();
+                    boolean isCreated = newMovie.movieCreate();
                     break;
                     case 2:
                     System.out.println("Update Movie Listing");
