@@ -41,8 +41,9 @@ public class retrieveTransaction {
                 }
             }
 
-            Transaction t = new Transaction(transactionId, purchaseDate, time, userId, date, totalCost, cinema,
-                    ticketCount, i, arrayOfTicketCatgeory, arrayOfSeatAllocation);
+            Transaction t = new Transaction(transactionId, purchaseDate, purchaseTime, userId, movieId, date, time,
+                    cinema, totalCost,
+                    ticketCount, arrayOfTicketCatgeory, arrayOfSeatAllocation);
             alr.add(t);
         }
         return alr;

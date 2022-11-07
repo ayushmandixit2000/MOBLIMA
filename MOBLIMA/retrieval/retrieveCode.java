@@ -14,7 +14,7 @@ public class retrieveCode {
     public static void main(String[] args) throws IOException {
 
         String filename = "MOBLIMA/databases/Cinema.txt";
-        ArrayList cinemaArray = retrieveCinema.readShowtime(filename);
+        ArrayList cinemaArray = retrieveCinema.readCinema(filename);
         for (int i = 0; i < cinemaArray.size(); i++) {
             Cinema c = (Cinema) cinemaArray.get(i);
             System.out.println("CinemaId " + c.getCinema());

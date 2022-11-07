@@ -13,7 +13,7 @@ import MOBLIMA.dataStructure.Cinema;
 public class retrieveCinema {
     public static final String SEPARATOR = "|";
 
-    public static ArrayList readShowtime(String filename) throws IOException {
+    public static ArrayList readCinema(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
         ArrayList alr = new ArrayList();// to store data
 
@@ -55,7 +55,7 @@ public class retrieveCinema {
     public static void main(String[] aArgs) {
         String filename = "MOBLIMA/databases/Cinema.txt";
         try {
-            ArrayList al = retrieveCinema.readShowtime(filename);
+            ArrayList al = retrieveCinema.readCinema(filename);
             for (int i = 0; i < al.size(); i++) {
                 Cinema c = (Cinema) al.get(i);
                 System.out.println("CinemaId " + c.getCinema());

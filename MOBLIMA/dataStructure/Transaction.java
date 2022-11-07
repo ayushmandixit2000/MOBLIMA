@@ -14,12 +14,14 @@ public class Transaction {
     private String[] arrayOfTicketCatgeory;
     private int[][] arrayOfSeatAllocation;// array of seat allocation, separated by .
 
-    public Transaction(String tid, String pd, int pt, String uid, String d, int t, String c, int tc, int tickCount,
+    public Transaction(String tid, String pd, int pt, String uid, int mid, String d, int t, String c, int tc,
+            int tickCount,
             String[] arrayCat, int[][] arraySeats) {
         transactionId = tid;
         purchaseDate = pd;
         purchaseTime = pt;
         userId = uid;
+        movieId = mid;
         date = d;
         time = t;
         cinema = c;
