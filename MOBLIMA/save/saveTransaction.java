@@ -1,9 +1,12 @@
 package MOBLIMA.save;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import MOBLIMA.dataStructure.Transaction;
 import MOBLIMA.retrieval.retrieveTransaction;
+import MOBLIMA.utils.dateTime;
 
 import java.util.ArrayList;
 
@@ -17,17 +20,17 @@ public class saveTransaction extends save {
             StringBuilder st = new StringBuilder();
             st.append(t.getTransactionId());
             st.append(SEPARATOR);
-            st.append(t.getPurchaseDate());
+            st.append(dateTime.convertDate(t.getPurchaseDate()));
             st.append(SEPARATOR);
-            st.append(t.getPurchaseTime());
+            st.append(dateTime.convertTime(t.getPurchaseTime()));
             st.append(SEPARATOR);
             st.append(t.getUserId());
             st.append(SEPARATOR);
             st.append(t.getMovieId());
             st.append(SEPARATOR);
-            st.append(t.getDate());
+            st.append(dateTime.convertDate(t.getDate()));
             st.append(SEPARATOR);
-            st.append(t.getTime());
+            st.append(dateTime.convertTime(t.getTime()));
             st.append(SEPARATOR);
             st.append(t.getCinema());
             st.append(SEPARATOR);
@@ -66,7 +69,9 @@ public class saveTransaction extends save {
 
         // add new transaction
         int[][] seatings = { { 1, 2 }, { 4, 5 } };
-        Transaction t = new Transaction("tid", "purchaseDate", 2000, "userid", 2, "date", 2100, "cinema", 10, 2,
+        LocalDate date = dateTime.convertDate("2022/12/20");
+        LocalTime time = dateTime.convertTime(1900);
+        Transaction t = new Transaction("tid", date, time, "userid", 2, date, time, "cinema", 10, 2,
                 new String[] { "0", "1" }, seatings);
         transactionArray.add(t);
 

@@ -1,20 +1,24 @@
 package MOBLIMA.dataStructure;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Transaction {
     private String transactionId;
-    private String purchaseDate; // supposed to be date
-    private int purchaseTime;
+    private LocalDate purchaseDate;
+    private LocalTime purchaseTime;
     private String userId;
     private int movieId;
-    private String date;
-    private int time;
+    private LocalDate date;
+    private LocalTime time;
     private String cinema;
     private int totalCost;
     private int ticketCount;
     private String[] arrayOfTicketCatgeory;
     private int[][] arrayOfSeatAllocation;// array of seat allocation, separated by .
 
-    public Transaction(String tid, String pd, int pt, String uid, int mid, String d, int t, String c, int tc,
+    public Transaction(String tid, LocalDate pd, LocalTime pt, String uid, int mid, LocalDate d, LocalTime t, String c,
+            int tc,
             int tickCount,
             String[] arrayCat, int[][] arraySeats) {
         transactionId = tid;
@@ -35,11 +39,11 @@ public class Transaction {
         return transactionId;
     }
 
-    public String getPurchaseDate() {
+    public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
 
-    public int getPurchaseTime() {
+    public LocalTime getPurchaseTime() {
         return purchaseTime;
     }
 
@@ -51,11 +55,11 @@ public class Transaction {
         return movieId;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public int getTime() {
+    public LocalTime getTime() {
         return time;
     }
 

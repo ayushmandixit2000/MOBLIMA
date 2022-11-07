@@ -1,6 +1,8 @@
 package MOBLIMA.retrieval;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 import MOBLIMA.dataStructure.Transaction;
+import MOBLIMA.utils.dateTime;
 
 public class retrieveTransaction {
     public static final String SEPARATOR = "|";
@@ -22,12 +25,12 @@ public class retrieveTransaction {
             StringTokenizer star = new StringTokenizer(st, SEPARATOR);
 
             String transactionId = star.nextToken().trim();
-            String purchaseDate = star.nextToken().trim();
-            int purchaseTime = Integer.parseInt(star.nextToken().trim());
+            LocalDate purchaseDate = dateTime.convertDate(star.nextToken().trim());
+            LocalTime purchaseTime = dateTime.convertTime(Integer.parseInt(star.nextToken().trim()));
             String userId = star.nextToken().trim();
             int movieId = Integer.parseInt(star.nextToken().trim());
-            String date = star.nextToken().trim();
-            int time = Integer.parseInt(star.nextToken().trim());
+            LocalDate date = dateTime.convertDate(star.nextToken().trim());
+            LocalTime time = dateTime.convertTime(Integer.parseInt(star.nextToken().trim()));
             String cinema = star.nextToken().trim();
             int totalCost = Integer.parseInt(star.nextToken().trim());
             int ticketCount = Integer.parseInt(star.nextToken().trim());
@@ -68,6 +71,8 @@ public class retrieveTransaction {
             ArrayList al = retrieveTransaction.readTransaction(filename);
             for (int i = 0; i < al.size(); i++) {
                 Transaction t = (Transaction) al.get(i);
+                System.out.println(dateTime.convertDate(t.getDate()));
+                System.out.println(dateTime.convertTime(t.getTime()));
                 System.out.println("Transaction " + t.getTransactionId());
                 System.out.println(Arrays.toString(t.getArrayOfTicketCatgeory()));
                 System.out.println(Arrays.deepToString(t.getArrayOfSeatAllocation()));

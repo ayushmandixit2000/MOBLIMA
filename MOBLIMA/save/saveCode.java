@@ -3,7 +3,6 @@ package MOBLIMA.save;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
 import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieGoer;
@@ -85,7 +84,9 @@ public class saveCode {
                 filename = "MOBLIMA/databases/transactions.txt";
                 ArrayList transactionArray = retrieveTransaction.readTransaction(filename); // retrieve current array
                 int[][] seatings = { { 1, 2 }, { 4, 5 } };
-                Transaction t = new Transaction("tid", "purchaseDate", 2000, "userid", 2, "date", 2100, "cinema", 10, 2,
+                date = dateTime.convertDate("2022/12/20");
+                time = dateTime.convertTime(1900);
+                Transaction t = new Transaction("tid", date, time, "userid", 2, date, time, "cinema", 10, 2,
                                 new String[] { "0", "1" }, seatings);// add new transaction
                 transactionArray.add(t);
                 saveTransaction.saveTransactionArray(filename, transactionArray);// overwrite file
