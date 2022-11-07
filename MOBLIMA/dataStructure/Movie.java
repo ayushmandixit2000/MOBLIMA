@@ -27,6 +27,19 @@ public class Movie implements Serializable {
         isDeleted = id;
     }
 
+    public Movie(String mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int id) {
+        movieId = mid;
+        title = t;
+        showStatus = ss;
+        director = d;
+        cast = c;
+        synopsis = s;
+        movieRating = mr;
+        movieType = mt;
+        sales = 0;
+        isDeleted = id;
+    }
+
     public String getMovieId() {
         return movieId;
     }
