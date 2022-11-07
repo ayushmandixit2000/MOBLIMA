@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 import MOBLIMA.dataStructure.Transaction;
@@ -30,8 +31,16 @@ public class retrieveTransaction {
             String cinema = star.nextToken().trim();
             int totalCost = Integer.parseInt(star.nextToken().trim());
             int ticketCount = Integer.parseInt(star.nextToken().trim());
-            String arrayOfTicketCatgeory = star.nextToken().trim();
-            String arrayOfSeatAllocation = star.nextToken().trim();
+            String[] arrayOfTicketCatgeory = star.nextToken().trim().split("\\,");
+            String[] arrayOfSeatAllocationArray = star.nextToken().trim().split("\\.");
+            int[][] arrayOfSeatAllocation = new int[ticketCount][2];
+            for (int j = 0; j < ticketCount; j++) {
+                String[] row = arrayOfSeatAllocationArray[j].split("\\,");
+                for (int k = 0; k < 2; k++) {
+                    arrayOfSeatAllocation[j][k] = Integer.valueOf(row[k]);
+                }
+            }
+
             Transaction t = new Transaction(transactionId, purchaseDate, time, userId, date, totalCost, cinema,
                     ticketCount, i, arrayOfTicketCatgeory, arrayOfSeatAllocation);
             alr.add(t);
@@ -59,6 +68,8 @@ public class retrieveTransaction {
             for (int i = 0; i < al.size(); i++) {
                 Transaction t = (Transaction) al.get(i);
                 System.out.println("Transaction " + t.getTransactionId());
+                System.out.println(Arrays.toString(t.getArrayOfTicketCatgeory()));
+                System.out.println(Arrays.deepToString(t.getArrayOfSeatAllocation()));
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());

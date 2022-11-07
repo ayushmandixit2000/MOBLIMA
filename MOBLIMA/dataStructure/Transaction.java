@@ -11,11 +11,11 @@ public class Transaction {
     private String cinema;
     private int totalCost;
     private int ticketCount;
-    private String arrayOfTicketCatgeory;// array of integers
-    private String arrayOfSeatAllocation;// array of seat allocation tuple
+    private String[] arrayOfTicketCatgeory;
+    private int[][] arrayOfSeatAllocation;// array of seat allocation, separated by .
 
     public Transaction(String tid, String pd, int pt, String uid, String d, int t, String c, int tc, int tickCount,
-            String arrayCat, String arraySeats) {
+            String[] arrayCat, int[][] arraySeats) {
         transactionId = tid;
         purchaseDate = pd;
         purchaseTime = pt;
@@ -69,11 +69,11 @@ public class Transaction {
         return ticketCount;
     }
 
-    public String getArrayOfTicketCatgeory() {
+    public String[] getArrayOfTicketCatgeory() {
         return arrayOfTicketCatgeory;
     }
 
-    public String getArrayOfSeatAllocation() {
+    public int[][] getArrayOfSeatAllocation() {
         return arrayOfSeatAllocation;
     }
 }

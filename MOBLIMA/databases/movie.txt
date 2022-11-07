@@ -1,2 +1,2 @@
-0|Spider-Man: Into the Spider-Verse|1|Bob Persichetti|[Shameik Moore,Jake Johnson,Hailee Steinfield]|this is a synopsis of into the spider-verse|0|0|0|0
-1|Avengers: Endgame|2|Anthony Russo|[Robert Downey Jr.,Chris Evans, Mark Ruffalo]|this is a synopsis of endgame|1|1|0|0
+0|Spider-Man: Into the Spider-Verse|1|Bob Persichetti|Shameik Moore,Jake Johnson,Hailee Steinfield|this is a synopsis of into the spider-verse|0|0|0|0
+1|Avengers: Endgame|2|Anthony Russo|Robert Downey Jr.,Chris Evans, Mark Ruffalo|this is a synopsis of endgame|1|1|0|0

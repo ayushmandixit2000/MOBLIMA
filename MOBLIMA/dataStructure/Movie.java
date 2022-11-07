@@ -7,13 +7,14 @@ public class Movie implements Serializable {
     private String title;
     private int showStatus;
     private String director;
-    private String cast; // for now its a huge string
+    private String[] cast;
     private String synopsis;
     private int movieRating;
+    private int movieType;
     private int sales;
     private int isDeleted;
 
-    public Movie(String mid, String t, int ss, String d, String c, String s, int mr, int sa, int id) {
+    public Movie(String mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int sa, int id) {
         movieId = mid;
         title = t;
         showStatus = ss;
@@ -21,6 +22,7 @@ public class Movie implements Serializable {
         cast = c;
         synopsis = s;
         movieRating = mr;
+        movieType = mt;
         sales = sa;
         isDeleted = id;
     }
@@ -41,7 +43,7 @@ public class Movie implements Serializable {
         return director;
     }
 
-    public String getCast() {
+    public String[] getCast() {
         return cast;
     }
 
@@ -53,6 +55,10 @@ public class Movie implements Serializable {
         return movieRating;
     }
 
+    public int getMovieType() {
+        return movieType;
+    }
+
     public int getSales() {
         return sales;
     }
@@ -61,11 +67,39 @@ public class Movie implements Serializable {
         return isDeleted;
     }
 
-    // public boolean equals(Object o) {
-    // if (o instanceof movie) {
-    // movie m = (movie) o;
-    // return (getMovieId().equals(m.getMovieId()));
-    // }
-    // return false;
-    // }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setShowStatus(int showStatus) {
+        this.showStatus = showStatus;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public void setCast(String[] cast) {
+        this.cast = cast;
+    }
+
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
+    }
+
+    public void setMovieRating(int movieRating) {
+        this.movieRating = movieRating;
+    }
+
+    public void setMovieType(int movieType) {
+        this.movieType = movieType;
+    }
+
+    public void setSales(int sales) {
+        this.sales = sales;
+    }
+
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
+    }
 }

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 import MOBLIMA.dataStructure.Cinema;
@@ -23,8 +24,15 @@ public class retrieveCinema {
             String cineplex = star.nextToken().trim();
             int cinema = Integer.parseInt(star.nextToken().trim());
             int movieClass = Integer.parseInt(star.nextToken().trim());
-            String layout = star.nextToken().trim();
-
+            String layoutString = star.nextToken().trim();
+            String[] layoutStringArray = layoutString.split("\\.");
+            int[][] layout = new int[layoutStringArray.length][layoutStringArray.length];
+            for (int j = 0; j < layoutStringArray.length; j++) {
+                String[] row = layoutStringArray[j].split(",");
+                for (int k = 0; k < row.length; k++) {
+                    layout[j][k] = Integer.valueOf(row[k]);
+                }
+            }
             Cinema c = new Cinema(cineplex, cinema, movieClass, layout);
             alr.add(c);
         }
@@ -51,6 +59,8 @@ public class retrieveCinema {
             for (int i = 0; i < al.size(); i++) {
                 Cinema c = (Cinema) al.get(i);
                 System.out.println("CinemaId " + c.getCinema());
+                int[][] array = c.getLayout();
+                System.out.println(Arrays.deepToString(array));
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());

@@ -6,9 +6,9 @@ public class Showtime {
     private String date;
     private int timeSlot;
     private int movieId;
-    private String seating; // instead of int[][]
+    private int[][] seating;
 
-    public Showtime(String cp, int c, String d, int t, int m, String s) {
+    public Showtime(String cp, int c, String d, int t, int m, int[][] s) {
         cineplex = cp;
         cinema = c;
         date = d;
@@ -37,7 +37,7 @@ public class Showtime {
         return movieId;
     }
 
-    public String getSeating() {
+    public int[][] getSeating() {
         return seating;
     }
 }

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 import MOBLIMA.dataStructure.Showtime;
 
@@ -24,7 +25,15 @@ public class retrieveShowtime {
             String date = star.nextToken().trim();
             int timeSlot = Integer.parseInt(star.nextToken().trim());
             int movieId = Integer.parseInt(star.nextToken().trim());
-            String seating = star.nextToken().trim();
+
+            String[] seatinArray = star.nextToken().trim().split("\\.");
+            int[][] seating = new int[seatinArray.length][seatinArray.length];
+            for (int j = 0; j < seatinArray.length; j++) {
+                String[] row = seatinArray[j].split("\\,");
+                for (int k = 0; k < seatinArray.length; k++) {
+                    seating[j][k] = Integer.valueOf(row[k]);
+                }
+            }
 
             Showtime s = new Showtime(cineplex, cinema, date, timeSlot, movieId, seating);
             alr.add(s);
@@ -53,6 +62,7 @@ public class retrieveShowtime {
             for (int i = 0; i < al.size(); i++) {
                 Showtime s = (Showtime) al.get(i);
                 System.out.println("MovieId " + s.getMovieId());
+                System.out.println(Arrays.deepToString(s.getSeating()));
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());

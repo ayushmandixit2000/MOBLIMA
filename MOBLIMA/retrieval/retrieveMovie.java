@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 import MOBLIMA.dataStructure.Movie;
 
@@ -23,13 +24,14 @@ public class retrieveMovie {
             String title = star.nextToken().trim();
             int showStatus = Integer.parseInt(star.nextToken().trim());
             String director = star.nextToken().trim();
-            String cast = star.nextToken().trim(); // still need to split based on ,
+            String[] cast = star.nextToken().trim().split("\\,"); // still need to split based on ,
             String synopsis = star.nextToken().trim();
             int movieRating = Integer.parseInt(star.nextToken().trim());
+            int movieType = Integer.parseInt(star.nextToken().trim());
             int sales = Integer.parseInt(star.nextToken().trim());
             int isDeleted = Integer.parseInt(star.nextToken().trim());
 
-            Movie m = new Movie(movieId, title, showStatus, director, cast, synopsis, movieRating, sales,
+            Movie m = new Movie(movieId, title, showStatus, director, cast, synopsis, movieRating, movieType, sales,
                     isDeleted);
             alr.add(m);
         }
@@ -56,6 +58,7 @@ public class retrieveMovie {
             for (int i = 0; i < al.size(); i++) {
                 Movie m = (Movie) al.get(i);
                 System.out.println("MovieTitle " + m.getTitle());
+                System.out.println(Arrays.toString(m.getCast()));
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());
