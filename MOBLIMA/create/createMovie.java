@@ -1,8 +1,10 @@
 package MOBLIMA.create;
 
 import MOBLIMA.dataStructure.*;
+import MOBLIMA.retrieval.retrieveMovie;
+import MOBLIMA.save.saveMovie;
 
-import java.lang.reflect.Array;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +13,8 @@ public class createMovie {
     public createMovie() {
     }
 
-    public boolean movieCreate() {
+    public boolean movieCreate() throws IOException {
+            
         Scanner sc = new Scanner(System.in);
 
         // getting movie title
@@ -38,15 +41,17 @@ public class createMovie {
         }
 
         //getting director
-        System.out.println("Enter Director: ");
+        System.out.print("Enter Director: ");
         String director = sc.nextLine();
+        sc.nextLine();
         
         // getting cast
         ArrayList<String> cast = new ArrayList<String>();
+        String userInputCast;
         System.out.println("Enter each cast on a new line. Key in stop to complete the list of cast.");
         while (true){
             System.out.print("Cast: ");
-            String userInputCast = sc.nextLine();
+            userInputCast = sc.nextLine();
             if(userInputCast.equals("stop")){
                 break;
             }
@@ -95,9 +100,15 @@ public class createMovie {
             }
         }
 
-        // creating movie class. MovieID, MovieRating, sales set to 0 for time being
-        Movie movieAdmin = new Movie("xxx", movieTitle, showStatus, director, castString, synopsis, 0, movieType, 0, 0);        
 
+        // creating movie class. MovieID, MovieRating, sales set to 0 for time being
+        Movie movieAdmin = new Movie(5, movieTitle, showStatus, director, castString, synopsis, movieRating,movieType, 0);
+
+        // pushing movie into database
+        String filename = "MOBLIMA/databases/movie.txt";
+        ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
+        movieArray.add(movieAdmin);
+        saveMovie.saveMovieArray(filename, movieArray);// overwrite file
         return true;
     }
 

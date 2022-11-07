@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 import MOBLIMA.panelInterface.*;
 import MOBLIMA.create.*;
@@ -17,7 +18,7 @@ public class adminpanel implements Panel {
         Scanner sc = new Scanner(System.in);    
     }
 
-    public void viewApp(){
+    public void viewApp() throws IOException{
         Scanner sc = new Scanner(System.in);
         boolean exit = false;
         int option;
