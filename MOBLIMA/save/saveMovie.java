@@ -36,7 +36,9 @@ public class saveMovie extends save {
             st.append(m.getSales());
             st.append(SEPARATOR);
             st.append(m.getIsDeleted());
+            st.append(SEPARATOR);
             st.append(m.getNumReviews());
+            st.append(SEPARATOR);
             st.append(m.getAvgRating());
             alw.add(st.toString());
         }
