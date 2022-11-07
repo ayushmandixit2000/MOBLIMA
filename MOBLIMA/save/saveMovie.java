@@ -13,7 +13,7 @@ public class saveMovie extends save {
             Movie m = (Movie) al.get(i); // moving through the object to get the necessary info
             StringBuilder st = new StringBuilder();
 
-            st.append(m.getMovieId());
+            st.append(i);
             st.append(SEPARATOR);
             st.append(m.getTitle());
             st.append(SEPARATOR);

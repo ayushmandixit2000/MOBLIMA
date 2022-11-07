@@ -35,6 +35,9 @@ public class saveCode {
                                                                                                                     // new
                                                                                                                     // movie
         movieArray.add(m);
+        Movie m1 = new Movie("random number as it will be replaced", "title", 2, "director",
+                new String[] { "cast1", "cast2" }, "synopsis", 1, 1, 0);// add new movie without sales
+        movieArray.add(m1);
         saveMovie.saveMovieArray(filename, movieArray);// overwrite file
 
         filename = "MOBLIMA/databases/movieGoer.txt";
