@@ -161,10 +161,6 @@ public class Movie implements Serializable {
     }
 
     public void setAvgRating() throws IOException {
-        if (this.numReviews < 1) {
-            this.avgRating = -1;
-            return;
-        }
         int sum = 0;
         String filename = "MOBLIMA/databases/review.txt";
         ArrayList reviewArray = retrieveReview.readReview(filename);
