@@ -43,6 +43,7 @@ public class adminpanel implements Panel {
                     break;
                     case 2:
                     System.out.println("Update Movie Listing");
+                    
                     break;
                     case 3:
                     System.out.println("Remove Movie Listing");
