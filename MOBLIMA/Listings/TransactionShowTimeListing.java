@@ -1,4 +1,4 @@
-package MOBLIMA.facade;
+package MOBLIMA.Listings;
 
 import java.io.IOException;
 import java.util.ArrayList;

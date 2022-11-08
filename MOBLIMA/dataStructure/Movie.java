@@ -3,7 +3,10 @@ package MOBLIMA.dataStructure;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveReview;
+import MOBLIMA.save.saveMovie;
 
 public class Movie implements Serializable {
     private int movieId;
@@ -165,7 +168,7 @@ public class Movie implements Serializable {
                 counter++;
             }
         }
-        numReviews = counter;
+        this.numReviews = counter;
     }
 
     public void setAvgRating() throws IOException {
@@ -182,6 +185,10 @@ public class Movie implements Serializable {
                 sum += r.getRating();
             }
         }
-        this.avgRating = sum / this.numReviews;
+
+        double x = this.numReviews;
+        
+        this.avgRating = sum / x;
+
     }
 }

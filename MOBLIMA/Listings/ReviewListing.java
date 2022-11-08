@@ -1,3 +1,4 @@
+package MOBLIMA.Listings;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.Review;
 import MOBLIMA.listingInterface.Listing;
