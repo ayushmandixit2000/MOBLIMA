@@ -3,18 +3,18 @@ package MOBLIMA.configurables;
 import java.time.LocalDate;
 
 public class peakDates {
-    private static LocalDate[] peakDates; // for public holis
+    private static LocalDate[] publicHoli; // for public holis
 
     public peakDates(LocalDate[] p) {
-        peakDates = p;
+        publicHoli = p;
     }
 
-    public LocalDate[] getPeakDates() {
-        return peakDates;
+    public static LocalDate[] getPublicHoli() {
+        return publicHoli;
     }
 
-    public void setPeakDates(LocalDate[] peakDates) {
-        this.peakDates = peakDates;
+    public void setPeakDates(LocalDate[] publicHoli) {
+        publicHoli = publicHoli;
     }
 
     public static boolean isPeak(LocalDate date) {

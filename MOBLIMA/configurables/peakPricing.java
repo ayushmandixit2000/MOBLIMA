@@ -4,9 +4,9 @@ public class peakPricing {
     private static double nonPeakMultiplier;
     private static double peakMultiplier;
 
-    public peakPricing(double n, double p) {
-        nonPeakMultiplier = n;
-        peakMultiplier = p;
+    public peakPricing() {
+        nonPeakMultiplier = 1;
+        peakMultiplier = 1.5;
     }
 
     public static double getNonPeakMultiplier() {

@@ -5,10 +5,10 @@ public class ageGroupPricing {
     private static double priceOfAdult;
     private static double priceOfSnrCitizen;
 
-    public ageGroupPricing(double c, double a, double s) {
-        priceOfChild = c;
-        priceOfAdult = a;
-        priceOfSnrCitizen = s;
+    public ageGroupPricing() {
+        priceOfChild = 5;
+        priceOfAdult = 10;
+        priceOfSnrCitizen = 7;
     }
 
     public static double getPriceOfChild() {

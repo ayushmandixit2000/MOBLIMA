@@ -64,7 +64,7 @@ public class saveShowtime extends save {
                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1 } };
         LocalDate date = dateTime.convertDate("2022/12/20");
         LocalTime time = dateTime.convertTime(1900);
-        Showtime s = new Showtime("cinema", date, time, 1, seating);
+        Showtime s = new Showtime("cin", date, time, 1, seating);
         showtimeArray.add(s);
 
         // save to same file

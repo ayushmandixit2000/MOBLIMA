@@ -1,10 +1,6 @@
 package MOBLIMA.dataStructure;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import MOBLIMA.retrieval.retrieveMovie;
-import MOBLIMA.save.saveMovie;
 
 public class Review {
     private int movieId;
@@ -15,16 +11,6 @@ public class Review {
         movieId = m;
         rating = rt;
         review = r;
-        String filename = "MOBLIMA/databases/movie.txt";
-        ArrayList movieArray = retrieveMovie.readMovie(filename);
-        for (int i = 0; i < movieArray.size(); i++) {
-            Movie mov = (Movie) movieArray.get(i);
-            if (mov.getMovieId() == this.movieId) {
-                mov.setNumReviews(mov.getNumReviews() + 1);
-                System.out.println("triggered");
-            }
-        }
-        saveMovie.saveMovieArray(filename, movieArray);
     }
 
     public int getMovieId() {

@@ -38,7 +38,7 @@ public class saveCode {
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0 } };
-                Cinema c = new Cinema("cinema", 1, 1, layout); // new cinema
+                Cinema c = new Cinema("cin", 1, 1, layout); // new cinema
                 cinemaArray.add(c);
                 saveCinema.saveCinemaArray(filename, cinemaArray); // overwrite file
 
@@ -78,7 +78,7 @@ public class saveCode {
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0 } };
                 LocalDate date = dateTime.convertDate("2022/12/20");
                 LocalTime time = dateTime.convertTime(1900);
-                Showtime s = new Showtime("cinema", date, time, 1, seating); // add new showtime
+                Showtime s = new Showtime("cin", date, time, 1, seating); // add new showtime
                 showtimeArray.add(s);
                 saveShowtime.saveShowtimeArray(filename, showtimeArray);// overwrite file
 
