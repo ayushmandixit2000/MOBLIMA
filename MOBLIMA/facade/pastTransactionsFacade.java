@@ -41,7 +41,7 @@ public class pastTransactionsFacade {
             for (int l = 0; l < optionlist.size(); l++) {
                 Transaction t2 = optionlist.get(l);
                 System.out.println(
-                        l + 1 + " : Transaction ID - " + t2.getTransactionId() + " Purchased on " + t2.getDate());
+                        l + 1 + " : Transaction ID - " + t2.getTransactionId() + " Purchased on " + t2.getPurchaseDate());
             }
 
             int option = scc.nextInt();
@@ -49,14 +49,13 @@ public class pastTransactionsFacade {
             for (int l = 0; l < optionlist.size(); l++) {
                 if(option == l + 1){
                     Transaction t3 = optionlist.get(l);
-                    System.out.println("\nTransaction Selected: " + " : Transaction ID - " + t3.getTransactionId() + " Purchased on " + dateTime.convertDate(t3.getDate()));
+                    System.out.println("\nTransaction Selected: " + " Transaction ID - " + t3.getTransactionId() + " Purchased on " + dateTime.convertDate(t3.getPurchaseDate()));
                     TransactionDetailsListing tdl = new TransactionDetailsListing();
                     tdl.settransaction(t3);
                     tdl.displayListing();
                     
                 }
             }
-
         }
 
     }
