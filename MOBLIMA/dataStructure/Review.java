@@ -21,6 +21,7 @@ public class Review {
             Movie mov = (Movie) movieArray.get(i);
             if (mov.getMovieId() == this.movieId) {
                 mov.setNumReviews(mov.getNumReviews() + 1);
+                System.out.println("triggered");
             }
         }
         saveMovie.saveMovieArray(filename, movieArray);

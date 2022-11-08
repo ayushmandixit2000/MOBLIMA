@@ -44,10 +44,9 @@ public class saveCode {
 
                 filename = "MOBLIMA/databases/movie.txt";
                 ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
-                Movie m = new Movie(2, "title", 2, "director", new String[] { "cast1", "cast2" }, "synopsis", 1, 1, 0,
-                                0, 0, 0);// add
-                                         // new
-                                         // movie
+                Movie m = new Movie(2, "title", 2, "director", new String[] { "cast1", "cast2" }, "synopsis", 1, 1, 0);// add
+                // new
+                // movie
                 movieArray.add(m);
                 Movie m1 = new Movie(5, "title", 2, "director",
                                 new String[] { "cast1", "cast2" }, "synopsis", 1, 1, 0);// add new movie without sales

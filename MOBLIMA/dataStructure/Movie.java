@@ -19,22 +19,6 @@ public class Movie implements Serializable {
     private int numReviews;
     private double avgRating;
 
-    public Movie(int mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int sa, int id, int nr,
-            double ar) throws IOException {
-        movieId = mid;
-        title = t;
-        showStatus = ss;
-        director = d;
-        cast = c;
-        synopsis = s;
-        movieRating = mr;
-        movieType = mt;
-        sales = sa;
-        isDeleted = id;
-        numReviews = nr;
-        setAvgRating();
-    }
-
     public Movie(int mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int id) throws IOException {
         movieId = mid;
         title = t;
@@ -48,7 +32,6 @@ public class Movie implements Serializable {
         isDeleted = id;
         numReviews = 0;
         avgRating = 0;
-        setAvgRating();
     }
 
     public int getMovieId() {
@@ -89,14 +72,6 @@ public class Movie implements Serializable {
 
     public int getIsDeleted() {
         return isDeleted;
-    }
-
-    public int getNumReviews() {
-        return numReviews;
-    }
-
-    public double getAvgRating() {
-        return avgRating;
     }
 
     public void setTitle(String title) {
@@ -156,8 +131,29 @@ public class Movie implements Serializable {
         this.isDeleted = isDeleted;
     }
 
-    public void setNumReviews(int numReviews) {
-        this.numReviews = numReviews;
+    public int getNumReviews() {
+        return numReviews;
+    }
+
+    public double getAvgRating() {
+        return avgRating;
+    }
+
+    public void setNumReviews() throws IOException {
+        String filename = "MOBLIMA/databases/review.txt";
+        ArrayList reviewArray = retrieveReview.readReview(filename);
+        int counter = 0;
+        for (int i = 0; i < reviewArray.size(); i++) {
+            Review r = (Review) reviewArray.get(i);
+            if (r.getMovieId() == this.movieId) {
+                counter++;
+            }
+        }
+        numReviews = counter;
+    }
+
+    public void setNumReviews(int count) {
+        this.numReviews = count;
     }
 
     public void setAvgRating() throws IOException {
@@ -166,7 +162,9 @@ public class Movie implements Serializable {
         ArrayList reviewArray = retrieveReview.readReview(filename);
         for (int i = 0; i < reviewArray.size(); i++) {
             Review r = (Review) reviewArray.get(i);
-            sum += r.getRating();
+            if (r.getMovieId() == this.movieId) {
+                sum += r.getRating();
+            }
         }
         this.avgRating = sum / this.numReviews;
     }
