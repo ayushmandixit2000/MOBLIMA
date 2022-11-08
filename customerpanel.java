@@ -83,8 +83,8 @@ public class customerpanel implements Panel {
                         break;
 
                     case 3:
-                        search searchmovie1 = new search();
-                        searchmovie1.findmovie();
+                        list listmovies1 = new list();
+                        listmovies1.show();
                         break;
 
                     case 6:
