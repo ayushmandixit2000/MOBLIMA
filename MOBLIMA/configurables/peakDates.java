@@ -18,11 +18,11 @@ public class peakDates {
     }
 
     public static boolean isPeak(LocalDate date) {
-        for (int i = 0; i < peakDates.length; i++) {
-            if (date == peakDates[i]) {
-                return true;
-            }
-        }
+        // for (int i = 0; i < peakDates.length; i++) {
+        // if (date == peakDates[i]) {
+        // return true;
+        // }
+        // }
         String dayOfWeek = date.getDayOfWeek().toString();
         if ("SATURDAY".equalsIgnoreCase(dayOfWeek) || "SUNDAY".equalsIgnoreCase(dayOfWeek)) {
             return true;

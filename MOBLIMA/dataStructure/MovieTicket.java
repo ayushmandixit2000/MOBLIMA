@@ -1,42 +1,41 @@
-package MOBLIMA.utils;
+package MOBLIMA.dataStructure;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
-import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrieveShowtime;
+import MOBLIMA.utils.TicketPrice;
+import MOBLIMA.utils.dateTime;
 
 public class MovieTicket {
     private String movieTicketId;
     private String ageCat;
     private int seatingRow;
     private int seatingColumn;
-    private LocalDate date;
-    private LocalTime time;
     private double price;
-    private static int movieId;
+    private String showtimeId;
 
-    public MovieTicket(String mt, String a, int sr, int sc, LocalDate d, LocalTime t, int m) {
-        movieTicketId = m + dateTime.convertDate(d) + dateTime.convertTime(t) + String.valueOf(sr) + String.valueOf(sc);
+    public MovieTicket(String a, int sr, int sc, String st) {
+        movieTicketId = st + String.valueOf(sr) + String.valueOf(sc); // dont need movieTicketId- will be populated
         ageCat = a;
         seatingRow = sr;
         seatingColumn = sc;
-        date = d;
-        time = t;
+        LocalDate d = dateTime.convertDate(st.substring(3, 13));
         price = TicketPrice.calculatePrice(d, Integer.valueOf(a));
-        movieId = m;
+        showtimeId = st;
     }
 
     // check for seat availability
-    public static boolean checkSeat(int row, int column) throws IOException {
+    public static boolean checkSeat(String showtimeId, int row, int column) throws IOException {
         String filename = "MOBLIMA/databases/showtime.txt";
         ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
         for (int i = 0; i < showTimeArray.size(); i++) {
             Showtime s = (Showtime) showTimeArray.get(i);
-            if (s.addSeating(row, column) == true) {
-                return true;
+            if (showtimeId.equals(s.getShowtimeId())) {
+                if (s.addSeating(row, column) == true) {
+                    return true;
+                }
             }
         }
         return false;
@@ -58,19 +57,11 @@ public class MovieTicket {
         return seatingColumn;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public LocalTime getTime() {
-        return time;
-    }
-
     public double getPrice() {
         return price;
     }
 
-    public int getMovieId() {
-        return movieId;
+    public String getShowtimeId() {
+        return showtimeId;
     }
 }

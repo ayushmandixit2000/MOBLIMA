@@ -37,6 +37,7 @@ public class retrieveShowtime {
                     seating[j][k] = Integer.valueOf(row[k]);
                 }
             }
+            String showTimeId = star.nextToken().trim(); // not used
 
             Showtime s = new Showtime(cinema, date, timeSlot, movieId, seating);
             alr.add(s);
@@ -74,6 +75,7 @@ public class retrieveShowtime {
                 }
                 System.out.println(dateTime.convertDate(s.getDate()));
                 System.out.println(dateTime.convertTime(s.getTime()));
+                System.out.println(s.getShowtimeId());
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());

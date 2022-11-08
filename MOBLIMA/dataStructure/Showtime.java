@@ -3,12 +3,15 @@ package MOBLIMA.dataStructure;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import MOBLIMA.utils.dateTime;
+
 public class Showtime {
     private String cinema;
     private LocalDate date;
     private LocalTime time;
     private int movieId;
     private int[][] seating;
+    private String showtimeId;
 
     public Showtime(String c, LocalDate d, LocalTime t, int m, int[][] s) {
         cinema = c;
@@ -16,6 +19,7 @@ public class Showtime {
         time = t;
         movieId = m;
         seating = s;
+        showtimeId = c + dateTime.convertDate(d) + dateTime.convertTime(t);
     }
 
     public String getCinema() {
@@ -36,6 +40,10 @@ public class Showtime {
 
     public int[][] getSeating() {
         return seating;
+    }
+
+    public String getShowtimeId() {
+        return showtimeId;
     }
 
     public void setCinema(String cinema) {

@@ -40,6 +40,9 @@ public class saveShowtime extends save {
             }
             st.setLength(st.length() - 1);
 
+            st.append(SEPARATOR);
+            st.append(s.getShowtimeId());
+
             alw.add(st.toString());
         }
         write(filename, alw);

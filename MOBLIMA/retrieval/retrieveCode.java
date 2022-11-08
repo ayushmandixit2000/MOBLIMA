@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieGoer;
+import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Review;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.dataStructure.Transaction;
@@ -46,6 +47,14 @@ public class retrieveCode {
         for (int i = 0; i < showTimeArray.size(); i++) {
             Showtime s = (Showtime) showTimeArray.get(i);
             System.out.println("MovieId " + s.getMovieId());
+        }
+
+        filename = "MOBLIMA/databases/movieTicket.txt";
+        ArrayList al = retrieveMovieTicket.readMovieTicket(filename);
+        for (int i = 0; i < al.size(); i++) {
+            MovieTicket mt = (MovieTicket) al.get(i);
+            System.out.println(mt.getMovieTicketId());
+
         }
 
         filename = "MOBLIMA/databases/transactions.txt";

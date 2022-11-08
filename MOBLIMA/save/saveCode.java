@@ -6,12 +6,14 @@ import java.time.LocalTime;
 import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieGoer;
+import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Review;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.dataStructure.Transaction;
 import MOBLIMA.retrieval.retrieveCinema;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveMovieGoer;
+import MOBLIMA.retrieval.retrieveMovieTicket;
 import MOBLIMA.retrieval.retrieveReview;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.retrieval.retrieveTransaction;
@@ -81,13 +83,18 @@ public class saveCode {
                 showtimeArray.add(s);
                 saveShowtime.saveShowtimeArray(filename, showtimeArray);// overwrite file
 
+                filename = "MOBLIMA/databases/MovieTicket.txt";
+                ArrayList movieTicketArray = retrieveMovieTicket.readMovieTicket(filename); // retrieve current array
+                MovieTicket mt = new MovieTicket("0", 1, 5, "Dog2022/12/141630");// add new showtime
+                movieTicketArray.add(mt);
+                saveMovieTicket.saveMovieTicketArray(filename, movieTicketArray);// save to same file
+
                 filename = "MOBLIMA/databases/transactions.txt";
                 ArrayList transactionArray = retrieveTransaction.readTransaction(filename); // retrieve current array
-                int[][] seatings = { { 1, 2 }, { 4, 5 } };
                 date = dateTime.convertDate("2022/12/20");
                 time = dateTime.convertTime(1900);
-                Transaction t = new Transaction("tid", date, time, "userid", 2, date, time, "cinema", 10, 2,
-                                new String[] { "0", "1" }, seatings);// add new transaction
+                Transaction t = new Transaction(date, time, "userid", new String[] { "ABC2022/12/12190014" });// add new
+                                                                                                              // transaction
                 transactionArray.add(t);
                 saveTransaction.saveTransactionArray(filename, transactionArray);// overwrite file
         }
