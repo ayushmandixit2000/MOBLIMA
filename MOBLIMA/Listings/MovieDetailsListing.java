@@ -1,6 +1,8 @@
+package MOBLIMA.Listings;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.listingInterface.Listing;
 import MOBLIMA.retrieval.retrieveMovie;
+import MOBLIMA.useractions.CustomerAction;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,12 +12,19 @@ public class MovieDetailsListing implements Listing {
 
     private Movie m1;
 
+    private int action;
+
+    public void setaction(int act){
+        this.action = act;
+    }
+
     public void setmovie(Movie m) {
         this.m1 = m;
     }
 
     public void displayListing() throws IOException {
-
+        m1.setAvgRating();
+        m1.setNumReviews();
         System.out.println("Movie Title: " + m1.getTitle());
         Scanner scc = new Scanner(System.in);
         String showstatus = "";
@@ -86,18 +95,24 @@ public class MovieDetailsListing implements Listing {
 
         int additionalopt = scc.nextInt();
 
+
         if (additionalopt == 1) {
             if(m1.getNumReviews() > 1){
             System.out.println("\nAverage Rating: " + m1.getAvgRating());
             }
             
             else{
-                System.out.println("\nAverage Rating is not determined due to insufficent reviews");
+                System.out.println("\nNA: Average Rating is not determined due to insufficent reviews");
             }
             ReviewListing reviews = new ReviewListing();
             reviews.setmovie(m1);
             reviews.displayListing();
         }
+
+        CustomerAction CA = new CustomerAction();
+        CA.setaction(this.action);
+        CA.setmovie(m1);
+        CA.displayaction();
 
     }
 }
