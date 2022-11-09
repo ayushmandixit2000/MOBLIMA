@@ -30,10 +30,19 @@ public class top5RatingListing {
     Collections.sort(ratingsTitle,
                          Comparator.comparingDouble(titleRatings::getRating));
 
-    for(int j=0; j<5; j++)
+    if(ratingsTitle.size()<5) 
+    {
+        for(int j=0; j<ratingsTitle.size(); j++)
+        {
+            System.out.println("Movie:" + ratingsTitle.get(j).getTitle() + " Total sales:" + ratingsTitle.get(j).getRating());
+        } 
+    } 
+    else{
+        for(int j=0; j<5; j++)
     {
         System.out.println("Movie:" + ratingsTitle.get(j).getTitle() + " Total sales:" + ratingsTitle.get(j).getRating());
     }
+    }                 
 }
 
 }
