@@ -28,7 +28,7 @@ public class retrieveShowtime {
 
             String cinema = star.nextToken().trim();
             LocalDate date = dateTime.convertDate(star.nextToken().trim());
-            LocalTime timeSlot = dateTime.convertTime(Integer.parseInt(star.nextToken().trim()));
+            LocalTime timeSlot = dateTime.convertTime(star.nextToken().trim());
             int movieId = Integer.parseInt(star.nextToken().trim());
 
             String[] seatinArray = star.nextToken().trim().split("\\.");

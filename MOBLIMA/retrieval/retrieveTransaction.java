@@ -26,7 +26,7 @@ public class retrieveTransaction {
 
             String transactionId = star.nextToken().trim();
             LocalDate purchaseDate = dateTime.convertDate(star.nextToken().trim());
-            LocalTime purchaseTime = dateTime.convertTime(Integer.parseInt(star.nextToken().trim()));
+            LocalTime purchaseTime = dateTime.convertTime(star.nextToken().trim());
             String userId = star.nextToken().trim();
             String[] arrayofMovieTickets = star.nextToken().trim().split("\\,");
 
