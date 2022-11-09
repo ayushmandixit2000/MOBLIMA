@@ -19,7 +19,6 @@ public class ageGroupPricing {
 
     public ageGroupPricing() throws IOException {
         String data = retrieveTicketPricing.readTicketPricing(filename);
-        System.out.println(data);
         priceOfChild = Double.parseDouble(data.split("\\,")[0]);
         priceOfAdult = Double.parseDouble(data.split("\\,")[1]);
         priceOfSnrCitizen = Double.parseDouble(data.split("\\,")[2]);
