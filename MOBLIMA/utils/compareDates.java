@@ -10,7 +10,11 @@ public class compareDates implements Comparator<Showtime> {
         if (comp1 != 0) {
             return comp1;
         }
-        return s1.getTime().compareTo(s2.getTime());
+        int comp2 = s1.getTime().compareTo(s2.getTime());
+        if (comp2 != 0) {
+            return comp2;
+        }
+        return s1.getCinema().compareTo(s2.getCinema());
     }
 
 }
