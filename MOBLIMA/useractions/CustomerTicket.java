@@ -47,13 +47,10 @@ public class CustomerTicket {
             movieTicketArray.add(mt);
             saveMovieTicket.saveMovieTicketArray(filename, movieTicketArray);// save to same file
 
-
+            
         }
 
-        // for(int i = 0; i < seats.length; i++){
-        // System.out.println("Row :" + seats[i][0]);
-        // System.out.println("Column :" + seats[i][1]);
-        // }
+        
     }
 
 }
