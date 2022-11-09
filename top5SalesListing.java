@@ -2,6 +2,7 @@
 import java.io.IOException;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveMovieTicket;
+import MOBLIMA.dataStructure.*;
 
 import java.util.ArrayList;
 import java.util.*;
@@ -20,7 +21,7 @@ public class top5SalesListing {
         //ArrayList<titleSales> salesTitle = new ArrayList<titleSales>(); //create array for the objects with title and sales number
         for(int i=0; i<arraySize; i++)
         {
-            Movie1 m = (Movie1) movieObjects.get(i); //pulls one movie object from the arraylist
+            Movie m = (Movie) movieObjects.get(i); //pulls one movie object from the arraylist
             int salesNo = m.getSales();
             String title = m.getTitle();
             MovieTicket t = (MovieTicket) movieTickets.get(i);

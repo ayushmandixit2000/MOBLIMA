@@ -3,8 +3,6 @@ import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.dataStructure.Movie;
 
 import java.util.ArrayList;
-import java.util.*;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
