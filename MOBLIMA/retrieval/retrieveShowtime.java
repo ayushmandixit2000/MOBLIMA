@@ -7,8 +7,10 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.StringTokenizer;
 import MOBLIMA.dataStructure.Showtime;
+import MOBLIMA.utils.compareDates;
 import MOBLIMA.utils.dateTime;
 
 public class retrieveShowtime {
@@ -67,16 +69,33 @@ public class retrieveShowtime {
                 Showtime s = (Showtime) al.get(i);
                 System.out.println("MovieId " + s.getMovieId());
                 int[][] array = s.getSeating();
-                for (int k = 0; k < array.length; k++) {
-                    for (int j = 0; j < array[k].length; j++) {
-                        System.out.print(array[k][j] + " ");
-                    }
-                    System.out.println();
-                }
+                // for (int k = 0; k < array.length; k++) {
+                // for (int j = 0; j < array[k].length; j++) {
+                // System.out.print(array[k][j] + " ");
+                // }
+                // System.out.println();
+                // }
                 System.out.println(dateTime.convertDate(s.getDate()));
                 System.out.println(dateTime.convertTime(s.getTime()));
                 System.out.println(s.getShowtimeId());
             }
+            System.out.println("after sorting");
+            Collections.sort(al, new compareDates());// HELLO AYUSHMAN!
+            for (int i = 0; i < al.size(); i++) {
+                Showtime s = (Showtime) al.get(i);
+                System.out.println("MovieId " + s.getMovieId());
+                int[][] array = s.getSeating();
+                // for (int k = 0; k < array.length; k++) {
+                // for (int j = 0; j < array[k].length; j++) {
+                // System.out.print(array[k][j] + " ");
+                // }
+                // System.out.println();
+                // }
+                System.out.println(dateTime.convertDate(s.getDate()));
+                System.out.println(dateTime.convertTime(s.getTime()));
+                System.out.println(s.getShowtimeId());
+            }
+
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());
         }
