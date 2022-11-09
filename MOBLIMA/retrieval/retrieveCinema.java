@@ -5,15 +5,12 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 import MOBLIMA.dataStructure.Cinema;
 
 public class retrieveCinema {
     public static final String SEPARATOR = "|";
-    public static final int ROWS = 9;
-    public static final int COLUMNS = 17;
 
     public static ArrayList readCinema(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
@@ -26,16 +23,8 @@ public class retrieveCinema {
             String cineplex = star.nextToken().trim();
             int cinema = Integer.parseInt(star.nextToken().trim());
             int movieClass = Integer.parseInt(star.nextToken().trim());
-            String layoutString = star.nextToken().trim();
-            String[] layoutStringArray = layoutString.split("\\.");
-            int[][] layout = new int[ROWS][COLUMNS];
-            for (int j = 0; j < ROWS; j++) {
-                String[] row = layoutStringArray[j].split(",");
-                for (int k = 0; k < COLUMNS; k++) {
-                    layout[j][k] = Integer.valueOf(row[k]);
-                }
-            }
-            Cinema c = new Cinema(cineplex, cinema, movieClass, layout);
+
+            Cinema c = new Cinema(cineplex, cinema, movieClass);
             alr.add(c);
         }
         return alr;
@@ -61,13 +50,6 @@ public class retrieveCinema {
             for (int i = 0; i < al.size(); i++) {
                 Cinema c = (Cinema) al.get(i);
                 System.out.println("CinemaId " + c.getCinema());
-                int[][] array = c.getLayout();
-                for (int k = 0; k < array.length; k++) {
-                    for (int j = 0; j < array[k].length; j++) {
-                        System.out.print(array[k][j] + " ");
-                    }
-                    System.out.println();
-                }
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());

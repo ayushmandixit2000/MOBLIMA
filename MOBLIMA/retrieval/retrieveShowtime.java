@@ -13,7 +13,7 @@ import MOBLIMA.utils.dateTime;
 
 public class retrieveShowtime {
     public static final int ROWS = 9;
-    public static final int COLUMNS = 17;
+    public static final int COLUMNS = 19;
     public static final String SEPARATOR = "|";
 
     public static ArrayList readShowtime(String filename) throws IOException {

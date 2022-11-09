@@ -68,7 +68,6 @@ public class Showtime {
 
     public boolean addSeating(int row, int column) {
         if (this.seating[row][column] == 0) {
-            this.seating[row][column] = 1;
             return true;
         }
         return false;
