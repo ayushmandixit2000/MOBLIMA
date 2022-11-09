@@ -2,12 +2,14 @@ package MOBLIMA.useractions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrieveShowtime;
+import MOBLIMA.utils.compareDates;
 
 public class CustomerBooking {
     private Movie m;
@@ -39,6 +41,7 @@ public class CustomerBooking {
         String filename = "MOBLIMA/databases/showtime.txt";
         ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
         List<Showtime> optionlist = new ArrayList<Showtime>();
+        Collections.sort(showTimeArray, new compareDates()); //added just this line
 
         for (int i = 0; i < showTimeArray.size(); i++) {
             Showtime s = (Showtime) showTimeArray.get(i);
@@ -52,15 +55,16 @@ public class CustomerBooking {
 
         for (int j = 0; j < optionlist.size(); j++) {
             Showtime s1 = optionlist.get(j);
-            System.out.println(j+1 + ": Cinema :" + s1.getCinema() + " ||" + "Date: " + s1.getDate() + " ||" + "Time: "+ s1.getTime() + " ||");
+            System.out.println(j + 1 + ": Cinema :" + s1.getCinema() + " ||" + "Date: " + s1.getDate() + " ||"
+                    + "Time: " + s1.getTime() + " ||");
         }
 
         int option = scc.nextInt();
 
         for (int l = 0; l < optionlist.size(); l++) {
-            if(option == l+1){
+            if (option == l + 1) {
                 Showtime s2 = optionlist.get(l);
-                
+
                 SeatAvailability sa = new SeatAvailability();
                 sa.setshow(s2);
                 sa.display();

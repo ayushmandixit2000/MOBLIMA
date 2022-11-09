@@ -1,5 +1,6 @@
 package MOBLIMA.useractions;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import MOBLIMA.dataStructure.Showtime;
@@ -11,7 +12,7 @@ public class SeatAvailability {
         this.s = s1;
     }
 
-    public void display() {
+    public void display() throws IOException {
         Scanner scc = new Scanner(System.in);
         int[][] st = s.getSeating();
 
@@ -21,9 +22,9 @@ public class SeatAvailability {
                 "Cinema :" + s.getCinema() + " ||" + "Date: " + s.getDate() + " ||" + "Time: " + s.getTime() + " ||");
         System.out.println();
 
-        System.out.println("    _  _  _  _  _  _  _  _  _ __ __ __ __ __ __ __ __");
-        System.out.println("    1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17");
-        System.out.println("    _  _  _  _  _  _  _  _  _ __ __ __ __ __ __ __ __");
+        System.out.println("    _  _  _  _  _  _  _  _  _ __ __ __ __ __ __ __ __ __");
+        System.out.println("    1  2  3  4  5  6  7  8  9    11 12 13 14 15 16 17 18");
+        System.out.println("    _  _  _  _  _  _  _  _  _ __ __ __ __ __ __ __ __ __");
         System.out.println();
         int k = 65;
         for (int i = 0; i < st.length; i++) {
@@ -38,8 +39,8 @@ public class SeatAvailability {
             System.out.println();
         }
         System.out.println("Legend - 0: Unoccupied");
-        System.out.println("Legend - 8: Occupied");
-        System.out.println("Legend - 1: Alleys and Stairs");
+        System.out.println("Legend - 1: Occupied");
+        System.out.println("Legend - 2: Alleys and Stairs");
         System.out.println();
         System.out.println("_____________________________________________________");
 
@@ -49,7 +50,7 @@ public class SeatAvailability {
 
         int opt = scc.nextInt();
 
-        if(opt != 1){
+        if (opt != 1) {
             return;
         }
 
