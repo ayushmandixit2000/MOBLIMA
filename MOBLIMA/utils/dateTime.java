@@ -37,9 +37,9 @@ public class dateTime {
         return d;
     }
 
-    public static LocalTime convertTime(int time) {
-        int hr = Integer.parseInt(Integer.toString(time).substring(0, 2));
-        int min = Integer.parseInt(Integer.toString(time).substring(2, 4));
+    public static LocalTime convertTime(String time) {
+        int hr = Integer.parseInt(time.substring(0, 2));
+        int min = Integer.parseInt(time.substring(2, 4));
         LocalTime t = LocalTime.of(hr, min, 0, 0);
         return t;
     }
