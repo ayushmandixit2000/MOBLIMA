@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import MOBLIMA.retrieval.retrieveMovieTicket;
+
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveReview;
 import MOBLIMA.save.saveMovie;
@@ -142,7 +144,7 @@ public class Movie implements Serializable {
         this.movieType = movieType;
     }
 
-    public void setSales(int sales) {
+    public void setSales(int sales) throws IOException {
         this.sales = sales;
     }
 

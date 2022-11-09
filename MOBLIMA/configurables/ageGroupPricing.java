@@ -1,14 +1,28 @@
 package MOBLIMA.configurables;
 
+import java.io.IOException;
+
+import MOBLIMA.retrieval.retrieveTicketPricing;
+import MOBLIMA.save.saveTicketPricing;
+
+// for peeps doing configurables
+// new ageGroupPricing();
+// System.out.println(ageGroupPricing.getPriceOfChild());
+// ageGroupPricing.setPriceOfChild(5);
+// ageGroupPricing.savePricing();
+
 public class ageGroupPricing {
     private static double priceOfChild;
     private static double priceOfAdult;
     private static double priceOfSnrCitizen;
+    static String filename = "MOBLIMA/databases/ticketPricing.txt";
 
-    public ageGroupPricing() {
-        priceOfChild = 5;
-        priceOfAdult = 10;
-        priceOfSnrCitizen = 7;
+    public ageGroupPricing() throws IOException {
+        String data = retrieveTicketPricing.readTicketPricing(filename);
+        System.out.println(data);
+        priceOfChild = Double.parseDouble(data.split("\\,")[0]);
+        priceOfAdult = Double.parseDouble(data.split("\\,")[1]);
+        priceOfSnrCitizen = Double.parseDouble(data.split("\\,")[2]);
     }
 
     public static double getPriceOfChild() {
@@ -34,4 +48,11 @@ public class ageGroupPricing {
     public static void setPriceOfSnrCitizen(double newSC) {
         priceOfSnrCitizen = newSC;
     }
+
+    public static void savePricing() throws IOException {
+        String data = String.valueOf(getPriceOfChild()) + "," + String.valueOf(getPriceOfAdult()) + ","
+                + String.valueOf(getPriceOfSnrCitizen());
+        saveTicketPricing.saveTicketPricingString(filename, data);
+    }
+
 }
