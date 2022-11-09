@@ -192,5 +192,13 @@ public class Movie implements Serializable {
         
         this.avgRating = sum / x;
 
+        double k = this.avgRating;
+        k = round(k, 1);
+        this.avgRating = k;
+    }
+
+    private static double round (double value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
     }
 }

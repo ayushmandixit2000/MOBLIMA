@@ -24,13 +24,15 @@ public class updateMovie{
         // retrieve movie list
         String filename = "MOBLIMA/databases/movie.txt";
         ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
-        numbOfMovies = movieArray.size();
+        ArrayList<Movie> validMovies = new ArrayList<Movie>(movieArray);
+        validMovies.removeIf(Movie->Movie.getIsDeleted()!=0);
+        numbOfMovies = validMovies.size();
 
         // generating menu to select movie to update
         while(true){
             System.out.println("Select movie to edit: ");
             for(int i = 0; i < numbOfMovies; i++){
-                Movie m = (Movie)movieArray.get(i);
+                Movie m = (Movie)validMovies.get(i);
                 System.out.println((i+1) + ": " + m.getTitle());
             }
             movieOption = sc.nextInt();
@@ -40,7 +42,7 @@ public class updateMovie{
             System.out.println("Invalid Option. Please try again");
         }
 
-        Movie editMovie = (Movie)movieArray.get(movieOption-1);
+        Movie editMovie = (Movie)validMovies.get(movieOption-1);
         System.out.println("You have selected: " + editMovie.getTitle());
 
         // generating menu to edit
@@ -227,7 +229,7 @@ public class updateMovie{
 
                 case 8:
                 loop = false;
-                movieArray.set(movieOption-1, editMovie);
+                movieArray.set(editMovie.getMovieId(), editMovie);
             }
 
 
