@@ -29,16 +29,7 @@ public class saveCode {
 
                 String filename = "MOBLIMA/databases/cinema.txt";
                 ArrayList cinemaArray = retrieveCinema.readCinema(filename); // retrieve current array
-                int[][] layout = { { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0 } };
-                Cinema c = new Cinema("cin", 1, 1, layout); // new cinema
+                Cinema c = new Cinema("cin", 1, 1); // new cinema
                 cinemaArray.add(c);
                 saveCinema.saveCinemaArray(filename, cinemaArray); // overwrite file
 
@@ -67,17 +58,17 @@ public class saveCode {
 
                 filename = "MOBLIMA/databases/Showtime.txt";
                 ArrayList showtimeArray = retrieveShowtime.readShowtime(filename); // retrieve current array
-                int[][] seating = { { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0 } };
+                int[][] seating = { { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                                { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2 } };
                 LocalDate date = dateTime.convertDate("2022/12/20");
-                LocalTime time = dateTime.convertTime(1900);
+                LocalTime time = dateTime.convertTime("1900");
                 Showtime s = new Showtime("cin", date, time, 1, seating); // add new showtime
                 showtimeArray.add(s);
                 saveShowtime.saveShowtimeArray(filename, showtimeArray);// overwrite file
@@ -91,7 +82,7 @@ public class saveCode {
                 filename = "MOBLIMA/databases/transactions.txt";
                 ArrayList transactionArray = retrieveTransaction.readTransaction(filename); // retrieve current array
                 date = dateTime.convertDate("2022/12/20");
-                time = dateTime.convertTime(1900);
+                time = dateTime.convertTime("1900");
                 Transaction t = new Transaction(date, time, "userid", new String[] { "ABC2022/12/12190014" });// add new
                                                                                                               // transaction
                 transactionArray.add(t);

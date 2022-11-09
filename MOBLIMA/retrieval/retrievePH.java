@@ -2,38 +2,27 @@ package MOBLIMA.retrieval;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.io.FileInputStream;
 import java.util.Scanner;
+import java.util.StringTokenizer;
+import MOBLIMA.utils.dateTime;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.StringTokenizer;
 
-import MOBLIMA.dataStructure.Transaction;
-import MOBLIMA.utils.dateTime;
-
-public class retrieveTransaction {
+public class retrievePH {
     public static final String SEPARATOR = "|";
 
-    public static ArrayList readTransaction(String filename) throws IOException {
+    public static ArrayList readPH(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
         ArrayList alr = new ArrayList();// to store data
-
         for (int i = 0; i < stringArray.size(); i++) {
             String st = (String) stringArray.get(i);
             StringTokenizer star = new StringTokenizer(st, SEPARATOR);
-
-            String transactionId = star.nextToken().trim();
-            LocalDate purchaseDate = dateTime.convertDate(star.nextToken().trim());
-            LocalTime purchaseTime = dateTime.convertTime(star.nextToken().trim());
-            String userId = star.nextToken().trim();
-            String[] arrayofMovieTickets = star.nextToken().trim().split("\\,");
-
-            Transaction t = new Transaction(purchaseDate, purchaseTime, userId, arrayofMovieTickets);
-            alr.add(t);
+            LocalDate d = dateTime.convertDate(star.nextToken().trim());
+            alr.add(d);
         }
         return alr;
+
     }
 
     public static List read(String fileName) throws IOException {
@@ -50,12 +39,12 @@ public class retrieveTransaction {
     }
 
     public static void main(String[] aArgs) {
-        String filename = "MOBLIMA/databases/transactions.txt";
+        String filename = "MOBLIMA/databases/publicholidays.txt";
         try {
-            ArrayList al = retrieveTransaction.readTransaction(filename);
+            ArrayList al = retrievePH.readPH(filename);
             for (int i = 0; i < al.size(); i++) {
-                Transaction t = (Transaction) al.get(i);
-                System.out.println(Arrays.deepToString(t.getArrayofMovieTickets()));
+                LocalDate d = (LocalDate) al.get(i);
+                System.out.println(dateTime.convertDate(d));
             }
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());

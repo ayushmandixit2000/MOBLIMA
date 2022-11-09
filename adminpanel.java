@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import MOBLIMA.panelInterface.*;
 import MOBLIMA.create.*;
+import MOBLIMA.update.*;
+import MOBLIMA.remove.*;
 
 
 public class adminpanel implements Panel {
@@ -43,9 +45,13 @@ public class adminpanel implements Panel {
                     break;
                     case 2:
                     System.out.println("Update Movie Listing");
+                    updateMovie editMovie = new updateMovie();
+                    boolean isEdited = editMovie.movieUpdate();
                     break;
                     case 3:
                     System.out.println("Remove Movie Listing");
+                    removeMovie deleteMovie = new removeMovie();
+                    boolean isRemoved = deleteMovie.movieRemove();
                     break;
                     default:
                     System.out.println("Please try again.");

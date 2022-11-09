@@ -1,9 +1,12 @@
+package MOBLIMA.facade;
 
 import java.util.Scanner;
 import java.io.IOException;
 import java.util.*;
 import java.util.function.Supplier;
 
+
+import MOBLIMA.Listings.MovieDetailsListing;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.retrieval.retrieveMovie;
 
@@ -63,11 +66,5 @@ public class search {
 
         }
         
-        // view movie details option from here
-
-        Integer chosenmovie = 1; // add user input id here
-
-        detailmovie mov = new detailmovie();
-        mov.specify(chosenmovie);
     }
 }

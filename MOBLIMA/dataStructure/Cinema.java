@@ -4,13 +4,11 @@ public class Cinema {
     private String cinema;
     private int cineplex;
     private int movieClass;
-    private int[][] layout;
 
-    public Cinema(String c, int cp, int mc, int[][] l) {
+    public Cinema(String c, int cp, int mc) {
         cinema = c;// cinemaCode
         cineplex = cp;
         movieClass = mc;
-        layout = l;
     }
 
     public int getCineplex() {
@@ -25,10 +23,6 @@ public class Cinema {
         return movieClass;
     }
 
-    public int[][] getLayout() {
-        return layout;
-    }
-
     public boolean setCinema(String cinema) {
         this.cinema = cinema;
         return true;
@@ -36,11 +30,6 @@ public class Cinema {
 
     public boolean setCineplex(int cineplex) {
         this.cineplex = cineplex;
-        return true;
-    }
-
-    public boolean setLayout(int[][] layout) {
-        this.layout = layout;
         return true;
     }
 

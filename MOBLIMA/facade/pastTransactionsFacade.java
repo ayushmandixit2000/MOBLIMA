@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import MOBLIMA.Listings.TransactionDetailsListing;
 import MOBLIMA.dataStructure.Transaction;
 import MOBLIMA.retrieval.retrieveTransaction;
 import MOBLIMA.utils.dateTime;

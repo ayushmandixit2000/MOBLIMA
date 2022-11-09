@@ -6,7 +6,9 @@ import java.util.Scanner;
 import MOBLIMA.retrieval.retrieveMovieGoer;
 import MOBLIMA.save.saveMovieGoer;
 import MOBLIMA.dataStructure.MovieGoer;
+import MOBLIMA.facade.list;
 import MOBLIMA.facade.pastTransactionsFacade;
+import MOBLIMA.facade.search;
 
 public class customerpanel implements Panel {
 
@@ -87,10 +89,22 @@ public class customerpanel implements Panel {
                         listmovies1.show();
                         break;
 
+                    case 5:
+                        list listmovies2 = new list();
+                        listmovies2.setaction(1);
+                        listmovies2.show();
+                        break;
+
                     case 6:
                         pastTransactionsFacade pt = new pastTransactionsFacade();
                         pt.setuserid(userid);
                         pt.display();
+                        break;
+
+                    case 8:
+                        list listmovies3 = new list();
+                        listmovies3.setaction(2);
+                        listmovies3.show();
                         break;
 
 

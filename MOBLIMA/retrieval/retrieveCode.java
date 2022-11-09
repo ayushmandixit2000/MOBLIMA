@@ -54,7 +54,6 @@ public class retrieveCode {
         for (int i = 0; i < al.size(); i++) {
             MovieTicket mt = (MovieTicket) al.get(i);
             System.out.println(mt.getMovieTicketId());
-
         }
 
         filename = "MOBLIMA/databases/transactions.txt";

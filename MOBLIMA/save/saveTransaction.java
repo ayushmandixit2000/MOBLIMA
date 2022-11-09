@@ -46,7 +46,7 @@ public class saveTransaction extends save {
         // add new transaction
         int[][] seatings = { { 1, 2 }, { 4, 5 } };
         LocalDate date = dateTime.convertDate("2022/12/20");
-        LocalTime time = dateTime.convertTime(1900);
+        LocalTime time = dateTime.convertTime("1900");
         Transaction t = new Transaction(date, time, "userid", new String[] {"ABC2022/12/12190014"});
         transactionArray.add(t);
 

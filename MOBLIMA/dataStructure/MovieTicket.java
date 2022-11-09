@@ -16,7 +16,7 @@ public class MovieTicket {
     private double price;
     private String showtimeId;
 
-    public MovieTicket(String a, int sr, int sc, String st) {
+    public MovieTicket(String a, int sr, int sc, String st) throws NumberFormatException, IOException {
         movieTicketId = st + String.valueOf(sr) + String.valueOf(sc); // dont need movieTicketId- will be populated
         ageCat = a;
         seatingRow = sr;
