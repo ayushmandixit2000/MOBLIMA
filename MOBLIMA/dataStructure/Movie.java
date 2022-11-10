@@ -3,12 +3,7 @@ package MOBLIMA.dataStructure;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-
-import MOBLIMA.retrieval.retrieveMovieTicket;
-
-import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveReview;
-import MOBLIMA.save.saveMovie;
 
 public class Movie implements Serializable {
     private int movieId;
@@ -24,6 +19,23 @@ public class Movie implements Serializable {
     private int numReviews;
     private double avgRating;
 
+    /**
+     * 
+     * @param mid- integer denoting the movie id which is the movie's index in the
+     *             movie database
+     * @param t-   string denoting the movie's title
+     * @param ss-  integer denoting the movie's show status (0: Coming Soon, 1:
+     *             Preview, 2: Now Showing, 3: End of Showing)
+     * @param d-   string denoting the movie's director
+     * @param c-   string array denoting the movie's casts
+     * @param s-   string denoting the movie's synopsis
+     * @param mr-  integer denoting the movie's rating (0: G, 1: PG, 2: M, 3: R16,
+     *             4: TBC)
+     * @param mt-  integer denoting the movie's type (0: 3D, 1: Blockbuster)
+     * @param id-  integer denoting whether the movie is deleted (0: no, 1: yes).
+     *             Additionally, if the movie's show status is "End of Showing", the
+     *             movie is considered to be deleted.
+     */
     public Movie(int mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int id) throws IOException {
         movieId = mid;
         title = t;
@@ -105,7 +117,6 @@ public class Movie implements Serializable {
             setIsDeleted(1);
         }
         return;
-
     }
 
     public void setDirector(String director) {
@@ -128,7 +139,7 @@ public class Movie implements Serializable {
         this.movieType = movieType;
     }
 
-    public void setSales(int sales) throws IOException {
+    public void setSales(int sales){
         this.sales = sales;
     }
 
@@ -144,6 +155,10 @@ public class Movie implements Serializable {
         return avgRating;
     }
 
+    /**
+     * Counts the number of reviews users have left for that particular movie and
+     * saves it into the movie database
+     */
     public void setNumReviews() throws IOException {
         String filename = "MOBLIMA/databases/review.txt";
         ArrayList reviewArray = retrieveReview.readReview(filename);
@@ -157,6 +172,10 @@ public class Movie implements Serializable {
         this.numReviews = counter;
     }
 
+    /**
+     * Calculates the average rating users left for that particular movie and saves
+     * it into the movie database
+     */
     public void setAvgRating() throws IOException {
         int sum = 0;
         if (numReviews == 0) {
@@ -171,11 +190,8 @@ public class Movie implements Serializable {
                 sum += r.getRating();
             }
         }
-
         double x = this.numReviews;
-
         this.avgRating = sum / x;
-
         double k = this.avgRating;
         k = round(k, 1);
         this.avgRating = k;
