@@ -1,4 +1,4 @@
-package MOBLIMA.listingInterface;
+package MOBLIMA.listing;
 
 import java.io.IOException;
 import java.time.LocalDate;

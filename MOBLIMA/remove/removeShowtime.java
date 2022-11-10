@@ -139,7 +139,7 @@ public class removeShowtime {
 
     public static void main(String[] args) {
         removeShowtime rst = new removeShowtime();
-        rst.remove("Ang Mo Kio", 2, "Ao2", 0 );
+        rst.remove("Ang Mo Kio", 2, "Ao2");
     }
     
 }
