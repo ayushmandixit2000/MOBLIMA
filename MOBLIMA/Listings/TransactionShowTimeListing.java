@@ -8,8 +8,7 @@ import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.dataStructure.Transaction;
-
-import MOBLIMA.listingInterface.Listing;
+import MOBLIMA.listing.Listing;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveMovieTicket;
 import MOBLIMA.retrieval.retrieveShowtime;

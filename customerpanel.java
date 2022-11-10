@@ -60,38 +60,68 @@ public class customerpanel implements Panel {
            
 
             loop: while (true) {
-                System.out.println("\nPlease select your desired action (key in the coresponding number)");
-                System.out.println("1: Search for a movie");
-                System.out.println("2: List movies");
-                System.out.println("3: View movie details");
-                System.out.println("4: Check seat availability");
-                System.out.println("5: Book and purchase ticket");
-                System.out.println("6: View booking history");
-                System.out.println("7: List the Top 5 ranking movies");
-                System.out.println("8: Rate Movies");
-                System.out.println("9: Quit \n");
+                System.out.println();
+                System.out.println("_______________________________________________________________________");
+                System.out.println("| Please select your desired action (key in the coresponding number)   |");
+                System.out.println("| 1: Search for a movie                                                |");
+                System.out.println("| 2: List movies                                                       |");
+                System.out.println("| 3: View movie details                                                |");
+                System.out.println("| 4: Check seat availability                                           |");
+                System.out.println("| 5: Book and purchase ticket                                          |");
+                System.out.println("| 6: View booking history                                              |");
+                System.out.println("| 7: List the Top 5 ranking movies                                     |");
+                System.out.println("| 8: Rate Movies                                                       |");
+                System.out.println("| 9: Quit                                                              |");
+                System.out.println("_______________________________________________________________________");
+                System.out.println();
+
+
+                int option;
+
+                while (true) {
+                    String input = scc.next();
+                    option = 0;
+                    try {
+                        option = Integer.parseInt(input);
+                        break;
+                    } catch (NumberFormatException ne) {
+                        System.out.println("Please key in a number only!");
+                    }
+                }
+
 
                 int option = scc.nextInt();
 
                 switch (option) {
                     case 1:
                         search searchmovie = new search();
+                        searchmovie.setuser(userid);
                         searchmovie.findmovie();
                         break;
 
                     case 2:
                         list listmovies = new list();
+                        listmovies.setuser(userid);
                         listmovies.show();
                         break;
 
                     case 3:
                         list listmovies1 = new list();
+                        listmovies1.setuser(userid);
                         listmovies1.show();
+                        break;
+
+                    case 4:
+                        list listmovies4 = new list();
+                        listmovies4.setaction(1);
+                        listmovies4.setuser(userid);
+                        listmovies4.show();
                         break;
 
                     case 5:
                         list listmovies2 = new list();
                         listmovies2.setaction(1);
+                        listmovies2.setuser(userid);
                         listmovies2.show();
                         break;
 
@@ -112,25 +142,8 @@ public class customerpanel implements Panel {
                         listmovies3.show();
                         break;
 
-
-
-                    // case 2:
-                    // movie.viewdetails();
-
-                    // case 3:
-                    // cineplex.seats();
-
-                    // case 4:
-                    // user.booktickets();
-
-                    // case 5:
-                    // user.bookinghistory();
-
-                    // case 6:
-                    // movie.rank();
                     case 9:
-                        System.out.println("Exiting...");
-                        break loop;
+                        return;
                 }
             }
         } catch (IOException e) {

@@ -27,19 +27,19 @@ public class MovieTicket {
     }
 
     // check for seat availability
-    public static boolean checkSeat(String showtimeId, int row, int column) throws IOException {
-        String filename = "MOBLIMA/databases/showtime.txt";
-        ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
-        for (int i = 0; i < showTimeArray.size(); i++) {
-            Showtime s = (Showtime) showTimeArray.get(i);
-            if (showtimeId.equals(s.getShowtimeId())) {
-                if (s.addSeating(row, column) == true) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+    // public static boolean checkSeat(String showtimeId, int row, int column) throws IOException {
+    //     String filename = "MOBLIMA/databases/showtime.txt";
+    //     ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
+    //     for (int i = 0; i < showTimeArray.size(); i++) {
+    //         Showtime s = (Showtime) showTimeArray.get(i);
+    //         if (showtimeId.equals(s.getShowtimeId())) {
+    //             if (s.addSeating(row, column) == true) {
+    //                 return true;
+    //             }
+    //         }
+    //     }
+    //     return false;
+    // }
 
     public String getMovieTicketId() {
         return movieTicketId;

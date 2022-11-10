@@ -7,3 +7,5 @@
 0|5|amazing
 1|5|it is pretty good!
 1|1|baddd
+1|6|10
+1|-1|terrible

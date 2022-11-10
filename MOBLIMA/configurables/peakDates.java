@@ -16,7 +16,8 @@ import MOBLIMA.save.savePublicHoli;
 // }
 
 public class peakDates {
-    static String filename = "MOBLIMA/databases/publicholidays.txt";
+    private static boolean weekends = true;
+    private static String filename = "MOBLIMA/databases/publicholidays.txt";
     private static ArrayList publicHoli; // for public holis
 
     public peakDates() throws IOException {
@@ -27,19 +28,29 @@ public class peakDates {
         return publicHoli;
     }
 
+    public static boolean getWeekends() {
+        return weekends;
+    }
+
+    public static void setWeekends(boolean weekends) {
+        peakDates.weekends = weekends;
+    }
+
     public void setPeakDates(LocalDate[] publicHoli) {
         publicHoli = publicHoli;
     }
 
-    public void addPeakDate(LocalDate d) throws IOException {
+    public static void addPeakDate(LocalDate d) throws IOException {
         publicHoli.add(d);
         savePublicHoli.savePHArray(filename, publicHoli);
     }
 
     public static boolean isPeak(LocalDate date) {
-        for (int i = 0; i < publicHoli.size(); i++) {
-            if (date == publicHoli.get(i)) {
-                return true;
+        if (weekends) {
+            for (int i = 0; i < publicHoli.size(); i++) {
+                if (date == publicHoli.get(i)) {
+                    return true;
+                }
             }
         }
         String dayOfWeek = date.getDayOfWeek().toString();

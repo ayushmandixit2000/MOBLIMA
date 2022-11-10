@@ -1,9 +1,9 @@
-package MOBLIMA.listingInterface;
+package MOBLIMA.listing;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-import MOBLIMA.listingInterface.*;
+import MOBLIMA.listing.*;
 
 public class CinemaListing implements Listing{
 
