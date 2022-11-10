@@ -36,7 +36,7 @@ public class search {
             Movie m1 = (Movie) movieArray.get(i);
             String m = m1.getTitle().toLowerCase();
             found = m.contains(movie);
-            if(found == true){
+            if(found == true && m1.getIsDeleted() == 0){
                 optionlist.add(m1);
                 found = false;
             }
@@ -48,7 +48,7 @@ public class search {
         }
 
         else{
-            System.out.println("\nPlease Select the movie based on the options found (enter number): ");
+            System.out.println("\nPlease Select the movie based on the options(enter number): ");
             for(int j = 0; j < optionlist.size(); j++){
                 Movie m2 = (Movie) optionlist.get(j);
                 System.out.println(j+1 + " : " + m2.getTitle());
@@ -56,11 +56,32 @@ public class search {
 
             
 
-            int movie_chosen = scc.nextInt();
+            int movie_chosen;
+
+            while (true) {
+                String input = scc.next();
+                movie_chosen = 0;
+                try {
+                    movie_chosen = Integer.parseInt(input);
+                    if(movie_chosen > optionlist.size() || movie_chosen < 1){
+                        System.out.println("Please key in a valid number!");
+                        continue;
+                    }
+                    else{
+                    break;
+                    }
+                } catch (NumberFormatException ne) {
+                    System.out.println("Please key in a number only!");
+                }
+            }
+
+
             for(int j = 0; j < optionlist.size(); j++){
                 if(movie_chosen == j+1){
                     Movie m3 = (Movie) optionlist.get(j);
-                    System.out.println("\nYou have Selected: " + m3.getTitle());
+                    System.out.println();
+                    System.out.println("You have Selected: " + m3.getTitle());
+                    System.out.println();
 
                     
                     MovieDetailsListing moviedetails = new MovieDetailsListing();

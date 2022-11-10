@@ -45,10 +45,30 @@ public class pastTransactionsFacade {
                         l + 1 + " : Transaction ID - " + t2.getTransactionId() + " Purchased on " + t2.getPurchaseDate());
             }
 
-            int option = scc.nextInt();
+
+
+
+            int opt;
+
+            while (true) {
+                String input = scc.next();
+                opt = 0;
+                try {
+                    opt = Integer.parseInt(input);
+                    if(opt < 1 || opt > optionlist.size()){
+                        System.out.println("Please key in a number from the list above only!");
+                        continue;
+                    }
+                    else{
+                    break;
+                    }
+                } catch (NumberFormatException ne) {
+                    System.out.println("Please key in a number only!");
+                }
+            }
 
             for (int l = 0; l < optionlist.size(); l++) {
-                if(option == l + 1){
+                if(opt == l + 1){
                     Transaction t3 = optionlist.get(l);
                     System.out.println("\nTransaction Selected: " + " Transaction ID - " + t3.getTransactionId() + " Purchased on " + dateTime.convertDate(t3.getPurchaseDate()));
                     TransactionDetailsListing tdl = new TransactionDetailsListing();

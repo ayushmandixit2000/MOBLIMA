@@ -19,13 +19,19 @@ public class TransactionDetailsListing implements Listing {
     }
 
     public void displayListing() throws IOException {
+        System.out.println();
+        System.out.println("__________________________________________________");
         System.out.println("Transaction ID: " + t1.getTransactionId());
 
-        System.out.println("Purchase Date: " + dateTime.convertDate(t1.getPurchaseDate()));
+        System.out.println("Purchase Date:  " + dateTime.convertDate(t1.getPurchaseDate()));
 
-        System.out.println("Purchase Time: " + dateTime.convertTime(t1.getPurchaseTime()));
+        System.out.println("Purchase Time:  " + dateTime.convertTime(t1.getPurchaseTime()));
 
-        System.out.println("User ID: " + t1.getUserId());
+        System.out.println("User ID:        " + t1.getUserId());
+
+        System.out.println("__________________________________________________");
+
+        System.out.println();
 
         System.out.println("\nprinting additonal ticket details...");
 

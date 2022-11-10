@@ -29,8 +29,11 @@ public class CustomerAction {
             System.out.println("1: Book Movie");
             System.out.println("2: Review Movie");
             int opt = scc.nextInt();
+
+            
             this.action = opt;
         }
+
 
         if (this.action == 1) {
             System.out.println("\nLoading Booking Page...");
