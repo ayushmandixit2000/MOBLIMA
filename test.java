@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import MOBLIMA.configurables.ageGroupPricing;
 import MOBLIMA.configurables.peakDates;
 import MOBLIMA.configurables.peakPricing;
+import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrievePH;
 import MOBLIMA.utils.TicketPrice;
 import MOBLIMA.utils.dateTime;
@@ -14,7 +15,7 @@ public class test {
     public static void main(String[] args) throws IOException {
         String m = "movieId";
         LocalDate d = dateTime.convertDate("2022/12/11");
-        LocalTime t = dateTime.convertTime(1900);
+        LocalTime t = dateTime.convertTime("1900");
         int r = 1;
         int c = 2;
         String mt = m + dateTime.convertDate(d) + dateTime.convertTime(t) + String.valueOf(r) + String.valueOf(c);
@@ -44,7 +45,22 @@ public class test {
 
         System.out.println(dateTime.convertDate(LocalDate.now()));
         System.out.println(dateTime.convertTime(LocalTime.now()));
-        //test
+        // test
+
+        int[][] seating = { { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+                { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2 } };
+        LocalDate date = dateTime.convertDate("2022/12/21");
+        LocalTime time = dateTime.convertTime("1900");
+        Showtime st = new Showtime("cin", date, time, 1, seating);
+        System.out.println(st.getShowtimeId());
+        st.addSeating(2, 3);
     }
 
 }

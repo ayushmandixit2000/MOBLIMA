@@ -6,6 +6,8 @@ import MOBLIMA.dataStructure.*;
 
 import java.util.ArrayList;
 import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class top5SalesListing {
     
@@ -17,8 +19,8 @@ public class top5SalesListing {
         ArrayList movieObjects = retrieveMovie.readMovie(filename1); //this creates an array of movie objects
         ArrayList movieTickets = retrieveMovieTicket.readMovieTicket(filename2); //array of movie tickets
         int arraySize = movieObjects.size();
-        titleSales[] salesTitle = new titleSales[100];
-        //ArrayList<titleSales> salesTitle = new ArrayList<titleSales>(); //create array for the objects with title and sales number
+        //titleSales[] salesTitle = new titleSales[100];
+        ArrayList<titleSales> salesTitle = new ArrayList<titleSales>(); //create array for the objects with title and sales number
         for(int i=0; i<arraySize; i++)
         {
             Movie m = (Movie) movieObjects.get(i); //pulls one movie object from the arraylist
@@ -26,15 +28,18 @@ public class top5SalesListing {
             String title = m.getTitle();
             MovieTicket t = (MovieTicket) movieTickets.get(i);
             double price = t.getPrice();
-            double totalsales = salesNo*price;
-            int totalSales = (int)totalsales;
+            double totalSales = salesNo*price;
+            //int totalSales = (int)totalsales;
             titleSales newObject = new titleSales(title, totalSales);
-            salesTitle[i] = newObject;
+            //salesTitle[i] = newObject;
+            salesTitle.add(newObject);
     }
-    Arrays.sort(salesTitle);
+    //Arrays.sort(salesTitle);
+    Collections.sort(salesTitle,
+                         Comparator.comparingDouble(titleSales::getTotalSales));
     for(int j=0; j<5; j++)
     {
-        System.out.println("Movie:" + salesTitle[j].getTitle() + " Total sales:" + salesTitle[j].getTotalSales());
+        System.out.println("Movie:" + salesTitle.get(j).getTitle() + " Total sales:" + salesTitle.get(j).getTotalSales());
     }
 }
 }
@@ -42,9 +47,9 @@ public class top5SalesListing {
 class titleSales implements Comparable<titleSales>
 {
     private String title;
-    private int totalSales;
+    private double totalSales;
 
-    public titleSales(String title, int totalSales)
+    public titleSales(String title, double totalSales)
     {
         this.title = title;
         this.totalSales = totalSales;
@@ -55,17 +60,17 @@ class titleSales implements Comparable<titleSales>
         return title;
     }
 
-    public int getTotalSales()
+    public double getTotalSales()
     {
         return totalSales;
     }
 
     public int compareTo(titleSales o)
     {
-        if(this.totalSales != o.getTotalSales())
+        /*if(this.totalSales != o.getTotalSales())
         {
             return this.totalSales - o.getTotalSales();
-        }
+        }*/
         return this.title.compareTo(o.getTitle());
     }
 }
