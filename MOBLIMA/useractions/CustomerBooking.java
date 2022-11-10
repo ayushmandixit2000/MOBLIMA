@@ -64,10 +64,14 @@ public class CustomerBooking {
 
         for (int j = 0; j < optionlist.size(); j++) {
             Showtime s1 = optionlist.get(j);
-            // new peakDates();
-            // Boolean pk = isPeak(s1.getDate());
+            new peakDates();
+            String s = "";
+            if (peakDates.isPeak(s1.getDate())) {
+                s = "--Peak preiod pricing will apply";
+            }
+    
             System.out.println(j + 1 + ": Cinema :" + s1.getCinema() + " ||" + "Date: " + s1.getDate() + " ||"
-                    + "Time: " + s1.getTime() + " ||");
+                    + "Time: " + s1.getTime() + "   " + s);
         }
 
 
