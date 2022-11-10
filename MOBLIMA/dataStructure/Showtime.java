@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+import MOBLIMA.facade.pastTransactionsFacade;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.save.saveShowtime;
 import MOBLIMA.utils.dateTime;
@@ -77,7 +78,7 @@ public class Showtime {
             ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
             for (int i = 0; i < showTimeArray.size(); i++) {
                 Showtime s = (Showtime) showTimeArray.get(i);
-                if (this.getShowtimeId() == s.getShowtimeId()) {
+                if (this.getShowtimeId().equals(s.getShowtimeId())) {
                     s.setSeating(this.seating);
                 }
             }
