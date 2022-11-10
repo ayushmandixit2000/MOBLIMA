@@ -1,8 +1,12 @@
 package MOBLIMA.dataStructure;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
+import MOBLIMA.retrieval.retrieveShowtime;
+import MOBLIMA.save.saveShowtime;
 import MOBLIMA.utils.dateTime;
 
 public class Showtime {
@@ -12,6 +16,7 @@ public class Showtime {
     private int movieId;
     private int[][] seating;
     private String showtimeId;
+    private String filename = "MOBLIMA/databases/showtime.txt";
 
     public Showtime(String c, LocalDate d, LocalTime t, int m, int[][] s) {
         cinema = c;
@@ -66,11 +71,19 @@ public class Showtime {
         this.seating = seating;
     }
 
-    public boolean addSeating(int row, int column) {
+    public void addSeating(int row, int column) throws IOException {
         if (this.seating[row][column] == 0) {
             this.seating[row][column] = 1;
-            return true;
+            ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
+            for (int i = 0; i < showTimeArray.size(); i++) {
+                Showtime s = (Showtime) showTimeArray.get(i);
+                if (this.getShowtimeId() == s.getShowtimeId()) {
+                    s.setSeating(this.seating);
+                }
+            }
+            saveShowtime.saveShowtimeArray(filename, showTimeArray);
+            return;
         }
-        return false;
+        return;
     }
 }
