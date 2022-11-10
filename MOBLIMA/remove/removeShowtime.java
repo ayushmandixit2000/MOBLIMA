@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import MOBLIMA.dataStructure.Showtime;
-import MOBLIMA.listingInterface.ShowtimeListing;
+import MOBLIMA.listing.ShowtimeListing;
 
 import java.io.FileReader;
 import java.io.FileWriter;
