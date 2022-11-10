@@ -7,6 +7,7 @@ import MOBLIMA.configurables.ageGroupPricing;
 import MOBLIMA.configurables.peakDates;
 import MOBLIMA.configurables.peakPricing;
 import MOBLIMA.configure.configurePeakDates;
+import MOBLIMA.configure.configureRankStatus;
 import MOBLIMA.configure.configureTicketPricing;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrievePH;
@@ -63,10 +64,10 @@ public class test {
         Showtime st = new Showtime("cin", date, time, 1, seating);
         System.out.println(st.getShowtimeId());
         st.addSeating(2, 3);
-        new peakDates();
-        configurePeakDates cpd = new configurePeakDates();
-        cpd.displaySetting();
-        cpd.getNewSetting();
-        cpd.displaySetting();
+
+        configureRankStatus crs = new configureRankStatus();
+        crs.displaySetting();
+        crs.getNewSetting();
+        crs.displaySetting();
     }
 }

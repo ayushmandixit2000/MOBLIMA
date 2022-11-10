@@ -42,6 +42,5 @@ public class configurePeakDates {
         }
         LocalDate d = dateTime.convertDate(sc.next());
         peakDates.addPeakDate(d);
-        sc.close();
     }
 }

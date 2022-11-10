@@ -40,6 +40,5 @@ public class configureTicketPricing implements configure {
         price = sc.nextDouble();
         ageGroupPricing.setPriceOfSnrCitizen(price);
         ageGroupPricing.savePricing();
-        sc.close();
     }
 }
