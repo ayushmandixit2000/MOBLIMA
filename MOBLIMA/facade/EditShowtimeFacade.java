@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.Scanner;
 
 import MOBLIMA.listingInterface.*;
+import MOBLIMA.remove.removeShowtime;
 import MOBLIMA.create.createShowtime;
 
 public class EditShowtimeFacade {
@@ -47,11 +48,15 @@ public class EditShowtimeFacade {
 
         switch(todo){
             case 0: // Create Showtime
-            createShowtime.create();
+            createShowtime.create(cineplex, cinema, cinemaCode);
 
             case 1: // Update Showtime
+            int updateShowtimeIndex = sc.nextInt();
+            
 
             case 2: // Remove Showtime
+            removeShowtime.remove(cineplex, cinema, cinemaCode);
+
         }
         
     }

@@ -1,6 +1,7 @@
 package MOBLIMA.listingInterface;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,23 +51,34 @@ public class ShowtimeListing implements Listing{
 
 
 
-    public LocalTime getListing() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter your choice: ");
-        int choice = sc.nextInt();
+    public LocalTime getListing() throws IOException {
 
-        while (choice < 0 || choice > 6) {
-            System.out.println("please input your choice");
-            choice = sc.nextInt();
+        String filename = "MOBLIMA/databases/showtime.txt";
+        ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
+        Scanner sc = new Scanner(System.in);
+        //System.out.println(showTimeArray);
+        LocalTime localtime = dateTime.convertTime("0100");
+        
+        
+        System.out.println("Enter your choice: ");
+        int userindex = sc.nextInt();
+
+        System.out.println("userindex " + userindex);
+        int counter = 0;
+        Collections.sort(showTimeArray, new compareDates());
+        for (int i = 0; i < showTimeArray.size(); i++) {
+            Showtime s = (Showtime) showTimeArray.get(i);
+            if ((s.getCinema()).equals(cinemaCode))
+            {
+                if(counter == userindex){
+                    localtime = s.getTime();
+                }
+                counter ++;
+            }
         }
 
-        System.out.println("choice: " + choice);
-        LocalTime localtime = dateTime.convertTime("0100");
-        switch(choice) {
-
-            }
-
-            return localtime;
+        
+        return localtime;
     }
 
 
@@ -90,6 +102,8 @@ public class ShowtimeListing implements Listing{
         LocalTime lt = listing.getListing();
 
         System.out.println(lt);
+
+
 
     }
 

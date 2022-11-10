@@ -4,7 +4,7 @@ import MOBLIMA.panelInterface.*;
 import MOBLIMA.create.*;
 import MOBLIMA.update.*;
 import MOBLIMA.remove.*;
-
+import MOBLIMA.facade.*;
 
 public class adminpanel implements Panel {
     private String password = "inshallah";
@@ -58,23 +58,24 @@ public class adminpanel implements Panel {
                 }
                 break;
                 case 2:
-                System.out.println("Please select your desired action");
-                System.out.println("1: Create Movie Showtimes\n2: Update Movie Showtimes\n3: Remove Movie Showtimes");
-                int optionShowtimes = sc.nextInt();
-                switch(optionShowtimes){
-                    case 1:
-                    System.out.println("Create Movie Showtimes");
+                EditShowtimeFacade.main(null);
+                // System.out.println("Please select your desired action");
+                // System.out.println("1: Create Movie Showtimes\n2: Update Movie Showtimes\n3: Remove Movie Showtimes");
+                // int optionShowtimes = sc.nextInt();
+                // switch(optionShowtimes){
+                //     case 1:
+                //     System.out.println("Create Movie Showtimes");
 
-                    break;
-                    case 2:
-                    System.out.println("Update Movie Showtimes");
-                    break;
-                    case 3:
-                    System.out.println("Remove Movie Showtimes");
-                    break;
-                    default:
-                    System.out.println("Please try again.");
-                }
+                //     break;
+                //     case 2:
+                //     System.out.println("Update Movie Showtimes");
+                //     break;
+                //     case 3:
+                //     System.out.println("Remove Movie Showtimes");
+                //     break;
+                //     default:
+                //     System.out.println("Please try again.");
+                // }
                 break;
                 case 3:
                 System.out.println("Configure system settings");
