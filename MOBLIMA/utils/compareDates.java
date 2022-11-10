@@ -16,5 +16,4 @@ public class compareDates implements Comparator<Showtime> {
         }
         return s1.getCinema().compareTo(s2.getCinema());
     }
-
 }
