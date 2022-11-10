@@ -77,6 +77,10 @@ public class customerpanel implements Panel {
 
                 int option = scc.nextInt();
 
+                if(option > 9 || option < 1){
+                    System.out.println("Please Key in 1 to 9 only");
+                }
+
                 switch (option) {
                     case 1:
                         search searchmovie = new search();
