@@ -8,6 +8,12 @@ public class CustomerAction {
     private int action;
     private Movie mov;
 
+    private String user;
+
+    public void setuser(String ui){
+        this.user = ui;
+    }
+
     public void setaction(int action) {
         this.action = action;
     }
@@ -30,6 +36,7 @@ public class CustomerAction {
             System.out.println("\nLoading Booking Page...");
             CustomerBooking cb = new CustomerBooking();
             cb.setmovie(mov);
+            cb.setuser(user);
             cb.display();
         }
 

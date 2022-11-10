@@ -25,8 +25,8 @@ public class retrieveTransaction {
             StringTokenizer star = new StringTokenizer(st, SEPARATOR);
 
             String transactionId = star.nextToken().trim();
-            LocalDate purchaseDate = dateTime.convertDate(star.nextToken().trim());
-            LocalTime purchaseTime = dateTime.convertTime(star.nextToken().trim());
+            String purchaseDate =star.nextToken().trim();
+            String purchaseTime = star.nextToken().trim();
             String userId = star.nextToken().trim();
             String[] arrayofMovieTickets = star.nextToken().trim().split("\\,");
 

@@ -1,8 +1,8 @@
 package MOBLIMA.facade;
-
 import java.util.Scanner;
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Supplier;
 
 import MOBLIMA.Listings.MovieDetailsListing;
 import MOBLIMA.dataStructure.Movie;
@@ -12,19 +12,25 @@ public class list {
 
     private int action = 0;
 
-    public void setaction(int act) {
+    private String user;
+
+    public void setuser(String ui){
+        this.user = ui;
+    }
+
+    public void setaction(int act){
         this.action = act;
     }
 
     public void show() throws IOException {
-        Scanner scc = new Scanner(System.in);
+        Scanner scc = new Scanner(System.in); 
         System.out.println("Select one movie to continue: ");
 
         String filename = "MOBLIMA/databases/movie.txt";
         ArrayList movieArray = retrieveMovie.readMovie(filename);
         for (int i = 0; i < movieArray.size(); i++) {
             Movie m1 = (Movie) movieArray.get(i);
-            if (m1.getIsDeleted() == 1) {
+            if(m1.getIsDeleted() == 1){
                 i--;
                 continue;
             }
@@ -33,26 +39,28 @@ public class list {
 
         int opt = scc.nextInt();
 
-        if (opt == 0) {
+        if(opt == 0){
             return;
         }
 
         for (int i = 0; i < movieArray.size(); i++) {
             Movie m2 = (Movie) movieArray.get(i);
-            if (m2.getIsDeleted() == 1) {
+            if(m2.getIsDeleted() == 1){
                 i--;
                 continue;
             }
-            if (i + 1 == opt) {
+            if(i+1 == opt){
                 System.out.println("Movie Selected: " + m2.getTitle());
                 MovieDetailsListing moviedetails = new MovieDetailsListing();
                 moviedetails.setaction(action);
                 moviedetails.setmovie(m2);
+                moviedetails.setuser(user);
                 moviedetails.displayListing();
             }
 
         }
 
+        
     }
 
 }

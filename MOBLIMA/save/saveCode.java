@@ -81,9 +81,7 @@ public class saveCode {
 
                 filename = "MOBLIMA/databases/transactions.txt";
                 ArrayList transactionArray = retrieveTransaction.readTransaction(filename); // retrieve current array
-                date = dateTime.convertDate("2022/12/20");
-                time = dateTime.convertTime("1900");
-                Transaction t = new Transaction(date, time, "userid", new String[] { "ABC2022/12/12190014" });// add new
+                Transaction t = new Transaction("2022/12/20", "1900", "userid", new String[] { "ABC2022/12/12190014" });// add new
                                                                                                               // transaction
                 transactionArray.add(t);
                 saveTransaction.saveTransactionArray(filename, transactionArray);// overwrite file

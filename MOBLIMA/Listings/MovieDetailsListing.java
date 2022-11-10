@@ -10,9 +10,16 @@ import java.util.Scanner;
 
 public class MovieDetailsListing implements Listing {
 
+
     private Movie m1;
 
     private int action;
+
+    private String user;
+
+    public void setuser(String ui){
+        this.user = ui;
+    }
 
     public void setaction(int act){
         this.action = act;
@@ -111,6 +118,7 @@ public class MovieDetailsListing implements Listing {
 
         CustomerAction CA = new CustomerAction();
         CA.setaction(this.action);
+        CA.setuser(user);
         CA.setmovie(m1);
         CA.displayaction();
 

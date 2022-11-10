@@ -15,6 +15,12 @@ public class CustomerTicket {
     private Showtime s1;
     private int[][] seats;
 
+    private String user;
+
+    public void setuser(String ui){
+        this.user = ui;
+    }
+
     public void setshow(Showtime s) {
         this.s1 = s;
     }
@@ -68,6 +74,7 @@ public class CustomerTicket {
         FinalPurchase fp = new FinalPurchase();
         fp.settickets(ticketsarray);
         fp.setshow(s1);
+        fp.setuser(user);
         fp.display();
     }
 
