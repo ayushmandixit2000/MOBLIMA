@@ -1,4 +1,3 @@
-import MOBLIMA.panelInterface.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,6 +8,7 @@ import MOBLIMA.dataStructure.MovieGoer;
 import MOBLIMA.facade.list;
 import MOBLIMA.facade.pastTransactionsFacade;
 import MOBLIMA.facade.search;
+import MOBLIMA.panel.Panel;
 
 public class customerpanel implements Panel {
 
@@ -90,7 +90,7 @@ public class customerpanel implements Panel {
                 }
 
 
-                int option = scc.nextInt();
+                option = scc.nextInt();
 
                 switch (option) {
                     case 1:
