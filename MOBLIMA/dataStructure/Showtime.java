@@ -17,11 +17,7 @@ public class Showtime {
     private int movieId;
     private int[][] seating;
     private String showtimeId;
-<<<<<<< Updated upstream
     private String filename = "MOBLIMA/databases/showtime.txt";
-=======
-    private String cinemaCode;
->>>>>>> Stashed changes
 
     public Showtime(String c, LocalDate d, LocalTime t, int m, int[][] s) {
         cinema = c;

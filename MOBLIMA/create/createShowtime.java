@@ -23,10 +23,8 @@ public class createShowtime {
     public static final String SEPARATOR = "|";
 
     /** Write fixed content to the given file. Never changed */
-    private static String cineplex;
-    private static String cinema;
+
     private static LocalTime showtime;
-    private static String cinemaCode;
     private static String inputDate;
     private static int movieId;
     private static String inputTime;
@@ -145,7 +143,7 @@ public class createShowtime {
 
                         case 5:
                         System.out.println("Confirm that you want to write the following:");
-                        System.out.println(cinema + "|" + inputDate + "|" + inputTime + "|" + movieId);
+                        System.out.println(cnm + "|" + inputDate + "|" + inputTime + "|" + movieId);
                         System.out.println("Enter Y to confirm, N to try again");
                         String confirm2 = sc.next();
                         if(confirm2.equals("Y") || confirm2.equals("y")){
@@ -160,25 +158,25 @@ public class createShowtime {
             // write cinema record/s to file.
             String filename = "MOBLIMA/databases/Showtime.txt";
             ArrayList showtimeArray = retrieveShowtime.readShowtime(filename); // retrieve current array
-            int[][] seating = { { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0 } };
+            int[][] seating = { { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+            { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+            { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+            { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+            { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+            { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+            { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+            { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+            { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2 } };
             LocalDate d = dateTime.convertDate(inputDate);
             LocalTime t = dateTime.convertTime(inputTime);
-            Showtime s = new Showtime(cinemaCode, d, t, 1, seating); // add new showtime //\get movie id
+            Showtime s = new Showtime(cc, d, t, 1, seating); // add new showtime //\get movie id
             showtimeArray.add(s);
             
             saveShowtime.saveShowtimeArray(filename, showtimeArray);// overwrite file
 
             System.out.println("Added the following fields in the database:");
             
-            System.out.println( cinemaCode + "|" + d + "|" + t + "|" + movieId + "|" + "Seating" + "|" + s.getShowtimeId() );
+            System.out.println( cc + "|" + d + "|" + t + "|" + movieId + "|" + "Seating" + "|" + s.getShowtimeId() );
 
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());
