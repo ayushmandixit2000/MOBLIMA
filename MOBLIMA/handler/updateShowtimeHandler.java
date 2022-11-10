@@ -83,7 +83,7 @@ public class updateShowtimeHandler {
 		}
 	}
 
-    static void getUpdateContent(String cplx, int cnm, String cc) {
+    public static void update(String cplx, int cnm, String cc) {
         String filename = "MOBLIMA/databases/showtime.txt";
         Scanner sc = new Scanner(System.in);
 
@@ -217,7 +217,7 @@ public class updateShowtimeHandler {
 
 
 public static void main(String[] aArgs){
-    getUpdateContent("Ang Mo Kio", 2, "Ao2");
+    update("Ang Mo Kio", 2, "Ao2");
     
 }
 

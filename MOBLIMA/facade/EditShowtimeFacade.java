@@ -6,6 +6,7 @@ import MOBLIMA.listing.*;
 import MOBLIMA.action.adminShowtimeAction;
 import MOBLIMA.handler.createShowtimeHandler;
 import MOBLIMA.handler.removeShowtimeHandler;
+import MOBLIMA.handler.updateShowtimeHandler;
 
 public class editShowtimeFacade {
 
@@ -30,7 +31,8 @@ public class editShowtimeFacade {
         // First + last letter of cineplex + cinema number
         String cinemaCode = String.valueOf(cineplex.charAt(0)) + String.valueOf(cineplex.charAt(cineplexlength - 1))
                 + String.valueOf(cinema);
-        System.out.println("Cinema Code: " + cinemaCode);
+        
+        //        System.out.println("Cinema Code: " + cinemaCode);
 
         // Showitme Listing
         ShowtimeListing sl = new ShowtimeListing();
@@ -46,11 +48,14 @@ public class editShowtimeFacade {
                 createShowtimeHandler.create(cineplex, cinema, cinemaCode);
 
             case 1: // Update Showtime
-                Scanner sc = new Scanner(System.in);
-                int updateShowtimeIndex = sc.nextInt();
+                updateShowtimeHandler.update(cineplex, cinema, cinemaCode);
 
             case 2: // Remove Showtime
                 removeShowtimeHandler.remove(cineplex, cinema, cinemaCode);
+
+            case 4:
+                System.out.println("Exiting");
+                break;
         }
 
     }

@@ -21,8 +21,8 @@ public class ShowtimeListing implements Listing {
         ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
         int counter = 0;
 
-        System.out.println("Displaying showtime at... \nCineplex: " + cineplex + " Cinema: " + cinema + " Cinema Code: "
-                + cinemaCode);
+        System.out.println("Displaying showtime at... \nCineplex: " + cineplex + "   Cinema: " + cinema + "   Cinema Code: "
+                + cinemaCode + "\n");
 
         System.out.println("Showtime: ");
         
@@ -37,8 +37,9 @@ public class ShowtimeListing implements Listing {
                 System.out.println("  MovieId " + s.getMovieId());
             }
         }
+        System.out.println("");
         if (counter == 0) {
-            System.out.println("Sorry there are no showtime created yet");
+            System.out.println("Sorry there are no showtime created yet\n");
         }
     }
 

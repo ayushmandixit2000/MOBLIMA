@@ -28,15 +28,19 @@ public class CineplexListing implements Listing {
         switch (cineplexchoice) {
             case 0:
                 cineplex = "Vivocity";
+                break;
             case 1:
                 cineplex = "Bishan";
+                break;
             case 2:
                 cineplex = "Orchard";
+                break;
             case 3:
                 cineplex = "Ang Mo Kio";
+                break;
 
         }
-        System.out.println("The cineplex chosen is " + cineplex);
+        System.out.println("The cineplex chosen is " + cineplex + "\n");
         return cineplex;
 
         // switch (cinInput) {
