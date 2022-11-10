@@ -36,16 +36,20 @@ public class adminpanel implements Panel {
                     System.out.println("Edit Movie Listing");
                     editMovieFacade emf = new editMovieFacade();
                     emf.run();
+                    break;
                 case 2:
                     System.out.println("Edit Cinema Showtime");
                     editShowtimeFacade esf = new editShowtimeFacade();
                     esf.run();
+                    break;
                 case 3:
                     System.out.println("Configure System Settings");
                     configureSettingsFacade.configureSettings();
+                    break;
                 case 4:
                     System.out.println("Exiting...");
                     exit = true;
+                    break;
             }
         }
     }
