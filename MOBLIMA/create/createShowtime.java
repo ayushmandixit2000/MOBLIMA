@@ -4,12 +4,18 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 import MOBLIMA.dataStructure.Showtime;
+import MOBLIMA.listingInterface.*;
 import MOBLIMA.retrieval.retrieveShowtime;
+import MOBLIMA.save.saveShowtime;
+import MOBLIMA.utils.dateTime;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 
@@ -17,164 +23,172 @@ public class createShowtime {
     public static final String SEPARATOR = "|";
 
     /** Write fixed content to the given file. Never changed */
-    public static void write(String fileName, List data) throws IOException  {
-        PrintWriter out = new PrintWriter(new FileWriter(fileName));
+    private static String cineplex;
+    private static String cinema;
+    private static LocalTime showtime;
+    private static String cinemaCode;
+    private static String inputDate;
+    private static int movieId;
+    private static String inputTime;
 
-        try {
-            for (int i =0; i < data.size() ; i++) {
-                out.println((String)data.get(i));
-            }
-        }
-        finally {
-        out.close();
-        }
-    }
+    public static void create(String cnplx, int cnm, String cc){
 
-    
-    // an example of saving
-	public static void saveShowtime(String filename, List al) throws IOException {
-		List alw = new ArrayList() ;// to store Cinema data
-        
-
-        for (int i = 0 ; i < al.size() ; i++) {
-				Showtime shoetimeobj = (Showtime)al.get(i);
-				StringBuilder st =  new StringBuilder() ;
-				st.append(shoetimeobj.getCineplex());
-				st.append(SEPARATOR);
-				st.append(shoetimeobj.getCinema());
-				st.append(SEPARATOR);
-				st.append(shoetimeobj.getDate().trim());
-				st.append(SEPARATOR);
-				st.append(shoetimeobj.getTimeSlot());
-                st.append(SEPARATOR);
-				st.append(shoetimeobj.getMovieId());
-                st.append(SEPARATOR);
-				st.append(shoetimeobj.getSeating().trim());
-				alw.add(st.toString()) ;
-			}
-			write(filename,alw);
-	}
-
-    public static void updateShowtime(String filename, List al, int a) throws IOException {
-		List alw = new ArrayList() ;// to store Cinema data
-
-        System.out.println("length: "+al.size());
-
-        for (int i = 0 ; i < al.size() ; i++) {
-				Showtime shoetimeobj = (Showtime)al.get(i);
-				StringBuilder st =  new StringBuilder();
-				st.append(shoetimeobj.getCineplex());
-				st.append(SEPARATOR);
-				st.append(shoetimeobj.getCinema());
-				st.append(SEPARATOR);
-				st.append(shoetimeobj.getDate().trim());
-				st.append(SEPARATOR);
-				st.append(shoetimeobj.getTimeSlot());
-                st.append(SEPARATOR);
-				st.append(shoetimeobj.getMovieId());
-                st.append(SEPARATOR);
-				st.append(shoetimeobj.getSeating().trim());
-				alw.add(st.toString()) ;
-			}
-			write(filename,alw);
-	}
-
-
-    public static void main(String[] aArgs) {
-        String filename = "MOBLIMA/databases/showtime.txt";
         Scanner sc = new Scanner(System.in);
         // defining the integers etc
         try {
-            // Read stuff
-            ArrayList al = retrieveShowtime.readShowtime(filename);
-            String cineplex = "null";
-            int cinema = 0;
-            String date = "null";
-            int timeSlot = 0;
-            int movieId = 0;
-            String seating = "null";
+            
+
+            System.out.println("We are now creating showtime at \n Cineplex: " + cnplx + " Cinema: " + cnm + " Cinema Code: " + cc);
 
 
-            System.out.println("Successfully opened showtime file, adding new showtime");
-            int i = 0;
-            System.out.println("Select an input to create new Showtime Database:\n"
-            + "1 - Cineplex\n"
-            + "2 - Cinema\n"
-            + "3 - Date\n"
-            + "4 - Time Slot\n"
-            + "5 - Movie ID\n"
-            + "6 - Seating\n"
-            + "7 - check inputs\n"
-            + "8 - Create Showtime\n");
-            while (i!=100) {
-                System.out.println("Enter input number: ");
-                i = sc.nextInt();
-                switch (i){
-                    case 1:
-                    System.out.println("Enter the Cineplex id: ");
-                    System.out.println("ID: Vivocity, Clementi, Orchard, Rochor");
-                    cineplex = sc.next();
-                    break;
 
-                    case 2:
-                    System.out.println("Enter the Cinema: ");
-                    System.out.println("Cinema Number: 1, 2, 3, 4, 5");
-                    cinema = sc.nextInt();
-                    break;
+            
+            // Time, require user to manual input:
+            System.out.println("Enter Showtime Time in the format HHMM");
+            inputTime = sc.next();
+            while (inputTime.length() !=4){
+                System.out.println("Invalid Time format, please try again");
+                inputTime = sc.next();
+            }
+            
 
-                    case 3:
-                    System.out.println("Enter the date: ");
-                    System.out.println("DDMMYYYY: 12012022 ");
-                    date = sc.next();
-                    break;
 
-                    case 4:
-                    System.out.println("Enter the timeslot in 24 hour format: ");
-                    System.out.println("2359");
-                    timeSlot = sc.nextInt();
-                    break;
+            // Date, require user to manual input:
+            System.out.println("Enter Date in the format YYYY/MM/DD");
+            inputDate = sc.next();
+            while (inputDate.length()!=10){
+                System.out.println("Invalid Date format, please try again");
+                inputDate = sc.next();
+            }
 
-                    case 5:
-                    System.out.println("Enter the movie id: ");
-                    System.out.println("eg: 1-avengers, 2-thor, 3-Hui Xiang Drinks alcohol");
+            // Movie ID waiting for summit
+            System.out.println("Enter Movie ID");
+
+            while (true){
+                try{
                     movieId = sc.nextInt();
                     break;
+                }
+                catch (InputMismatchException e) {
+                    System.out.println("There was error reading the value, please input integer");
+                    movieId = sc.nextInt();
+                }
+            }
 
-                    case 6:
-                    System.out.println("Enter the seating layout: ");
-                    System.out.println("example: [0,0,0][0,0,0][0,0,0]");
-                    seating = sc.next();
-                    break;
 
-                    case 7:
-                    System.out.println("Checking inputs...");
-                    System.out.println(cineplex + "|" + cinema + "|" + date + "|" + timeSlot + "|" + movieId + "|" + seating);
-                    break;
 
-                    case 8:
-                    System.out.println("Confirm that you want to write the following:");
-                    System.out.println(cineplex + "|" + cinema + "|" + date + "|" + timeSlot + "|" + movieId + "|" + seating);
-                    System.out.println("Enter Y to confirm, N to try again");
-                    String confirm = sc.next();
-                    if(confirm.equals("Y") || confirm.equals("y")){
-                        i = 100;
-                        continue;
+            
+    
+            // What the user have selected
+            System.out.println("You have selected: "
+            + "Cineplex: " + cnplx +"\n"
+            + "Cinema: " + cnm +"\n"
+            + "Showtime: " + inputTime +"\n"
+            + "date: " + inputDate +"\n"
+            + "movieID: " + movieId +"\n"
+            );
+
+
+
+
+            // Checks if user wants to redo anything.
+
+            System.out.println("Confirm that you want to write the following to database");
+            // System.out.println("Cinema | Date | Time | MovieID:");
+            // System.out.println(cinema + "|" + inputDate + "|" + inputTime + "|" + movieId);
+
+            System.out.println("Enter Y to confirm, N to try again");
+            String confirm = sc.next();
+            int i=0;
+            if(confirm.equals("Y") || confirm.equals("y")){
+
+            }
+            else{
+                System.out.println("Select an input to edit the fields:\n"
+                + "1 - Date\n"
+                + "2 - Time\n"
+                + "3 - Movie ID\n"
+                + "4 - Check inputs\n"
+                + "5 - Confirm inputs\n");
+                while (i!= 100){
+                    System.out.println("Please input a number to edit the fields");
+                    i = sc.nextInt();
+
+                    switch (i){
+                        case 1:
+                        System.out.println("Your previous input is: " + inputDate);
+                        System.out.println("Enter the new Date YYYY//MM/DD:");
+                        inputDate = sc.next();
+                        break;
+
+                        case 2:
+                        System.out.println("Your previous input is: " + showtime);
+
+                            System.out.println("Enter Showtime Time in the format HHMM");
+                            inputTime = sc.next();
+                            while (inputTime.length() !=4){
+                                System.out.println("Invalid Time format, please try again");
+                                inputTime = sc.next();
+                            }
+                        break;
+
+                        case 3:
+                        System.out.println("Your previous input is: " + movieId);
+                        System.out.println("Enter the new movieID ie 1,2,3,4,5");
+                        movieId = sc.nextInt();
+                        break;
+
+                        case 4:
+                        System.out.println("Your current inputs:\nCinema | Date | Time | MovieID:");
+                        System.out.println(inputDate + "|" + inputTime + "|" + movieId);
+                        break;
+
+                        case 5:
+                        System.out.println("Confirm that you want to write the following:");
+                        System.out.println(cinema + "|" + inputDate + "|" + inputTime + "|" + movieId);
+                        System.out.println("Enter Y to confirm, N to try again");
+                        String confirm2 = sc.next();
+                        if(confirm2.equals("Y") || confirm2.equals("y")){
+                            i = 100;
+                        }
+                        break;
                     }
-                    break;
-                };
-            };
-
+                }
+            }
             // Write Stuff:
-            Showtime c1 = new Showtime(cineplex, cinema, date, timeSlot, movieId, seating);
             // al is an array list containing Professor objs
-            al.add(c1);
             // write cinema record/s to file.
-            createShowtime.saveShowtime(filename, al);
+            String filename = "MOBLIMA/databases/Showtime.txt";
+            ArrayList showtimeArray = retrieveShowtime.readShowtime(filename); // retrieve current array
+            int[][] seating = { { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0 } };
+            LocalDate d = dateTime.convertDate(inputDate);
+            LocalTime t = dateTime.convertTime(inputTime);
+            Showtime s = new Showtime(cinemaCode, d, t, 1, seating); // add new showtime //\get movie id
+            showtimeArray.add(s);
+            
+            saveShowtime.saveShowtimeArray(filename, showtimeArray);// overwrite file
+
             System.out.println("Added the following fields in the database:");
-            System.out.println(cineplex + "|" + cinema + "|" + date + "|" + timeSlot + "|" + movieId + "|" + seating);
+            
+            System.out.println( cinemaCode + "|" + d + "|" + t + "|" + movieId + "|" + "Seating" + "|" + s.getShowtimeId() );
 
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());
         }
+
+    }
+
+
+
+    public static void main(String[] aArgs) {
+        create("Ang Mo Kio", 2, "Ao2");
     }
 }

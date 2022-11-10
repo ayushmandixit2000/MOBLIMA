@@ -7,6 +7,7 @@ import MOBLIMA.listingInterface.*;
 
 public class CinemaListing implements Listing{
 
+
     public void displayListing() throws IOException {
 
         CineplexListing st = new CineplexListing();
