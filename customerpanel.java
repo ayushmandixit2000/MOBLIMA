@@ -69,7 +69,7 @@ public class customerpanel implements Panel {
                 System.out.println("6: View booking history");
                 System.out.println("7: List the Top 5 ranking movies");
                 System.out.println("8: Rate Movies");
-                System.out.println("8: Quit \n");
+                System.out.println("9: Quit \n");
 
                 int option = scc.nextInt();
 
@@ -101,6 +101,11 @@ public class customerpanel implements Panel {
                         pt.display();
                         break;
 
+                    case 7:
+                        top5Facade tf = new top5Facade();
+                        tf.show();
+                        break;
+
                     case 8:
                         list listmovies3 = new list();
                         listmovies3.setaction(2);
@@ -123,7 +128,7 @@ public class customerpanel implements Panel {
 
                     // case 6:
                     // movie.rank();
-                    case 7:
+                    case 9:
                         System.out.println("Exiting...");
                         break loop;
                 }

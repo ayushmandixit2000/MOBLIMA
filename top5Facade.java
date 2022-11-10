@@ -3,8 +3,9 @@ import java.util.Scanner;
 import MOBLIMA.Listings.*;
 
 
+
 public class top5Facade {
-    public static void main(String[] args) throws IOException{
+    public void show() throws IOException{
     System.out.println("Please enter how you would like your movies to be sorted:");
     System.out.println("(1) By Sales (2) By Ratings");
     Scanner sc = new Scanner(System.in);
