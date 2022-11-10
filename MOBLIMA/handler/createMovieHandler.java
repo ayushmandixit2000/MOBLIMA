@@ -6,7 +6,10 @@ import MOBLIMA.save.saveMovie;
 import MOBLIMA.Listings.MovieListing;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.Scanner;
+import java.util.Hashtable;
+
 
 public class createMovieHandler {
     public boolean movieCreate() throws IOException {
@@ -20,8 +23,16 @@ public class createMovieHandler {
         // getting movie title
         System.out.print("Enter new movie title: ");
         String movieTitle = sc.nextLine();
-
+        while(movieTitle.isBlank() || movieTitle.isEmpty()){
+            System.out.println("Input cannot be empty. Please key in a valid input.");
+            System.out.print("Enter new movie title: ");
+            movieTitle = sc.nextLine();
+        }
         // getting show status
+        Dictionary status = new Hashtable();
+        status.put(0,"Coming Soon");
+        status.put(1,"Preview");
+        status.put(2,"Now Showing");
         int showStatus = -1;
         boolean loop = true;
         while (loop) {
@@ -43,6 +54,11 @@ public class createMovieHandler {
         //getting director
         System.out.print("Enter Director: ");
         String director = sc.nextLine();
+        while(director.isBlank() || director.isEmpty()){
+            System.out.println("Input cannot be empty. Please key in a valid input.");
+            System.out.print("Enter Director: ");
+            director = sc.nextLine();
+        }
         
         // getting cast
         ArrayList<String> cast = new ArrayList<String>();
@@ -51,6 +67,11 @@ public class createMovieHandler {
         while (true){
             System.out.print("Cast: ");
             userInputCast = sc.nextLine();
+            while(userInputCast.isBlank() || userInputCast.isEmpty()){
+                System.out.println("Input cannot be empty. Please key in a valid input.");
+                System.out.print("Cast: ");
+                userInputCast = sc.nextLine();
+            }
             if(userInputCast.equals("stop")){
                 break;
             }
@@ -60,10 +81,20 @@ public class createMovieHandler {
         String castString [] = cast.toArray(new String[cast.size()]);
 
         // getting synopsis
-        System.out.print("Enter Synopsis: ");
+        System.out.print("Enter synopsis: ");
         String synopsis = sc.nextLine();
+        while(synopsis.isBlank() || synopsis.isEmpty()){
+            System.out.println("Input cannot be empty. Please key in a valid input.");
+            System.out.print("Enter synopsis: ");
+            synopsis = sc.nextLine();
+        }
 
         // getting movie rating
+        Dictionary rating = new Hashtable();
+        rating.put(0,"G");
+        rating.put(1,"PG");
+        rating.put(2,"M");
+        rating.put(3,"R16");
         int movieRating = -1;
         loop = true;
         while (loop) {
@@ -83,6 +114,9 @@ public class createMovieHandler {
         }
 
         // getting movie type
+        Dictionary type = new Hashtable();
+        type.put(0,"3D");
+        type.put(1,"Blockbuster");
         int movieType = -1;
         loop = true;
         while (loop) {
@@ -98,16 +132,44 @@ public class createMovieHandler {
                     System.out.println("Invalid option. Please try again.");
             }
         }
-
-
         // creating movie class. MovieID, MovieRating, sales set to 0 for time being
         Movie movieAdmin = new Movie(5, movieTitle, showStatus, director, castString, synopsis, movieRating,movieType, 0);
+
+        // confirmation of movie
+        System.out.println("Movie details:");
+        System.out.println("Movie title: "+movieAdmin.getTitle());
+        System.out.println("Show Status: "+status.get(movieAdmin.getShowStatus()));
+        System.out.println("Director: " + movieAdmin.getDirector());
+        for(int i = 0; i< movieAdmin.getCast().length;i++){
+            System.out.println((i+1 + ") Cast: " + movieAdmin.getCast()[i]));
+        }
+        System.out.println("Synopsis: "+synopsis);
+        System.out.println("Movie rating: "+rating.get(movieAdmin.getMovieType()));
+        System.out.println("Movie type: "+type.get(movieAdmin.getMovieType()));
+
+        System.out.println("Please confirm if you would like to create the movie. \n1: Yes \n2: No");
+        loop = true;
+        while(loop){
+            int optionConfirm = sc.nextInt();
+            switch(optionConfirm){
+                case 1:
+                loop = false;
+                break;
+                case 2:
+                return false;
+                
+                default:
+                System.out.println("Invalid input. Please try again.");
+            }
+        }
+
 
         // pushing movie into database
         String filename = "MOBLIMA/databases/movie.txt";
         ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
         movieArray.add(movieAdmin);
         saveMovie.saveMovieArray(filename, movieArray);// overwrite file
+        System.out.println(movieAdmin.getTitle()+" has been created.");
         return true;
     }
 
