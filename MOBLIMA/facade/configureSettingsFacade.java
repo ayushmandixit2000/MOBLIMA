@@ -8,7 +8,7 @@ import MOBLIMA.configure.configurePeakDates;
 import MOBLIMA.configure.configurePeakPricing;
 import MOBLIMA.configure.configureRankStatus;
 import MOBLIMA.configure.configureTicketPricing;
-import MOBLIMA.listingInterface.configureListing;
+import MOBLIMA.listing.configureListing;
 
 public class configureSettingsFacade {
     public static void configureSettings() throws IOException {

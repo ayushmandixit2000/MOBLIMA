@@ -1,6 +1,6 @@
 package MOBLIMA.Listings;
 import MOBLIMA.dataStructure.Movie;
-import MOBLIMA.listingInterface.Listing;
+import MOBLIMA.listing.Listing;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.useractions.CustomerAction;
 

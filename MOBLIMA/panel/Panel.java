@@ -1,4 +1,4 @@
-package MOBLIMA.panelInterface;
+package MOBLIMA.panel;
 
 import java.io.IOException;
 

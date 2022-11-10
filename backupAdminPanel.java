@@ -6,7 +6,7 @@ import MOBLIMA.facade.configureSettingsFacade;
 import MOBLIMA.update.*;
 import MOBLIMA.remove.*;
 
-public class adminpanel implements Panel {
+public class backupAdminPanel implements Panel {
     private String password = "inshallah";
 
     public adminpanel() {
@@ -16,8 +16,13 @@ public class adminpanel implements Panel {
         return this.password;
     }
 
-    public void getUserInput() {
-        Scanner sc = new Scanner(System.in);
+    public void displayChoices() {
+        System.out.println("Please select your desired action (key in the coresponding number)");
+        System.out.println("1: Create/Update/Remove Movie Listing");
+        System.out.println("2: Create/Update/Remove cinema showtimes");
+        System.out.println("3: Configure system settings");
+        System.out.println("4: Quit");
+
     }
 
     public void viewApp() throws IOException {
@@ -25,13 +30,8 @@ public class adminpanel implements Panel {
         boolean exit = false;
         int option;
         while (!exit) {
-            System.out.println("Please select your desired action (key in the coresponding number)");
-            System.out.println("1: Create/Update/Remove Movie Listing");
-            System.out.println("2: Create/Update/Remove cinema showtimes and the movies to be shown");
-            System.out.println("3: Configure system settings");
-            System.out.println("4: Quit");
             option = sc.nextInt();
-
+            displayChoices();
             switch (option) {
                 case 1:
                     System.out.println("Please select your desired action");
@@ -88,5 +88,7 @@ public class adminpanel implements Panel {
             }
         }
     }
+
+}backupAdminPanel{
 
 }
