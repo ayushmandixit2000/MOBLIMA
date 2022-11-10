@@ -27,7 +27,7 @@ import java.time.LocalTime;
 public class removeShowtime {
 
     public static void remove(String cplx, int cnm, String cc){
-        String filename = "MOBLIMA/databases/showtime.txt";
+        String filename = "MOBLIMA/MOBLIMA/databases/showtime.txt";
         Scanner sc = new Scanner(System.in);
 
         String cinema;
@@ -105,8 +105,8 @@ public class removeShowtime {
                 
                 System.out.println("Removing the following line: \n"+oldline);
 
-                File inputFile = new File("MOBLIMA/databases/showtime.txt");
-                File tempFile = new File("MOBLIMA/databases/showtimetemp.txt");
+                File inputFile = new File("MOBLIMA/MOBLIMA/databases/showtime.txtt");
+                File tempFile = new File("MOBLIMA/MOBLIMA/databases/showtimetemp.txt");
                 
                 BufferedReader reader = new BufferedReader(new FileReader(inputFile));
                 BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));

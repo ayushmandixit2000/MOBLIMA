@@ -62,7 +62,7 @@ public class retrieveShowtime {
     }
 
     public static void main(String[] aArgs) {
-        String filename = "MOBLIMA/databases/showtime.txt";
+        String filename = "MOBLIMA/MOBLIMA/databases/showtime.txt";
         try {
             ArrayList al = retrieveShowtime.readShowtime(filename);
             for (int i = 0; i < al.size(); i++) {

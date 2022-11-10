@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 import MOBLIMA.dataStructure.Showtime;
-import MOBLIMA.listingInterface.*;
+import MOBLIMA.listing.*;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.save.saveShowtime;
 import MOBLIMA.utils.dateTime;
@@ -156,7 +156,7 @@ public class createShowtime {
             // Write Stuff:
             // al is an array list containing Professor objs
             // write cinema record/s to file.
-            String filename = "MOBLIMA/databases/Showtime.txt";
+            String filename = "MOBLIMA/MOBLIMA/databases/showtime.txt";
             ArrayList showtimeArray = retrieveShowtime.readShowtime(filename); // retrieve current array
             int[][] seating = { { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
             { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },

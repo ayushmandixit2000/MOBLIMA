@@ -21,7 +21,7 @@ public class ShowtimeListing implements Listing{
 
     public void displayListing() throws IOException {
 
-        String filename = "MOBLIMA/databases/showtime.txt";
+        String filename = "MOBLIMA/MOBLIMA/databases/showtime.txt";
         ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
         //System.out.println(showTimeArray);
         
@@ -53,7 +53,7 @@ public class ShowtimeListing implements Listing{
 
     public LocalTime getListing() throws IOException {
 
-        String filename = "MOBLIMA/databases/showtime.txt";
+        String filename = "MOBLIMA/MOBLIMA/databases/showtime.txt";
         ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
         Scanner sc = new Scanner(System.in);
         //System.out.println(showTimeArray);
