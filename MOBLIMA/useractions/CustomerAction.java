@@ -28,10 +28,28 @@ public class CustomerAction {
             System.out.println("\nPlease select your next action");
             System.out.println("1: Book Movie");
             System.out.println("2: Review Movie");
-            int opt = scc.nextInt();
 
-            
+            int opt;
+
+            while (true) {
+                String input = scc.next();
+                opt = 0;
+                try {
+                    opt = Integer.parseInt(input);
+                    if(opt > 2 || opt < 1){
+                        System.out.println("Please key in a valid number!");
+                        continue;
+                    }
+                    else{
+                    break;
+                    }
+                } catch (NumberFormatException ne) {
+                    System.out.println("Please key in a number only!");
+                }
+            }
+
             this.action = opt;
+
         }
 
 

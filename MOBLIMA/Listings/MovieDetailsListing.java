@@ -118,7 +118,25 @@ public class MovieDetailsListing implements Listing {
         System.out.println("1: Yes");
         System.out.println("2: No");
 
-        int additionalopt = scc.nextInt();
+        int additionalopt;
+
+        while (true) {
+            String input = scc.next();
+            additionalopt = 0;
+            try {
+                additionalopt = Integer.parseInt(input);
+                if(additionalopt > 2 || additionalopt < 1){
+                    System.out.println("Please key in a valid number!");
+                    continue;
+                }
+                else{
+                break;
+                }
+            } catch (NumberFormatException ne) {
+                System.out.println("Please key in a number only!");
+            }
+        }
+
 
 
         if (additionalopt == 1) {
