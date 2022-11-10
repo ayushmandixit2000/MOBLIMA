@@ -44,7 +44,7 @@ public class marcusEditShowtimeFacade {
         sl.displayListing();
 
         // Ask use what would they like to do?
-        action.displayListing();
+        action.displayChoices();
         Scanner sc = new Scanner(System.in);
         int todo = sc.nextInt();
 
@@ -58,6 +58,10 @@ public class marcusEditShowtimeFacade {
 
             case 2: // Remove Showtime
             removeShowtime.remove(cineplex, cinema, cinemaCode);
+
+            case 4:
+            System.out.println("you have chosen to exit");
+            break;
 
         }
         
