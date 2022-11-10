@@ -6,11 +6,12 @@ import MOBLIMA.configurables.peakDates;
 import MOBLIMA.configurables.peakPricing;
 import MOBLIMA.configure.configurePeakDates;
 import MOBLIMA.configure.configurePeakPricing;
+import MOBLIMA.configure.configureRankStatus;
 import MOBLIMA.configure.configureTicketPricing;
 import MOBLIMA.listingInterface.configureListing;
 
 public class configureSettingsFacade {
-    public static void main(String[] args) throws IOException {
+    public static void configureSettings() throws IOException {
         configureListing c = new configureListing();
         boolean loop = true;
         while (loop) {
@@ -39,7 +40,10 @@ public class configureSettingsFacade {
                     cpd.displaySetting();
                     break;
                 case 4:
-                    // edit show ranking options
+                    configureRankStatus crs = new configureRankStatus();
+                    crs.displaySetting();
+                    crs.getNewSetting();
+                    crs.displaySetting();
                     break;
                 case 5:
                     loop = false;

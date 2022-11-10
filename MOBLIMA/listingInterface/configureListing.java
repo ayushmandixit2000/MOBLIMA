@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class configureListing implements Listing {
 
     public void displayListing() throws IOException {
-        System.out.println("Please select what you would like to configure:\n");
+        System.out.println("Please select what you would like to configure:");
         System.out.println("1: Edit Ticket Base Pricing");
         System.out.println("2: Edit Ticket Peak Pricing Multiplier");
         System.out.println("3: Edit Peak Dates");
@@ -24,7 +24,6 @@ public class configureListing implements Listing {
                 loop = false;
             }
         }
-        sc.close();
         return option;
     }
 }
