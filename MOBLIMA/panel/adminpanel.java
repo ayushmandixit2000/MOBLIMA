@@ -2,9 +2,10 @@ package MOBLIMA.panel;
 
 import java.io.IOException;
 import java.util.Scanner;
+
+import MOBLIMA.facade.editShowtimeFacade;
 import MOBLIMA.facade.configureSettingsFacade;
 import MOBLIMA.facade.editMovieFacade;
-import MOBLIMA.facade.editShowtimeFacade;
 
 public class adminpanel implements Panel {
     private String password = "inshallah";

@@ -5,12 +5,19 @@ public class Cinema {
     private int cineplex;
     private int movieClass;
 
+    /**
+     * 
+     * @param c-  3 letter String assigned to individual cinemas
+     * @param cp- integer denoting the 3 managed cineplex
+     * @param mc- integer denoting whether cinema is Default or Platinum Movie Suite
+     */
+
     public Cinema(String c, int cp, int mc) {
-        cinema = c;// cinemaCode
+        cinema = c;
         cineplex = cp;
         movieClass = mc;
     }
-
+  
     public int getCineplex() {
         return cineplex;
     }
@@ -37,5 +44,4 @@ public class Cinema {
         this.movieClass = movieClass;
         return true;
     }
-
 }
