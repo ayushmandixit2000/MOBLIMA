@@ -1,25 +1,57 @@
 package MOBLIMA.facade;
 
 import java.io.IOException;
-
-import MOBLIMA.action.adminMovieAction;
+import java.util.Scanner;
+import MOBLIMA.listing.*;
+import MOBLIMA.action.adminShowtimeAction;
+import MOBLIMA.handler.createShowtimeHandler;
+import MOBLIMA.handler.removeShowtimeHandler;
 
 public class editShowtimeFacade {
-    public void run() throws IOException {
-        adminMovieAction ama = new adminMovieAction();
-        ama.displayChoices();
-        int action = ama.getChoice();
-        switch (action) {
-            case 1:
-                System.out.println("Create Movie Showtimes");
-                break;
-            case 2:
-                System.out.println("Update Movie Showtimes");
-                break;
-            case 3:
-                System.out.println("Remove Movie Showtimes");
-                break;
-        }
-    }
 
+    public static String cineplex;
+    public static int cinema;
+    public static String cinemaCode;
+
+    public void run() throws IOException {
+        // Cineplex Listing
+        CineplexListing cpxl = new CineplexListing();
+        cpxl.displayListing();
+        cineplex = cpxl.getListing();
+
+        // Cinema Listing
+        CinemaListing cnml = new CinemaListing();
+        cnml.displayListing();
+        cinema = cnml.getListing();
+
+        int cineplexlength = cineplex.length();
+
+        // cinemaCode
+        // First + last letter of cineplex + cinema number
+        String cinemaCode = String.valueOf(cineplex.charAt(0)) + String.valueOf(cineplex.charAt(cineplexlength - 1))
+                + String.valueOf(cinema);
+        System.out.println("Cinema Code: " + cinemaCode);
+
+        // Showitme Listing
+        ShowtimeListing sl = new ShowtimeListing();
+        sl.populate(cineplex, cinema, cinemaCode);
+        sl.displayListing();
+
+        // Ask use what would they like to do?
+        adminShowtimeAction asa = new adminShowtimeAction();
+        asa.displayChoices();
+        int todo = asa.getChoice();
+        switch (todo) {
+            case 0: // Create Showtime
+                createShowtimeHandler.create(cineplex, cinema, cinemaCode);
+
+            case 1: // Update Showtime
+                Scanner sc = new Scanner(System.in);
+                int updateShowtimeIndex = sc.nextInt();
+
+            case 2: // Remove Showtime
+                removeShowtimeHandler.remove(cineplex, cinema, cinemaCode);
+        }
+
+    }
 }
