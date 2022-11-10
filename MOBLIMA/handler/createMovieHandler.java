@@ -3,7 +3,7 @@ package MOBLIMA.handler;
 import MOBLIMA.dataStructure.*;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.save.saveMovie;
-
+import MOBLIMA.Listings.MovieListing;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,21 +13,25 @@ public class createMovieHandler {
             
         Scanner sc = new Scanner(System.in);
 
+        // showing current movies
+        MovieListing showValidMovies = new MovieListing();
+        showValidMovies.displayListing();
+
         // getting movie title
-        System.out.print("Enter Movie Title: ");
+        System.out.print("Enter new movie title: ");
         String movieTitle = sc.nextLine();
 
         // getting show status
         int showStatus = -1;
         boolean loop = true;
         while (loop) {
-            System.out.println("Select Movie Status: \n1: Comming Soon \n2: Preview \n3: Now Showing \n4: End of Show");
+            System.out.println("Select Movie Status: \n1: Comming Soon \n2: Preview \n3: Now Showing");
             showStatus = (sc.nextInt());
+            sc.nextLine();
             switch (showStatus) {
                 case 1:
                 case 2:
                 case 3:
-                case 4:
                     loop = false;
                     showStatus--;
                     break;
@@ -39,7 +43,6 @@ public class createMovieHandler {
         //getting director
         System.out.print("Enter Director: ");
         String director = sc.nextLine();
-        sc.nextLine();
         
         // getting cast
         ArrayList<String> cast = new ArrayList<String>();

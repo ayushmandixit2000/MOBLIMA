@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-import javax.annotation.processing.SupportedSourceVersion;
 
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.listing.ShowtimeListing;

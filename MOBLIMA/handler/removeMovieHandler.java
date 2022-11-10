@@ -3,6 +3,8 @@ package MOBLIMA.handler;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import MOBLIMA.Listings.MovieListing;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.save.saveMovie;
@@ -15,15 +17,14 @@ public class removeMovieHandler {
         // read data from database
         String filename = "MOBLIMA/databases/movie.txt";
         ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
-        ArrayList<Movie> validMovies = new ArrayList<Movie>(movieArray);
-        validMovies.removeIf(Movie -> Movie.getIsDeleted() != 0);
+
+        // intialitlizing valid movie and movie listings
+        MovieListing showValidMovies = new MovieListing();
+        ArrayList<Movie> validMovies = showValidMovies.getValidMovies();
 
         // display movies
+        showValidMovies.displayListing();
         System.out.println("Select the movie you would like to remove: ");
-        for (int i = 0; i < validMovies.size(); i++) {
-            Movie m = (Movie) validMovies.get(i);
-            System.out.println((i + 1 + ": " + m.getTitle()));
-        }
         int removeMovieOption = sc.nextInt();
         if (removeMovieOption <= 0 || removeMovieOption > validMovies.size()) {
             System.out.println("Invalid option. Please try again");

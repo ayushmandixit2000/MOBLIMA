@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import MOBLIMA.Listings.MovieListing;
 
 public class updateMovieHandler {
     public boolean movieUpdate() throws IOException {
@@ -19,17 +20,16 @@ public class updateMovieHandler {
         // retrieve movie list
         String filename = "MOBLIMA/databases/movie.txt";
         ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
-        ArrayList<Movie> validMovies = new ArrayList<Movie>(movieArray);
-        validMovies.removeIf(Movie -> Movie.getIsDeleted() != 0);
+
+        // intialitlizing valid movie and movie listings
+        MovieListing showValidMovies = new MovieListing();
+        ArrayList<Movie> validMovies = showValidMovies.getValidMovies();
         numbOfMovies = validMovies.size();
 
         // generating menu to select movie to update
         while (true) {
+            showValidMovies.displayListing();
             System.out.println("Select movie to edit: ");
-            for (int i = 0; i < numbOfMovies; i++) {
-                Movie m = (Movie) validMovies.get(i);
-                System.out.println((i + 1) + ": " + m.getTitle());
-            }
             movieOption = sc.nextInt();
             if (movieOption > 0 && movieOption <= numbOfMovies) {
                 break;
