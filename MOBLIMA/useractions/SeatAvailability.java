@@ -8,6 +8,12 @@ import MOBLIMA.dataStructure.Showtime;
 public class SeatAvailability {
     private Showtime s;
 
+    private String user;
+
+    public void setuser(String ui){
+        this.user = ui;
+    }
+
     public void setshow(Showtime s1) {
         this.s = s1;
     }
@@ -67,6 +73,7 @@ public class SeatAvailability {
 
         choosingseats cs = new choosingseats();
         cs.setshow(s);
+        cs.setuser(user);
         cs.display();
     }
 }

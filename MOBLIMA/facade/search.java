@@ -12,6 +12,12 @@ import MOBLIMA.retrieval.retrieveMovie;
 
 public class search {
 
+    private String user;
+
+    public void setuser(String ui){
+        this.user = ui;
+    }
+
     public void findmovie() throws IOException {
         Scanner scc = new Scanner(System.in);
         System.out.println("\nPlease key in the movie you would like to inquire about: ");
@@ -59,6 +65,7 @@ public class search {
                     
                     MovieDetailsListing moviedetails = new MovieDetailsListing();
                     moviedetails.setmovie(m3);
+                    moviedetails.setuser(user);
                     moviedetails.displayListing();
                     
                 }

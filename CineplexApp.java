@@ -2,6 +2,8 @@
 import java.io.IOException;
 import java.util.Scanner;
 
+import MOBLIMA.panel.adminpanel;
+
 public class CineplexApp {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
@@ -33,7 +35,7 @@ public class CineplexApp {
                 quit = true;
             }
         }
-        sc.close();
+        
     }
 
     private static void printHRPSTitle() {

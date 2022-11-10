@@ -7,12 +7,19 @@ import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Showtime;
+import MOBLIMA.dataStructure.Transaction;
 import MOBLIMA.retrieval.retrieveCinema;
 import MOBLIMA.retrieval.retrieveMovie;
 
 public class FinalPurchase {
     private MovieTicket[] customertickers;
     private Showtime s;
+
+    private String user;
+
+    public void setuser(String ui){
+        this.user = ui;
+    }
 
     public void settickets(MovieTicket[] ct) {
         this.customertickers = ct;
@@ -119,6 +126,12 @@ public class FinalPurchase {
             System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
         }
 
-        System.out.println("Total cost: " + totalprice);
+        System.out.println();
+        System.out.println("Total cost: $" + totalprice);
+
+        TransactionProccessing tp = new TransactionProccessing();
+        tp.settickets(customertickers);
+        tp.setuser(user);
+        tp.display();
     }
 }

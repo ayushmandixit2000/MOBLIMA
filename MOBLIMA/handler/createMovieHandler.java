@@ -1,4 +1,4 @@
-package MOBLIMA.create;
+package MOBLIMA.handler;
 
 import MOBLIMA.dataStructure.*;
 import MOBLIMA.retrieval.retrieveMovie;
@@ -8,11 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class createMovie {
-
-    public createMovie() {
-    }
-
+public class createMovieHandler {
     public boolean movieCreate() throws IOException {
             
         Scanner sc = new Scanner(System.in);

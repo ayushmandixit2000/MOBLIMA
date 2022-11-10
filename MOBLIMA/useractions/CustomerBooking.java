@@ -14,6 +14,12 @@ import MOBLIMA.utils.compareDates;
 public class CustomerBooking {
     private Movie m;
 
+    private String user;
+
+    public void setuser(String ui){
+        this.user = ui;
+    }
+
     public void setmovie(Movie m1) {
         this.m = m1;
     }
@@ -67,6 +73,7 @@ public class CustomerBooking {
 
                 SeatAvailability sa = new SeatAvailability();
                 sa.setshow(s2);
+                sa.setuser(user);
                 sa.display();
             }
         }

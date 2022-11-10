@@ -12,6 +12,12 @@ public class list {
 
     private int action = 0;
 
+    private String user;
+
+    public void setuser(String ui){
+        this.user = ui;
+    }
+
     public void setaction(int act){
         this.action = act;
     }
@@ -48,6 +54,7 @@ public class list {
                 MovieDetailsListing moviedetails = new MovieDetailsListing();
                 moviedetails.setaction(action);
                 moviedetails.setmovie(m2);
+                moviedetails.setuser(user);
                 moviedetails.displayListing();
             }
 

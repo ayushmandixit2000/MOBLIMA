@@ -1,7 +1,7 @@
 package MOBLIMA.Listings;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.Review;
-import MOBLIMA.listingInterface.Listing;
+import MOBLIMA.listing.Listing;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveReview;
 

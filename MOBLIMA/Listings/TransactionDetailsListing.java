@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.Transaction;
-import MOBLIMA.listingInterface.Listing;
+import MOBLIMA.listing.Listing;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.utils.dateTime;
 

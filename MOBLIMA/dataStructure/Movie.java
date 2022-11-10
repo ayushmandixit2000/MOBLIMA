@@ -102,22 +102,6 @@ public class Movie implements Serializable {
     public void setShowStatus(int showStatus) throws IOException {
         this.showStatus = showStatus;
         if (showStatus == 3) {
-            // String filename = "MOBLIMA/databases/movie.txt";
-            // System.out.println("triggered");
-            // ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current
-            // array
-            // for (int i = 0; i < movieArray.size(); i++) {
-            // System.out.println(this.movieId);
-            // if (((Movie) movieArray.get(i)).getMovieId() == this.movieId) {
-            // // overwrite file
-            // System.out.println("successfully deleted");
-            // return true;
-            // }
-            // }
-            // System.out.println("failed to delete");
-            // return false;
-            // }
-            // return true;
             setIsDeleted(1);
         }
         return;
@@ -189,7 +173,7 @@ public class Movie implements Serializable {
         }
 
         double x = this.numReviews;
-        
+
         this.avgRating = sum / x;
 
         double k = this.avgRating;
@@ -197,7 +181,7 @@ public class Movie implements Serializable {
         this.avgRating = k;
     }
 
-    private static double round (double value, int precision) {
+    private static double round(double value, int precision) {
         int scale = (int) Math.pow(10, precision);
         return (double) Math.round(value * scale) / scale;
     }

@@ -12,10 +12,10 @@ public class Transaction {
     private String userId;
     private String[] arrayofMovieTickets;
 
-    public Transaction(LocalDate d, LocalTime t, String u, String[] tickIds) {
-        transactionId = dateTime.convertDate(d) + dateTime.convertTime(t)+ tickIds[0].substring(0,3);
-        purchaseDate = d;
-        purchaseTime = t;
+    public Transaction(String date, String time, String u, String[] tickIds) {
+        transactionId = date + time + tickIds[0].substring(0, 3);
+        purchaseDate = dateTime.convertDate(date);
+        purchaseTime = dateTime.convertTime(time);
         userId = u;
         arrayofMovieTickets = tickIds;
     }
