@@ -20,9 +20,12 @@ public class ShowtimeListing implements Listing {
         String filename = "MOBLIMA/databases/showtime.txt";
         ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
         int counter = 0;
+
         System.out.println("Displaying showtime at... \nCineplex: " + cineplex + " Cinema: " + cinema + " Cinema Code: "
                 + cinemaCode);
+
         System.out.println("Showtime: ");
+        
         Collections.sort(showTimeArray, new compareDates());
         for (int i = 0; i < showTimeArray.size(); i++) {
             Showtime s = (Showtime) showTimeArray.get(i);
