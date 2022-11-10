@@ -17,7 +17,7 @@ public class ShowtimeListing implements Listing {
 
     public void displayListing() throws IOException {
 
-        String filename = "MOBLIMA/MOBLIMA/databases/showtime.txt";
+        String filename = "MOBLIMA/databases/showtime.txt";
         ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
         int counter = 0;
         System.out.println("Displaying showtime at... \nCineplex: " + cineplex + " Cinema: " + cinema + " Cinema Code: "
@@ -41,7 +41,7 @@ public class ShowtimeListing implements Listing {
 
     public LocalTime getListing() throws IOException {
 
-        String filename = "MOBLIMA/MOBLIMA/databases/showtime.txt";
+        String filename = "MOBLIMA/databases/showtime.txt";
         ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
         Scanner sc = new Scanner(System.in);
         LocalTime time = LocalTime.now();
