@@ -23,7 +23,27 @@ public class Customerreview {
         m1.setNumReviews();
         Scanner scc = new Scanner(System.in);
         System.out.println("Please rate this movie out of 5:");
-        int score = scc.nextInt();
+
+        
+        int score;
+
+        while (true) {
+            String input = scc.next();
+            score = 0;
+            try {
+                score = Integer.parseInt(input);
+                if(score > 5 || score < 1){
+                    System.out.println("Please key in a number between 1-5 only");
+                    continue;
+                }
+                else{
+                break;
+                }
+            } catch (NumberFormatException ne) {
+                System.out.println("Please key in a number only!");
+            }
+        }
+
 
         String review = "";
         scc.nextLine();

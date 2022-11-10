@@ -35,7 +35,7 @@ public class CineplexApp {
                 quit = true;
             }
         }
-        
+
     }
 
     private static void printHRPSTitle() {

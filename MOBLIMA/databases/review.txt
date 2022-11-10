@@ -9,3 +9,6 @@
 1|1|baddd
 1|6|10
 1|-1|terrible
+1|5|nice
+0|5|nice
+1|4|-

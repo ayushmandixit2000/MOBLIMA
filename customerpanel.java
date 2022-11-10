@@ -5,7 +5,7 @@ import java.util.Scanner;
 import MOBLIMA.retrieval.retrieveMovieGoer;
 import MOBLIMA.save.saveMovieGoer;
 import MOBLIMA.dataStructure.MovieGoer;
-import MOBLIMA.facade.list;
+import MOBLIMA.facade.movielisting;
 import MOBLIMA.facade.pastTransactionsFacade;
 import MOBLIMA.facade.search;
 import MOBLIMA.panel.Panel;
@@ -98,26 +98,26 @@ public class customerpanel implements Panel {
                         break;
 
                     case 2:
-                        list listmovies = new list();
+                        movielisting listmovies = new movielisting();
                         listmovies.setuser(userid);
                         listmovies.show();
                         break;
 
                     case 3:
-                        list listmovies1 = new list();
+                        movielisting listmovies1 = new movielisting();
                         listmovies1.setuser(userid);
                         listmovies1.show();
                         break;
 
                     case 4:
-                        list listmovies4 = new list();
+                        movielisting listmovies4 = new movielisting();
                         listmovies4.setaction(1);
                         listmovies4.setuser(userid);
                         listmovies4.show();
                         break;
 
                     case 5:
-                        list listmovies2 = new list();
+                        movielisting listmovies2 = new movielisting();
                         listmovies2.setaction(1);
                         listmovies2.setuser(userid);
                         listmovies2.show();
@@ -135,7 +135,7 @@ public class customerpanel implements Panel {
                         break;
 
                     case 8:
-                        list listmovies3 = new list();
+                        movielisting listmovies3 = new movielisting();
                         listmovies3.setaction(2);
                         listmovies3.show();
                         break;

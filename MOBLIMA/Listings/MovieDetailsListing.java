@@ -32,7 +32,8 @@ public class MovieDetailsListing implements Listing {
     public void displayListing() throws IOException {
         m1.setAvgRating();
         m1.setNumReviews();
-        System.out.println("Movie Title: " + m1.getTitle());
+        System.out.println("______________________________________________________");
+        System.out.println("Movie Title:    " + m1.getTitle());
         Scanner scc = new Scanner(System.in);
         String showstatus = "";
         if (m1.getShowStatus() == 0) {
@@ -46,16 +47,19 @@ public class MovieDetailsListing implements Listing {
         else if (m1.getShowStatus() == 3) {
             showstatus = "End of Show";
         }
-        System.out.println("Movie Show Status: " + showstatus);
+        System.out.println("Show Status:    " + showstatus);
 
         System.out.println("Movie Director: " + m1.getDirector());
 
         String[] casts = m1.getCast();
+        System.out.println("____________________");
         System.out.println("Movie Cast: ");
 
         for (int k = 0; k < casts.length; k++) {
             System.out.println(k + 1 + ": " + casts[k]);
         }
+
+        System.out.println("____________________");
 
         System.out.println("Movie Synopsis: " + m1.getSynopsis());
 
@@ -80,7 +84,7 @@ public class MovieDetailsListing implements Listing {
         else if (m1.getMovieRating() == 4) {
             rat = "TBC";
         }
-        System.out.println("Movie Rating: " + rat);
+        System.out.println("Movie Rating:   " + rat);
 
         String movietype = "";
 
@@ -92,15 +96,47 @@ public class MovieDetailsListing implements Listing {
             movietype = "Blockbuster";
         }
 
-        System.out.println("Movie Type: " + movietype);
+        System.out.println("Movie Type:     " + movietype);
 
-        System.out.println("Movie Sales: " + m1.getSales());
+        System.out.println("Movie Sales:    " + m1.getSales());
 
-        System.out.println("\nDo you want to see ratings and reviews?");
+        if(m1.getNumReviews() > 1){
+            System.out.println("\nAverage Rating: " + m1.getAvgRating());
+        }
+
+        else{
+            System.out.println("\nNA: Average Rating is not determined due to insufficent reviews");
+        }
+
+        
+        System.out.println("______________________________________________________");
+
+        System.out.println();
+        System.out.println();
+
+        System.out.println("Do you want to see ratings and reviews?");
         System.out.println("1: Yes");
         System.out.println("2: No");
 
-        int additionalopt = scc.nextInt();
+        int additionalopt;
+
+        while (true) {
+            String input = scc.next();
+            additionalopt = 0;
+            try {
+                additionalopt = Integer.parseInt(input);
+                if(additionalopt > 2 || additionalopt < 1){
+                    System.out.println("Please key in a valid number!");
+                    continue;
+                }
+                else{
+                break;
+                }
+            } catch (NumberFormatException ne) {
+                System.out.println("Please key in a number only!");
+            }
+        }
+
 
 
         if (additionalopt == 1) {
