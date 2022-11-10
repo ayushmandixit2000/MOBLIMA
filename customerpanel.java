@@ -75,11 +75,25 @@ public class customerpanel implements Panel {
                 System.out.println("_______________________________________________________________________");
                 System.out.println();
 
-                int option = scc.nextInt();
+
+                int option;
+
+                while (true) {
+                    String input = scc.next();
+                    option = 0;
+                    try {
+                        option = Integer.parseInt(input);
+                        break;
+                    } catch (NumberFormatException ne) {
+                        System.out.println("Please key in a number only!");
+                    }
+                }
+
 
                 if(option > 9 || option < 1){
                     System.out.println("Please Key in 1 to 9 only");
-                }
+                    continue loop;
+                    }
 
                 switch (option) {
                     case 1:
