@@ -25,6 +25,7 @@ public class CustomerTicket {
 
     public void display() throws IOException {
 
+        MovieTicket [] ticketsarray = new MovieTicket[seats.length];
         Scanner scc = new Scanner(System.in);
         for (int i = 0; i < seats.length; i++) {
             int sk = i + 1;
@@ -32,6 +33,8 @@ public class CustomerTicket {
             System.out.println("Row: " + Character.toString((char) (seats[i][0] + 65)));
             System.out.println("Column: " + seats[i][1]); // -1 when sending to database
 
+            s1.addSeating(seats[i][0] , seats[i][1]-1);
+            
             System.out.println("What age category ticket would you like?");
             System.out.println("1: Child");
             System.out.println("2: Adult");
@@ -48,9 +51,24 @@ public class CustomerTicket {
             saveMovieTicket.saveMovieTicketArray(filename, movieTicketArray);// save to same file
 
             
+            //getting movieticket id
+            String filename1 = "MOBLIMA/databases/movieTicket.txt";
+            ArrayList al = retrieveMovieTicket.readMovieTicket(filename1);
+            for (int l = 0; l < al.size(); l++) {
+                MovieTicket mt1 = (MovieTicket) al.get(l);
+                if(mt1.getShowtimeId().equalsIgnoreCase(s1.getShowtimeId())){
+                    if(mt1.getSeatingRow() == seats[i][0] && mt1.getSeatingColumn() == seats[i][1] - 1){
+                        ticketsarray[i] = mt1;
+                    }
+                }
+            }
         }
 
-        
+
+        FinalPurchase fp = new FinalPurchase();
+        fp.settickets(ticketsarray);
+        fp.setshow(s1);
+        fp.display();
     }
 
 }
