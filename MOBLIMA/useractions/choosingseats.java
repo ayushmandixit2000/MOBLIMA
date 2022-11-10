@@ -21,7 +21,28 @@ public class choosingseats {
     public void display() throws IOException {
         Scanner scc = new Scanner(System.in);
         System.out.println("How many tickets will you like to purchase?");
-        int num = scc.nextInt();
+        
+        
+        int num;
+
+        while (true) {
+            String input = scc.next();
+            num = 0;
+            try {
+                num = Integer.parseInt(input);
+                if(num > 30 || num< 1){
+                    System.out.println("Please key in a valid number!");
+                    continue;
+                }
+                else{
+                break;
+                }
+            } catch (NumberFormatException ne) {
+                System.out.println("Please key in a number only!");
+            }
+        }
+
+
 
         System.out
                 .println("Please key in seat. Note: Choose unoccupied seats (0) and enter the row followed by column");
@@ -38,7 +59,7 @@ public class choosingseats {
                 System.out.println("\nTicket " + b + " : ");
 
                 int r = 0;
-                while (r < 65 || r > 74) {
+                while (r < 65 || r > 73) {
                     System.out.println("Please key in row of seat. E.g C: ");
                     String c1 = scc.next();
                     String c = c1.toUpperCase();
@@ -46,12 +67,28 @@ public class choosingseats {
                     r = (int) row1;
                 }
 
-                int column = -1;
 
-                while (column < 0 || column > 18 || column == 10) {
-                    System.out.println("Please key in Column  E.g 2:");
-                    column = scc.nextInt();
+                System.out.println("Select column: ");
+                
+                int column;
+
+                while (true) {
+                    String input = scc.next();
+                    column = 0;
+                    try {
+                    column = Integer.parseInt(input);
+                    if(column > 18 || column < 1){
+                    System.out.println("Please key in a valid number!");
+                    continue;
+                    }
+                    else{
+                        break;
                 }
+            } catch (NumberFormatException ne) {
+                System.out.println("Please key in a number only!");
+            }
+        }
+
 
                 String s8 = Character.toString((char) r);
                 System.out.println("Row Selected: " + s8);
@@ -140,10 +177,28 @@ public class choosingseats {
         System.out.println("1: Yes");
         System.out.println("2: No");
 
-        int conopt = scc.nextInt();
+        int conopt;
+
+        while (true) {
+            String input = scc.next();
+            conopt = 0;
+            try {
+                conopt = Integer.parseInt(input);
+                if(conopt > 2 || conopt < 1){
+                    System.out.println("Please key in a valid number!");
+                    continue;
+                }
+                else{
+                break;
+                }
+            } catch (NumberFormatException ne) {
+                System.out.println("Please key in a number only!");
+            }
+        }
 
         if (conopt != 1) {
             System.out.println("Exiting...");
+            return;
         }
 
         CustomerTicket ct = new CustomerTicket();

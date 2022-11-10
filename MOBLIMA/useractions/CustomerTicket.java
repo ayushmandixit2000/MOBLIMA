@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import MOBLIMA.configurables.ageGroupPricing;
 import MOBLIMA.configurables.peakDates;
 import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Showtime;
@@ -46,7 +47,26 @@ public class CustomerTicket {
             System.out.println("2: Adult");
             System.out.println("3: Senior Citizen");
 
-            int ageopt = scc.nextInt();
+
+            int ageopt;
+
+            while (true) {
+                String input = scc.next();
+                ageopt = 0;
+                try {
+                    ageopt = Integer.parseInt(input);
+                    if(ageopt > 3 || ageopt < 1){
+                        System.out.println("Please key in a valid number!");
+                        continue;
+                    }
+                    else{
+                    break;
+                    }
+                } catch (NumberFormatException ne) {
+                    System.out.println("Please key in a number only!");
+                }
+            }
+
             ageopt = ageopt - 1;
             String age = Integer.toString(ageopt);
             String filename = "MOBLIMA/databases/MovieTicket.txt";

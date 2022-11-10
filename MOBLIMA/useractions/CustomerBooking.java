@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+import MOBLIMA.configurables.peakDates;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrieveShowtime;
@@ -59,13 +60,36 @@ public class CustomerBooking {
         System.out.println("Please select a show for " + m.getTitle());
         Scanner scc = new Scanner(System.in);
 
+        
+
         for (int j = 0; j < optionlist.size(); j++) {
             Showtime s1 = optionlist.get(j);
+            // new peakDates();
+            // Boolean pk = isPeak(s1.getDate());
             System.out.println(j + 1 + ": Cinema :" + s1.getCinema() + " ||" + "Date: " + s1.getDate() + " ||"
                     + "Time: " + s1.getTime() + " ||");
         }
 
-        int option = scc.nextInt();
+
+        int option;
+
+        while (true) {
+            String input = scc.next();
+            option = 0;
+            try {
+                option = Integer.parseInt(input);
+                if(option > optionlist.size() || option < 1){
+                    System.out.println("Please key in a valid number!");
+                    continue;
+                }
+                else{
+                break;
+                }
+            } catch (NumberFormatException ne) {
+                System.out.println("Please key in a number only!");
+            }
+        }
+
 
         for (int l = 0; l < optionlist.size(); l++) {
             if (option == l + 1) {
