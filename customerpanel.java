@@ -90,8 +90,6 @@ public class customerpanel implements Panel {
                 }
 
 
-                option = scc.nextInt();
-
                 switch (option) {
                     case 1:
                         search searchmovie = new search();
