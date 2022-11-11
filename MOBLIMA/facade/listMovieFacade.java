@@ -28,7 +28,6 @@ public class listMovieFacade {
         CA.setaction(action);
         CA.setuser(userId);
         CA.setmovie(chosenMovie);
-        CA.displayChoices();
         CA.getChoice();
     }
 }

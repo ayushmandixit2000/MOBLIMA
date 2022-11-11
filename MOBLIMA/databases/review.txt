@@ -16,4 +16,6 @@
 1|5|niceeee
 1|4|goof
 0|1|bad
-0|2|
+1|5|gooooood
+1|5|nide
+1|5|niceee
