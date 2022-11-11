@@ -8,15 +8,33 @@ import MOBLIMA.panel.customerpanel;
 
 public class CineplexApp {
         public static void main(String[] args) throws IOException {
-                Scanner sc = new Scanner(System.in);
+                Scanner scc = new Scanner(System.in);
                 boolean quit = false;
                 while (!quit) {
                         printHRPSTitle();
-                        int option = sc.nextInt();
+                        int option;
+
+                        while (true) {
+                                
+                                String input = scc.next();
+                                option = 0;
+                                try {
+                                    option = Integer.parseInt(input);
+                                    if (option > 3 || option < 1) {
+                                        System.out.println("Please key in a valid number!");
+                                        continue;
+                                    } else {
+                                        break;
+                                    }
+                                } catch (NumberFormatException ne) {
+                                    System.out.println("Please key in a number only!");
+                                }
+                        }
+
                         if (option == 2) {
                                 adminpanel admin = new adminpanel();
                                 System.out.println("Please key in the password");
-                                String password = sc.next();
+                                String password = scc.next();
                                 Boolean passwordMatches = password.equals(admin.getPassword());
                                 if (!passwordMatches) {
                                         System.out.println("Incorrect Password");
@@ -24,18 +42,24 @@ public class CineplexApp {
 
                                 else {
                                         admin.viewApp();
+                                        break;
+                                        
                                 }
                         }
 
                         if (option == 1) {
                                 customerpanel customerui = new customerpanel();
                                 customerui.viewApp();
+                                break;
+                                
                         }
 
                         if (option == 3) {
                                 System.out.println("Program closing ... Thank you for using MOBLIMA!");
                                 quit = true;
+                                break;
                         }
+
                 }
 
         }

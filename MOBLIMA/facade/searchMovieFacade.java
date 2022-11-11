@@ -14,6 +14,9 @@ public class searchMovieFacade {
         sl.show();
         Movie chosenMovie = sl.getChosenMovie();
 
+        if(chosenMovie == null){
+            return;
+        }
         MovieDetailsListing moviedetails = new MovieDetailsListing();
         moviedetails.setmovie(chosenMovie);
         moviedetails.displayListing();
