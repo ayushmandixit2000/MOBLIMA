@@ -42,6 +42,7 @@ public class FinalPurchaseHandler {
             }
         }
 
+        int cinematype = 0;
         int cinep = -1;
         String filename1 = "MOBLIMA/databases/Cinema.txt";
         ArrayList cinemaArray = retrieveCinema.readCinema(filename1);
@@ -49,7 +50,15 @@ public class FinalPurchaseHandler {
             Cinema c = (Cinema) cinemaArray.get(i);
             if (c.getCinema().equals(s.getCinema())) {
                 cinep = c.getCineplex();
+                cinematype = c.getMovieClass();
             }
+        }
+
+
+        String ct = "Standard Class";
+
+        if(cinematype == 1){
+            ct = "Premium Movie Class";
         }
 
         String cp = "";
@@ -109,7 +118,7 @@ public class FinalPurchaseHandler {
             System.out.println("_____________________________________________________________________");
             System.out.println("Movie : " + title + "     Type: " + movietypeS);
             System.out.println("_____________________________________________________________________");
-            System.out.println("Cinema : " + s.getCinema() + "      Cineplex: " + cp);
+            System.out.println("Cinema : " + s.getCinema() + "      Cineplex: " + cp + "     Class: " + ct);
             System.out.println("_____________________________________________________________________");
             System.out.println("Ticket Price : $" + customertickers[z].getPrice());
             System.out.println("_____________________________________________________________________");

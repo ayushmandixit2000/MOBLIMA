@@ -74,7 +74,7 @@ public class customerpanel implements Panel {
                         pastTransactionsFacade.run(userid);
                         break;
                     case 7:
-                        top5Facade.show();
+                        top5Facade.show(userid);
                         break;
                     case 8:
                         listMovieFacade.setAction(2);
