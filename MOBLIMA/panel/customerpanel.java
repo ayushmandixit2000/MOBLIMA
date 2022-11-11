@@ -3,6 +3,7 @@ package MOBLIMA.panel;
 import java.io.IOException;
 import java.util.Scanner;
 
+import MOBLIMA.CineplexApp;
 import MOBLIMA.facade.listMovieFacade;
 import MOBLIMA.facade.pastTransactionsFacade;
 import MOBLIMA.facade.searchMovieFacade;
@@ -30,10 +31,10 @@ public class customerpanel implements Panel {
 
     public void viewApp() {
         System.out.println("Welcome to MOBLIMA");
-        try (Scanner scc = new Scanner(System.in)) {
+        try {
 
             System.out.println("Please enter your name");
-            String name1 = scc.next();
+            String name1 = CineplexApp.scc.next();
             String name = name1.toLowerCase();
             String userid = "";
 
@@ -48,7 +49,7 @@ public class customerpanel implements Panel {
                 displayChoices();
                 int option;
                 while (true) {
-                    String input = scc.next();
+                    String input = CineplexApp.scc.next();
                     option = 0;
                     try {
                         option = Integer.parseInt(input);
