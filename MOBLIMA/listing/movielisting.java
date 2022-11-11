@@ -27,7 +27,6 @@ public class movielisting {
             Movie m1 = (Movie) movieArray.get(i);
             if (m1.getIsDeleted() == 1) {
                 count++;
-
             }
         }
 
