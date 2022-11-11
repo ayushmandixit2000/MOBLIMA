@@ -15,6 +15,7 @@ public class createMovieHandler {
     public boolean movieCreate() throws IOException {
             
         Scanner sc = new Scanner(System.in);
+        boolean flag;
 
         // showing current movies
         MovieListing showValidMovies = new MovieListing();
@@ -36,13 +37,23 @@ public class createMovieHandler {
         int showStatus = -1;
         boolean loop = true;
         while (loop) {
-            System.out.println("Select Movie Status: \n1: Comming Soon \n2: Preview \n3: Now Showing");
-            showStatus = (sc.nextInt());
+            // to prevent users from keying in data that is not string 
+            do{
+                try{
+                    System.out.println("Select Movie Status: \n1: Comming Soon \n2: Preview \n3: Now Showing");
+                    showStatus = (sc.nextInt());
+                    flag = false;
+                }
+                catch(Exception e){
+                    System.out.println("Inavlid input. Please enter intergers only... "+e);
+                    sc.nextLine();
+                    flag = true;
+                }
+            }
+            while(flag);
             sc.nextLine();
             switch (showStatus) {
-                case 1:
-                case 2:
-                case 3:
+                case 1:case 2:case 3:
                     loop = false;
                     showStatus--;
                     break;
@@ -67,15 +78,26 @@ public class createMovieHandler {
         while (true){
             System.out.print("Cast: ");
             userInputCast = sc.nextLine();
+
+            // error handling for empty inputs
             while(userInputCast.isBlank() || userInputCast.isEmpty()){
                 System.out.println("Input cannot be empty. Please key in a valid input.");
                 System.out.print("Cast: ");
                 userInputCast = sc.nextLine();
             }
+
+            // breaking out of loop when user keys in stop
             if(userInputCast.equals("stop")){
                 break;
             }
+
+            // add cast only if it's a unique value
+            if(cast.contains(userInputCast)){
+                System.out.println("Cast has already been entered.");
+            }
+            else{
             cast.add(userInputCast);
+            }
         }
         // converting arrayList to string
         String castString [] = cast.toArray(new String[cast.size()]);
@@ -98,13 +120,25 @@ public class createMovieHandler {
         int movieRating = -1;
         loop = true;
         while (loop) {
-            System.out.println("Select Movie Rating: \n1: G \n2: PG \n3: M \n4: R16");
-            movieRating = (sc.nextInt());
+
+            // only allows users to key integer values
+            do{
+                try{
+                    System.out.println("Select Movie Rating: \n1: G \n2: PG \n3: M \n4: R16");
+                    movieRating = (sc.nextInt());
+                    flag = false;
+                }
+                catch(Exception e){
+                    System.out.println("Inavlid input. Please enter intergers only... "+e);
+                    sc.nextLine();
+                    flag = true;
+                }
+            }
+            while(flag);
+            sc.nextLine();
+
             switch (movieRating) {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
+                case 1:case 2:case 3:case 4:
                     loop = false;
                     movieRating--;
                     break;
@@ -120,11 +154,24 @@ public class createMovieHandler {
         int movieType = -1;
         loop = true;
         while (loop) {
-            System.out.println("Select Movie Type: \n1: 3D \n2: Blockbuster ");
-            movieType = (sc.nextInt());
+        // only allows users to key integer values
+            do{
+                try{
+                    System.out.println("Select Movie Type: \n1: 3D \n2: Blockbuster ");
+                    movieType = (sc.nextInt());
+                    flag = false;
+                }
+                catch(Exception e){
+                    System.out.println("Inavlid input. Please enter intergers only... "+e);
+                    sc.nextLine();
+                    flag = true;
+                }
+            }
+            while(flag);
+            sc.nextLine();
+        
             switch (movieType) {
-                case 1:
-                case 2:
+                case 1:case 2:
                     loop = false;
                     movieType--;
                     break;
@@ -147,13 +194,30 @@ public class createMovieHandler {
         System.out.println("Movie rating: "+rating.get(movieAdmin.getMovieType()));
         System.out.println("Movie type: "+type.get(movieAdmin.getMovieType()));
 
-        System.out.println("Please confirm if you would like to create the movie. \n1: Yes \n2: No");
         loop = true;
+        int optionConfirm = -1;
         while(loop){
-            int optionConfirm = sc.nextInt();
+             // only allows users to key integer values
+             do{
+                try{
+                    System.out.println("Please confirm if you would like to create the movie. \n1: Yes \n2: No");
+                    optionConfirm = (sc.nextInt());
+                    flag = false;
+                }
+                catch(Exception e){
+                    System.out.println("Inavlid input. Please enter intergers only... "+e);
+                    sc.nextLine();
+                    flag = true;
+                }
+            }
+            while(flag);
+            sc.nextLine();
+
             switch(optionConfirm){
                 case 1:
                 loop = false;
+                System.out.println("Creating " + movieAdmin.getTitle()+ ".....");
+                System.out.println();
                 break;
                 case 2:
                 return false;
@@ -170,6 +234,7 @@ public class createMovieHandler {
         movieArray.add(movieAdmin);
         saveMovie.saveMovieArray(filename, movieArray);// overwrite file
         System.out.println(movieAdmin.getTitle()+" has been created.");
+        System.out.println();
         return true;
     }
 
