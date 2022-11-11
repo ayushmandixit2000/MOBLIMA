@@ -9,17 +9,24 @@ import MOBLIMA.listing.movielisting;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.save.saveShowtime;
 import MOBLIMA.utils.dateTime;
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class createShowtimeHandler {
-    public static final String SEPARATOR = "|";
     private static LocalTime showtime;
     private static String inputDate;
     private static int movieId;
     private static String inputTime;
+    private static String filename = "MOBLIMA/databases/Showtime.txt";
+    private static ArrayList showTimeArray;
 
-    public static void create(String cnplx, int cnm, String cc) {
+    public static void save(Showtime s) throws IOException {
+        showTimeArray = retrieveShowtime.readShowtime(filename); // retrieve current array
+        showTimeArray.add(s);
+        saveShowtime.saveShowtimeArray(filename, showTimeArray);
+        System.out.println("Created successfully");
+    }
+
+    public static void run(String cnplx, int cnm, String cc) {
         Scanner sc = new Scanner(System.in);
 
         try {
@@ -104,8 +111,7 @@ public class createShowtimeHandler {
                     }
                 }
             }
-            String filename = "MOBLIMA/databases/Showtime.txt";
-            ArrayList showtimeArray = retrieveShowtime.readShowtime(filename); // retrieve current array
+            System.out.println("Adding...");
             int[][] seating = { { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
                     { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
                     { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
@@ -115,19 +121,12 @@ public class createShowtimeHandler {
                     { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
                     { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
                     { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2 } };
+
             Showtime s = new Showtime(cc, dateTime.convertDate(inputDate), dateTime.convertTime(inputTime),
-                    chosenMovie.getMovieId(), seating); // add new showtime //\get movie id
-            showtimeArray.add(s);
-
-            saveShowtime.saveShowtimeArray(filename, showtimeArray);// overwrite file
-
-            System.out.println("Successfully added.");
+                    chosenMovie.getMovieId(), seating);
+            save(s);
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());
         }
-    }
-
-    public static void main(String[] aArgs) {
-        create("Ang Mo Kio", 2, "Ao2");
     }
 }

@@ -42,15 +42,15 @@ public class editShowtimeFacade {
         int todo = asa.getChoice();
         switch (todo) {
             case 1: // Create Showtime
-                createShowtimeHandler.create(cineplex, cinema, cinemaCode);
+                createShowtimeHandler.run(cineplex, cinema, cinemaCode);
                 break;
 
             case 2: // Update Showtime
-                updateShowtimeHandler.update(cineplex, cinema, cinemaCode);
+                updateShowtimeHandler.run(cineplex, cinema, cinemaCode);
                 break;
 
             case 3: // Remove Showtime
-                removeShowtimeHandler.remove(cineplex, cinema, cinemaCode);
+                removeShowtimeHandler.run(cineplex, cinema, cinemaCode);
                 break;
 
             case 4:

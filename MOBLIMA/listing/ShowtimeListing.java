@@ -40,7 +40,7 @@ public class ShowtimeListing implements Listing {
                 System.out.print(counter + " - ");
                 counter++;
                 System.out.print("Date " + s.getDate());
-                System.out.print("  showtime " + s.getTime());
+                System.out.print("  Showtime " + s.getTime());
                 // System.out.print(" MovieId " + s.getMovieId());
                 for (int j = 0; j < movieArray.size(); j++) {
                     Movie m = (Movie) movieArray.get(j);

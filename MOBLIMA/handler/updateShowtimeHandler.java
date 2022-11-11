@@ -17,21 +17,26 @@ import MOBLIMA.utils.compareDates;
 import MOBLIMA.utils.dateTime;
 
 public class updateShowtimeHandler {
-    public static void save(Showtime st, String id) throws IOException {
-        String filename = "MOBLIMA/databases/showtime.txt";
-        ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
-        for (int i = 0; i < showTimeArray.size(); i++) {
-            Showtime s = (Showtime) showTimeArray.get(i);
-            if (s.getShowtimeId().equals(id)) {
-                showTimeArray.set(i, st);
-                break;
+    private static String filename = "MOBLIMA/databases/showtime.txt";
+    private static ArrayList showTimeArray;
+
+    public static void update(Showtime st, String id) throws IOException {
+        try {
+            for (int i = 0; i < showTimeArray.size(); i++) {
+                Showtime s = (Showtime) showTimeArray.get(i);
+                if (s.getShowtimeId().equals(id)) {
+                    showTimeArray.set(i, st);
+                    break;
+                }
             }
+            saveShowtime.saveShowtimeArray(filename, showTimeArray);
+            System.out.println("Updated successfully");
+        } catch (IOException e) {
+            System.out.println("IOException > " + e.getMessage());
         }
-        saveShowtime.saveShowtimeArray(filename, showTimeArray);
     }
 
-    public static void update(String cplx, int cnm, String cc) throws IOException {
-        String filename = "MOBLIMA/databases/showtime.txt";
+    public static void run(String cplx, int cnm, String cc) throws IOException {
         Scanner sc = new Scanner(System.in);
         LocalTime time = dateTime.convertTime("0100");
         LocalDate date = dateTime.convertDate("2016/01/01");
@@ -41,19 +46,19 @@ public class updateShowtimeHandler {
                 0);
         String showtimeDetails = "";
         try {
-            ArrayList al = retrieveShowtime.readShowtime(filename);
+            showTimeArray = retrieveShowtime.readShowtime(filename);
             ShowtimeListing stl = new ShowtimeListing();
             stl.populate(cplx, cnm, cc);
             stl.displayListing();
             System.out.println("Enter showtime number that you would like to Update: ");
             int userindex = sc.nextInt();
-            Collections.sort(al, new compareDates());
-            for (int i = 0; i < al.size(); i++) {
-                Showtime s = (Showtime) al.get(i);
+            Collections.sort(showTimeArray, new compareDates());
+            for (int i = 0; i < showTimeArray.size(); i++) {
+                Showtime s = (Showtime) showTimeArray.get(i);
                 if ((s.getCinema()).equals(cc)) {
                     if (FirstCounter == userindex) {
-                        filename = "MOBLIMA/databases/movie.txt";
-                        ArrayList movieArray = retrieveMovie.readMovie(filename);
+                        String filename1 = "MOBLIMA/databases/movie.txt";
+                        ArrayList movieArray = retrieveMovie.readMovie(filename1);
                         for (int j = 0; j < movieArray.size(); j++) {
                             Movie m1 = (Movie) movieArray.get(j);
                             if (m1.getMovieId() == s.getMovieId()) {
@@ -98,11 +103,11 @@ public class updateShowtimeHandler {
                         chosenMovie = ml.getChosenMovie();
                         break;
                     case 3:
-                        System.out.println("Saving...");
                         editParameter = 100;
                         break;
                 }
             }
+            System.out.println("Updating...");
             int[][] seating = { { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
                     { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
                     { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
@@ -113,7 +118,7 @@ public class updateShowtimeHandler {
                     { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
                     { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2 } };
             Showtime newST = new Showtime(cc, date, time, chosenMovie.getMovieId(), seating);
-            save(newST, oldShowtimeId);
+            update(newST, oldShowtimeId);
         } catch (IOException e) {
             System.out.println("IOException > " + e.getMessage());
         }
