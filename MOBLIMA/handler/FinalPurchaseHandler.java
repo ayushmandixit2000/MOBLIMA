@@ -8,6 +8,7 @@ import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrieveCinema;
 import MOBLIMA.retrieval.retrieveMovie;
+import MOBLIMA.save.saveMovie;
 
 public class FinalPurchaseHandler {
     private MovieTicket[] customertickers;
@@ -143,9 +144,16 @@ public class FinalPurchaseHandler {
         int sales1 = m1.getSales();
         int roundVal= (int) Math.round(totalprice);
         sales1 = sales1 + roundVal;
-        m1.setSales(sales1);
-
-
+        
+        ArrayList movieArray1 = retrieveMovie.readMovie(filename);
+        for (int i = 0; i < movieArray1.size(); i++) {
+            Movie m = (Movie) movieArray1.get(i);
+            if (m.getMovieId() == m1.getMovieId()) {
+                m.setSales(sales1);
+                movieArray1.set(m1.getMovieId(), m);
+                saveMovie.saveMovieArray(filename, movieArray1);
+            }   
+        }
         TransactionProccessingHandler tp = new TransactionProccessingHandler();
         tp.settickets(customertickers);
         tp.setuser(user);

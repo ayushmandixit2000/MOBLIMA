@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.annotation.processing.SupportedSourceVersion;
+
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveReview;
 import MOBLIMA.save.saveMovie;
@@ -144,16 +146,17 @@ public class Movie implements Serializable {
         this.movieType = movieType;
     }
 
-    public void setSales(int sales) throws IOException {
-        ArrayList movieArray = retrieveMovie.readMovie(filename);
-        for (int i = 0; i < movieArray.size(); i++) {
-            Movie m = (Movie) movieArray.get(i);
-            if (m.getMovieId() == this.movieId) {
-                this.sales = sales;
-            }
-            saveMovie.saveMovieArray(filename, movieArray);
-        }
-        return;
+    public void setSales(int sales) {
+        this.sales = sales;
+        // ArrayList movieArray = retrieveMovie.readMovie(filename);
+        // for (int i = 0; i < movieArray.size(); i++) {
+        //     Movie m = (Movie) movieArray.get(i);
+        //     if (m.getMovieId() == this.movieId) {
+        //         this.sales = sales;
+        //         saveMovie.saveMovieArray(filename, movieArray);
+        //     }   
+        // }
+        // return;
     }
 
     public void setIsDeleted(int isDeleted) {

@@ -20,7 +20,7 @@ public class top5RatingListing {
             Movie m = (Movie) movieObjects.get(i); // pulls one movie object from the arraylist
             String title = m.getTitle();
             double rating = m.getAvgRating();
-            if (m.getNumReviews() >= 1) {
+            if (m.getNumReviews() >= 1 && m.getIsDeleted() == 0) {
                 titleRatings newObject = new titleRatings(title, rating);
                 ratingsTitle.add(newObject);
             }
