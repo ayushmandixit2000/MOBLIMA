@@ -100,9 +100,7 @@ public class updateShowtimeHandler {
         try {
 
             ArrayList al = retrieveShowtime.readShowtime(filename);
-            
-
-
+    
             // Print the showtime for user to see:
             ShowtimeListing stl = new ShowtimeListing();
             stl.populate(cplx, cnm, cc);
@@ -128,18 +126,6 @@ public class updateShowtimeHandler {
                         seating = s.getSeating();
                         showtimeID = s.getShowtimeId();
                         System.out.println("showtimeID" + showtimeID);
-
-                        for (int j = 0; j < 9; j++) {
-                            for (int k = 0; k < 19; k++) {
-                                st.append(s.getSeating()[j][k]);
-                                st.append(',');
-                            }
-                            st.setLength(st.length() - 1);
-                            if (j < 8) {
-                            st.append('.');
-                            }
-                        }
-
                         seatingstr = st.toString();
 
                         // System.out.println(seating.toString());
@@ -150,19 +136,11 @@ public class updateShowtimeHandler {
             }
 
             String oldString = cc + "|" + localdate.toString().replace("-", "/") + "|" +  localtime.toString().replace(":", "") + "|" 
-                            + movieId + "|"  + seatingstr + "|" + showtimeID;
+                            + movieId + "|"  + showtimeID;
 
             System.out.println(oldString);
 
-            // // Process localtime
-            // String strshowtime = time.toString();
-            // String convertedShowTime = strshowtime.replace(":", "");
-            // System.out.println(convertedShowTime);
 
-            // // Process localdate
-            // String strlocaldate = date.toString();
-            // String convertedLocalDate = strlocaldate.replace("-", "/");
-            // System.out.println(convertedLocalDate);
 
             System.out.println("Select the parameter you would like to edit: \n"
             + "0 - Date \n"

@@ -5,7 +5,10 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+
+import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.Showtime;
+import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.utils.compareDates;
 
@@ -19,13 +22,17 @@ public class ShowtimeListing implements Listing {
 
         String filename = "MOBLIMA/databases/showtime.txt";
         ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
+        filename = "MOBLIMA/databases/movie.txt";
+        ArrayList movieArray = retrieveMovie.readMovie(filename);
+
         int counter = 0;
 
-        System.out.println("Displaying showtime at... \nCineplex: " + cineplex + "   Cinema: " + cinema + "   Cinema Code: "
-                + cinemaCode + "\n");
+        System.out.println(
+                "Displaying showtime at... \nCineplex: " + cineplex + "   Cinema: " + cinema + "   Cinema Code: "
+                        + cinemaCode + "\n");
 
         System.out.println("Showtime: ");
-        
+
         Collections.sort(showTimeArray, new compareDates());
         for (int i = 0; i < showTimeArray.size(); i++) {
             Showtime s = (Showtime) showTimeArray.get(i);
@@ -34,7 +41,14 @@ public class ShowtimeListing implements Listing {
                 counter++;
                 System.out.print("Date " + s.getDate());
                 System.out.print("  showtime " + s.getTime());
-                System.out.println("  MovieId " + s.getMovieId());
+                // System.out.print(" MovieId " + s.getMovieId());
+                for (int j = 0; j < movieArray.size(); j++) {
+                    Movie m = (Movie) movieArray.get(j);
+                    if (m.getMovieId() == s.getMovieId()) {
+                        System.out.println("  Movie: " + m.getTitle());
+                        break;
+                    }
+                }
             }
         }
         System.out.println("");

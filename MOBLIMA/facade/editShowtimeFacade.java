@@ -1,7 +1,6 @@
 package MOBLIMA.facade;
 
 import java.io.IOException;
-import java.util.Scanner;
 import MOBLIMA.listing.*;
 import MOBLIMA.action.adminShowtimeAction;
 import MOBLIMA.handler.createShowtimeHandler;
@@ -31,8 +30,6 @@ public class editShowtimeFacade {
         // First + last letter of cineplex + cinema number
         String cinemaCode = String.valueOf(cineplex.charAt(0)) + String.valueOf(cineplex.charAt(cineplexlength - 1))
                 + String.valueOf(cinema);
-        
-        //        System.out.println("Cinema Code: " + cinemaCode);
 
         // Showitme Listing
         ShowtimeListing sl = new ShowtimeListing();
@@ -44,14 +41,17 @@ public class editShowtimeFacade {
         asa.displayChoices();
         int todo = asa.getChoice();
         switch (todo) {
-            case 0: // Create Showtime
+            case 1: // Create Showtime
                 createShowtimeHandler.create(cineplex, cinema, cinemaCode);
+                break;
 
-            case 1: // Update Showtime
+            case 2: // Update Showtime
                 updateShowtimeHandler.update(cineplex, cinema, cinemaCode);
+                break;
 
-            case 2: // Remove Showtime
+            case 3: // Remove Showtime
                 removeShowtimeHandler.remove(cineplex, cinema, cinemaCode);
+                break;
 
             case 4:
                 System.out.println("Exiting");
