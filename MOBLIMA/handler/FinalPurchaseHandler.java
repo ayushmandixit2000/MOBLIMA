@@ -32,6 +32,8 @@ public class FinalPurchaseHandler {
         String title = "";
         int movietype = -1;
 
+        Movie m1 = new Movie(2, "title", 2, "director", new String[] { "cast1", "cast2" }, "synopsis", 1, 1, 0);
+
         String filename = "MOBLIMA/databases/movie.txt";
         ArrayList movieArray = retrieveMovie.readMovie(filename);
         for (int i = 0; i < movieArray.size(); i++) {
@@ -39,8 +41,11 @@ public class FinalPurchaseHandler {
             if (m.getMovieId() == s.getMovieId()) {
                 title = m.getTitle();
                 movietype = m.getMovieType();
+                m1 = m;
             }
         }
+
+        m1.getAvgRating();
 
         int cinematype = 0;
         int cinep = -1;
@@ -134,6 +139,12 @@ public class FinalPurchaseHandler {
 
         System.out.println();
         System.out.println("Total cost: $" + totalprice);
+
+        int sales1 = m1.getSales();
+        int roundVal= (int) Math.round(totalprice);
+        sales1 = sales1 + roundVal;
+        m1.setSales(sales1);
+
 
         TransactionProccessingHandler tp = new TransactionProccessingHandler();
         tp.settickets(customertickers);

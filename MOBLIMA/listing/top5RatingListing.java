@@ -29,14 +29,18 @@ public class top5RatingListing {
                 Comparator.comparingDouble(titleRatings::getRating));
 
         if (ratingsTitle.size() < 5) {
-            for (int j = 0; j < ratingsTitle.size(); j++) {
+            int num = 1;
+            for (int j = ratingsTitle.size() -1 ; j > -1; j--) {
                 System.out.println(
-                        "Movie:" + ratingsTitle.get(j).getTitle() + " Total sales:" + ratingsTitle.get(j).getRating());
+                    num + ":   Rated: [" + ratingsTitle.get(j).getRating() + "]     " + ratingsTitle.get(j).getTitle());
+                    num++;
             }
         } else {
-            for (int j = 0; j < 5; j++) {
+            int num1 = 1;
+            for (int j = ratingsTitle.size()-1; j > ratingsTitle.size() - 6; j--) {
                 System.out.println(
-                        "Movie:" + ratingsTitle.get(j).getTitle() + " Total sales:" + ratingsTitle.get(j).getRating());
+                    num1 + ":   Rated: [" + ratingsTitle.get(j).getRating() + "]     " + ratingsTitle.get(j).getTitle());
+                    num1++;
             }
         }
     }
