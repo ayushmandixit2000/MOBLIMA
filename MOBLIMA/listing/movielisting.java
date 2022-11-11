@@ -64,7 +64,7 @@ public class movielisting {
         }
 
         for (int h = 0; h < mov.length; h++) {
-            Movie m2 = (Movie) movieArray.get(h);
+            Movie m2 = (Movie) mov[h];
             if (opt == h + 1) {
                 System.out.println("Movie Selected: " + m2.getTitle());
                 chosenMovie = m2;
