@@ -7,12 +7,17 @@ import MOBLIMA.configurables.peakPricing;
 public class configurePeakPricing implements configure {
     public void displaySetting() throws IOException {
         System.out.println("Current ticket pricing multipliers:");
-        System.out.print("Non-peak: x");
+        System.out.print("Non-peak: x ");
         System.out.println(peakPricing.getNonPeakMultiplier());
-        System.out.print("Peak: x");
+        System.out.print("Peak: x m ");
         System.out.println(peakPricing.getPeakMultiplier());
         System.out.print("Premium Surcharge: ");
         System.out.println(peakPricing.getPremiumPrice());
+        System.out.print("Elite Seat multiplier: x ");
+        System.out.println(peakPricing.getPriceOfElite());
+        System.out.print("Ultima Seat multiplier: x ");
+        System.out.println(peakPricing.getPriceOfUltima());
+        System.out.println("_____________________________________________________________");
     }
 
     public void getNewSetting() throws IOException {
@@ -41,6 +46,23 @@ public class configurePeakPricing implements configure {
         }
         Double extra = sc.nextDouble();
         peakPricing.setPremiumPrice(extra);
+
+        System.out.println("Please new elite seat surcharge:");
+        while (!sc.hasNextDouble()) {
+            System.out.println("Please input a double:");
+            sc.next();
+        }
+        extra = sc.nextDouble();
+        peakPricing.setPriceOfElite(extra);
+
+        System.out.println("Please new ultima seat surcharge:");
+        while (!sc.hasNextDouble()) {
+            System.out.println("Please input a double:");
+            sc.next();
+        }
+        extra = sc.nextDouble();
+        peakPricing.setPriceOfUltima(extra);
+
         peakPricing.saveMultipliers();
     }
 }

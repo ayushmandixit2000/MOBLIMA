@@ -13,7 +13,6 @@ public class CineplexApp {
                 boolean quit = false;
                 String input = "0";
                 int option = 0;
-                boolean flag;
                 while (!quit) {
                         printHRPSTitle();
 

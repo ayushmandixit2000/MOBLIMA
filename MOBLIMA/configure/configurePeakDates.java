@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-
 import MOBLIMA.configurables.peakDates;
 import MOBLIMA.utils.comparePH;
 import MOBLIMA.utils.dateTime;
@@ -23,7 +22,7 @@ public class configurePeakDates {
             System.out.print(dateTime.convertDate(d));
             System.out.print(" | ");
         }
-        System.out.println();
+        System.out.println("_____________________________________________________________");
     }
 
     public void getNewSetting() throws IOException {
