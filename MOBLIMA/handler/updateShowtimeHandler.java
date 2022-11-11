@@ -3,6 +3,9 @@ package MOBLIMA.handler;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -50,8 +53,39 @@ public class updateShowtimeHandler {
             ShowtimeListing stl = new ShowtimeListing();
             stl.populate(cplx, cnm, cc);
             stl.displayListing();
-            System.out.println("Enter showtime number that you would like to Update: ");
-            int userindex = sc.nextInt();
+            int validShowtimes = stl.getValidShowtimes();
+            if(validShowtimes==0){
+                System.out.println("Please create a showtime.");
+                return;
+            }
+
+            boolean flag;
+            int userindex = -1;
+
+            // to prevent users from keying in data that is not integer 
+            do{
+                try{
+                    System.out.println("Enter showtime number that you would like to Update: ");
+                    userindex = sc.nextInt();
+                    flag = false;
+                    if (userindex < 0 || userindex >= validShowtimes) {
+                        System.out.println("Invalid option. Please key in valid numbers");
+                        flag = true;
+                    }
+                    else{
+                        flag = false;
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Inavlid input. Please enter intergers only");
+                    sc.nextLine();
+                    flag = true;
+                }
+            }
+            while(flag);
+            sc.nextLine();
+
+            
             Collections.sort(showTimeArray, new compareDates());
             for (int i = 0; i < showTimeArray.size(); i++) {
                 Showtime s = (Showtime) showTimeArray.get(i);
@@ -77,6 +111,7 @@ public class updateShowtimeHandler {
                 }
             }
             System.out.println(showtimeDetails);
+            System.out.println("showtime size: "+FirstCounter);
             int editParameter = -1;
             while (editParameter != 100) {
                 System.out.println("Select the parameter you would like to edit: \n"
@@ -84,17 +119,73 @@ public class updateShowtimeHandler {
                         + "1 - Time \n"
                         + "2 - Movie \n"
                         + "3 - Exit");
-                editParameter = sc.nextInt();
+
+                 // to prevent users from keying in data that is not string 
+                do{
+                    try{
+                        editParameter = sc.nextInt();
+                        flag = false;
+                        if (editParameter < 0 || editParameter > 3) {
+                            System.out.println("Invalid option. Please key in valid numbers");
+                            flag = true;
+                        }
+                        else{
+                            flag = false;
+                        }
+                    }
+                    catch(Exception e){
+                        System.out.println("Inavlid input. Please enter intergers only");
+                        sc.nextLine();
+                        flag = true;
+                    }
+                }
+                while(flag);
+                sc.nextLine();
+
+                
                 switch (editParameter) {
                     case 0:
+                        String inputDate = "date";
                         System.out.println("Editing Date: ");
-                        System.out.println("input date in YYYY/MM/DD format");
-                        date = dateTime.convertDate(sc.next());
+                        DateTimeFormatter strictDateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                        // error handling for invalid input
+                        do{
+                            try{
+                                System.out.println("Input date in YYYY/MM/DD format");
+                                inputDate = sc.next();
+                                LocalDate.parse(inputDate, strictDateFormatter);
+                                flag = false;
+                            }
+                            catch(DateTimeParseException e){
+                                System.out.println("Invalid input. Please try again.");
+                                flag = true;   
+                            }
+                        }
+                        while(flag);
+                        date = dateTime.convertDate(inputDate);
                         break;
+
                     case 1:
+                        String inputTime = "time";
                         System.out.println("Editing Time: ");
-                        System.out.println("input time in HHMM format");
-                        time = dateTime.convertTime(sc.next());
+                        // error handling for invalid input
+                        DateTimeFormatter strictTimeFormatter = DateTimeFormatter.ofPattern("HHmm").withResolverStyle(ResolverStyle.STRICT);
+                        do{
+                            try{
+                                System.out.println("Input time in HHMM format");
+                                inputTime = sc.next();
+                                LocalTime.parse(inputTime, strictTimeFormatter);
+                                flag = false;
+                            }
+                            catch(DateTimeParseException e){
+                                System.out.println("Invalid input. Please try again.");
+                                flag = true;
+                                
+                            }
+                        }
+                        while(flag);
+                        time = dateTime.convertTime(inputTime);
+                        
                         break;
                     case 2:
                         System.out.println("Editing Movie: ");

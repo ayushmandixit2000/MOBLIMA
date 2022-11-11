@@ -17,6 +17,7 @@ public class ShowtimeListing implements Listing {
     private String cineplex;
     private int cinema;
     private String cinemaCode;
+    private int validShowtimes;
 
     public void displayListing() throws IOException {
 
@@ -51,6 +52,7 @@ public class ShowtimeListing implements Listing {
                 }
             }
         }
+        this.validShowtimes = counter;
         System.out.println("");
         if (counter == 0) {
             System.out.println("Sorry there are no showtime created yet\n");
@@ -99,6 +101,10 @@ public class ShowtimeListing implements Listing {
 
         System.out.println(lt);
 
+    }
+
+    public int getValidShowtimes(){
+        return this.validShowtimes;
     }
 
 }
