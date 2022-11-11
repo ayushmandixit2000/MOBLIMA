@@ -14,7 +14,6 @@ public class adminShowtimeAction implements action {
 
     public int getChoice() throws IOException {
         Scanner sc = new Scanner(System.in);
-        boolean loop = true;
         int choice = 0;
         boolean flag;
          // to prevent users from keying in data that is not string 
@@ -38,7 +37,7 @@ public class adminShowtimeAction implements action {
         }
         while(flag);
         sc.nextLine();
-        
+
         return choice;
 
     }
