@@ -25,10 +25,15 @@ public class MovieListing implements Listing {
         this.validMovies.removeIf(Movie -> Movie.getIsDeleted() != 0); // create array with valid movies
 
         // print movie list
-        System.out.println("Movies available: ");
-        for(int i = 0; i<this.validMovies.size(); i++){
-            Movie m = this.validMovies.get(i);
-            System.out.println((i+1)+": "+m.getTitle());
+        if(this.validMovies.size()==0){
+            System.out.println("No movies available currently.");
+        }
+        else{
+            System.out.println("Movies available: ");
+            for(int i = 0; i<this.validMovies.size(); i++){
+                Movie m = this.validMovies.get(i);
+                System.out.println((i+1)+": "+m.getTitle());
+            }
         }
     }
 

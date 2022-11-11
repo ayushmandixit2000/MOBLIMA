@@ -47,6 +47,12 @@ public class updateMovieHandler {
         ArrayList<Movie> validMovies = showValidMovies.getValidMovies();
         int numbOfMovies= validMovies.size();
 
+        // if there are no movies available
+        if(validMovies.size()==0){
+            showValidMovies.displayListing();
+            return true;
+        }
+
         boolean loop = true;
         boolean flag;
 
