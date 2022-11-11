@@ -33,7 +33,7 @@ public class pastTransactionsFacade {
         }
 
         if (optionlist.size() == 0) {
-            System.out.println("\nNo past history on Moblima for user" + userid);
+            System.out.println("\nNo past history on Moblima for user " + userid);
         }
 
         else {

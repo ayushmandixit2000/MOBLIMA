@@ -68,6 +68,19 @@ public class SeatAvailabilityHandler {
         System.out.println();
         System.out.println("_____________________________________________________");
 
+       
+        int isg = 0;
+
+        if(user.equalsIgnoreCase("guest1")){
+            isg = 1;
+        }
+
+        if(isg == 1){
+            System.out.println();
+            System.out.println("Please quit and login to book");
+            return;
+        }
+       
         System.out.println("Would you like to select seats? ");
         System.out.println("1: Yes");
         System.out.println("2: No");
