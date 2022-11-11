@@ -15,16 +15,35 @@ public class MovieTicket {
     private int seatingColumn;
     private double price;
     private String showtimeId;
+    private int seatClass;
 
-    public MovieTicket(String a, int sr, int sc, String st) throws NumberFormatException, IOException {
-        movieTicketId = st + String.valueOf(sr) + String.valueOf(sc); // dont need movieTicketId- will be populated
+    // public MovieTicket(String a, int sr, int sc, String st) throws NumberFormatException, IOException {
+    //     movieTicketId = st + String.valueOf(sr) + String.valueOf(sc); // dont need movieTicketId- will be populated
+    //     ageCat = a;
+    //     seatingRow = sr;
+    //     seatingColumn = sc;
+    //     LocalDate d = dateTime.convertDate(st.substring(3, 13));
+    //     price = TicketPrice.calculatePrice(d, Integer.valueOf(a), st);
+    //     showtimeId = st;
+    // }
+    public MovieTicket(String a, int sr, int sc, String st, int seatClass) throws NumberFormatException, IOException {
+        movieTicketId = st + String.valueOf(sr) + String.valueOf(sc)+ String.valueOf(seatClass); // dont need movieTicketId- will be populated
         ageCat = a;
         seatingRow = sr;
         seatingColumn = sc;
         LocalDate d = dateTime.convertDate(st.substring(3, 13));
-        price = TicketPrice.calculatePrice(d, Integer.valueOf(a), st);
+        price = TicketPrice.calculatePrice(d, Integer.valueOf(a), st, seatClass);
         showtimeId = st;
+        this.seatClass= seatClass;
     }
+    public int getSeatClass() {
+        return seatClass;
+    }
+    public void setSeatClass(int seatClass) {
+        this.seatClass = seatClass;
+    }
+
+    //0 is normal, 1 is elite and 2 is ultima
 
     // check for seat availability
     // public static boolean checkSeat(String showtimeId, int row, int column) throws IOException {

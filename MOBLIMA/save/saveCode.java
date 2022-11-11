@@ -75,7 +75,7 @@ public class saveCode {
 
                 filename = "MOBLIMA/databases/MovieTicket.txt";
                 ArrayList movieTicketArray = retrieveMovieTicket.readMovieTicket(filename); // retrieve current array
-                MovieTicket mt = new MovieTicket("0", 1, 5, "Dog2022/12/141630");// add new showtime
+                MovieTicket mt = new MovieTicket("0", 1, 5, "Dog2022/12/141630",0);// add new showtime
                 movieTicketArray.add(mt);
                 saveMovieTicket.saveMovieTicketArray(filename, movieTicketArray);// save to same file
 

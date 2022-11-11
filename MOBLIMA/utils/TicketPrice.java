@@ -11,7 +11,7 @@ import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.retrieval.retrieveCinema;
 
 public class TicketPrice {
-    public static double calculatePrice(LocalDate date, int ageCat, String showtimeId) throws IOException {
+    public static double calculatePrice(LocalDate date, int ageCat, String showtimeId, int seatClass) throws IOException {
         double price = 0;
         switch (ageCat) {
             case 0:
@@ -32,6 +32,14 @@ public class TicketPrice {
             price = price * peakPricing.getPeakMultiplier();
         } else {
             price = price * peakPricing.getNonPeakMultiplier();
+        }
+        switch (seatClass){
+            case 1:
+                price= price * peakPricing.getPriceOfElite();
+                break;
+            case 2:
+                price= price* peakPricing.getPriceOfUltima();
+                break;
         }
 
         String cin = showtimeId.substring(0, 3);

@@ -98,6 +98,23 @@ public class TransactionShowTimeListing implements Listing {
 
                             System.out.println("Cineplex: " + cp);
 
+
+                            int SC = mt.getSeatClass();
+
+                            String seatc = "";
+                            if(SC == 0){
+                                seatc = "Normal Seat";
+                            }
+
+                            else if(SC == 1){
+                                seatc = "Elite Seat";
+                            }
+
+                            else if(SC == 2){
+                                seatc = "Ultima Seat";
+                            }
+
+
                             String age1 = mt.getAgeCat();
                             int age = Integer.parseInt(age1);
 
@@ -122,6 +139,8 @@ public class TransactionShowTimeListing implements Listing {
                             System.out.println("Seating Column: " + mt.getSeatingColumn());
 
                             System.out.println("Ticket Price: " + mt.getPrice());
+
+                            System.out.println("Seat Type: " + seatc);
 
                             System.out.println("__________________________________________________");
 

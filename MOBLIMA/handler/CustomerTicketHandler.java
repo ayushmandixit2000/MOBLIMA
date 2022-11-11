@@ -36,6 +36,22 @@ public class CustomerTicketHandler {
             System.out.println("Row: " + Character.toString((char) (seats[i][0] + 65)));
             System.out.println("Column: " + seats[i][1]); // -1 when sending to database
 
+            int[][] st = s1.getSeating();
+
+            int SC = 0;
+
+            if(st[seats[i][0]][seats[i][1] - 1] == 0){
+                SC = 0;
+            }
+
+            else if(st[seats[i][0]][seats[i][1] - 1] == 3){
+                SC = 1;
+            }
+
+            else if(st[seats[i][0]][seats[i][1] - 1] == 4){
+                SC = 2;
+            }
+
             s1.addSeating(seats[i][0], seats[i][1] - 1);
 
             System.out.println("What age category ticket would you like?");
@@ -61,12 +77,13 @@ public class CustomerTicketHandler {
                 }
             }
 
+
             ageopt = ageopt - 1;
             String age = Integer.toString(ageopt);
             String filename = "MOBLIMA/databases/MovieTicket.txt";
 
             ArrayList movieTicketArray = retrieveMovieTicket.readMovieTicket(filename); // retrieve current array
-            MovieTicket mt = new MovieTicket(age, seats[i][0], seats[i][1] - 1, s1.getShowtimeId());// add new showtime
+            MovieTicket mt = new MovieTicket(age, seats[i][0], seats[i][1] - 1, s1.getShowtimeId(), SC);// add new showtime
             movieTicketArray.add(mt);
             saveMovieTicket.saveMovieTicketArray(filename, movieTicketArray);// save to same file
 

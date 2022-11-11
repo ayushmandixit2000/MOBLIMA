@@ -28,8 +28,10 @@ public class retrieveMovieTicket {
             int column = Integer.parseInt(star.nextToken().trim());
             double price = Double.parseDouble(star.nextToken().trim());
             String showtimeId = star.nextToken().trim();
+            int seatClass = Integer.parseInt(star.nextToken().trim());
 
-            MovieTicket mt = new MovieTicket(ageCat, row, column, showtimeId); // price is calculated
+
+            MovieTicket mt = new MovieTicket(ageCat, row, column, showtimeId,seatClass); // price is calculated
             alr.add(mt);
         }
         return alr;

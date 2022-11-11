@@ -120,6 +120,23 @@ public class FinalPurchaseHandler {
                 agec = "Senior Citizen";
             }
 
+            int SC = customertickers[z].getSeatClass();
+
+            String seatc = "";
+            if(SC == 0){
+                seatc = "Normal Seat";
+            }
+
+            else if(SC == 1){
+                seatc = "Elite Seat";
+            }
+
+            else if(SC == 2){
+                seatc = "Ultima Seat";
+            }
+
+            
+
             System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
             System.out.println("_____________________________________________________________________");
             System.out.println("Movie : " + title + "     Type: " + movietypeS);
@@ -129,7 +146,7 @@ public class FinalPurchaseHandler {
             System.out.println("Ticket Price : $" + customertickers[z].getPrice());
             System.out.println("_____________________________________________________________________");
             System.out.println("Seating  - Row: " + Character.toString((char) (customertickers[z].getSeatingRow() + 65))
-                    + "   Column: " + ((customertickers[z].getSeatingColumn()) + 1));
+                    + "   Column: " + ((customertickers[z].getSeatingColumn()) + 1) + "     " + seatc);
             System.out.println("_____________________________________________________________________");
             System.out.println("Showtime - Date: " + s.getDate() + "        Time: " + s.getTime());
             System.out.println("_____________________________________________________________________");
