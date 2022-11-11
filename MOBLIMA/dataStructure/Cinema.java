@@ -10,7 +10,8 @@ public class Cinema {
      *            are starting and ending of cineplex name and last letter is the
      *            cinema number)
      * @param cp- integer denoting the 3 managed cineplex
-     * @param mc- integer denoting whether cinema is Default (0) or Platinum Movie Suite (1)
+     * @param mc- integer denoting whether cinema is Default (0) or Platinum Movie
+     *            Suite (1)
      */
 
     public Cinema(String c, int cp, int mc) {
