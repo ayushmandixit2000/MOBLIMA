@@ -1,16 +1,16 @@
-package MOBLIMA.useractions;
+package MOBLIMA.handler;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 import MOBLIMA.dataStructure.Showtime;
 
-public class choosingseats {
+public class choosingseatsHandler {
     private Showtime s1;
 
     private String user;
 
-    public void setuser(String ui){
+    public void setuser(String ui) {
         this.user = ui;
     }
 
@@ -21,8 +21,7 @@ public class choosingseats {
     public void display() throws IOException {
         Scanner scc = new Scanner(System.in);
         System.out.println("How many tickets will you like to purchase?");
-        
-        
+
         int num;
 
         while (true) {
@@ -30,19 +29,16 @@ public class choosingseats {
             num = 0;
             try {
                 num = Integer.parseInt(input);
-                if(num > 30 || num< 1){
+                if (num > 30 || num < 1) {
                     System.out.println("Please key in a valid number!");
                     continue;
-                }
-                else{
-                break;
+                } else {
+                    break;
                 }
             } catch (NumberFormatException ne) {
                 System.out.println("Please key in a number only!");
             }
         }
-
-
 
         System.out
                 .println("Please key in seat. Note: Choose unoccupied seats (0) and enter the row followed by column");
@@ -67,28 +63,25 @@ public class choosingseats {
                     r = (int) row1;
                 }
 
-
                 System.out.println("Select column: ");
-                
+
                 int column;
 
                 while (true) {
                     String input = scc.next();
                     column = 0;
                     try {
-                    column = Integer.parseInt(input);
-                    if(column > 18 || column < 1){
-                    System.out.println("Please key in a valid number!");
-                    continue;
+                        column = Integer.parseInt(input);
+                        if (column > 18 || column < 1) {
+                            System.out.println("Please key in a valid number!");
+                            continue;
+                        } else {
+                            break;
+                        }
+                    } catch (NumberFormatException ne) {
+                        System.out.println("Please key in a number only!");
                     }
-                    else{
-                        break;
                 }
-            } catch (NumberFormatException ne) {
-                System.out.println("Please key in a number only!");
-            }
-        }
-
 
                 String s8 = Character.toString((char) r);
                 System.out.println("Row Selected: " + s8);
@@ -148,12 +141,12 @@ public class choosingseats {
             for (int j = 0; j < st[i].length; j++) {
                 if (inarray(i, j + 1, chosenseat)) {
                     System.out.print("X");
-                } 
-
-                else if(st[i][j] == 2){
-                    System.out.print(" "); 
                 }
-                
+
+                else if (st[i][j] == 2) {
+                    System.out.print(" ");
+                }
+
                 else {
                     System.out.print(st[i][j]);
                 }
@@ -162,7 +155,6 @@ public class choosingseats {
             System.out.println();
             System.out.println();
         }
-
 
         System.out.println("__________Exit 1________________________Exit 2____________");
         System.out.println();
@@ -184,12 +176,11 @@ public class choosingseats {
             conopt = 0;
             try {
                 conopt = Integer.parseInt(input);
-                if(conopt > 2 || conopt < 1){
+                if (conopt > 2 || conopt < 1) {
                     System.out.println("Please key in a valid number!");
                     continue;
-                }
-                else{
-                break;
+                } else {
+                    break;
                 }
             } catch (NumberFormatException ne) {
                 System.out.println("Please key in a number only!");
@@ -201,7 +192,7 @@ public class choosingseats {
             return;
         }
 
-        CustomerTicket ct = new CustomerTicket();
+        CustomerTicketHandler ct = new CustomerTicketHandler();
         ct.setshow(s1);
         ct.setseats(chosenseat);
         ct.setuser(user);

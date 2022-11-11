@@ -1,4 +1,5 @@
-package MOBLIMA.useractions;
+package MOBLIMA.handler;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,7 +11,7 @@ import MOBLIMA.retrieval.retrieveReview;
 import MOBLIMA.save.saveMovie;
 import MOBLIMA.save.saveReview;
 
-public class Customerreview {
+public class CustomerreviewHandler {
     private Movie m1;
 
     public void setmovie(Movie m) {
@@ -24,7 +25,6 @@ public class Customerreview {
         Scanner scc = new Scanner(System.in);
         System.out.println("Please rate this movie out of 5:");
 
-        
         int score;
 
         while (true) {
@@ -32,18 +32,16 @@ public class Customerreview {
             score = 0;
             try {
                 score = Integer.parseInt(input);
-                if(score > 5 || score < 1){
+                if (score > 5 || score < 1) {
                     System.out.println("Please key in a number between 1-5 only");
                     continue;
-                }
-                else{
-                break;
+                } else {
+                    break;
                 }
             } catch (NumberFormatException ne) {
                 System.out.println("Please key in a number only!");
             }
         }
-
 
         String review = "";
         scc.nextLine();

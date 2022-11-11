@@ -1,16 +1,15 @@
-package MOBLIMA.useractions;
+package MOBLIMA.handler;
 
 import java.io.IOException;
 import java.util.Scanner;
-
 import MOBLIMA.dataStructure.Showtime;
 
-public class SeatAvailability {
+public class SeatAvailabilityHandler {
     private Showtime s;
 
     private String user;
 
-    public void setuser(String ui){
+    public void setuser(String ui) {
         this.user = ui;
     }
 
@@ -41,11 +40,10 @@ public class SeatAvailability {
             System.out.print("|" + s + "| ");
             k++;
             for (int j = 0; j < st[i].length; j++) {
-                if(st[i][j] == 2){
-                    System.out.print(" "); 
-                }
-                else{
-                System.out.print(st[i][j]);
+                if (st[i][j] == 2) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print(st[i][j]);
                 }
                 System.out.print("  ");
             }
@@ -72,12 +70,11 @@ public class SeatAvailability {
             opt = 0;
             try {
                 opt = Integer.parseInt(input);
-                if(opt > 2 || opt < 1){
+                if (opt > 2 || opt < 1) {
                     System.out.println("Please key in a valid number!");
                     continue;
-                }
-                else{
-                break;
+                } else {
+                    break;
                 }
             } catch (NumberFormatException ne) {
                 System.out.println("Please key in a number only!");
@@ -88,7 +85,7 @@ public class SeatAvailability {
             return;
         }
 
-        choosingseats cs = new choosingseats();
+        choosingseatsHandler cs = new choosingseatsHandler();
         cs.setshow(s);
         cs.setuser(user);
         cs.display();

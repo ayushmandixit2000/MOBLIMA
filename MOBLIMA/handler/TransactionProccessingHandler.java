@@ -1,4 +1,4 @@
-package MOBLIMA.useractions;
+package MOBLIMA.handler;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -11,12 +11,12 @@ import MOBLIMA.retrieval.retrieveTransaction;
 import MOBLIMA.save.saveTransaction;
 import MOBLIMA.utils.dateTime;
 
-public class TransactionProccessing {
+public class TransactionProccessingHandler {
     private MovieTicket[] customertickers;
 
     private String user;
 
-    public void setuser(String ui){
+    public void setuser(String ui) {
         this.user = ui;
     }
 
@@ -40,7 +40,7 @@ public class TransactionProccessing {
         String filename = "MOBLIMA/databases/transactions.txt";
         ArrayList transactionArray = retrieveTransaction.readTransaction(filename); // retrieve current array
 
-        Transaction t = new Transaction(date, time, user, ticketids );// add new
+        Transaction t = new Transaction(date, time, user, ticketids);// add new
         transactionArray.add(t);
         saveTransaction.saveTransactionArray(filename, transactionArray);// overwrite file
     }

@@ -1,23 +1,21 @@
-package MOBLIMA.useractions;
+package MOBLIMA.handler;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Showtime;
-import MOBLIMA.dataStructure.Transaction;
 import MOBLIMA.retrieval.retrieveCinema;
 import MOBLIMA.retrieval.retrieveMovie;
 
-public class FinalPurchase {
+public class FinalPurchaseHandler {
     private MovieTicket[] customertickers;
     private Showtime s;
 
     private String user;
 
-    public void setuser(String ui){
+    public void setuser(String ui) {
         this.user = ui;
     }
 
@@ -49,25 +47,24 @@ public class FinalPurchase {
         ArrayList cinemaArray = retrieveCinema.readCinema(filename1);
         for (int i = 0; i < cinemaArray.size(); i++) {
             Cinema c = (Cinema) cinemaArray.get(i);
-            if(c.getCinema().equals(s.getCinema())){
+            if (c.getCinema().equals(s.getCinema())) {
                 cinep = c.getCineplex();
             }
         }
 
         String cp = "";
 
-        if(cinep == 1){
+        if (cinep == 1) {
             cp = "Vivocity";
-        }
-        else if(cinep == 2){
+        } else if (cinep == 2) {
             cp = "Bishan";
         }
 
-        else if(cinep == 3){
+        else if (cinep == 3) {
             cp = "Orchard";
         }
 
-        else{
+        else {
             cp = "Ang Mo Kio";
         }
 
@@ -129,7 +126,7 @@ public class FinalPurchase {
         System.out.println();
         System.out.println("Total cost: $" + totalprice);
 
-        TransactionProccessing tp = new TransactionProccessing();
+        TransactionProccessingHandler tp = new TransactionProccessingHandler();
         tp.settickets(customertickers);
         tp.setuser(user);
         tp.display();

@@ -1,4 +1,4 @@
-package MOBLIMA.useractions;
+package MOBLIMA.handler;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,12 +12,12 @@ import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.utils.compareDates;
 
-public class CustomerBooking {
+public class CustomerBookingHandler {
     private Movie m;
 
     private String user;
 
-    public void setuser(String ui){
+    public void setuser(String ui) {
         this.user = ui;
     }
 
@@ -48,7 +48,7 @@ public class CustomerBooking {
         String filename = "MOBLIMA/databases/showtime.txt";
         ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
         List<Showtime> optionlist = new ArrayList<Showtime>();
-        Collections.sort(showTimeArray, new compareDates()); //added just this line
+        Collections.sort(showTimeArray, new compareDates()); // added just this line
 
         for (int i = 0; i < showTimeArray.size(); i++) {
             Showtime s = (Showtime) showTimeArray.get(i);
@@ -60,8 +60,6 @@ public class CustomerBooking {
         System.out.println("Please select a show for " + m.getTitle());
         Scanner scc = new Scanner(System.in);
 
-        
-
         for (int j = 0; j < optionlist.size(); j++) {
             Showtime s1 = optionlist.get(j);
             new peakDates();
@@ -69,11 +67,10 @@ public class CustomerBooking {
             if (peakDates.isPeak(s1.getDate())) {
                 s = "--Peak preiod pricing will apply";
             }
-    
+
             System.out.println(j + 1 + ": Cinema :" + s1.getCinema() + " ||" + "Date: " + s1.getDate() + " ||"
                     + "Time: " + s1.getTime() + "   " + s);
         }
-
 
         int option;
 
@@ -82,24 +79,22 @@ public class CustomerBooking {
             option = 0;
             try {
                 option = Integer.parseInt(input);
-                if(option > optionlist.size() || option < 1){
+                if (option > optionlist.size() || option < 1) {
                     System.out.println("Please key in a valid number!");
                     continue;
-                }
-                else{
-                break;
+                } else {
+                    break;
                 }
             } catch (NumberFormatException ne) {
                 System.out.println("Please key in a number only!");
             }
         }
 
-
         for (int l = 0; l < optionlist.size(); l++) {
             if (option == l + 1) {
                 Showtime s2 = optionlist.get(l);
 
-                SeatAvailability sa = new SeatAvailability();
+                SeatAvailabilityHandler sa = new SeatAvailabilityHandler();
                 sa.setshow(s2);
                 sa.setuser(user);
                 sa.display();

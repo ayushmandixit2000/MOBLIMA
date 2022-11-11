@@ -1,24 +1,20 @@
-package MOBLIMA.useractions;
+package MOBLIMA.handler;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import MOBLIMA.configurables.ageGroupPricing;
-import MOBLIMA.configurables.peakDates;
 import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrieveMovieTicket;
 import MOBLIMA.save.saveMovieTicket;
-import MOBLIMA.configurables.peakDates;
 
-public class CustomerTicket {
+public class CustomerTicketHandler {
     private Showtime s1;
     private int[][] seats;
 
     private String user;
 
-    public void setuser(String ui){
+    public void setuser(String ui) {
         this.user = ui;
     }
 
@@ -32,7 +28,7 @@ public class CustomerTicket {
 
     public void display() throws IOException {
 
-        MovieTicket [] ticketsarray = new MovieTicket[seats.length];
+        MovieTicket[] ticketsarray = new MovieTicket[seats.length];
         Scanner scc = new Scanner(System.in);
         for (int i = 0; i < seats.length; i++) {
             int sk = i + 1;
@@ -40,13 +36,12 @@ public class CustomerTicket {
             System.out.println("Row: " + Character.toString((char) (seats[i][0] + 65)));
             System.out.println("Column: " + seats[i][1]); // -1 when sending to database
 
-            s1.addSeating(seats[i][0] , seats[i][1]-1);
-            
+            s1.addSeating(seats[i][0], seats[i][1] - 1);
+
             System.out.println("What age category ticket would you like?");
             System.out.println("1: Child");
             System.out.println("2: Adult");
             System.out.println("3: Senior Citizen");
-
 
             int ageopt;
 
@@ -55,12 +50,11 @@ public class CustomerTicket {
                 ageopt = 0;
                 try {
                     ageopt = Integer.parseInt(input);
-                    if(ageopt > 3 || ageopt < 1){
+                    if (ageopt > 3 || ageopt < 1) {
                         System.out.println("Please key in a valid number!");
                         continue;
-                    }
-                    else{
-                    break;
+                    } else {
+                        break;
                     }
                 } catch (NumberFormatException ne) {
                     System.out.println("Please key in a number only!");
@@ -76,22 +70,20 @@ public class CustomerTicket {
             movieTicketArray.add(mt);
             saveMovieTicket.saveMovieTicketArray(filename, movieTicketArray);// save to same file
 
-            
-            //getting movieticket id
+            // getting movieticket id
             String filename1 = "MOBLIMA/databases/movieTicket.txt";
             ArrayList al = retrieveMovieTicket.readMovieTicket(filename1);
             for (int l = 0; l < al.size(); l++) {
                 MovieTicket mt1 = (MovieTicket) al.get(l);
-                if(mt1.getShowtimeId().equalsIgnoreCase(s1.getShowtimeId())){
-                    if(mt1.getSeatingRow() == seats[i][0] && mt1.getSeatingColumn() == seats[i][1] - 1){
+                if (mt1.getShowtimeId().equalsIgnoreCase(s1.getShowtimeId())) {
+                    if (mt1.getSeatingRow() == seats[i][0] && mt1.getSeatingColumn() == seats[i][1] - 1) {
                         ticketsarray[i] = mt1;
                     }
                 }
             }
         }
 
-
-        FinalPurchase fp = new FinalPurchase();
+        FinalPurchaseHandler fp = new FinalPurchaseHandler();
         fp.settickets(ticketsarray);
         fp.setshow(s1);
         fp.setuser(user);
