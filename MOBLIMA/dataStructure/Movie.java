@@ -3,7 +3,11 @@ package MOBLIMA.dataStructure;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveReview;
+import MOBLIMA.save.saveMovie;
+import MOBLIMA.save.saveShowtime;
 
 public class Movie implements Serializable {
     private int movieId;
@@ -18,6 +22,7 @@ public class Movie implements Serializable {
     private int isDeleted;
     private int numReviews;
     private double avgRating;
+    private String filename = "MOBLIMA/databases/movie.txt";
 
     /**
      * 
@@ -139,8 +144,16 @@ public class Movie implements Serializable {
         this.movieType = movieType;
     }
 
-    public void setSales(int sales){
-        this.sales = sales;
+    public void setSales(int sales) throws IOException {
+        ArrayList movieArray = retrieveMovie.readMovie(filename);
+        for (int i = 0; i < movieArray.size(); i++) {
+            Movie m = (Movie) movieArray.get(i);
+            if (m.getMovieId() == this.movieId) {
+                this.sales = sales;
+            }
+            saveMovie.saveMovieArray(filename, movieArray);
+        }
+        return;
     }
 
     public void setIsDeleted(int isDeleted) {
