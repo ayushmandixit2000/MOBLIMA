@@ -6,8 +6,9 @@ public class Cinema {
     private int movieClass;
 
     /**
-     * 
-     * @param c-  3 letter String assigned to individual cinemas
+     * @param c-  3 letter string assigned to individual cinemas (first 2 letters
+     *            are starting and ending of cineplex name and last letter is the
+     *            cinema number)
      * @param cp- integer denoting the 3 managed cineplex
      * @param mc- integer denoting whether cinema is Default or Platinum Movie Suite
      */
@@ -17,7 +18,7 @@ public class Cinema {
         cineplex = cp;
         movieClass = mc;
     }
-  
+
     public int getCineplex() {
         return cineplex;
     }

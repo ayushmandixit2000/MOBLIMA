@@ -1,8 +1,9 @@
 package MOBLIMA.Listings;
+
+import MOBLIMA.action.CustomerAction;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.listing.Listing;
 import MOBLIMA.retrieval.retrieveMovie;
-import MOBLIMA.useractions.CustomerAction;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,26 +11,14 @@ import java.util.Scanner;
 
 public class MovieDetailsListing implements Listing {
 
-
     private Movie m1;
-
-    private int action;
-
-    private String user;
-
-    public void setuser(String ui){
-        this.user = ui;
-    }
-
-    public void setaction(int act){
-        this.action = act;
-    }
 
     public void setmovie(Movie m) {
         this.m1 = m;
     }
 
     public void displayListing() throws IOException {
+        System.out.println(m1.getTitle());
         m1.setAvgRating();
         m1.setNumReviews();
         System.out.println("______________________________________________________");
@@ -100,15 +89,14 @@ public class MovieDetailsListing implements Listing {
 
         System.out.println("Movie Sales:    " + m1.getSales());
 
-        if(m1.getNumReviews() > 1){
+        if (m1.getNumReviews() > 1) {
             System.out.println("\nAverage Rating: " + m1.getAvgRating());
         }
 
-        else{
+        else {
             System.out.println("\nNA: Average Rating is not determined due to insufficent reviews");
         }
 
-        
         System.out.println("______________________________________________________");
 
         System.out.println();
@@ -125,26 +113,23 @@ public class MovieDetailsListing implements Listing {
             additionalopt = 0;
             try {
                 additionalopt = Integer.parseInt(input);
-                if(additionalopt > 2 || additionalopt < 1){
+                if (additionalopt > 2 || additionalopt < 1) {
                     System.out.println("Please key in a valid number!");
                     continue;
-                }
-                else{
-                break;
+                } else {
+                    break;
                 }
             } catch (NumberFormatException ne) {
                 System.out.println("Please key in a number only!");
             }
         }
 
-
-
         if (additionalopt == 1) {
-            if(m1.getNumReviews() > 1){
-            System.out.println("\nAverage Rating: " + m1.getAvgRating());
+            if (m1.getNumReviews() > 1) {
+                System.out.println("\nAverage Rating: " + m1.getAvgRating());
             }
-            
-            else{
+
+            else {
                 System.out.println("\nNA: Average Rating is not determined due to insufficent reviews");
             }
             ReviewListing reviews = new ReviewListing();
@@ -152,11 +137,11 @@ public class MovieDetailsListing implements Listing {
             reviews.displayListing();
         }
 
-        CustomerAction CA = new CustomerAction();
-        CA.setaction(this.action);
-        CA.setuser(user);
-        CA.setmovie(m1);
-        CA.displayaction();
+        // CustomerAction CA = new CustomerAction();
+        // CA.setaction(this.action);
+        // CA.setuser(user);
+        // CA.setmovie(m1);
+        // CA.displayaction();
 
     }
 }

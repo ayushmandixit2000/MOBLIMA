@@ -19,6 +19,15 @@ public class Showtime {
     private String showtimeId;
     private String filename = "MOBLIMA/databases/showtime.txt";
 
+    /**
+     * 
+     * @param c- 3 letter string denoting the cinema code
+     * @param d
+     * @param t
+     * @param m
+     * @param s
+     */
+
     public Showtime(String c, LocalDate d, LocalTime t, int m, int[][] s) {
         cinema = c;
         date = d;

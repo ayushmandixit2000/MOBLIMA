@@ -1,26 +1,17 @@
-package MOBLIMA.facade;
+package MOBLIMA.listing;
 
 import java.util.Scanner;
 import java.io.IOException;
 import java.util.*;
-import java.util.function.Supplier;
-
-import MOBLIMA.Listings.MovieDetailsListing;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.retrieval.retrieveMovie;
 
 public class movielisting {
-
-    private int action = 0;
-
     private String user;
+    private Movie chosenMovie;
 
     public void setuser(String ui) {
         this.user = ui;
-    }
-
-    public void setaction(int act) {
-        this.action = act;
     }
 
     public void show() throws IOException {
@@ -62,30 +53,37 @@ public class movielisting {
             opt = 0;
             try {
                 opt = Integer.parseInt(input);
-                if(opt < 1 || opt > mov.length){
+                if (opt < 1 || opt > mov.length) {
                     System.out.println("Please key in a number from the list above only!");
                     continue;
-                }
-                else{
-                break;
+                } else {
+                    break;
                 }
             } catch (NumberFormatException ne) {
                 System.out.println("Please key in a number only!");
             }
         }
 
-        for(int h = 0; h < mov.length; h++){
+        for (int h = 0; h < mov.length; h++) {
             Movie m2 = (Movie) movieArray.get(h);
-            if(opt == h+1){
+            if (opt == h + 1) {
                 System.out.println("Movie Selected: " + m2.getTitle());
-                MovieDetailsListing moviedetails = new MovieDetailsListing();
-                moviedetails.setaction(action);
-                moviedetails.setmovie(m2);
-                moviedetails.setuser(user);
-                moviedetails.displayListing();
+                chosenMovie = m2;
+                // MovieDetailsListing moviedetails = new MovieDetailsListing();
+                // moviedetails.setaction(action);
+                // moviedetails.setmovie(m2);
+                // moviedetails.setuser(user);
+                // moviedetails.displayListing();
             }
         }
+    }
 
+    public String getUser() {
+        return user;
+    }
+
+    public Movie getChosenMovie() {
+        return chosenMovie;
     }
 
 }

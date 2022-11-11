@@ -85,12 +85,12 @@ public class retrieveShowtime {
                 Showtime s = (Showtime) al.get(i);
                 System.out.println("MovieId " + s.getMovieId());
                 int[][] array = s.getSeating();
-                // for (int k = 0; k < array.length; k++) {
-                // for (int j = 0; j < array[k].length; j++) {
-                // System.out.print(array[k][j] + " ");
-                // }
-                // System.out.println();
-                // }
+                for (int k = 0; k < array.length; k++) {
+                for (int j = 0; j < array[k].length; j++) {
+                System.out.print(array[k][j] + " ");
+                }
+                System.out.println();
+                }
                 System.out.println(dateTime.convertDate(s.getDate()));
                 System.out.println(dateTime.convertTime(s.getTime()));
                 System.out.println(s.getShowtimeId());

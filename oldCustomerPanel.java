@@ -5,12 +5,13 @@ import java.util.Scanner;
 import MOBLIMA.retrieval.retrieveMovieGoer;
 import MOBLIMA.save.saveMovieGoer;
 import MOBLIMA.dataStructure.MovieGoer;
-import MOBLIMA.facade.movielisting;
 import MOBLIMA.facade.pastTransactionsFacade;
 import MOBLIMA.facade.search;
+import MOBLIMA.facade.top5Facade;
+import MOBLIMA.listing.movielisting;
 import MOBLIMA.panel.Panel;
 
-public class customerpanel implements Panel {
+public class oldCustomerPanel implements Panel {
 
     public void viewApp() {
         System.out.println("Welcome to MOBLIMA");
@@ -57,8 +58,6 @@ public class customerpanel implements Panel {
                 saveMovieGoer.saveMovieGoerArray(filename, movieGoerArray);// overwrite file
             }
 
-           
-
             loop: while (true) {
                 System.out.println();
                 System.out.println("_______________________________________________________________________");
@@ -75,7 +74,6 @@ public class customerpanel implements Panel {
                 System.out.println("_______________________________________________________________________");
                 System.out.println();
 
-
                 int option;
 
                 while (true) {
@@ -88,7 +86,6 @@ public class customerpanel implements Panel {
                         System.out.println("Please key in a number only!");
                     }
                 }
-
 
                 switch (option) {
                     case 1:

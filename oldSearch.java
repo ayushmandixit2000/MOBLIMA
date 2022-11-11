@@ -1,20 +1,15 @@
-package MOBLIMA.facade;
-
 import java.util.Scanner;
 import java.io.IOException;
 import java.util.*;
-import java.util.function.Supplier;
-
-
 import MOBLIMA.Listings.MovieDetailsListing;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.retrieval.retrieveMovie;
 
-public class search {
+public class oldSearch {
 
     private String user;
 
-    public void setuser(String ui){
+    public void setuser(String ui) {
         this.user = ui;
     }
 
@@ -26,17 +21,15 @@ public class search {
         boolean found = false;
         String movieid = "";
 
-        
-
         String filename = "MOBLIMA/databases/movie.txt";
         ArrayList movieArray = retrieveMovie.readMovie(filename);
-        List<Movie> optionlist=new ArrayList<Movie>();
+        List<Movie> optionlist = new ArrayList<Movie>();
 
         for (int i = 0; i < movieArray.size(); i++) {
             Movie m1 = (Movie) movieArray.get(i);
             String m = m1.getTitle().toLowerCase();
             found = m.contains(movie);
-            if(found == true && m1.getIsDeleted() == 0){
+            if (found == true && m1.getIsDeleted() == 0) {
                 optionlist.add(m1);
                 found = false;
             }
@@ -47,14 +40,12 @@ public class search {
             return;
         }
 
-        else{
+        else {
             System.out.println("\nPlease Select the movie based on the options(enter number): ");
-            for(int j = 0; j < optionlist.size(); j++){
+            for (int j = 0; j < optionlist.size(); j++) {
                 Movie m2 = (Movie) optionlist.get(j);
-                System.out.println(j+1 + " : " + m2.getTitle());
+                System.out.println(j + 1 + " : " + m2.getTitle());
             }
-
-            
 
             int movie_chosen;
 
@@ -63,36 +54,33 @@ public class search {
                 movie_chosen = 0;
                 try {
                     movie_chosen = Integer.parseInt(input);
-                    if(movie_chosen > optionlist.size() || movie_chosen < 1){
+                    if (movie_chosen > optionlist.size() || movie_chosen < 1) {
                         System.out.println("Please key in a valid number!");
                         continue;
-                    }
-                    else{
-                    break;
+                    } else {
+                        break;
                     }
                 } catch (NumberFormatException ne) {
                     System.out.println("Please key in a number only!");
                 }
             }
 
-
-            for(int j = 0; j < optionlist.size(); j++){
-                if(movie_chosen == j+1){
+            for (int j = 0; j < optionlist.size(); j++) {
+                if (movie_chosen == j + 1) {
                     Movie m3 = (Movie) optionlist.get(j);
                     System.out.println();
                     System.out.println("You have Selected: " + m3.getTitle());
                     System.out.println();
 
-                    
                     MovieDetailsListing moviedetails = new MovieDetailsListing();
                     moviedetails.setmovie(m3);
                     moviedetails.setuser(user);
                     moviedetails.displayListing();
-                    
+
                 }
             }
 
         }
-        
+
     }
 }

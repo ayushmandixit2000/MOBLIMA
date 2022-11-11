@@ -11,14 +11,14 @@ import MOBLIMA.retrieval.retrieveTransaction;
 import MOBLIMA.utils.dateTime;
 
 public class pastTransactionsFacade {
+    private static String userid;
 
-    private String userid;
-
-    public void setuserid(String userid) {
-        this.userid = userid;
+    public static void run(String userId) throws IOException {
+        userid = userId;
+        display();
     }
 
-    public void display() throws IOException {
+    public static void display() throws IOException {
         Scanner scc = new Scanner(System.in);
         String filename = "MOBLIMA/databases/transactions.txt";
         ArrayList transactionArray = retrieveTransaction.readTransaction(filename);
@@ -27,7 +27,7 @@ public class pastTransactionsFacade {
         for (int i = 0; i < transactionArray.size(); i++) {
             Transaction t = (Transaction) transactionArray.get(i);
 
-            if (t.getUserId().contains(this.userid)) {
+            if (t.getUserId().contains(userid)) {
                 optionlist.add(t);
             }
         }
@@ -42,11 +42,9 @@ public class pastTransactionsFacade {
             for (int l = 0; l < optionlist.size(); l++) {
                 Transaction t2 = optionlist.get(l);
                 System.out.println(
-                        l + 1 + " : Transaction ID - " + t2.getTransactionId() + " Purchased on " + t2.getPurchaseDate());
+                        l + 1 + " : Transaction ID - " + t2.getTransactionId() + " Purchased on "
+                                + t2.getPurchaseDate());
             }
-
-
-
 
             int opt;
 
@@ -55,12 +53,11 @@ public class pastTransactionsFacade {
                 opt = 0;
                 try {
                     opt = Integer.parseInt(input);
-                    if(opt < 1 || opt > optionlist.size()){
+                    if (opt < 1 || opt > optionlist.size()) {
                         System.out.println("Please key in a number from the list above only!");
                         continue;
-                    }
-                    else{
-                    break;
+                    } else {
+                        break;
                     }
                 } catch (NumberFormatException ne) {
                     System.out.println("Please key in a number only!");
@@ -68,13 +65,14 @@ public class pastTransactionsFacade {
             }
 
             for (int l = 0; l < optionlist.size(); l++) {
-                if(opt == l + 1){
+                if (opt == l + 1) {
                     Transaction t3 = optionlist.get(l);
-                    System.out.println("\nTransaction Selected: " + " Transaction ID - " + t3.getTransactionId() + " Purchased on " + dateTime.convertDate(t3.getPurchaseDate()));
+                    System.out.println("\nTransaction Selected: " + " Transaction ID - " + t3.getTransactionId()
+                            + " Purchased on " + dateTime.convertDate(t3.getPurchaseDate()));
                     TransactionDetailsListing tdl = new TransactionDetailsListing();
                     tdl.settransaction(t3);
                     tdl.displayListing();
-                    
+
                 }
             }
         }
