@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import MOBLIMA.configurables.peakDates;
+import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.Showtime;
+import MOBLIMA.retrieval.retrieveCinema;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.utils.compareDates;
 
@@ -61,16 +63,36 @@ public class CustomerBookingHandler {
         Scanner scc = new Scanner(System.in);
 
         for (int j = 0; j < optionlist.size(); j++) {
+            System.out.println("___________________________________________________________________________________________________________");
             Showtime s1 = optionlist.get(j);
             new peakDates();
             String s = "";
             if (peakDates.isPeak(s1.getDate())) {
-                s = "--Peak preiod pricing will apply";
+                s = "--Peak preiod pricing will apply   ";
+            }
+
+            String suite = "";
+
+            String filename4 = "MOBLIMA/databases/Cinema.txt";
+            ArrayList cinemaArray = retrieveCinema.readCinema(filename4);
+            for (int i = 0; i < cinemaArray.size(); i++) {
+                Cinema c = (Cinema) cinemaArray.get(i);
+                if (c.getCinema().equals(s1.getCinema())) {
+                    if (c.getMovieClass() == 1) {
+                        suite = "--Premium Movie Suite";
+                    }
+                    else{
+                        suite = "";
+                    }
+                    break;
+                }
             }
 
             System.out.println(j + 1 + ": Cinema :" + s1.getCinema() + " ||" + "Date: " + s1.getDate() + " ||"
-                    + "Time: " + s1.getTime() + "   " + s);
+                    + "Time: " + s1.getTime() + "   " + s + suite);
         }
+
+        System.out.println("___________________________________________________________________________________________________________");
 
         int option;
 
