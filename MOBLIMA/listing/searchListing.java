@@ -8,18 +8,17 @@ import java.util.Scanner;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.retrieval.retrieveMovie;
 
-public class searchListing {
+public class searchListing implements Listing {
     private Movie chosenMovie;
+    private String filename = "MOBLIMA/databases/movie.txt";
+    private ArrayList movieArray;
+    private List<Movie> optionlist;
+    private boolean found = false;
+    private String movie;
 
-    public void show() throws IOException {
-        Scanner scc = new Scanner(System.in);
-        System.out.println("\nPlease key in the movie you would like to inquire about: ");
-        String movie1 = scc.next();
-        String movie = movie1.toLowerCase();
-        boolean found = false;
-        String filename = "MOBLIMA/databases/movie.txt";
-        ArrayList movieArray = retrieveMovie.readMovie(filename);
-        List<Movie> optionlist = new ArrayList<Movie>();
+    public void displayListing() throws IOException {
+        movieArray = retrieveMovie.readMovie(filename);
+        optionlist = new ArrayList<Movie>();
 
         for (int i = 0; i < movieArray.size(); i++) {
             Movie m1 = (Movie) movieArray.get(i);
@@ -42,33 +41,41 @@ public class searchListing {
                 Movie m2 = (Movie) optionlist.get(j);
                 System.out.println(j + 1 + " : " + m2.getTitle());
             }
+        }
+    }
 
-            int movie_chosen;
+    public void show() throws IOException {
+        Scanner scc = new Scanner(System.in);
+        System.out.println("\nPlease key in the movie you would like to inquire about: ");
+        String movie1 = scc.next();
+        movie = movie1.toLowerCase();
+        displayListing();
 
-            while (true) {
-                String input = scc.next();
-                movie_chosen = 0;
-                try {
-                    movie_chosen = Integer.parseInt(input);
-                    if (movie_chosen > optionlist.size() || movie_chosen < 1) {
-                        System.out.println("Please key in a valid number!");
-                        continue;
-                    } else {
-                        break;
-                    }
-                } catch (NumberFormatException ne) {
-                    System.out.println("Please key in a number only!");
+        int movie_chosen;
+
+        while (true) {
+            String input = scc.next();
+            movie_chosen = 0;
+            try {
+                movie_chosen = Integer.parseInt(input);
+                if (movie_chosen > optionlist.size() || movie_chosen < 1) {
+                    System.out.println("Please key in a valid number!");
+                    continue;
+                } else {
+                    break;
                 }
+            } catch (NumberFormatException ne) {
+                System.out.println("Please key in a number only!");
             }
+        }
 
-            for (int j = 0; j < optionlist.size(); j++) {
-                if (movie_chosen == j + 1) {
-                    Movie m3 = (Movie) optionlist.get(j);
-                    System.out.println();
-                    System.out.println("You have Selected: " + m3.getTitle());
-                    System.out.println();
-                    chosenMovie = m3;
-                }
+        for (int j = 0; j < optionlist.size(); j++) {
+            if (movie_chosen == j + 1) {
+                Movie m3 = (Movie) optionlist.get(j);
+                System.out.println();
+                System.out.println("You have Selected: " + m3.getTitle());
+                System.out.println();
+                chosenMovie = m3;
             }
         }
     }

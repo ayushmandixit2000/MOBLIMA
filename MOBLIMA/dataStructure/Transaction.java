@@ -12,6 +12,15 @@ public class Transaction {
     private String userId;
     private String[] arrayofMovieTickets;
 
+    /**
+     * 
+     * @param date-    LocalDate denoting the purchase date
+     * @param time-    LocalTime denoting the purchase time
+     * @param u-       String denoting the user's id
+     * @param tickIds- String array consisting of the ids of the movie tickets
+     *                 purchased during the transaction
+     */
+
     public Transaction(String date, String time, String u, String[] tickIds) {
         transactionId = date + time + tickIds[0].substring(0, 3);
         purchaseDate = dateTime.convertDate(date);

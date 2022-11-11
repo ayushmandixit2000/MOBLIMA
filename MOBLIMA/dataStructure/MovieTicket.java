@@ -2,9 +2,6 @@ package MOBLIMA.dataStructure;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-
-import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.utils.TicketPrice;
 import MOBLIMA.utils.dateTime;
 
@@ -17,48 +14,36 @@ public class MovieTicket {
     private String showtimeId;
     private int seatClass;
 
-    // public MovieTicket(String a, int sr, int sc, String st) throws NumberFormatException, IOException {
-    //     movieTicketId = st + String.valueOf(sr) + String.valueOf(sc); // dont need movieTicketId- will be populated
-    //     ageCat = a;
-    //     seatingRow = sr;
-    //     seatingColumn = sc;
-    //     LocalDate d = dateTime.convertDate(st.substring(3, 13));
-    //     price = TicketPrice.calculatePrice(d, Integer.valueOf(a), st);
-    //     showtimeId = st;
-    // }
+    /**
+     * @param a-         String denoting the age category of the movie ticket (0:
+     *                   Child, 1: Adult, 2: Senior Citizen)
+     * @param sr-        int denoting the assigned seat row
+     * @param sc-        int denoting the assigned seat column
+     * @param st-        String indicating the showtime id (cinema code + date +
+     *                   time)
+     * @param seatClass- int denoting the seat's class (0: normal, 1: elite, 2:
+     *                   ulitma)
+     */
     public MovieTicket(String a, int sr, int sc, String st, int seatClass) throws NumberFormatException, IOException {
-        movieTicketId = st + String.valueOf(sr) + String.valueOf(sc)+ String.valueOf(seatClass); // dont need movieTicketId- will be populated
+        movieTicketId = st + String.valueOf(sr) + String.valueOf(sc) + String.valueOf(seatClass); // dont need
+                                                                                                  // movieTicketId- will
+                                                                                                  // be populated
         ageCat = a;
         seatingRow = sr;
         seatingColumn = sc;
         LocalDate d = dateTime.convertDate(st.substring(3, 13));
         price = TicketPrice.calculatePrice(d, Integer.valueOf(a), st, seatClass);
         showtimeId = st;
-        this.seatClass= seatClass;
-    }
-    public int getSeatClass() {
-        return seatClass;
-    }
-    public void setSeatClass(int seatClass) {
         this.seatClass = seatClass;
     }
 
-    //0 is normal, 1 is elite and 2 is ultima
+    public int getSeatClass() {
+        return seatClass;
+    }
 
-    // check for seat availability
-    // public static boolean checkSeat(String showtimeId, int row, int column) throws IOException {
-    //     String filename = "MOBLIMA/databases/showtime.txt";
-    //     ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
-    //     for (int i = 0; i < showTimeArray.size(); i++) {
-    //         Showtime s = (Showtime) showTimeArray.get(i);
-    //         if (showtimeId.equals(s.getShowtimeId())) {
-    //             if (s.addSeating(row, column) == true) {
-    //                 return true;
-    //             }
-    //         }
-    //     }
-    //     return false;
-    // }
+    public void setSeatClass(int seatClass) {
+        this.seatClass = seatClass;
+    }
 
     public String getMovieTicketId() {
         return movieTicketId;

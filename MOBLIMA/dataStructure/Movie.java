@@ -27,7 +27,6 @@ public class Movie implements Serializable {
     private String filename = "MOBLIMA/databases/movie.txt";
 
     /**
-     * 
      * @param mid- integer denoting the movie id which is the movie's index in the
      *             movie database
      * @param t-   string denoting the movie's title
@@ -118,6 +117,12 @@ public class Movie implements Serializable {
         this.title = title;
     }
 
+    /**
+     * When show status is set to be 3, which is End of Showing, it will update its
+     * isDeleted status to be 1 (true)
+     * 
+     * @param showStatus
+     */
     public void setShowStatus(int showStatus) throws IOException {
         this.showStatus = showStatus;
         if (showStatus == 3) {
@@ -148,15 +153,6 @@ public class Movie implements Serializable {
 
     public void setSales(int sales) {
         this.sales = sales;
-        // ArrayList movieArray = retrieveMovie.readMovie(filename);
-        // for (int i = 0; i < movieArray.size(); i++) {
-        //     Movie m = (Movie) movieArray.get(i);
-        //     if (m.getMovieId() == this.movieId) {
-        //         this.sales = sales;
-        //         saveMovie.saveMovieArray(filename, movieArray);
-        //     }   
-        // }
-        // return;
     }
 
     public void setIsDeleted(int isDeleted) {

@@ -20,10 +20,11 @@ public class Showtime {
     /**
      * 
      * @param c- 3 letter string denoting the cinema code
-     * @param d
-     * @param t
-     * @param m
-     * @param s
+     * @param d- Local Date variable denoting the date of movie screening
+     * @param t- Local Time variable denoting the time of movie screening
+     * @param m- int denoting the movieId of the movie being screened
+     * @param s- 2D integer array representing the seating availability of the
+     *           cinema
      */
 
     public Showtime(String c, LocalDate d, LocalTime t, int m, int[][] s) {
@@ -79,8 +80,15 @@ public class Showtime {
         this.seating = seating;
     }
 
+    /**
+     * this marks the indicated seat to be occupied for that particular showtime and
+     * saves it into the showtime database
+     * 
+     * @param row-    int denoting the row in which the seat will be added at
+     * @param column- int denoting the column in which the seat will be added at
+     */
     public void addSeating(int row, int column) throws IOException {
-        if (this.seating[row][column] ==0 || this.seating[row][column] ==3  || this.seating[row][column] ==4){
+        if (this.seating[row][column] == 0 || this.seating[row][column] == 3 || this.seating[row][column] == 4) {
             this.seating[row][column] = 1;
             ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
             for (int i = 0; i < showTimeArray.size(); i++) {

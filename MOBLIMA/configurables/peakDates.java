@@ -6,19 +6,16 @@ import java.util.ArrayList;
 import MOBLIMA.retrieval.retrievePH;
 import MOBLIMA.save.savePublicHoli;
 
-//for ppl to get public holi dates
-// new peakDates();
-// String filename = "MOBLIMA/databases/publicholidays.txt";
-// ArrayList al = retrievePH.readPH(filename);
-// for (int i = 0; i < al.size(); i++) {
-//     LocalDate date = (LocalDate) al.get(i);
-//     System.out.println(dateTime.convertDate(date));
-// }
-
 public class peakDates {
     private static boolean weekends = true;
     private static String filename = "MOBLIMA/databases/publicholidays.txt";
-    private static ArrayList publicHoli; // for public holis
+    private static ArrayList publicHoli;
+
+    /**
+     * helper class that is configurable and can be used to evaluate whether dates
+     * are peak
+     * 
+     */
 
     public peakDates() throws IOException {
         publicHoli = retrievePH.readPH(filename);
@@ -45,6 +42,13 @@ public class peakDates {
         savePublicHoli.savePHArray(filename, publicHoli);
     }
 
+    /**
+     * this evaluates whether a specified date is peak
+     * 
+     * @param date- LocalDate variable denoting the date on which the movie is
+     *              showing on
+     * @return- boolean indicating whether the date is a peak date
+     */
     public static boolean isPeak(LocalDate date) {
         if (weekends) {
             for (int i = 0; i < publicHoli.size(); i++) {

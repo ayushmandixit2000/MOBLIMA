@@ -1,15 +1,8 @@
 package MOBLIMA.configurables;
 
 import java.io.IOException;
-
 import MOBLIMA.retrieval.retrieveTicketPricing;
 import MOBLIMA.save.saveTicketPricing;
-
-// for peeps doing configurables
-// new ageGroupPricing();
-// System.out.println(ageGroupPricing.getPriceOfChild());
-// ageGroupPricing.setPriceOfChild(5);
-// ageGroupPricing.savePricing();
 
 public class ageGroupPricing {
     private static double priceOfChild;
@@ -17,6 +10,11 @@ public class ageGroupPricing {
     private static double priceOfSnrCitizen;
     static String filename = "MOBLIMA/databases/ticketPricing.txt";
 
+    /**
+     * helper class that is configurable and consists of prices for different movie
+     * ticket age categories
+     * 
+     */
     public ageGroupPricing() throws IOException {
         String data = retrieveTicketPricing.readTicketPricing(filename);
         priceOfChild = Double.parseDouble(data.split("\\,")[0]);
