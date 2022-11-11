@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import MOBLIMA.Listings.*;
+import MOBLIMA.action.CustomerAction;
 import MOBLIMA.configurables.rankStatus;
+import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.listing.top5RatingListing;
 import MOBLIMA.listing.top5SalesListing;
 
@@ -12,7 +14,7 @@ public class top5Facade {
     public static void show(String userid) throws IOException {
         
         int config = rankStatus.getStatus();
-
+        int action = 0;
         int choicerank = 0;
         
         if(config == 0){
@@ -54,12 +56,37 @@ public class top5Facade {
 
         if(choicerank == 1){
             top5SalesListing sales = new top5SalesListing();
-            sales.displayListing(); 
+            sales.displayListing();
+            Movie m = sales.getmovie();
+
+            if(m != null){
+                MovieDetailsListing moviedetails = new MovieDetailsListing();
+                moviedetails.setmovie(m);
+                moviedetails.displayListing();
+                CustomerAction CA = new CustomerAction();
+                CA.setaction(action);
+                CA.setuser(userid);
+                CA.setmovie(m);
+                CA.getChoice(); 
+            }
         }
 
         if(choicerank == 2){
             top5RatingListing ratings = new top5RatingListing();
             ratings.displayListing(); 
+            Movie m = ratings.getmovie();
+
+            if(m != null){
+                MovieDetailsListing moviedetails = new MovieDetailsListing();
+                moviedetails.setmovie(m);
+                moviedetails.displayListing();
+
+                CustomerAction CA = new CustomerAction();
+                CA.setaction(action);
+                CA.setuser(userid);
+                CA.setmovie(m);
+                CA.getChoice();
+            }
         }
         
         // System.out.println("Would you like to find out more about a movie?");
