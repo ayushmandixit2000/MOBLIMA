@@ -6,11 +6,35 @@ import MOBLIMA.save.saveMovie;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Scanner;
 import MOBLIMA.Listings.MovieListing;
 
 public class updateMovieHandler {
+    private Dictionary type = new Hashtable();
+    private Dictionary rating = new Hashtable();
+    private Dictionary status = new Hashtable();
+
+    public updateMovieHandler(){
+        // dictionary for movie type
+        this.type.put(0,"3D");
+        this.type.put(1,"Blockbuster");
+
+        // dictionary for rating
+        this.rating.put(0,"G");
+        this.rating.put(1,"PG");
+        this.rating.put(2,"M");
+        this.rating.put(3,"R16");
+
+        // dictionary for status
+        this.status.put(0,"Coming Soon");
+        this.status.put(1,"Preview");
+        this.status.put(2,"Now Showing");
+    }
+
+    // getting movie type
     public boolean movieUpdate() throws IOException {
         Scanner sc = new Scanner(System.in);
 
@@ -361,7 +385,7 @@ public class updateMovieHandler {
                                     case 2:
                                     loop1 = false;
                                     castLoop = false;
-                                    System.out.println("No chnages were made.");
+                                    System.out.println("No changes were made.");
                                     break;
 
                                     default:
@@ -376,9 +400,18 @@ public class updateMovieHandler {
                     break;
 
                 case 5:
-                    System.out.println("Edit synopsis selected. Current synopsis: " + editMovie.getSynopsis());
+                    String newSynopsis;
+                    System.out.println("Edit synopsis selected. \nCurrent synopsis: " + editMovie.getSynopsis());
                     System.out.println("Enter new synopsis: ");
-                    editMovie.setSynopsis(sc.nextLine());
+                    newSynopsis = sc.nextLine();
+
+                    // error handling for empty synopsis
+                    while(newSynopsis.isEmpty()||newSynopsis.isEmpty()){
+                        System.out.println("Invalid input. Input cannot be empty.");
+                        System.out.println("Enter new synopsis: ");
+                        newSynopsis = sc.nextLine();
+                    }
+                    editMovie.setSynopsis(newSynopsis);
                     break;
 
                 case 6:
@@ -400,17 +433,26 @@ public class updateMovieHandler {
                     int newMovieRating = -1;
                     boolean movieRatingLoop = true;
                     while (movieRatingLoop) {
-                        System.out.println("Select Movie Rating: \n1: G \n2: PG \n3: M \n4: R16");
-                        newMovieRating = (sc.nextInt());
+                        // to prevent users from keying in data that is not string 
+                        do{
+                            try{
+                                System.out.println("Select Movie Rating: \n1: G \n2: PG \n3: M \n4: R16");
+                                newMovieRating = (sc.nextInt());
+                            }
+                            catch(Exception e){
+                                System.out.println("Inavlid input. Please enter intergers only... "+e);
+                                sc.nextLine();
+                                flag = true;
+                            }
+                        }
+                        while(flag);
+                        sc.nextLine();
+                       
                         switch (newMovieRating) {
-                            case 1:
-                            case 2:
-                            case 3:
-                            case 4:
+                            case 1:case 2:case 3:case 4:
                                 newMovieRating--;
                                 movieRatingLoop = false;
                                 break;
-
                             default:
                                 System.out.println("Invalid option. Please try again.");
                         }
@@ -432,11 +474,23 @@ public class updateMovieHandler {
                     int newMovieType = -1;
                     boolean movieTypeLoop = true;
                     while (movieTypeLoop) {
-                        System.out.println("Select new movie type: \n1: 3D \n2: Blockbuster");
-                        newMovieType = sc.nextInt();
+                         // to prevent users from keying in data that is not string 
+                         do{
+                            try{
+                                System.out.println("Select new movie type: \n1: 3D \n2: Blockbuster");
+                                newMovieType = sc.nextInt();
+                            }
+                            catch(Exception e){
+                                System.out.println("Inavlid input. Please enter intergers only... "+e);
+                                sc.nextLine();
+                                flag = true;
+                            }
+                        }
+                        while(flag);
+                        sc.nextLine();
+
                         switch (newMovieType) {
-                            case 1:
-                            case 2:
+                            case 1: case 2:
                                 newMovieType--;
                                 movieTypeLoop = false;
                                 break;
@@ -448,14 +502,63 @@ public class updateMovieHandler {
                     break;
 
                 case 8:
+                    int confirmChanges = -1;
+                    
+                    System.out.println("Updated movie deatils: ");
+                    System.out.println("Movie title: "+editMovie.getTitle());
+                    System.out.println("Show Status: "+this.status.get(editMovie.getShowStatus()));
+                    System.out.println("Director: " + editMovie.getDirector());
+                    for(int i = 0; i< editMovie.getCast().length;i++){
+                        System.out.println((i+1 + ") Cast: " + editMovie.getCast()[i]));
+                    }
+                    System.out.println("Synopsis: "+editMovie.getSynopsis());
+                    System.out.println("Movie rating: "+this.rating.get(editMovie.getMovieType()));
+                    System.out.println("Movie type: "+this.type.get(editMovie.getMovieType()));
+
+                    // to prevent users from keying in data that is not string 
+                    do{
+                        try{
+                            System.out.println("Confirm changes: \n1: Yes \n2: No");
+                            confirmChanges = sc.nextInt();
+                            if(confirmChanges<1 || confirmChanges>2){
+                                System.out.println("Invalid input. Please key in a valid number.");
+                                flag = true;
+                            }
+                            else{
+                                flag = false;
+                            }
+                        }
+                        catch(Exception e){
+                            System.out.println("Inavlid input. Please enter intergers only... "+e);
+                            sc.nextLine();
+                            flag = true;
+                        }
+                    }
+                    while(flag);
+                    sc.nextLine();
+                    switch(confirmChanges){
+                        case 1:
+                        System.out.println("Saving "+editMovie.getTitle()+"........");
+                        movieArray.set(editMovie.getMovieId(), editMovie);
+
+                        // push to database
+                        saveMovie.saveMovieArray(filename, movieArray);// overwrite file
+                        System.out.println(editMovie.getTitle()+" saved.");
+                        break;
+
+                        case 2:
+                        System.out.println("Changes discarded");
+                    }
+
                     loop = false;
-                    movieArray.set(editMovie.getMovieId(), editMovie);
+                    break;
+
+                default:
+                System.out.println("Incorrect option. Please try again.");
             }
 
         }
 
-        // push to database
-        saveMovie.saveMovieArray(filename, movieArray);// overwrite file
         return true;
     }
 
