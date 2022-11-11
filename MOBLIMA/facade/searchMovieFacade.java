@@ -22,7 +22,6 @@ public class searchMovieFacade {
         CA.setaction(action);
         CA.setuser(userId);
         CA.setmovie(chosenMovie);
-        CA.displayChoices();
         CA.getChoice();
     }
 }
