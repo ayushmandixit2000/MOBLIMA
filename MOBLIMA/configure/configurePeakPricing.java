@@ -11,6 +11,8 @@ public class configurePeakPricing implements configure {
         System.out.println(peakPricing.getNonPeakMultiplier());
         System.out.print("Peak: x");
         System.out.println(peakPricing.getPeakMultiplier());
+        System.out.print("Premium Surcharge: ");
+        System.out.println(peakPricing.getPremiumPrice());
     }
 
     public void getNewSetting() throws IOException {
@@ -23,6 +25,7 @@ public class configurePeakPricing implements configure {
         }
         multiplier = sc.nextDouble();
         peakPricing.setNonPeakMultiplier(multiplier);
+
         System.out.println("Please new peak multiplier:");
         while (!sc.hasNextDouble()) {
             System.out.println("Please input a double:");
@@ -30,7 +33,14 @@ public class configurePeakPricing implements configure {
         }
         multiplier = sc.nextDouble();
         peakPricing.setPeakMultiplier(multiplier);
+
+        System.out.println("Please new premium surcharge:");
+        while (!sc.hasNextDouble()) {
+            System.out.println("Please input a double:");
+            sc.next();
+        }
+        Double extra = sc.nextDouble();
+        peakPricing.setPremiumPrice(extra);
         peakPricing.saveMultipliers();
-        sc.close();
     }
 }

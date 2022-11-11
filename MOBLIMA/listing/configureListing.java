@@ -8,7 +8,7 @@ public class configureListing implements Listing {
     public void displayListing() throws IOException {
         System.out.println("Please select what you would like to configure:");
         System.out.println("1: Edit Ticket Base Pricing");
-        System.out.println("2: Edit Ticket Peak Pricing Multiplier");
+        System.out.println("2: Edit Ticket Peak Pricing Multiplier and Premium Surcharge");
         System.out.println("3: Edit Peak Dates");
         System.out.println("4: Edit Rating View Options");
         System.out.println("5: Quit");

@@ -65,9 +65,15 @@ public class test {
         System.out.println(st.getShowtimeId());
         st.addSeating(2, 3);
 
-        configureRankStatus crs = new configureRankStatus();
-        crs.displaySetting();
-        crs.getNewSetting();
-        crs.displaySetting();
+        // configureRankStatus crs = new configureRankStatus();
+        // crs.displaySetting();
+        // crs.getNewSetting();
+        // crs.displaySetting();
+
+        String id= "ABC2022/12/12190014";
+        System.out.println(id.substring(0,3));
+
+        System.out.println(TicketPrice.calculatePrice(dateTime.convertDate("2022/12/25"), 0, "cin|2022/12/20|1900"));
+        
     }
 }

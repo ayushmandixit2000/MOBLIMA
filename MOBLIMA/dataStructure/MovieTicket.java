@@ -22,7 +22,7 @@ public class MovieTicket {
         seatingRow = sr;
         seatingColumn = sc;
         LocalDate d = dateTime.convertDate(st.substring(3, 13));
-        price = TicketPrice.calculatePrice(d, Integer.valueOf(a));
+        price = TicketPrice.calculatePrice(d, Integer.valueOf(a), st);
         showtimeId = st;
     }
 
