@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-
-import MOBLIMA.facade.pastTransactionsFacade;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.save.saveShowtime;
 import MOBLIMA.utils.dateTime;

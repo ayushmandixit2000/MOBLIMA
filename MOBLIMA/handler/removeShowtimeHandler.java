@@ -28,12 +28,6 @@ public class removeShowtimeHandler {
     public static void remove(String cplx, int cnm, String cc) {
         String filename = "MOBLIMA/databases/showtime.txt";
         Scanner sc = new Scanner(System.in);
-
-        String cinema;
-        String inputDate;
-        int inputTime;
-        int movieId;
-        String showtimeId;
         String oldline = "NULL";
         int field = 100;
 
@@ -68,12 +62,10 @@ public class removeShowtimeHandler {
             // Process localtime
             String strshowtime = time.toString();
             String convertedShowTime = strshowtime.replace(":", "");
-            System.out.println(convertedShowTime);
 
             // Process localdate
             String strlocaldate = date.toString();
             String convertedLocalDate = strlocaldate.replace("-", "/");
-            System.out.println(convertedLocalDate);
 
             Scanner fileReaderScanner = new Scanner(new File(filename));
             int linecounter = 0;
@@ -104,11 +96,9 @@ public class removeShowtimeHandler {
             String currentLine;
 
             while ((currentLine = reader.readLine()) != null) {
-                // trim newline when comparing with lineToRemove
+
                 String trimmedLine = currentLine.trim();
-                // System.out.println(trimmedLine);
                 if (trimmedLine.equals(lineToRemove)) {
-                    // System.out.println("Found the line to remove!");
                     continue;
                 }
                 writer.write(currentLine + System.getProperty("line.separator"));
@@ -125,10 +115,4 @@ public class removeShowtimeHandler {
             System.out.println("IOException > " + e.getMessage());
         }
     }
-
-    public static void main(String[] args) {
-        removeShowtimeHandler rst = new removeShowtimeHandler();
-        rst.remove("Ang Mo Kio", 2, "Ao2");
-    }
-
 }

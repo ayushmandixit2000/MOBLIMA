@@ -38,7 +38,7 @@ public class createShowtimeHandler {
                 inputDate = sc.next();
             }
 
-            System.out.println("Enter Movie ID");
+            System.out.println("Enter Movie");
             movielisting ml = new movielisting();
             ml.show();
             Movie chosenMovie = ml.getChosenMovie();
