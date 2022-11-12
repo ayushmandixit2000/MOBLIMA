@@ -71,6 +71,7 @@ public class CustomerAction implements action {
         if (this.action == 0) {
             displayChoices();
             int opt;
+            int i=0;
 
             while (true) {
                 String input = scc.next();
@@ -84,7 +85,9 @@ public class CustomerAction implements action {
                         break;
                     }
                 } catch (NumberFormatException ne) {
-                    System.out.println("Please key in a number only!");
+                    if(i==0)
+                        System.out.println("Please key in a number only!");
+                        i++;
                 }
             }
 

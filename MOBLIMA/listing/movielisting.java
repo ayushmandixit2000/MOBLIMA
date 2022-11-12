@@ -58,6 +58,7 @@ public class MovieListing implements Listing {
         displayListing();
         System.out.println("Select one movie to continue");
         int opt;
+        int i =0;
         while (true) {
             String input = scc.next();
             opt = 0;
@@ -70,7 +71,10 @@ public class MovieListing implements Listing {
                     break;
                 }
             } catch (NumberFormatException ne) {
+                if(i<1)
+                {
                 System.out.println("Please key in a number only!");
+                i++;}
             }
         }
         for (int h = 0; h < validMovies.size(); h++) {
