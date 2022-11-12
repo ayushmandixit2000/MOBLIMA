@@ -6,14 +6,14 @@ import MOBLIMA.configurables.peakPricing;
 
 public class configurePeakPricing implements configure {
     public void displaySetting() throws IOException {
-        System.out.println("Current ticket pricing multipliers:");
-        System.out.print("Non-peak(mon,tues,wed,fri): x ");
+        System.out.println("Current Ticket Pricing Multipliers:");
+        System.out.print("Non-peak (Mon,Tues,Wed,Fri): x ");
         System.out.println(peakPricing.getNonPeakMultiplier());
-        System.out.print("Non-peak(Thurs): x ");
+        System.out.print("Non-peak (Thurs): x ");
         System.out.println(peakPricing.getThursMultiplier());
-        System.out.print("Peak (Weekend, PH, specific dates): x m ");
+        System.out.print("Peak (Weekend, PH, Specified dates): x ");
         System.out.println(peakPricing.getPeakMultiplier());
-        System.out.print("Platinium Movie Suite Surcharge: ");
+        System.out.print("Platinum Movie Suite Surcharge: ");
         System.out.println(peakPricing.getPremiumPrice());
         System.out.print("Elite Seat multiplier: x ");
         System.out.println(peakPricing.getPriceOfElite());
@@ -25,7 +25,7 @@ public class configurePeakPricing implements configure {
     public void getNewSetting() throws IOException {
         Scanner sc = new Scanner(System.in);
         Double multiplier = (double) 0;
-        System.out.println("Please new non-peak multiplier:");
+        System.out.println("Please new non-peak (Mon,Tues,Wed,Fri) multiplier:");
         while (!sc.hasNextDouble()) {
             System.out.println("Please input a double:");
             sc.next();
@@ -33,7 +33,15 @@ public class configurePeakPricing implements configure {
         multiplier = sc.nextDouble();
         peakPricing.setNonPeakMultiplier(multiplier);
 
-        System.out.println("Please new peak multiplier:");
+        System.out.println("Please new non-peak (Thurs) multiplier:");
+        while (!sc.hasNextDouble()) {
+            System.out.println("Please input a double:");
+            sc.next();
+        }
+        multiplier = sc.nextDouble();
+        peakPricing.setThursMultiplier(multiplier);
+
+        System.out.println("Please new Peak (Weekend, PH, Specified dates) multiplier:");
         while (!sc.hasNextDouble()) {
             System.out.println("Please input a double:");
             sc.next();
@@ -41,7 +49,7 @@ public class configurePeakPricing implements configure {
         multiplier = sc.nextDouble();
         peakPricing.setPeakMultiplier(multiplier);
 
-        System.out.println("Please new premium surcharge:");
+        System.out.println("Please new Platinum Movie Suite surcharge:");
         while (!sc.hasNextDouble()) {
             System.out.println("Please input a double:");
             sc.next();
@@ -49,7 +57,7 @@ public class configurePeakPricing implements configure {
         Double extra = sc.nextDouble();
         peakPricing.setPremiumPrice(extra);
 
-        System.out.println("Please new elite seat surcharge:");
+        System.out.println("Please new Elite seat surcharge:");
         while (!sc.hasNextDouble()) {
             System.out.println("Please input a double:");
             sc.next();
@@ -57,7 +65,7 @@ public class configurePeakPricing implements configure {
         extra = sc.nextDouble();
         peakPricing.setPriceOfElite(extra);
 
-        System.out.println("Please new ultima seat surcharge:");
+        System.out.println("Please new Ultima seat surcharge:");
         while (!sc.hasNextDouble()) {
             System.out.println("Please input a double:");
             sc.next();
