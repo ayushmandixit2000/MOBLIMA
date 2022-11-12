@@ -80,7 +80,7 @@ public class FinalPurchaseHandler {
         }
 
         else {
-            cp = "";
+            cp = "Ang Mo Kio";
         }
 
         String movietypeS = "";
