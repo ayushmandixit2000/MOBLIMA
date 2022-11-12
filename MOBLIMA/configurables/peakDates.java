@@ -3,6 +3,7 @@ package MOBLIMA.configurables;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import MOBLIMA.retrieval.retrievePH;
 import MOBLIMA.save.savePublicHoli;
@@ -37,7 +38,7 @@ public class peakDates {
 
     public static boolean isPeak(LocalDate date) { // is Peak
         for (int i = 0; i < publicHoliday.size(); i++) {
-            if (date == publicHoliday.get(i)) {
+            if (date.isEqual((ChronoLocalDate) publicHoliday.get(i))) {
                 return true;
             }
         }
