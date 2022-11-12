@@ -50,6 +50,9 @@ public class searchListing implements Listing {
         String movie1 = scc.next();
         movie = movie1.toLowerCase();
         displayListing();
+        if (chosenMovie == null) {
+            return;
+        }
 
         int movie_chosen;
 

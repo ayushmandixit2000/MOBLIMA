@@ -3,9 +3,8 @@ package MOBLIMA.handler;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import MOBLIMA.Listings.MovieListing;
 import MOBLIMA.dataStructure.Movie;
+import MOBLIMA.listing.MovieListing;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.save.saveMovie;
 
@@ -20,20 +19,20 @@ public class removeMovieHandler {
         ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
 
         // intialitlizing valid movie and movie listings
-        MovieListing showValidMovies = new MovieListing();
+        MovieListing showValidMovies = new MovieListing(true);
         ArrayList<Movie> validMovies = showValidMovies.getValidMovies();
 
         // if movie list is empty
-        if(validMovies.size()==0){
+        if (validMovies.size() == 0) {
             showValidMovies.displayListing();
             return true;
         }
 
         int removeMovieOption = -1;
-        
-        // to prevent users from keying in data that is not string 
-        do{
-            try{
+
+        // to prevent users from keying in data that is not string
+        do {
+            try {
                 // display movies
                 showValidMovies.displayListing();
                 System.out.println("Select the movie you would like to remove: ");
@@ -42,18 +41,15 @@ public class removeMovieHandler {
                 if (removeMovieOption <= 0 || removeMovieOption > validMovies.size()) {
                     System.out.println("Invalid option. Please try again");
                     flag = true;
-                }
-                else{
+                } else {
                     flag = false;
                 }
-            }
-            catch(Exception e){
+            } catch (Exception e) {
                 System.out.println("Inavlid input. Please enter integers only.");
                 sc.nextLine();
                 flag = true;
             }
-        }
-        while(flag);
+        } while (flag);
         sc.nextLine();
 
         // setting movie as deleted
@@ -61,9 +57,9 @@ public class removeMovieHandler {
         Movie toDelete = (Movie) movieArray.get(fromValidMovie.getMovieId());
 
         int confirmDelete = -1;
-         // to prevent users from keying in data that is not string 
-         do{
-            try{
+        // to prevent users from keying in data that is not string
+        do {
+            try {
                 System.out.println("Movie to remove: " + toDelete.getTitle());
                 System.out.println("Confirm delete: \n1: Yes \n2: No");
                 confirmDelete = (sc.nextInt());
@@ -71,32 +67,29 @@ public class removeMovieHandler {
                 if (confirmDelete <= 0 || confirmDelete > 2) {
                     System.out.println("Invalid option. Please try again");
                     flag = true;
-                }
-                else{
+                } else {
                     flag = false;
                 }
-            }
-            catch(Exception e){
+            } catch (Exception e) {
                 System.out.println("Inavlid input. Please enter intergers only.");
                 sc.nextLine();
                 flag = true;
             }
-        }
-        while(flag);
+        } while (flag);
         sc.nextLine();
 
-        switch(confirmDelete){
+        switch (confirmDelete) {
             case 1:
-            System.out.println("Deleting "+toDelete.getTitle()+" .......");
-            toDelete.setIsDeleted(1);
-            movieArray.set(toDelete.getMovieId(), toDelete);
-            saveMovie.saveMovieArray(filename, movieArray);// overwrite file
-            System.out.println(toDelete.getTitle() + " has been deleted");
-            break;
+                System.out.println("Deleting " + toDelete.getTitle() + " .......");
+                toDelete.setIsDeleted(1);
+                movieArray.set(toDelete.getMovieId(), toDelete);
+                saveMovie.saveMovieArray(filename, movieArray);// overwrite file
+                System.out.println(toDelete.getTitle() + " has been deleted");
+                break;
 
             case 2:
-            System.out.println("Discarding changes.");
-            break;
+                System.out.println("Discarding changes.");
+                break;
         }
 
         return true;
