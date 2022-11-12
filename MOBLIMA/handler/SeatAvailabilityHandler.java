@@ -83,6 +83,7 @@ public class SeatAvailabilityHandler {
 
         if(isg == 1){
             System.out.println();
+            System.out.println("You're logged in as guest!");
             System.out.println("Please quit and login to book");
             return;
         }

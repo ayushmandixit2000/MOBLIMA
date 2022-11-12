@@ -62,7 +62,9 @@ public class CineplexApp {
                                         break;
 
                                 case 3:
-                                        System.out.println("Program closing ... Thank you for using MOBLIMA!");
+                                        System.out.println("Program closing ...");
+                                        System.out.println();
+                                        printThankYouMsg();
                                         quit = true;
                                         break;
                                 default:
@@ -110,4 +112,18 @@ public class CineplexApp {
                 System.out.println(
                                 "╚═════════════════════════════════════════════════════════════════════════════════════════════════════╝");
         }
+
+        private static void printThankYouMsg(){
+                System.out.println("████████╗██╗  ██╗ █████╗ ███╗   ██╗██╗  ██╗    ██╗   ██╗ ██████╗ ██╗   ██╗██╗");
+                System.out.println("╚══██╔══╝██║  ██║██╔══██╗████╗  ██║██║ ██╔╝    ╚██╗ ██╔╝██╔═══██╗██║   ██║██║");
+                System.out.println("   ██║   ███████║███████║██╔██╗ ██║█████╔╝      ╚████╔╝ ██║   ██║██║   ██║██║");
+                System.out.println("   ██║   ██╔══██║██╔══██║██║╚██╗██║██╔═██╗       ╚██╔╝  ██║   ██║██║   ██║╚═╝");
+                System.out.println("   ██║   ██╔══██║██╔══██║██║╚██╗██║██╔═██╗       ╚██╔╝  ██║   ██║██║   ██║╚═╝");
+                System.out.println("   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝       ╚═╝    ╚═════╝  ╚═════╝ ╚═╝");
+                System.out.println();
+        }
+                                                                             
+
+
+
 }
