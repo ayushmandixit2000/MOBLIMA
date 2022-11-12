@@ -49,6 +49,11 @@ public class SeatAvailabilityHandler {
                 else if(st[i][j] == 4){
                     System.out.print("U");
                 }
+
+                else if(st[i][j] == 5){
+                    System.out.print("C");
+                }
+
                 else {
                     System.out.print(st[i][j]);
                 }
@@ -64,6 +69,7 @@ public class SeatAvailabilityHandler {
         System.out.println("Legend - 1: Occupied");
         System.out.println("Legend - E: Elite seats (Unoccupied) - Extra charges with apply");
         System.out.println("Legend - U: Ultima seats (Unoccupied) - Extra charges with apply");
+        System.out.println("Legend - C: Couple Seat - Seat next to it will be auto selected");
         System.out.println("Legend - space: Alleys and Stairs");
         System.out.println();
         System.out.println("_____________________________________________________");
