@@ -58,16 +58,22 @@ public class MovieDetailsListing implements Listing {
         }
 
         else if (m1.getMovieRating() == 2) {
-            rat = "M";
+            rat = "PG13";
         }
 
         else if (m1.getMovieRating() == 3) {
-            rat = "R16";
+            rat = "NC16";
         }
 
         else if (m1.getMovieRating() == 4) {
-            rat = "TBC";
+            rat = "M18";
         }
+
+        else if (m1.getMovieRating() == 5) {
+            rat = "R21";
+        }
+
+
         System.out.println("Movie Rating:   " + rat);
 
         String movietype = "";
@@ -78,6 +84,10 @@ public class MovieDetailsListing implements Listing {
 
         else if (m1.getMovieType() == 1) {
             movietype = "Blockbuster";
+        }
+
+        else if (m1.getMovieType() == 1) {
+            movietype = "2D";
         }
 
         System.out.println("Movie Type:     " + movietype);

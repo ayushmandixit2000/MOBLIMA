@@ -89,6 +89,10 @@ public class FinalPurchaseHandler {
             movietypeS = "3D";
         }
 
+        else if (movietype == 2) {
+            movietypeS = "2D";
+        }
+
         else {
             movietypeS = "Blockbuster";
         }

@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import MOBLIMA.configurables.peakDates;
+import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Showtime;
+import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveMovieTicket;
 import MOBLIMA.save.saveMovieTicket;
 
@@ -68,15 +70,38 @@ public class CustomerTicketHandler {
             new peakDates();
             int peakcat = 0;
 
-            if (peakDates.isDicountApplicable(s1.getDate(), s1.getTime())) {
+            if (!peakDates.isDicountApplicable(s1.getDate(), s1.getTime())) {
                 peakcat = 1;
             }
+
+            int movietype = s1.getMovieId();
+
+            Movie mov = null;
+
+            String filename0 = "MOBLIMA/databases/movie.txt";
+            ArrayList movieArray = retrieveMovie.readMovie(filename0);
+            for (int o = 0; o < movieArray.size(); o++) {
+                Movie m = (Movie) movieArray.get(o);
+                if(m.getMovieId() == movietype){
+                    mov = m;
+                    break;
+                }
+            }
+
+            int mt11 = mov.getMovieRating();
+
+
 
             int ageopt;
 
             if (peakcat == 1) {
                 System.out.println("Age group pricing is not applicable for this movie.");
                 System.out.println("Age group pricing is only allowed on Mon-Fri before 6pm.");
+                ageopt = 4;
+            }
+
+            else if(mt11 == 3 || mt11 == 4 || mt11 == 5){
+                System.out.println("Age group pricing is not applicable to movies rated NC16 and above");
                 ageopt = 4;
             }
 

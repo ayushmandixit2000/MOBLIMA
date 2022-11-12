@@ -35,7 +35,7 @@ public class CustomerBookingHandler {
             movt = "--3D";
         }
 
-        if(m.getMovieType() == 0){
+        if(m.getMovieType() == 1){
             movt = "--Blockbuster";
         }
         
@@ -87,16 +87,16 @@ public class CustomerBookingHandler {
             new peakDates();
             String s = "";
             if (peakDates.isPeak(s1.getDate())) {
-                s = "   --Peak period";
+                s = "\t--Peak period";
             }
             else if(peakDates.isThurs(s1.getDate())){
-                s = "   --Thursday";
+                s = "\t--Thursday";
             }
             
             String agep = "";
 
-            if(peakDates.isDicountApplicable(s1.getDate(), s1.getTime())){
-                agep  = "   --Age Group discounts available";
+            if(peakDates.isDicountApplicable(s1.getDate(), s1.getTime()) && m.getMovieRating()!= 3 && m.getMovieRating()!= 4 && m.getMovieRating()!= 5){
+                agep  = "\t--Age Group discounts available";
             }
             
             
@@ -108,7 +108,7 @@ public class CustomerBookingHandler {
                 Cinema c = (Cinema) cinemaArray.get(i);
                 if (c.getCinema().equals(s1.getCinema())) {
                     if (c.getMovieClass() == 1) {
-                        suite = "  --Premium Movie Suite";
+                        suite = "\t--Premium Movie Suite";
                     }
                     else{
                         suite = "";
