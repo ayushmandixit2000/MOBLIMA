@@ -48,7 +48,7 @@ public class removeMovieHandler {
                 }
             }
             catch(Exception e){
-                System.out.println("Inavlid input. Please enter intergers only.");
+                System.out.println("Inavlid input. Please enter integers only.");
                 sc.nextLine();
                 flag = true;
             }
@@ -88,7 +88,7 @@ public class removeMovieHandler {
         switch(confirmDelete){
             case 1:
             System.out.println("Deleting "+toDelete.getTitle()+" .......");
-            toDelete.setShowStatus(3); // setting show status to end of shows which deletes movies
+            toDelete.setIsDeleted(1);
             movieArray.set(toDelete.getMovieId(), toDelete);
             saveMovie.saveMovieArray(filename, movieArray);// overwrite file
             System.out.println(toDelete.getTitle() + " has been deleted");

@@ -1,12 +1,7 @@
-package MOBLIMA.Listings;
+package MOBLIMA.listing;
 
-import MOBLIMA.action.CustomerAction;
 import MOBLIMA.dataStructure.Movie;
-import MOBLIMA.listing.Listing;
-import MOBLIMA.retrieval.retrieveMovie;
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MovieDetailsListing implements Listing {

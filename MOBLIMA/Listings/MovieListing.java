@@ -10,7 +10,7 @@ public class MovieListing implements Listing {
 
     private ArrayList<Movie> validMovies;
 
-    public MovieListing() throws IOException{
+    public MovieListing() throws IOException {
         String filename = "MOBLIMA/databases/movie.txt";
         ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
         this.validMovies = new ArrayList<Movie>(movieArray);
@@ -25,14 +25,13 @@ public class MovieListing implements Listing {
         this.validMovies.removeIf(Movie -> Movie.getIsDeleted() != 0); // create array with valid movies
 
         // print movie list
-        if(this.validMovies.size()==0){
+        if (this.validMovies.size() == 0) {
             System.out.println("No movies available currently.");
-        }
-        else{
+        } else {
             System.out.println("Movies available: ");
-            for(int i = 0; i<this.validMovies.size(); i++){
+            for (int i = 0; i < this.validMovies.size(); i++) {
                 Movie m = this.validMovies.get(i);
-                System.out.println((i+1)+": "+m.getTitle());
+                System.out.println((i + 1) + ": " + m.getTitle());
             }
         }
     }
@@ -41,5 +40,5 @@ public class MovieListing implements Listing {
     public ArrayList<Movie> getValidMovies() {
         return this.validMovies;
     }
-    
+
 }

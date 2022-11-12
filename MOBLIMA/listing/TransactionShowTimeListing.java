@@ -1,21 +1,16 @@
-package MOBLIMA.Listings;
+package MOBLIMA.listing;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.dataStructure.Transaction;
-
-import MOBLIMA.listing.Listing;
 import MOBLIMA.retrieval.retrieveCinema;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveMovieTicket;
 import MOBLIMA.retrieval.retrieveShowtime;
-import MOBLIMA.utils.dateTime;
 
 public class TransactionShowTimeListing implements Listing {
 
@@ -98,26 +93,24 @@ public class TransactionShowTimeListing implements Listing {
 
                             System.out.println("Cineplex: " + cp);
 
-
                             int SC = mt.getSeatClass();
 
                             String seatc = "";
-                            if(SC == 0){
+                            if (SC == 0) {
                                 seatc = "Normal Seat";
                             }
 
-                            else if(SC == 1){
+                            else if (SC == 1) {
                                 seatc = "Elite Seat";
                             }
 
-                            else if(SC == 2){
+                            else if (SC == 2) {
                                 seatc = "Ultima Seat";
                             }
 
-                            else if(SC == 3){
+                            else if (SC == 3) {
                                 seatc = "Couple Seat";
                             }
-
 
                             String age1 = mt.getAgeCat();
                             int age = Integer.parseInt(age1);
@@ -164,4 +157,3 @@ public class TransactionShowTimeListing implements Listing {
     }
 
 }
-

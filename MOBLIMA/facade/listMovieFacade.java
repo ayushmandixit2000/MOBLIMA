@@ -2,9 +2,9 @@ package MOBLIMA.facade;
 
 import java.io.IOException;
 
-import MOBLIMA.Listings.MovieDetailsListing;
 import MOBLIMA.action.CustomerAction;
 import MOBLIMA.dataStructure.Movie;
+import MOBLIMA.listing.MovieDetailsListing;
 import MOBLIMA.listing.movielisting;
 
 public class listMovieFacade {

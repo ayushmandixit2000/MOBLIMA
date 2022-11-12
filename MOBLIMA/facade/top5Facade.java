@@ -2,10 +2,10 @@ package MOBLIMA.facade;
 
 import java.io.IOException;
 import java.util.Scanner;
-import MOBLIMA.Listings.*;
 import MOBLIMA.action.CustomerAction;
 import MOBLIMA.configurables.rankStatus;
 import MOBLIMA.dataStructure.Movie;
+import MOBLIMA.listing.MovieDetailsListing;
 import MOBLIMA.listing.top5RatingListing;
 import MOBLIMA.listing.top5SalesListing;
 

@@ -1,13 +1,10 @@
-package MOBLIMA.Listings;
+package MOBLIMA.listing;
+
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.Review;
-import MOBLIMA.listing.Listing;
-import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveReview;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ReviewListing implements Listing {
 
@@ -25,8 +22,8 @@ public class ReviewListing implements Listing {
 
         for (int i = 0; i < reviewArray.size(); i++) {
             Review r = (Review) reviewArray.get(i);
-            if(r.getMovieId() == movid){
-            System.out.println("\nRating out of 5: " + r.getRating() + " || Review: " + r.getReview());
+            if (r.getMovieId() == movid) {
+                System.out.println("\nRating out of 5: " + r.getRating() + " || Review: " + r.getReview());
             }
         }
     }
