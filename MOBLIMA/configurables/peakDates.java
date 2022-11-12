@@ -61,6 +61,11 @@ public class peakDates {
     public static boolean isDicountApplicable(LocalDate date, LocalTime time) { // is applicable for discount
         LocalTime sixPM = dateTime.convertTime("1800");
         String dayOfWeek = date.getDayOfWeek().toString();
+        for (int i = 0; i < publicHoliday.size(); i++) {
+            if (date.isEqual((ChronoLocalDate) publicHoliday.get(i))) {
+                return false;
+            }
+        }
         if (!"SATURDAY".equalsIgnoreCase(dayOfWeek) && !"SUNDAY".equalsIgnoreCase(dayOfWeek)) {
             if (time.compareTo(sixPM) == -1) {
                 return true;
