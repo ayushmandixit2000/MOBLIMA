@@ -32,6 +32,9 @@ public class TicketPrice {
             case 2:
                 price = ageGroupPricing.getPriceOfSnrCitizen();
                 break;
+            case 3:
+                price = ageGroupPricing.getPriceOfAdult();
+                break;
         }
         new peakDates();
         new ageGroupPricing();
