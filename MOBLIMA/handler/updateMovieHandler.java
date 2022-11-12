@@ -97,7 +97,7 @@ public class updateMovieHandler {
                 try {
                     System.out.println("Select field to edit: ");
                     System.out.println(
-                            "1: Movie Title \n2: Show Status \n3: Director \n4: Cast \n5: Synopsis \n6: Movie Rating \n7: Movie Type \n8: Confirm Changes");
+                            "1: Movie Title \n2: Show Status \n3: Director \n4: Cast \n5: Synopsis \n6: Movie Rating \n7: Movie Type \n8: Change Deleted Status \n9: Confirm Changes");
                     editOption = sc.nextInt();
                     flag = false;
                 } catch (Exception e) {
@@ -497,9 +497,43 @@ public class updateMovieHandler {
                     break;
 
                 case 8:
+                    System.out.println("Edit Deleted Status");
+                    System.out.print("Current Delete Status: " + ((editMovie.getIsDeleted() == 1) ? "True" : "False"));
+                    System.out.println();
+
+                    int deleteMovie = -1;
+                     // to prevent users from keying in data that is not string
+                     do {
+                        try {
+                            System.out.println("Delete Movie: \n1: Yes \n2: No");
+                            deleteMovie = sc.nextInt();
+                            if(deleteMovie>2 || deleteMovie<1){
+                                System.out.println("Invalid option. Please try again.");
+                                flag = true;
+                            }
+                            else{
+                                flag = false;
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Inavlid input. Please enter intergers only.");
+                            sc.nextLine();
+                            flag = true;
+                        }
+                    } while (flag);
+                    sc.nextLine();
+
+                    if(deleteMovie == 1){
+                        editMovie.setIsDeleted(deleteMovie);
+                    }
+                    else{
+                        editMovie.setIsDeleted(0);
+                    }
+                    break;
+                case 9:
                     int confirmChanges = -1;
 
                     System.out.println("Updated movie deatils: ");
+                    System.out.println("Delete Status: " + ((editMovie.getIsDeleted() == 1) ? "True" : "False"));
                     System.out.println("Movie title: " + editMovie.getTitle());
                     System.out.println("Show Status: " + this.status.get(editMovie.getShowStatus()));
                     System.out.println("Director: " + editMovie.getDirector());
