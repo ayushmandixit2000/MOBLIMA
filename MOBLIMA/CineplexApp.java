@@ -37,10 +37,8 @@ public class CineplexApp {
                         scc = new Scanner(System.in);
                         switch (option) {
                                 case 1:
-                                        System.out.println("executing");
                                         customerpanel customerui = new customerpanel();
                                         customerui.viewApp();
-                                        System.out.println("here1");
                                         option = 0;
 
                                         break;

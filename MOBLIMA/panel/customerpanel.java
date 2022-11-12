@@ -30,10 +30,10 @@ public class customerpanel implements Panel {
     }
 
     public void viewApp() {
-        System.out.println("Welcome to MOBLIMA");
+        printWelcomeMsg();
         try {
 
-            System.out.println("Please enter your name to log in/sign up, enter 'guest' to enter anonymously. Note: You will not be able to purchase if you enter ananoumously and will be asked to sign out and sign in to purchase");
+            System.out.println("Please enter your name to log in/sign up, enter 'guest' to enter anonymously.\nNote: You will not be able to purchase if you enter ananoumously and will be asked to sign out and sign in to purchase");
             String name1 = CineplexApp.scc.next();
             String name = name1.toLowerCase();
             String userid = "";
@@ -89,4 +89,15 @@ public class customerpanel implements Panel {
             e.printStackTrace();
         }
     }
+
+    private static void printWelcomeMsg(){
+        System.out.println("██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗");
+        System.out.println("██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝");
+        System.out.println("██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗  ");
+        System.out.println("██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  ");
+        System.out.println("╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗");
+        System.out.println(" ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝");
+        System.out.println();
+    }
+
 }
