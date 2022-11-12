@@ -5,7 +5,7 @@ import java.io.IOException;
 import MOBLIMA.action.CustomerAction;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.listing.MovieDetailsListing;
-import MOBLIMA.listing.movielisting;
+import MOBLIMA.listing.movieListing;
 
 public class listMovieFacade {
     private static int action = 0;
@@ -15,7 +15,7 @@ public class listMovieFacade {
     }
 
     public static void run(String userId) throws IOException {
-        movielisting ml = new movielisting();
+        movieListing ml = new movieListing(false);
         ml.setuser(userId);
         ml.show();
         Movie chosenMovie = ml.getChosenMovie();

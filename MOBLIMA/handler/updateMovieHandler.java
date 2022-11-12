@@ -1,6 +1,7 @@
 package MOBLIMA.handler;
 
 import MOBLIMA.dataStructure.*;
+import MOBLIMA.listing.movieListing;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.save.saveMovie;
 import java.io.IOException;
@@ -10,7 +11,6 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Scanner;
-import MOBLIMA.Listings.MovieListing;
 
 public class updateMovieHandler {
     private Dictionary type = new Hashtable();
@@ -44,7 +44,7 @@ public class updateMovieHandler {
         ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
 
         // intialitlizing valid movie and movie listings
-        MovieListing showValidMovies = new MovieListing();
+        movieListing showValidMovies = new movieListing(true);
         ArrayList<Movie> validMovies = showValidMovies.getValidMovies();
         int numbOfMovies = validMovies.size();
 
@@ -164,7 +164,8 @@ public class updateMovieHandler {
                             case 1:
                             case 2:
                             case 3:
-                                case 4: newShowStatus--;
+                            case 4:
+                                newShowStatus--;
                                 statusLoop = false;
                                 editMovie.setShowStatus(newShowStatus);
                                 break;

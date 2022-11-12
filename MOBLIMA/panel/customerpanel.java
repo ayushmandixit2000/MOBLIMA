@@ -1,15 +1,12 @@
 package MOBLIMA.panel;
 
 import java.io.IOException;
-import java.util.Scanner;
-
 import MOBLIMA.CineplexApp;
 import MOBLIMA.facade.listMovieFacade;
 import MOBLIMA.facade.pastTransactionsFacade;
 import MOBLIMA.facade.searchMovieFacade;
 import MOBLIMA.facade.top5Facade;
 import MOBLIMA.handler.customerVerifcationHandler;
-import MOBLIMA.listing.movielisting;
 
 public class customerpanel implements Panel {
     public void displayChoices() {
@@ -33,7 +30,8 @@ public class customerpanel implements Panel {
         printWelcomeMsg();
         try {
 
-            System.out.println("Please enter your name to log in/sign up, enter 'guest' to enter anonymously.\nNote: You will not be able to purchase if you enter ananoumously and will be asked to sign out and sign in to purchase");
+            System.out.println(
+                    "Please enter your name to log in/sign up, enter 'guest' to enter anonymously.\nNote: You will not be able to purchase if you enter ananoumously and will be asked to sign out and sign in to purchase");
             String name1 = CineplexApp.scc.next();
             String name = name1.toLowerCase();
             String userid = "";
@@ -90,13 +88,16 @@ public class customerpanel implements Panel {
         }
     }
 
-    private static void printWelcomeMsg(){
-        // System.out.println("██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗");
-        // System.out.println("██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝");
-        // System.out.println("██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗  ");
-        // System.out.println("██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  ");
-        // System.out.println("╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗");
-        // System.out.println(" ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝");
+    private static void printWelcomeMsg() {
+        // System.out.println("██╗ ██╗███████╗██╗ ██████╗ ██████╗ ███╗ ███╗███████╗");
+        // System.out.println("██║ ██║██╔════╝██║ ██╔════╝██╔═══██╗████╗
+        // ████║██╔════╝");
+        // System.out.println("██║ █╗ ██║█████╗ ██║ ██║ ██║ ██║██╔████╔██║█████╗ ");
+        // System.out.println("██║███╗██║██╔══╝ ██║ ██║ ██║ ██║██║╚██╔╝██║██╔══╝ ");
+        // System.out.println("╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝
+        // ██║███████╗");
+        // System.out.println(" ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝
+        // ╚═╝╚══════╝");
         // System.out.println();
 
         System.out.println("██╗  ██╗███████╗██╗     ██╗      ██████╗     ████████╗██╗  ██╗███████╗██████╗ ███████╗██╗");
@@ -108,4 +109,3 @@ public class customerpanel implements Panel {
         System.out.println();
     }
 }
-                                                                                         
