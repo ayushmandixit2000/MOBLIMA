@@ -31,7 +31,6 @@ public class searchListing implements Listing {
         }
 
         if (optionlist.size() == 0) {
-            System.out.println("No Movie Found...");
             return;
         }
 
@@ -50,6 +49,11 @@ public class searchListing implements Listing {
         String movie1 = scc.next();
         movie = movie1.toLowerCase();
         displayListing();
+
+        if (optionlist.size() == 0) {
+            System.out.println("No Movie Found...");
+            return;
+        }
 
         int movie_chosen;
 

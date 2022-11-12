@@ -71,11 +71,18 @@ public class CustomerBookingHandler {
             }
         }
 
+        if(optionlist.size() == 0){
+            System.out.println();
+            System.out.println("This movie currently have no showitmes, please try again later!");
+            System.out.println();
+            return;
+        }
+
         System.out.println("Please select a show for " + m.getTitle());
         Scanner scc = new Scanner(System.in);
 
         for (int j = 0; j < optionlist.size(); j++) {
-            System.out.println("___________________________________________________________________________________________________________");
+            System.out.println("__________________________________________________________________________________________________________________________________________________________");
             Showtime s1 = optionlist.get(j);
             new peakDates();
             String s = "";
