@@ -78,14 +78,14 @@ public class TransactionShowTimeListing implements Listing {
 
                             String cp = "";
 
-                            if (cinep == 1) {
+                            if (cinep == 0) {
                                 cp = "Vivocity";
-                            } else if (cinep == 2) {
+                            } else if (cinep == 1) {
                                 cp = "Bishan";
                             }
 
-                            else if (cinep == 3) {
-                                cp = "Orchard";
+                            else if (cinep == 2) {
+                                cp = "Ang Mo Kio";
                             }
 
                             else {
