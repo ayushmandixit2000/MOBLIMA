@@ -52,6 +52,10 @@ public class CustomerTicketHandler {
                 SC = 2;
             }
 
+            else if(st[seats[i][0]][seats[i][1] - 1] == 5){
+                SC = 3;
+            }
+
             s1.addSeating(seats[i][0], seats[i][1] - 1);
 
             System.out.println("What age category ticket would you like?");

@@ -114,6 +114,10 @@ public class TransactionShowTimeListing implements Listing {
                                 seatc = "Ultima Seat";
                             }
 
+                            else if(SC == 3){
+                                seatc = "Couple Seat";
+                            }
+
 
                             String age1 = mt.getAgeCat();
                             int age = Integer.parseInt(age1);

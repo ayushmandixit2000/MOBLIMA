@@ -178,7 +178,7 @@ public class Showtime {
      * @param column This Showtime's seats' column to be booked.
      */
     public void addSeating(int row, int column) throws IOException {
-        if (this.seating[row][column] == 0 || this.seating[row][column] == 3 || this.seating[row][column] == 4) {
+        if (this.seating[row][column] == 0 || this.seating[row][column] == 3 || this.seating[row][column] == 4 || this.seating[row][column] == 5) {
             this.seating[row][column] = 1;
             ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
             for (int i = 0; i < showTimeArray.size(); i++) {

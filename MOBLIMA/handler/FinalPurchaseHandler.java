@@ -61,10 +61,10 @@ public class FinalPurchaseHandler {
         }
 
 
-        String ct = "Standard Class";
+        String ct = "Standard Suite";
 
         if(cinematype == 1){
-            ct = "Premium Movie Class";
+            ct = "Platinum Movie Suite";
         }
 
         String cp = "";
@@ -133,6 +133,10 @@ public class FinalPurchaseHandler {
 
             else if(SC == 2){
                 seatc = "Ultima Seat";
+            }
+
+            else if(SC == 3){
+                seatc = "Couple Seat";
             }
 
             
