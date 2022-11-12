@@ -26,7 +26,7 @@ public class top5SalesListing {
         ArrayList<titleSales> salesTitle = new ArrayList<titleSales>(); // create array for the objects with title and                                                               // sales number
         for (int i = 0; i < arraySize; i++) {
             Movie m = (Movie) movieObjects.get(i); // pulls one movie object from the arraylist
-            int salesNo = m.getSales();
+            Double salesNo = m.getSales();
             String title = m.getTitle();
             //MovieTicket t = (MovieTicket) movieTickets.get(i);
             // int totalSales = (int)totalsales;
@@ -132,9 +132,9 @@ public class top5SalesListing {
 
 class titleSales implements Comparable<titleSales> {
     private String title;
-    private int totalSales;
+    private Double totalSales;
 
-    public titleSales(String title, int totalSales) {
+    public titleSales(String title, Double totalSales) {
         this.title = title;
         this.totalSales = totalSales;
     }
@@ -143,7 +143,7 @@ class titleSales implements Comparable<titleSales> {
         return title;
     }
 
-    public int getTotalSales() {
+    public Double getTotalSales() {
         return totalSales;
     }
 

@@ -28,7 +28,7 @@ public class retrieveMovie {
             String synopsis = star.nextToken().trim();
             int movieRating = Integer.parseInt(star.nextToken().trim());
             int movieType = Integer.parseInt(star.nextToken().trim());
-            int sales = Integer.parseInt(star.nextToken().trim());
+            Double sales = Double.parseDouble(star.nextToken().trim());
             int isDeleted = Integer.parseInt(star.nextToken().trim());
             int numReviews = Integer.parseInt(star.nextToken().trim());
             Double avgReview = Double.parseDouble(star.nextToken().trim());

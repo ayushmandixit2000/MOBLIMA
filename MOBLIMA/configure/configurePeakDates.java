@@ -11,9 +11,7 @@ import MOBLIMA.utils.dateTime;
 
 public class configurePeakDates {
     public void displaySetting() throws IOException {
-        System.out.println("Current peak dates:");
-        System.out.print("Weekends are Peak: ");
-        System.out.println(peakDates.getWeekends());
+        System.out.println("Current peak dates (Other than Fridays after 6pm and Weekends):");
         System.out.print("Other dates: ");
         ArrayList datesArray = peakDates.getPublicHoli();
         Collections.sort(datesArray, new comparePH());
@@ -32,8 +30,6 @@ public class configurePeakDates {
             System.out.println("Please input a boolean:");
             sc.next();
         }
-        boolean weekends = sc.nextBoolean();
-        peakDates.setWeekends(weekends);
         System.out.println("Please indicate new peak dates in format of YYYY/MM/DD");
         while (!sc.hasNext()) {
             System.out.println("Please input a date in format of YYYY/MM/DD:");

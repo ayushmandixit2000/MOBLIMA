@@ -42,7 +42,11 @@ public class TicketPrice {
         if (peakDates.isPeak(date)) {
             price = price * peakPricing.getPeakMultiplier();
         } else {
-            price = price * peakPricing.getNonPeakMultiplier();
+            if (peakDates.isThurs(date)){
+                price= price* peakPricing.getThursMultiplier();
+            }else{
+                price= price* peakPricing.getNonPeakMultiplier();
+            }
         }
         switch (seatClass) {
             case 1:

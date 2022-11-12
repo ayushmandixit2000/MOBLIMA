@@ -60,7 +60,7 @@ public class Movie implements Serializable {
     /**
      * The total amount of movie spent on movie tickets for This Movie.
      */
-    private int sales;
+    private Double sales;
 
     /**
      * The index of the delete status of this Movie (0: not deleted, 1: deleted).
@@ -106,7 +106,7 @@ public class Movie implements Serializable {
         synopsis = s;
         movieRating = mr;
         movieType = mt;
-        sales = 0;
+        sales = (double) 0;
         isDeleted = id;
         numReviews = 0;
         avgRating = 0;
@@ -129,7 +129,7 @@ public class Movie implements Serializable {
      * @param nr  This Movie's number of customer reviews.
      * @param ar  This Movie's average customer rating.
      */
-    public Movie(int mid, String t, int ss, String d, String[] c, String s, int mr, int mt, int sa, int id, int nr,
+    public Movie(int mid, String t, int ss, String d, String[] c, String s, int mr, int mt, Double sa, int id, int nr,
             double ar) throws IOException {
         movieId = mid;
         title = t;
@@ -222,7 +222,7 @@ public class Movie implements Serializable {
      * 
      * @return This Movie's sales.
      */
-    public int getSales() {
+    public Double getSales() {
         return sales;
     }
 
@@ -310,7 +310,7 @@ public class Movie implements Serializable {
      * 
      * @param sales This Movie's new assigned sales.
      */
-    public void setSales(int sales) {
+    public void setSales(Double sales) {
         this.sales = sales;
     }
 

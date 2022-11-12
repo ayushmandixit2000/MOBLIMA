@@ -1,7 +1,6 @@
 package MOBLIMA.configurables;
 
 import java.io.IOException;
-import java.lang.reflect.InaccessibleObjectException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ import MOBLIMA.save.savePublicHoli;
 import MOBLIMA.utils.dateTime;
 
 public class peakDates {
-    private static boolean weekends = true;
     private static String filename = "MOBLIMA/databases/publicholidays.txt";
     private static ArrayList publicHoliday;
 
@@ -28,14 +26,6 @@ public class peakDates {
         return publicHoliday;
     }
 
-    public static boolean getWeekends() {
-        return weekends;
-    }
-
-    public static void setWeekends(boolean weekends) {
-        peakDates.weekends = weekends;
-    }
-
     public void setPeakDates(ArrayList publicHoli) {
         publicHoliday = publicHoli;
     }
@@ -45,14 +35,13 @@ public class peakDates {
         savePublicHoli.savePHArray(filename, publicHoliday);
     }
 
-    public static boolean isPeak(LocalDate date) { // old function to be removed
-        if (weekends) {
-            for (int i = 0; i < publicHoliday.size(); i++) {
-                if (date == publicHoliday.get(i)) {
-                    return true;
-                }
+    public static boolean isPeak(LocalDate date) { // is Peak
+        for (int i = 0; i < publicHoliday.size(); i++) {
+            if (date == publicHoliday.get(i)) {
+                return true;
             }
         }
+
         String dayOfWeek = date.getDayOfWeek().toString();
         if ("SATURDAY".equalsIgnoreCase(dayOfWeek) || "SUNDAY".equalsIgnoreCase(dayOfWeek)) {
             return true;
@@ -68,19 +57,21 @@ public class peakDates {
         return false;
     }
 
-    public static boolean isPeak(LocalDate date, LocalTime time) { // weekends + fri after 6pm
+    public static boolean isDicountApplicable(LocalDate date, LocalTime time) { // is applicable for discount
         LocalTime sixPM = dateTime.convertTime("1800");
         String dayOfWeek = date.getDayOfWeek().toString();
-        if ("SATURDAY".equalsIgnoreCase(dayOfWeek) || "SUNDAY".equalsIgnoreCase(dayOfWeek)) {
-            return true;
-        } else if ("FRIDAY".equalsIgnoreCase(dayOfWeek) && time.compareTo(sixPM) == 1) {
-            return true;
+        if (!"SATURDAY".equalsIgnoreCase(dayOfWeek) && !"SUNDAY".equalsIgnoreCase(dayOfWeek)) {
+            if (time.compareTo(sixPM) == -1) {
+                return true;
+            }
         }
         return false;
     }
 
-    public static void main(String[] args) {
-        System.out.println(isPeak(dateTime.convertDate("2022/11/10"), dateTime.convertTime("1759")));
+    public static void main(String[] args) throws IOException {
+        new peakDates();
+        System.out.println(isPeak(dateTime.convertDate("2022/11/10")));
         System.out.println(isThurs(dateTime.convertDate("2022/11/10")));
+        System.out.println(isDicountApplicable(dateTime.convertDate("2022/11/11"), dateTime.convertTime("1700")));
     }
 }

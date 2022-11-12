@@ -44,44 +44,43 @@ public class CustomerTicketHandler {
 
             int SC = 0;
 
-            if(st[seats[i][0]][seats[i][1] - 1] == 0){
+            if (st[seats[i][0]][seats[i][1] - 1] == 0) {
                 SC = 0;
             }
 
-            else if(st[seats[i][0]][seats[i][1] - 1] == 3){
+            else if (st[seats[i][0]][seats[i][1] - 1] == 3) {
                 SC = 1;
             }
 
-            else if(st[seats[i][0]][seats[i][1] - 1] == 4){
+            else if (st[seats[i][0]][seats[i][1] - 1] == 4) {
                 SC = 2;
             }
 
-            else if(st[seats[i][0]][seats[i][1] - 1] == 5){
+            else if (st[seats[i][0]][seats[i][1] - 1] == 5) {
                 SC = 3;
             }
 
             s1.addSeating(seats[i][0], seats[i][1] - 1);
 
-            
             LocalDate showdate = s1.getDate();
             LocalTime showtime = s1.getTime();
 
             new peakDates();
             int peakcat = 0;
-            
-            if (peakDates.isPeak(s1.getDate(), s1.getTime())) {
+
+            if (peakDates.isDicountApplicable(s1.getDate(), s1.getTime())) {
                 peakcat = 1;
             }
 
             int ageopt;
-            
-            if(peakcat == 1){
+
+            if (peakcat == 1) {
                 System.out.println("Age group pricing is not applicable for this movie.");
                 System.out.println("Age group pricing is only allowed on Mon-Fri before 6pm.");
                 ageopt = 4;
             }
 
-            else{
+            else {
                 System.out.println("Age group pricing is applicable for this movie.");
                 System.out.println();
 
@@ -112,7 +111,8 @@ public class CustomerTicketHandler {
             String filename = "MOBLIMA/databases/MovieTicket.txt";
 
             ArrayList movieTicketArray = retrieveMovieTicket.readMovieTicket(filename); // retrieve current array
-            MovieTicket mt = new MovieTicket(age, seats[i][0], seats[i][1] - 1, s1.getShowtimeId(), SC);// add new showtime
+            MovieTicket mt = new MovieTicket(age, seats[i][0], seats[i][1] - 1, s1.getShowtimeId(), SC);// add new
+                                                                                                        // showtime
             movieTicketArray.add(mt);
             saveMovieTicket.saveMovieTicketArray(filename, movieTicketArray);// save to same file
 

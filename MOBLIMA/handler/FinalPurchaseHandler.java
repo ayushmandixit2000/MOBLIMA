@@ -166,7 +166,7 @@ public class FinalPurchaseHandler {
         System.out.println();
         System.out.println("Total cost: $" + totalprice);
 
-        int sales1 = m1.getSales();
+        Double sales1 = m1.getSales();
         int roundVal= (int) Math.round(totalprice);
         sales1 = sales1 + roundVal;
         

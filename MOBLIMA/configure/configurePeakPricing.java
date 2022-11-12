@@ -7,11 +7,13 @@ import MOBLIMA.configurables.peakPricing;
 public class configurePeakPricing implements configure {
     public void displaySetting() throws IOException {
         System.out.println("Current ticket pricing multipliers:");
-        System.out.print("Non-peak: x ");
+        System.out.print("Non-peak(mon,tues,wed,fri): x ");
         System.out.println(peakPricing.getNonPeakMultiplier());
-        System.out.print("Peak: x m ");
+        System.out.print("Non-peak(Thurs): x ");
+        System.out.println(peakPricing.getThursMultiplier());
+        System.out.print("Peak (Weekend, PH, specific dates): x m ");
         System.out.println(peakPricing.getPeakMultiplier());
-        System.out.print("Premium Surcharge: ");
+        System.out.print("Platinium Movie Suite Surcharge: ");
         System.out.println(peakPricing.getPremiumPrice());
         System.out.print("Elite Seat multiplier: x ");
         System.out.println(peakPricing.getPriceOfElite());
