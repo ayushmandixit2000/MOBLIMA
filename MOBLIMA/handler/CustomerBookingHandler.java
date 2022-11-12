@@ -119,9 +119,9 @@ public class CustomerBookingHandler {
         System.out.println("-----------------------------Note------------------------------");
 
         System.out.println("1: Age group discounts are only available on Mon-Fri before 6pm");
-        System.out.println("2: Movies on Thursday will cost 25% more");
-        System.out.println("3: Movies on Public Holidays, Weekends and Cinema indicated peak days will cost 50% more");
-        System.out.println("4: Movies in Premium Cinemas will cost double");
+        System.out.println("2: Movies on Thursday will cost more");
+        System.out.println("3: Movies on Public Holidays, Weekends and Cinema indicated peak days will cost more");
+        System.out.println("4: Movies in Premium Cinemas will cost more");
 
         
         
