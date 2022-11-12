@@ -1,22 +1,3 @@
-0|5|this is really cool!
-1|3|awesome stuff!
-2|3|review
-2|4|review
-1|4|not bad
-1|4|good movie
-0|5|amazing
-1|5|it is pretty good!
-1|1|baddd
-1|5|nice
-0|5|nice
-1|4|-
-0|5|awesome
-1|5|niceeee
-1|4|goof
-0|1|bad
-1|5|amazing
-0|1|1
-3|5|Amazing
-0|1|sd
-1|5|good
-1|5|nice
+0|5|i really liked the movie, the actionwas good
+0|5|Nice. Good actionj
+0|4|Not bad. The action was commendable

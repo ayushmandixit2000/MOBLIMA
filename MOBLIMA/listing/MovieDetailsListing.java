@@ -92,7 +92,7 @@ public class MovieDetailsListing implements Listing {
 
         System.out.println("Movie Type:     " + movietype);
 
-        System.out.println("Movie Sales:    " + m1.getSales());
+        System.out.println("Movie Sales:    $" + m1.getSales());
 
         if (m1.getNumReviews() > 1) {
             System.out.println("\nAverage Rating: " + m1.getAvgRating());
