@@ -139,7 +139,7 @@ public class TransactionShowTimeListing implements Listing {
 
                             System.out.println("Seating Column: " + mt.getSeatingColumn());
 
-                            System.out.println("Ticket Price: " + mt.getPrice());
+                            System.out.println("Ticket Price: $" + mt.getPrice());
 
                             System.out.println("Seat Type: " + seatc);
 

@@ -41,6 +41,7 @@ public class customerpanel implements Panel {
                 customerVerifcationHandler.displayOldUser(name1, userid);
             } else {
                 customerVerifcationHandler.displayNewUser(name1);
+                userid = customerVerifcationHandler.userIdCheck(name);
             }
 
             loop: while (true) {

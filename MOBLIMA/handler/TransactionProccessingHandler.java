@@ -39,7 +39,6 @@ public class TransactionProccessingHandler {
 
         String filename = "MOBLIMA/databases/transactions.txt";
         ArrayList transactionArray = retrieveTransaction.readTransaction(filename); // retrieve current array
-
         Transaction t = new Transaction(date, time, user, ticketids);// add new
         transactionArray.add(t);
         saveTransaction.saveTransactionArray(filename, transactionArray);// overwrite file
