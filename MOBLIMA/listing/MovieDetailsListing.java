@@ -86,7 +86,7 @@ public class MovieDetailsListing implements Listing {
             movietype = "Blockbuster";
         }
 
-        else if (m1.getMovieType() == 1) {
+        else if (m1.getMovieType() == 2) {
             movietype = "2D";
         }
 
