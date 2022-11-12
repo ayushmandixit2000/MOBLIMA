@@ -8,6 +8,8 @@ import MOBLIMA.facade.searchMovieFacade;
 import MOBLIMA.facade.top5Facade;
 import MOBLIMA.handler.customerVerifcationHandler;
 
+
+
 public class customerpanel implements Panel {
     public void displayChoices() {
         System.out.println();
@@ -30,10 +32,18 @@ public class customerpanel implements Panel {
         printWelcomeMsg();
         try {
 
-            System.out.println(
-                    "Please enter your email to log in/sign up, enter 'guest' to enter anonymously.\nNote: You will not be able to purchase if you enter ananoumously and will be asked to sign out and sign in to purchase");
-            String name1 = CineplexApp.scc.next();
+            String name1 = "";
+
+            while(!isValidEmailAddress(name1)){
+                System.out.println();
+                System.out.println(
+                    "Please enter your EMAIL in CORRECT FORMAT to log in/sign up, ENTER 'guest' to enter ANONOMOUSLY.\nNote: You will not be able to purchase if you enter ananoumously and will be asked to sign out and sign in to purchase");
+                    name1 = CineplexApp.scc.next();
+            }
             String name = name1.toLowerCase();
+
+
+
             String userid = "";
 
             userid = customerVerifcationHandler.userIdCheck(name);
@@ -109,4 +119,18 @@ public class customerpanel implements Panel {
         System.out.println("╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝        ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝");
         System.out.println();
     }
+
+    public boolean isValidEmailAddress(String email) {
+
+
+        if(email.equalsIgnoreCase("guest")){
+            return true;
+        }
+
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+    }
+
 }
