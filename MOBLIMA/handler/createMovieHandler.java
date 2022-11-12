@@ -117,8 +117,10 @@ public class createMovieHandler {
         Dictionary rating = new Hashtable();
         rating.put(0, "G");
         rating.put(1, "PG");
-        rating.put(2, "M");
-        rating.put(3, "R16");
+        rating.put(2, "PG13");
+        rating.put(3, "NC16");
+        rating.put(4, "M18");
+        rating.put(5, "R21");
         int movieRating = -1;
         loop = true;
         while (loop) {
@@ -126,7 +128,7 @@ public class createMovieHandler {
             // only allows users to key integer values
             do {
                 try {
-                    System.out.println("Select Movie Rating: \n1: G \n2: PG \n3: M \n4: R16");
+                    System.out.println("Select Movie Rating: \n1: G \n2: PG \n3: PG13 \n4: NC16 \n5: M18 \n6: R21");
                     movieRating = (sc.nextInt());
                     flag = false;
                 } catch (Exception e) {
@@ -142,6 +144,8 @@ public class createMovieHandler {
                 case 2:
                 case 3:
                 case 4:
+                case 5:
+                case 6:
                     loop = false;
                     movieRating--;
                     break;
@@ -154,13 +158,14 @@ public class createMovieHandler {
         Dictionary type = new Hashtable();
         type.put(0, "3D");
         type.put(1, "Blockbuster");
+        type.put(2,"2D");
         int movieType = -1;
         loop = true;
         while (loop) {
             // only allows users to key integer values
             do {
                 try {
-                    System.out.println("Select Movie Type: \n1: 3D \n2: Blockbuster ");
+                    System.out.println("Select Movie Type: \n1: 3D \n2: Blockbuster \n3: 2D ");
                     movieType = (sc.nextInt());
                     flag = false;
                 } catch (Exception e) {
@@ -174,6 +179,7 @@ public class createMovieHandler {
             switch (movieType) {
                 case 1:
                 case 2:
+                case 3:
                     loop = false;
                     movieType--;
                     break;
@@ -194,7 +200,7 @@ public class createMovieHandler {
             System.out.println((i + 1 + ") Cast: " + movieAdmin.getCast()[i]));
         }
         System.out.println("Synopsis: " + synopsis);
-        System.out.println("Movie rating: " + rating.get(movieAdmin.getMovieType()));
+        System.out.println("Movie rating: " + rating.get(movieAdmin.getMovieRating()));
         System.out.println("Movie type: " + type.get(movieAdmin.getMovieType()));
 
         loop = true;

@@ -21,12 +21,14 @@ public class updateMovieHandler {
         // dictionary for movie type
         this.type.put(0, "3D");
         this.type.put(1, "Blockbuster");
+        this.type.put(2,"2D");
 
         // dictionary for rating
         this.rating.put(0, "G");
         this.rating.put(1, "PG");
-        this.rating.put(2, "M");
-        this.rating.put(3, "R16");
+        this.rating.put(3, "NC16");
+        this.rating.put(4, "M18");
+        this.rating.put(5, "R21");
 
         // dictionary for status
         this.status.put(0, "Coming Soon");
@@ -421,10 +423,17 @@ public class updateMovieHandler {
                             System.out.println("Current movie rating: PG");
                             break;
                         case 2:
-                            System.out.println("Current movie rating: M");
+                            System.out.println("Current movie rating: PG13");
                             break;
                         case 3:
-                            System.out.println("Current movie rating: R16");
+                            System.out.println("Current movie rating: NC16");
+                            break;
+                        case 4:
+                            System.out.println("Current movie rating: M18");
+                            break;
+                        case 5:
+                            System.out.println("Current movie rating: R21");
+                            break;
                     }
                     int newMovieRating = -1;
                     boolean movieRatingLoop = true;
@@ -432,7 +441,7 @@ public class updateMovieHandler {
                         // to prevent users from keying in data that is not string
                         do {
                             try {
-                                System.out.println("Select Movie Rating: \n1: G \n2: PG \n3: M \n4: R16");
+                                System.out.println("Select Movie Rating: \n1: G \n2: PG \n3: PG13 \n4: NC16 \n5: M18 \n6: R21");
                                 newMovieRating = (sc.nextInt());
                             } catch (Exception e) {
                                 System.out.println("Inavlid input. Please enter intergers only.");
@@ -447,6 +456,8 @@ public class updateMovieHandler {
                             case 2:
                             case 3:
                             case 4:
+                            case 5:
+                            case 6:
                                 newMovieRating--;
                                 movieRatingLoop = false;
                                 break;
@@ -467,6 +478,9 @@ public class updateMovieHandler {
                         case 1:
                             System.out.println("Current movie status: Blockbuster");
                             break;
+                        case 2:
+                            System.out.println("Current movie status: 2D");
+                            break;
                     }
                     int newMovieType = -1;
                     boolean movieTypeLoop = true;
@@ -474,7 +488,7 @@ public class updateMovieHandler {
                         // to prevent users from keying in data that is not string
                         do {
                             try {
-                                System.out.println("Select new movie type: \n1: 3D \n2: Blockbuster");
+                                System.out.println("Select new movie type: \n1: 3D \n2: Blockbuster \n3: 2D");
                                 newMovieType = sc.nextInt();
                             } catch (Exception e) {
                                 System.out.println("Inavlid input. Please enter intergers only.");
@@ -487,6 +501,7 @@ public class updateMovieHandler {
                         switch (newMovieType) {
                             case 1:
                             case 2:
+                            case 3:
                                 newMovieType--;
                                 movieTypeLoop = false;
                                 break;
@@ -542,7 +557,7 @@ public class updateMovieHandler {
                         System.out.println((i + 1 + ") Cast: " + editMovie.getCast()[i]));
                     }
                     System.out.println("Synopsis: " + editMovie.getSynopsis());
-                    System.out.println("Movie rating: " + this.rating.get(editMovie.getMovieType()));
+                    System.out.println("Movie rating: " + this.rating.get(editMovie.getMovieRating()));
                     System.out.println("Movie type: " + this.type.get(editMovie.getMovieType()));
 
                     // to prevent users from keying in data that is not string
