@@ -3,7 +3,6 @@ package MOBLIMA.facade;
 import java.io.IOException;
 
 import MOBLIMA.action.adminMovieAction;
-import MOBLIMA.action.adminShowtimeAction;
 import MOBLIMA.handler.createMovieHandler;
 import MOBLIMA.handler.removeMovieHandler;
 import MOBLIMA.handler.updateMovieHandler;
@@ -13,7 +12,7 @@ public class editMovieFacade {
         adminMovieAction asa = new adminMovieAction();
         asa.displayChoices();
         int action = asa.getChoice();
-        switch (action){
+        switch (action) {
             case 1:
                 System.out.println("Create Movie Listing");
                 createMovieHandler newMovie = new createMovieHandler();
