@@ -69,7 +69,7 @@ public class updateShowtimeHandler {
                     userindex = sc.nextInt();
                     flag = false;
                     if (userindex < 0 || userindex >= validShowtimes) {
-                        System.out.println("Invalid option. Please key in valid numbers");
+                        System.out.println("Invalid option. Please key in valid numbers.");
                         flag = true;
                     }
                     else{
@@ -77,7 +77,7 @@ public class updateShowtimeHandler {
                     }
                 }
                 catch(Exception e){
-                    System.out.println("Inavlid input. Please enter intergers only");
+                    System.out.println("Inavlid input. Please enter intergers only.");
                     sc.nextLine();
                     flag = true;
                 }

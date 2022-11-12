@@ -68,7 +68,7 @@ public class updateMovieHandler {
                     flag = false;
                 }
                 catch(Exception e){
-                    System.out.println("Inavlid input. Please enter intergers only... "+e);
+                    System.out.println("Inavlid input. Please enter intergers only.");
                     sc.nextLine();
                     flag = true;
                 }
@@ -80,7 +80,7 @@ public class updateMovieHandler {
                 loop = false;
             }
             // error handling if input is invalid
-            System.out.println("Invalid Option. Please try again");
+            System.out.println("Invalid Option. Please try again.");
         }
 
         Movie editMovie = (Movie) validMovies.get(movieOption - 1);
@@ -102,7 +102,7 @@ public class updateMovieHandler {
                     flag = false;
                 }
                 catch(Exception e){
-                    System.out.println("Inavlid input. Please enter intergers only... "+e);
+                    System.out.println("Inavlid input. Please enter intergers only.");
                     sc.nextLine();
                     flag = true;
                 }
@@ -118,7 +118,7 @@ public class updateMovieHandler {
 
                     // error handling if title is empty
                     while(newTitle.isBlank() || newTitle.isEmpty()){
-                        System.out.println("Input cannot be empty. Please try again");
+                        System.out.println("Input cannot be empty. Please try again.");
                         System.out.println("New Title: ");
                         newTitle = sc.nextLine();
                     }
@@ -155,7 +155,7 @@ public class updateMovieHandler {
                                 flag = false;
                             }
                             catch(Exception e){
-                                System.out.println("Inavlid input. Please enter intergers only... "+e);
+                                System.out.println("Inavlid input. Please enter intergers only.");
                                 sc.nextLine();
                                 flag = true;
                             }
@@ -205,7 +205,7 @@ public class updateMovieHandler {
                                 flag = false;
                             }
                             catch(Exception e){
-                                System.out.println("Inavlid input. Please enter intergers only... "+e);
+                                System.out.println("Inavlid input. Please enter intergers only.");
                                 sc.nextLine();
                                 flag = true;
                             }
@@ -318,7 +318,7 @@ public class updateMovieHandler {
                                         flag = false;
                                     }
                                     catch(Exception e){
-                                        System.out.println("Inavlid input. Please enter intergers only... "+e);
+                                        System.out.println("Inavlid input. Please enter intergers only.");
                                         sc.nextLine();
                                         flag = true;
                                     }
@@ -372,7 +372,7 @@ public class updateMovieHandler {
                                         flag = false;
                                     }
                                     catch(Exception e){
-                                        System.out.println("Inavlid input. Please enter intergers only... "+e);
+                                        System.out.println("Inavlid input. Please enter intergers only.");
                                         sc.nextLine();
                                         flag = true;
                                     }
@@ -446,7 +446,7 @@ public class updateMovieHandler {
                                 newMovieRating = (sc.nextInt());
                             }
                             catch(Exception e){
-                                System.out.println("Inavlid input. Please enter intergers only... "+e);
+                                System.out.println("Inavlid input. Please enter intergers only.");
                                 sc.nextLine();
                                 flag = true;
                             }
@@ -487,7 +487,7 @@ public class updateMovieHandler {
                                 newMovieType = sc.nextInt();
                             }
                             catch(Exception e){
-                                System.out.println("Inavlid input. Please enter intergers only... "+e);
+                                System.out.println("Inavlid input. Please enter intergers only.");
                                 sc.nextLine();
                                 flag = true;
                             }
@@ -535,7 +535,7 @@ public class updateMovieHandler {
                             }
                         }
                         catch(Exception e){
-                            System.out.println("Inavlid input. Please enter intergers only... "+e);
+                            System.out.println("Inavlid input. Please enter intergers only.");
                             sc.nextLine();
                             flag = true;
                         }

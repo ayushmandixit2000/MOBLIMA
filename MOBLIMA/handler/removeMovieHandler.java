@@ -48,7 +48,7 @@ public class removeMovieHandler {
                 }
             }
             catch(Exception e){
-                System.out.println("Inavlid input. Please enter intergers only... "+e);
+                System.out.println("Inavlid input. Please enter intergers only.");
                 sc.nextLine();
                 flag = true;
             }
@@ -77,7 +77,7 @@ public class removeMovieHandler {
                 }
             }
             catch(Exception e){
-                System.out.println("Inavlid input. Please enter intergers only... "+e);
+                System.out.println("Inavlid input. Please enter intergers only.");
                 sc.nextLine();
                 flag = true;
             }

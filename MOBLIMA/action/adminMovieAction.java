@@ -14,9 +14,9 @@ public class adminMovieAction implements action {
      */
     public void displayChoices() {
         System.out.println("Please select your desired action (key in the coresponding number)");
-        System.out.println("1: Create cinema showtimes");
-        System.out.println("2: Update cinema showtimes");
-        System.out.println("3: Remove cinema showtimes");
+        System.out.println("1: Create Movie Listing");
+        System.out.println("2: Update Movie Listings ");
+        System.out.println("3: Remove Movie Listings");
         System.out.println("4: Quit");
     }
 
@@ -25,14 +25,25 @@ public class adminMovieAction implements action {
      */
     public int getChoice() throws IOException {
         Scanner sc = new Scanner(System.in);
-        boolean loop = true;
         int choice = 0;
-        while (loop) {
-            choice = sc.nextInt();
-            if (choice <= 5 && choice > 0) {
-                loop = false;
+        boolean flag;
+        do {
+            try {
+                choice = sc.nextInt();
+                flag = false;
+                if (choice < 1 || choice > 4) {
+                    System.out.println("Invalid option. Please key in valid numbers");
+                    flag = true;
+                } else {
+                    flag = false;
+                }
+            } catch (Exception e) {
+                System.out.println("Inavlid input. Please enter intergers only.");
+                sc.nextLine();
+                flag = true;
             }
-        }
+        } while (flag);
+        sc.nextLine();
         return choice;
     }
 }
