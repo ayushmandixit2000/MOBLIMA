@@ -31,7 +31,7 @@ public class customerpanel implements Panel {
         try {
 
             System.out.println(
-                    "Please enter your name to log in/sign up, enter 'guest' to enter anonymously.\nNote: You will not be able to purchase if you enter ananoumously and will be asked to sign out and sign in to purchase");
+                    "Please enter your email to log in/sign up, enter 'guest' to enter anonymously.\nNote: You will not be able to purchase if you enter ananoumously and will be asked to sign out and sign in to purchase");
             String name1 = CineplexApp.scc.next();
             String name = name1.toLowerCase();
             String userid = "";

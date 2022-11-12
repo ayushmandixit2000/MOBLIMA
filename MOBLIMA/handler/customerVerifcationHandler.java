@@ -17,7 +17,7 @@ public class customerVerifcationHandler {
         movieGoerArray = retrieveMovieGoer.readMovieGoer(filename);
         for (int i = 0; i < movieGoerArray.size(); i++) {
             MovieGoer m = (MovieGoer) movieGoerArray.get(i);
-            String m1 = m.getName().toLowerCase();
+            String m1 = m.getEmail().toLowerCase();
             if (m1.equalsIgnoreCase(name)) {
                 return m.getUserId();
             }
@@ -27,7 +27,7 @@ public class customerVerifcationHandler {
 
     public static void displayNewUser(String name1) throws IOException {
         Scanner scc = new Scanner(System.in);
-        System.out.println("Please enter your email address");
+        System.out.println("Please enter your name");
         String email = scc.next();
         System.out.println("Please enter your phone number");
         int mobilenumber;
@@ -47,15 +47,27 @@ public class customerVerifcationHandler {
                 System.out.println("Please key in a number only!");
             }
         }
-        String userid = name1 + mobilenumber;
-        System.out.println("Welcome " + name1);
+        String userid = email + mobilenumber;
+        System.out.println("Welcome " + email);
         System.out.println("User ID: " + userid);
-        MovieGoer mg = new MovieGoer(userid, name1, mobilenumber, email);// add new movieGoer
+        MovieGoer mg = new MovieGoer(userid, email, mobilenumber, name1);// add new movieGoer
         movieGoerArray.add(mg);
         saveMovieGoer.saveMovieGoerArray(filename, movieGoerArray);// overwrite file
     }
 
-    public static void displayOldUser(String name1, String userid) {
+    public static void displayOldUser(String name1, String userid) throws IOException {
+        
+        movieGoerArray = retrieveMovieGoer.readMovieGoer(filename);
+        for (int i = 0; i < movieGoerArray.size(); i++) {
+            MovieGoer m = (MovieGoer) movieGoerArray.get(i);
+            String m1 = m.getEmail().toLowerCase();
+            if (m1.equalsIgnoreCase(name1)) {
+                name1 = m.getName();
+            }
+        }
+        
+        
+        
         System.out.println("Welcome Back " + name1);
         System.out.println("User ID: " + userid);
     }
