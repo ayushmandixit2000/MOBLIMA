@@ -1,4 +1,5 @@
 package MOBLIMA.Listings;
+// to be replaced
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,11 +7,11 @@ import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.listing.Listing;
 import MOBLIMA.retrieval.retrieveMovie;
 
-public class MovieListing implements Listing {
+public class MovieListingSike implements Listing {
 
     private ArrayList<Movie> validMovies;
 
-    public MovieListing() throws IOException {
+    public MovieListingSike() throws IOException {
         String filename = "MOBLIMA/databases/movie.txt";
         ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
         this.validMovies = new ArrayList<Movie>(movieArray);

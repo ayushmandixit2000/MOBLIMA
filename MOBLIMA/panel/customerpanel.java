@@ -1,15 +1,12 @@
 package MOBLIMA.panel;
 
 import java.io.IOException;
-import java.util.Scanner;
-
 import MOBLIMA.CineplexApp;
 import MOBLIMA.facade.listMovieFacade;
 import MOBLIMA.facade.pastTransactionsFacade;
 import MOBLIMA.facade.searchMovieFacade;
 import MOBLIMA.facade.top5Facade;
 import MOBLIMA.handler.customerVerifcationHandler;
-import MOBLIMA.listing.movielisting;
 
 public class customerpanel implements Panel {
     public void displayChoices() {

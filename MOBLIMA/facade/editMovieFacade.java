@@ -3,7 +3,6 @@ package MOBLIMA.facade;
 import java.io.IOException;
 
 import MOBLIMA.action.adminMovieAction;
-import MOBLIMA.action.adminShowtimeAction;
 import MOBLIMA.handler.createMovieHandler;
 import MOBLIMA.handler.removeMovieHandler;
 import MOBLIMA.handler.updateMovieHandler;
