@@ -71,6 +71,13 @@ public class CustomerBookingHandler {
             }
         }
 
+        if(optionlist.size() == 0){
+            System.err.println();
+            System.out.println("Currently no showtimes listed for the movie, please try again later!");
+            System.err.println();
+            return;
+        }
+
         System.out.println("Please select a show for " + m.getTitle());
         Scanner scc = new Scanner(System.in);
 
