@@ -14,7 +14,6 @@ public class MovieListing implements Listing {
     private ArrayList<Movie> validMovies;
     private boolean isAdmin = false;
 
-
     public void setuser(String ui) {
         this.user = ui;
     }
@@ -34,6 +33,11 @@ public class MovieListing implements Listing {
     }
 
     public void displayListing() throws IOException {
+        movieArray = retrieveMovie.readMovie(filename);
+        validMovies = new ArrayList<Movie>(movieArray);
+        if (!isAdmin) {
+            validMovies.removeIf(Movie -> Movie.getIsDeleted() != 0);
+        }
         if (validMovies.size() == 0) {
             System.out.println("No movies available currently.");
         } else {
@@ -42,7 +46,7 @@ public class MovieListing implements Listing {
                 Movie m = this.validMovies.get(i);
                 System.out.print((i + 1) + ": " + m.getTitle());
                 if (isAdmin) {
-                    System.out.print(" | Delete Status: " + ((m.getIsDeleted() == 0) ? "True" : "False"));
+                    System.out.print(" | Delete Status: " + ((m.getIsDeleted() == 1) ? "True" : "False"));
                 }
                 System.out.println();
             }
