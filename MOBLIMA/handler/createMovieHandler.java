@@ -45,7 +45,7 @@ public class createMovieHandler {
                     flag = false;
                 }
                 catch(Exception e){
-                    System.out.println("Inavlid input. Please enter intergers only... "+e);
+                    System.out.println("Inavlid input. Please enter intergers only.");
                     sc.nextLine();
                     flag = true;
                 }
@@ -74,7 +74,7 @@ public class createMovieHandler {
         // getting cast
         ArrayList<String> cast = new ArrayList<String>();
         String userInputCast;
-        System.out.println("Enter each cast on a new line. Key in stop to complete the list of cast.");
+        System.out.println("Enter each cast on a new line. Key in 'stop' to complete the list of cast.");
         while (true){
             System.out.print("Cast: ");
             userInputCast = sc.nextLine();
@@ -88,7 +88,12 @@ public class createMovieHandler {
 
             // breaking out of loop when user keys in stop
             if(userInputCast.equals("stop")){
-                break;
+                if(cast.size() ==0){
+                    System.out.println("Cast list cannot be empty. Please insert casts.");
+                }
+                else{
+                    break;
+                }
             }
 
             // add cast only if it's a unique value
@@ -129,7 +134,7 @@ public class createMovieHandler {
                     flag = false;
                 }
                 catch(Exception e){
-                    System.out.println("Inavlid input. Please enter intergers only... "+e);
+                    System.out.println("Inavlid input. Please enter intergers only.");
                     sc.nextLine();
                     flag = true;
                 }
@@ -162,7 +167,7 @@ public class createMovieHandler {
                     flag = false;
                 }
                 catch(Exception e){
-                    System.out.println("Inavlid input. Please enter intergers only... "+e);
+                    System.out.println("Inavlid input. Please enter intergers only.");
                     sc.nextLine();
                     flag = true;
                 }
@@ -205,7 +210,7 @@ public class createMovieHandler {
                     flag = false;
                 }
                 catch(Exception e){
-                    System.out.println("Inavlid input. Please enter intergers only... "+e);
+                    System.out.println("Inavlid input. Please enter intergers only.");
                     sc.nextLine();
                     flag = true;
                 }

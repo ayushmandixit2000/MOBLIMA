@@ -1,13 +1,7 @@
-package MOBLIMA.Listings;
+package MOBLIMA.listing;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.Transaction;
-import MOBLIMA.listing.Listing;
-import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.utils.dateTime;
 
 public class TransactionDetailsListing implements Listing {
@@ -38,10 +32,6 @@ public class TransactionDetailsListing implements Listing {
         TransactionShowTimeListing TSL = new TransactionShowTimeListing();
         TSL.sett(t1);
         TSL.displayListing();
-
-        
-
-
 
     }
 

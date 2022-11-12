@@ -30,6 +30,9 @@ public class saveMovieTicket extends save {
             st.append(mt.getPrice());
             st.append(SEPARATOR);
             st.append(mt.getShowtimeId());
+            st.append(SEPARATOR);
+            st.append(mt.getSeatClass());
+
 
             alw.add(st.toString());
         }
@@ -41,7 +44,7 @@ public class saveMovieTicket extends save {
         ArrayList movieTicketArray = retrieveMovieTicket.readMovieTicket(filename); // retrieve current array
 
         // add new showtime
-        MovieTicket mt = new MovieTicket("0", 1, 5, "Dog2022/12/141630");
+        MovieTicket mt = new MovieTicket("0", 1, 5, "Dog2022/12/141630",0);
         movieTicketArray.add(mt);
         // save to same file
         saveMovieTicket.saveMovieTicketArray(filename, movieTicketArray);

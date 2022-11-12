@@ -2,61 +2,77 @@ package MOBLIMA.configurables;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import MOBLIMA.retrieval.retrievePH;
 import MOBLIMA.save.savePublicHoli;
-
-//for ppl to get public holi dates
-// new peakDates();
-// String filename = "MOBLIMA/databases/publicholidays.txt";
-// ArrayList al = retrievePH.readPH(filename);
-// for (int i = 0; i < al.size(); i++) {
-//     LocalDate date = (LocalDate) al.get(i);
-//     System.out.println(dateTime.convertDate(date));
-// }
+import MOBLIMA.utils.dateTime;
 
 public class peakDates {
-    private static boolean weekends = true;
     private static String filename = "MOBLIMA/databases/publicholidays.txt";
-    private static ArrayList publicHoli; // for public holis
+    private static ArrayList publicHoliday;
+
+    /**
+     * helper class that is configurable and can be used to evaluate whether dates
+     * are peak
+     * 
+     */
 
     public peakDates() throws IOException {
-        publicHoli = retrievePH.readPH(filename);
+        publicHoliday = retrievePH.readPH(filename);
     }
 
     public static ArrayList getPublicHoli() {
-        return publicHoli;
+        return publicHoliday;
     }
 
-    public static boolean getWeekends() {
-        return weekends;
-    }
-
-    public static void setWeekends(boolean weekends) {
-        peakDates.weekends = weekends;
-    }
-
-    public void setPeakDates(LocalDate[] publicHoli) {
-        publicHoli = publicHoli;
+    public void setPeakDates(ArrayList publicHoli) {
+        publicHoliday = publicHoli;
     }
 
     public static void addPeakDate(LocalDate d) throws IOException {
-        publicHoli.add(d);
-        savePublicHoli.savePHArray(filename, publicHoli);
+        publicHoliday.add(d);
+        savePublicHoli.savePHArray(filename, publicHoliday);
     }
 
-    public static boolean isPeak(LocalDate date) {
-        if (weekends) {
-            for (int i = 0; i < publicHoli.size(); i++) {
-                if (date == publicHoli.get(i)) {
-                    return true;
-                }
+    public static boolean isPeak(LocalDate date) { // is Peak
+        for (int i = 0; i < publicHoliday.size(); i++) {
+            if (date.isEqual((ChronoLocalDate) publicHoliday.get(i))) {
+                return true;
             }
         }
+
         String dayOfWeek = date.getDayOfWeek().toString();
         if ("SATURDAY".equalsIgnoreCase(dayOfWeek) || "SUNDAY".equalsIgnoreCase(dayOfWeek)) {
             return true;
         }
         return false;
+    }
+
+    public static boolean isThurs(LocalDate date) {// thurs check
+        String dayOfWeek = date.getDayOfWeek().toString();
+        if ("THURSDAY".equalsIgnoreCase(dayOfWeek)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isDicountApplicable(LocalDate date, LocalTime time) { // is applicable for discount
+        LocalTime sixPM = dateTime.convertTime("1800");
+        String dayOfWeek = date.getDayOfWeek().toString();
+        if (!"SATURDAY".equalsIgnoreCase(dayOfWeek) && !"SUNDAY".equalsIgnoreCase(dayOfWeek)) {
+            if (time.compareTo(sixPM) == -1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) throws IOException {
+        new peakDates();
+        System.out.println(isPeak(dateTime.convertDate("2022/11/10")));
+        System.out.println(isThurs(dateTime.convertDate("2022/11/10")));
+        System.out.println(isDicountApplicable(dateTime.convertDate("2022/11/11"), dateTime.convertTime("1700")));
     }
 }

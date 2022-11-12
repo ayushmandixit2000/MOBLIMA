@@ -12,7 +12,8 @@ public class configureTicketPricing implements configure {
         System.out.print("Adult: $");
         System.out.println(ageGroupPricing.getPriceOfAdult());
         System.out.print("Senior Citizen: $");
-        System.out.println(ageGroupPricing.getPriceOfSnrCitizen());
+        System.out.print(ageGroupPricing.getPriceOfSnrCitizen());
+        System.out.println("_____________________________________________________________");
     }
 
     public void getNewSetting() throws IOException {

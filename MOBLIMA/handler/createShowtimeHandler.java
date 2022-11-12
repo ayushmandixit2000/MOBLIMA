@@ -9,7 +9,12 @@ import MOBLIMA.listing.movielisting;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.save.saveShowtime;
 import MOBLIMA.utils.dateTime;
+
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 public class createShowtimeHandler {
     private static LocalTime showtime;
@@ -32,18 +37,44 @@ public class createShowtimeHandler {
         try {
             System.out.println("We are now creating showtime at \n Cineplex: " + cnplx + " Cinema: " + cnm
                     + " Cinema Code: " + cc);
-            System.out.println("Enter Showtime Time in the format HHMM");
-            inputTime = sc.next();
-            while (inputTime.length() != 4) {
-                System.out.println("Invalid Time format, please try again");
-                inputTime = sc.next();
+
+
+            boolean flag;
+            // error handling for invalid input
+            DateTimeFormatter strictTimeFormatter = DateTimeFormatter.ofPattern("HHmm").withResolverStyle(ResolverStyle.STRICT);
+            do{
+                try{
+                    System.out.println("Enter Showtime Time in the format HHMM");
+                    inputTime = sc.next();
+                    LocalTime.parse(inputTime, strictTimeFormatter);
+                    flag = false;
+                }
+                catch(DateTimeParseException e){
+                    System.out.println("Invalid input. Please try again.");
+                    flag = true;
+                    
+                }
             }
-            System.out.println("Enter Date in the format YYYY/MM/DD");
-            inputDate = sc.next();
-            while (inputDate.length() != 10) {
-                System.out.println("Invalid Date format, please try again");
-                inputDate = sc.next();
+            while(flag);
+
+            // date
+            DateTimeFormatter strictDateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+
+            // error handling for invalid input
+            do{
+                try{
+                    System.out.println("Enter Date in the format YYYY/MM/DD");
+                    inputDate = sc.next();
+                    LocalDate.parse(inputDate, strictDateFormatter);
+                    flag = false;
+                }
+                catch(DateTimeParseException e){
+                    System.out.println("Invalid input. Please try again.");
+                    flag = true;
+                    
+                }
             }
+            while(flag);
 
             System.out.println("Enter Movie");
             movielisting ml = new movielisting();
@@ -72,23 +103,70 @@ public class createShowtimeHandler {
                             + "3 - Movie\n"
                             + "4 - Check inputs\n"
                             + "5 - Confirm inputs\n");
-                    System.out.println("Please input a number to edit the fields");
-                    i = sc.nextInt();
+
+                    i = -1;
+                     // to prevent users from keying in data that is not string 
+                    do{
+                        try{
+                            System.out.println("Please input a number to edit the fields");
+                            i = sc.nextInt();
+                            flag = false;
+                            if (i < 1 || i > 5) {
+                                System.out.println("Invalid option. Please key in valid numbers");
+                                flag = true;
+                            }
+                            else{
+                                flag = false;
+                            }
+                        }
+                        catch(Exception e){
+                            System.out.println("Inavlid input. Please enter intergers only");
+                            sc.nextLine();
+                            flag = true;
+                        }
+                    }
+                    while(flag);
+                    sc.nextLine();
+
                     switch (i) {
                         case 1:
                             System.out.println("Your previous input is: " + inputDate);
-                            System.out.println("Enter the new Date YYYY//MM/DD:");
-                            inputDate = sc.next();
+
+                             // error handling for invalid input
+                            do{
+                                try{
+                                    System.out.println("Enter the new Date YYYY/MM/DD:");
+                                    inputDate = sc.next();
+                                    LocalDate.parse(inputDate, strictDateFormatter);
+                                    flag = false;
+                                }
+                                catch(DateTimeParseException e){
+                                    System.out.println("Invalid input. Please try again.");
+                                    flag = true;    
+                                }
+                            }
+                            while(flag);
                             break;
 
                         case 2:
                             System.out.println("Your previous input is: " + showtime);
-                            System.out.println("Enter Showtime Time in the format HHMM");
-                            inputTime = sc.next();
-                            while (inputTime.length() != 4) {
-                                System.out.println("Invalid Time format, please try again");
-                                inputTime = sc.next();
+
+                            // error handling for invalid input
+                            do{
+                                try{
+                                    System.out.println("Enter Showtime Time in the format HHMM");
+                                    inputTime = sc.next();
+                                    LocalTime.parse(inputTime, strictTimeFormatter);
+                                    flag = false;
+                                }
+                                catch(DateTimeParseException e){
+                                    System.out.println("Invalid input. Please try again.");
+                                    flag = true;
+                                    
+                                }
                             }
+                            while(flag);
+                            
                             break;
                         case 3:
                             System.out.println("Your previous input is: " + chosenMovie.getTitle());

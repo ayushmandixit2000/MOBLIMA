@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import MOBLIMA.Listings.TransactionDetailsListing;
 import MOBLIMA.dataStructure.Transaction;
+import MOBLIMA.listing.TransactionDetailsListing;
 import MOBLIMA.retrieval.retrieveTransaction;
 import MOBLIMA.utils.dateTime;
 
@@ -33,7 +33,7 @@ public class pastTransactionsFacade {
         }
 
         if (optionlist.size() == 0) {
-            System.out.println("\nNo past history on Moblima for user" + userid);
+            System.out.println("\nNo past history on Moblima for user " + userid);
         }
 
         else {

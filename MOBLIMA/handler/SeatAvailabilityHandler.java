@@ -42,7 +42,19 @@ public class SeatAvailabilityHandler {
             for (int j = 0; j < st[i].length; j++) {
                 if (st[i][j] == 2) {
                     System.out.print(" ");
-                } else {
+                } 
+                else if(st[i][j] == 3){
+                    System.out.print("E");
+                }
+                else if(st[i][j] == 4){
+                    System.out.print("U");
+                }
+
+                else if(st[i][j] == 5){
+                    System.out.print("C");
+                }
+
+                else {
                     System.out.print(st[i][j]);
                 }
                 System.out.print("  ");
@@ -55,10 +67,27 @@ public class SeatAvailabilityHandler {
         System.out.println();
         System.out.println("Legend - 0: Unoccupied");
         System.out.println("Legend - 1: Occupied");
+        System.out.println("Legend - E: Elite seats (Unoccupied) - Extra charges with apply");
+        System.out.println("Legend - U: Ultima seats (Unoccupied) - Extra charges with apply");
+        System.out.println("Legend - C: Couple Seat - Seat next to it will be auto selected");
         System.out.println("Legend - space: Alleys and Stairs");
         System.out.println();
         System.out.println("_____________________________________________________");
 
+       
+        int isg = 0;
+
+        if(user.equalsIgnoreCase("guest1")){
+            isg = 1;
+        }
+
+        if(isg == 1){
+            System.out.println();
+            System.out.println("You're logged in as guest!");
+            System.out.println("Please quit and login to book");
+            return;
+        }
+       
         System.out.println("Would you like to select seats? ");
         System.out.println("1: Yes");
         System.out.println("2: No");

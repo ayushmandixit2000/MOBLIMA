@@ -35,9 +35,39 @@ public class removeShowtimeHandler {
 
             stl.populate(cplx, cnm, cc);
             stl.displayListing();
-            System.out.println("Hint : Select the showtime you want to remove");
-            System.out.println("Enter what you'd like to remove: ");
-            int userindex = sc.nextInt();
+            int validShowtimes = stl.getValidShowtimes();
+
+            // if showtime list is empty exit menu
+            if(validShowtimes==0){
+                System.out.println("Please create showtimes.");
+                return;
+            }
+
+            boolean flag;
+            int userindex = -1;
+            // to prevent users from keying in data that is not integer 
+            do{
+                try{
+                    System.out.println("Enter what you'd like to remove: ");
+                    userindex = sc.nextInt();
+                    flag = false;
+                    if (userindex < 0 || userindex >= validShowtimes) {
+                        System.out.println("Invalid option. Please key in valid numbers");
+                        flag = true;
+                    }
+                    else{
+                        flag = false;
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Inavlid input. Please enter intergers only");
+                    sc.nextLine();
+                    flag = true;
+                }
+            }
+            while(flag);
+            sc.nextLine();
+
             String selectedShowtimeId = "";
             int FirstCounter = 0;
             Collections.sort(showTimeArray, new compareDates());

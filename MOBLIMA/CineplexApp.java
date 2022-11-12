@@ -1,67 +1,76 @@
 package MOBLIMA;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import MOBLIMA.panel.adminpanel;
 import MOBLIMA.panel.customerpanel;
 
 public class CineplexApp {
+        public static Scanner scc = new Scanner(System.in);
+
         public static void main(String[] args) throws IOException {
-                Scanner scc = new Scanner(System.in);
                 boolean quit = false;
+                String input = "0";
+                int option = 0;
                 while (!quit) {
                         printHRPSTitle();
-                        int option;
 
                         while (true) {
-                                
-                                String input = scc.next();
-                                option = 0;
-                                try {
-                                    option = Integer.parseInt(input);
-                                    if (option > 3 || option < 1) {
-                                        System.out.println("Please key in a valid number!");
-                                        continue;
-                                    } else {
+                                if (scc.hasNext()) {
+                                        input = scc.next();
+
+                                        option = 0;
+                                        try {
+                                                option = Integer.parseInt(input);
+                                                if (option > 3 || option < 1) {
+                                                        System.out.println("Please key in a valid number!");
+                                                        continue;
+                                                } else {
+                                                        break;
+                                                }
+                                        } catch (NumberFormatException ne) {
+                                                System.out.println("Please key in a number only!");
+                                        }
+                                }
+                        }
+                        scc = new Scanner(System.in);
+                        switch (option) {
+                                case 1:
+                                        customerpanel customerui = new customerpanel();
+                                        customerui.viewApp();
+                                        option = 0;
+
                                         break;
-                                    }
-                                } catch (NumberFormatException ne) {
-                                    System.out.println("Please key in a number only!");
-                                }
-                        }
+                                // continue;
 
-                        if (option == 2) {
-                                adminpanel admin = new adminpanel();
-                                System.out.println("____________________________");
-                                System.out.println("Please key in the password:");
-                                System.out.println("____________________________");
-                                String password = scc.next();
-                                Boolean passwordMatches = password.equals(admin.getPassword());
-                                if (!passwordMatches) {
-                                        System.out.println("Incorrect Password! Returning...");
-                                }
+                                case 2:
+                                        adminpanel admin = new adminpanel();
+                                        System.out.println("____________________________");
+                                        System.out.println("Please key in the password:");
+                                        System.out.println("____________________________");
+                                        String password = scc.next();
+                                        Boolean passwordMatches = password.equals(admin.getPassword());
+                                        if (!passwordMatches) {
+                                                System.out.println("Incorrect Password! Returning...");
+                                        }
 
-                                else {
-                                        admin.viewApp();
+                                        else {
+                                                admin.viewApp();
+
+                                        }
                                         break;
-                                        
-                                }
-                        }
 
-                        if (option == 1) {
-                                customerpanel customerui = new customerpanel();
-                                customerui.viewApp();
-                                break;
-                                
+                                case 3:
+                                        System.out.println("Program closing ...");
+                                        System.out.println();
+                                        printThankYouMsg();
+                                        quit = true;
+                                        break;
+                                default:
+                                        System.out.println("here");
+                                        System.out.println(option);
                         }
-
-                        if (option == 3) {
-                                System.out.println("Program closing ... Thank you for using MOBLIMA!");
-                                quit = true;
-                                break;
-                        }
-
                 }
 
         }
@@ -103,4 +112,18 @@ public class CineplexApp {
                 System.out.println(
                                 "╚═════════════════════════════════════════════════════════════════════════════════════════════════════╝");
         }
+
+        private static void printThankYouMsg(){
+                System.out.println("████████╗██╗  ██╗ █████╗ ███╗   ██╗██╗  ██╗    ██╗   ██╗ ██████╗ ██╗   ██╗██╗");
+                System.out.println("╚══██╔══╝██║  ██║██╔══██╗████╗  ██║██║ ██╔╝    ╚██╗ ██╔╝██╔═══██╗██║   ██║██║");
+                System.out.println("   ██║   ███████║███████║██╔██╗ ██║█████╔╝      ╚████╔╝ ██║   ██║██║   ██║██║");
+                System.out.println("   ██║   ██╔══██║██╔══██║██║╚██╗██║██╔═██╗       ╚██╔╝  ██║   ██║██║   ██║╚═╝");
+                System.out.println("   ██║   ██╔══██║██╔══██║██║╚██╗██║██╔═██╗       ╚██╔╝  ██║   ██║██║   ██║╚═╝");
+                System.out.println("   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝       ╚═╝    ╚═════╝  ╚═════╝ ╚═╝");
+                System.out.println();
+        }
+                                                                             
+
+
+
 }

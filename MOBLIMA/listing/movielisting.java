@@ -6,32 +6,27 @@ import java.util.*;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.retrieval.retrieveMovie;
 
-public class movielisting {
+public class movielisting implements Listing {
     private String user;
     private Movie chosenMovie;
+    private Movie[] mov;
+    private ArrayList movieArray;
+    private String filename = "MOBLIMA/databases/movie.txt";
 
     public void setuser(String ui) {
         this.user = ui;
     }
 
-    public void show() throws IOException {
-        Scanner scc = new Scanner(System.in);
-        System.out.println("Select one movie to continue");
-
-        String filename = "MOBLIMA/databases/movie.txt";
-        ArrayList movieArray = retrieveMovie.readMovie(filename);
-
+    public void displayListing() throws IOException {
+        movieArray = retrieveMovie.readMovie(filename);
         int count = 0;
-
         for (int i = 0; i < movieArray.size(); i++) {
             Movie m1 = (Movie) movieArray.get(i);
             if (m1.getIsDeleted() == 1) {
                 count++;
             }
         }
-
-        Movie[] mov = new Movie[movieArray.size() - count];
-
+        mov = new Movie[movieArray.size() - count];
         int in = 0;
         for (int j = 0; j < movieArray.size(); j++) {
             Movie m2 = (Movie) movieArray.get(j);
@@ -40,11 +35,15 @@ public class movielisting {
                 in++;
             }
         }
-
         for (int f = 0; f < mov.length; f++) {
             System.out.println((f + 1) + ": " + mov[f].getTitle());
         }
+    }
 
+    public void show() throws IOException {
+        Scanner scc = new Scanner(System.in);
+        displayListing();
+        System.out.println("Select one movie to continue");
         int opt;
         int i =0;
         while (true) {
@@ -65,17 +64,11 @@ public class movielisting {
                 i++;}
             }
         }
-
         for (int h = 0; h < mov.length; h++) {
-            Movie m2 = (Movie) movieArray.get(h);
+            Movie m2 = (Movie) mov[h];
             if (opt == h + 1) {
                 System.out.println("Movie Selected: " + m2.getTitle());
                 chosenMovie = m2;
-                // MovieDetailsListing moviedetails = new MovieDetailsListing();
-                // moviedetails.setaction(action);
-                // moviedetails.setmovie(m2);
-                // moviedetails.setuser(user);
-                // moviedetails.displayListing();
             }
         }
     }

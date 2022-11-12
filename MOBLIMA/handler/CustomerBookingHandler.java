@@ -29,6 +29,18 @@ public class CustomerBookingHandler {
 
     public void display() throws IOException {
 
+        String movt = "";
+
+        if(m.getMovieType() == 0){
+            movt = "--3D";
+        }
+
+        if(m.getMovieType() == 0){
+            movt = "--Blockbuster";
+        }
+        
+        
+        
         if (m.getShowStatus() == 0) {
             System.out.println("This movie is coming soon, please check back in a few days");
             return;
@@ -68,9 +80,19 @@ public class CustomerBookingHandler {
             new peakDates();
             String s = "";
             if (peakDates.isPeak(s1.getDate())) {
-                s = "--Peak preiod pricing will apply   ";
+                s = "   --Peak period";
             }
+            else if(peakDates.isThurs(s1.getDate())){
+                s = "   --Thursday";
+            }
+            
+            String agep = "";
 
+            if(!peakDates.isDicountApplicable(s1.getDate(), s1.getTime())){
+                agep  = "   --Age Group discounts available";
+            }
+            
+            
             String suite = "";
 
             String filename4 = "MOBLIMA/databases/Cinema.txt";
@@ -79,7 +101,7 @@ public class CustomerBookingHandler {
                 Cinema c = (Cinema) cinemaArray.get(i);
                 if (c.getCinema().equals(s1.getCinema())) {
                     if (c.getMovieClass() == 1) {
-                        suite = "--Premium Movie Suite";
+                        suite = "  --Premium Movie Suite";
                     }
                     else{
                         suite = "";
@@ -89,11 +111,23 @@ public class CustomerBookingHandler {
             }
 
             System.out.println(j + 1 + ": Cinema :" + s1.getCinema() + " ||" + "Date: " + s1.getDate() + " ||"
-                    + "Time: " + s1.getTime() + "   " + s + suite);
+                    + "Time: " + s1.getTime() + " ||Movie Type: " +  movt + s + suite + agep);
         }
 
+        System.out.println();
+        System.out.println();
+        System.out.println("-----------------------------Note------------------------------");
+
+        System.out.println("1: Age group discounts are only available on Mon-Fri before 6pm");
+        System.out.println("2: Movies on Thursday will cost more");
+        System.out.println("3: Movies on Public Holidays, Weekends and Cinema indicated peak days will cost more");
+        System.out.println("4: Movies in Premium Cinemas will cost more");
+
+        
+        
         System.out.println("___________________________________________________________________________________________________________");
 
+        System.out.println("Please select a show for " + m.getTitle());
         int option;
 
         while (true) {
@@ -115,6 +149,8 @@ public class CustomerBookingHandler {
         for (int l = 0; l < optionlist.size(); l++) {
             if (option == l + 1) {
                 Showtime s2 = optionlist.get(l);
+
+                
 
                 SeatAvailabilityHandler sa = new SeatAvailabilityHandler();
                 sa.setshow(s2);

@@ -1,21 +1,16 @@
-package MOBLIMA.Listings;
+package MOBLIMA.listing;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.dataStructure.Transaction;
-
-import MOBLIMA.listing.Listing;
 import MOBLIMA.retrieval.retrieveCinema;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveMovieTicket;
 import MOBLIMA.retrieval.retrieveShowtime;
-import MOBLIMA.utils.dateTime;
 
 public class TransactionShowTimeListing implements Listing {
 
@@ -78,14 +73,14 @@ public class TransactionShowTimeListing implements Listing {
 
                             String cp = "";
 
-                            if (cinep == 1) {
+                            if (cinep == 0) {
                                 cp = "Vivocity";
-                            } else if (cinep == 2) {
+                            } else if (cinep == 1) {
                                 cp = "Bishan";
                             }
 
-                            else if (cinep == 3) {
-                                cp = "Orchard";
+                            else if (cinep == 2) {
+                                cp = "Ang Mo Kio";
                             }
 
                             else {
@@ -97,6 +92,25 @@ public class TransactionShowTimeListing implements Listing {
                             System.out.println("Cinema: " + s.getCinema());
 
                             System.out.println("Cineplex: " + cp);
+
+                            int SC = mt.getSeatClass();
+
+                            String seatc = "";
+                            if (SC == 0) {
+                                seatc = "Normal Seat";
+                            }
+
+                            else if (SC == 1) {
+                                seatc = "Elite Seat";
+                            }
+
+                            else if (SC == 2) {
+                                seatc = "Ultima Seat";
+                            }
+
+                            else if (SC == 3) {
+                                seatc = "Couple Seat";
+                            }
 
                             String age1 = mt.getAgeCat();
                             int age = Integer.parseInt(age1);
@@ -115,6 +129,10 @@ public class TransactionShowTimeListing implements Listing {
                                 ans = "Senior Citizen";
                             }
 
+                            else if (age == 3) {
+                                ans = "Standard";
+                            }
+
                             System.out.println("Ticket Type: " + ans);
 
                             System.out.println("Seating Row: " + mt.getSeatingRow());
@@ -122,6 +140,8 @@ public class TransactionShowTimeListing implements Listing {
                             System.out.println("Seating Column: " + mt.getSeatingColumn());
 
                             System.out.println("Ticket Price: " + mt.getPrice());
+
+                            System.out.println("Seat Type: " + seatc);
 
                             System.out.println("__________________________________________________");
 
@@ -137,4 +157,3 @@ public class TransactionShowTimeListing implements Listing {
     }
 
 }
-

@@ -28,6 +28,8 @@ public class adminpanel implements Panel {
         System.out.println();
         Scanner sc = new Scanner(System.in);
         boolean exit = false;
+        printWelcomeMsg();
+        System.out.println();
         
         while (!exit) {
             displayChoices();
@@ -53,12 +55,12 @@ public class adminpanel implements Panel {
 
             switch (option) {
                 case 1:
-                    System.out.println("Edit Movie Listing");
+                    System.out.println("Edit Movie Listings");
                     editMovieFacade emf = new editMovieFacade();
                     emf.run();
                     break;
                 case 2:
-                    System.out.println("Edit Cinema Showtime");
+                    System.out.println("Edit Cinema Showtimes");
                     editShowtimeFacade esf = new editShowtimeFacade();
                     esf.run();
                     break;
@@ -74,4 +76,14 @@ public class adminpanel implements Panel {
             }
         }
     }
-}
+
+    private static void printWelcomeMsg(){
+        System.out.println("██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗         █████╗ ██████╗ ███╗   ███╗██╗███╗   ██╗██╗");
+        System.out.println("██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝        ██╔══██╗██╔══██╗████╗ ████║██║████╗  ██║██║");
+        System.out.println("██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗          ███████║██║  ██║██╔████╔██║██║██╔██╗ ██║██║");
+        System.out.println("██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝          ██╔══██║██║  ██║██║╚██╔╝██║██║██║╚██╗██║╚═╝");
+        System.out.println("╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗        ██║  ██║██████╔╝██║ ╚═╝ ██║██║██║ ╚████║██╗");
+        System.out.println(" ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝        ╚═╝  ╚═╝╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝");
+    }
+}                                                                                                                                                        
+                                                                                                                                                 

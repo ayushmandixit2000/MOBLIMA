@@ -2,9 +2,9 @@ package MOBLIMA.facade;
 
 import java.io.IOException;
 
-import MOBLIMA.Listings.MovieDetailsListing;
 import MOBLIMA.action.CustomerAction;
 import MOBLIMA.dataStructure.Movie;
+import MOBLIMA.listing.MovieDetailsListing;
 import MOBLIMA.listing.searchListing;
 
 public class searchMovieFacade {
@@ -14,7 +14,7 @@ public class searchMovieFacade {
         sl.show();
         Movie chosenMovie = sl.getChosenMovie();
 
-        if(chosenMovie == null){
+        if (chosenMovie == null) {
             return;
         }
         MovieDetailsListing moviedetails = new MovieDetailsListing();

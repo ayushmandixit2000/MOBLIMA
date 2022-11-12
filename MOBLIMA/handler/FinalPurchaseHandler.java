@@ -61,22 +61,22 @@ public class FinalPurchaseHandler {
         }
 
 
-        String ct = "Standard Class";
+        String ct = "Standard Suite";
 
         if(cinematype == 1){
-            ct = "Premium Movie Class";
+            ct = "Platinum Movie Suite";
         }
 
         String cp = "";
 
-        if (cinep == 1) {
+        if (cinep == 0) {
             cp = "Vivocity";
-        } else if (cinep == 2) {
+        } else if (cinep == 1) {
             cp = "Bishan";
         }
 
-        else if (cinep == 3) {
-            cp = "Orchard";
+        else if (cinep == 2) {
+            cp = "Ang Mo Kio";
         }
 
         else {
@@ -116,9 +116,34 @@ public class FinalPurchaseHandler {
                 agec = "Adult";
             }
 
+            else if (age == 3){
+                agec = "Standard";
+            }
+
             else {
                 agec = "Senior Citizen";
             }
+
+            int SC = customertickers[z].getSeatClass();
+
+            String seatc = "";
+            if(SC == 0){
+                seatc = "Normal Seat";
+            }
+
+            else if(SC == 1){
+                seatc = "Elite Seat";
+            }
+
+            else if(SC == 2){
+                seatc = "Ultima Seat";
+            }
+
+            else if(SC == 3){
+                seatc = "Couple Seat";
+            }
+
+            
 
             System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
             System.out.println("_____________________________________________________________________");
@@ -129,7 +154,7 @@ public class FinalPurchaseHandler {
             System.out.println("Ticket Price : $" + customertickers[z].getPrice());
             System.out.println("_____________________________________________________________________");
             System.out.println("Seating  - Row: " + Character.toString((char) (customertickers[z].getSeatingRow() + 65))
-                    + "   Column: " + ((customertickers[z].getSeatingColumn()) + 1));
+                    + "   Column: " + ((customertickers[z].getSeatingColumn()) + 1) + "     " + seatc);
             System.out.println("_____________________________________________________________________");
             System.out.println("Showtime - Date: " + s.getDate() + "        Time: " + s.getTime());
             System.out.println("_____________________________________________________________________");
@@ -141,7 +166,7 @@ public class FinalPurchaseHandler {
         System.out.println();
         System.out.println("Total cost: $" + totalprice);
 
-        int sales1 = m1.getSales();
+        Double sales1 = m1.getSales();
         int roundVal= (int) Math.round(totalprice);
         sales1 = sales1 + roundVal;
         

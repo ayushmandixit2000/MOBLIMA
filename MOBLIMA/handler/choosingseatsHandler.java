@@ -113,6 +113,26 @@ public class choosingseatsHandler {
                 chosenseat[a][0] = r - 65;
                 chosenseat[a][1] = column;
 
+                if(st[r - 65][column - 1] == 5){
+                    if(a + 1 == num){
+                        System.out.println("You can't buy a couple seat because you will have to buy both seat. Please update your number of tickets and try again");
+                        return;
+                    }
+                    
+                    System.out.println("You have selected a couple seat, the seat next to it will be auto selected");
+                    
+                    if(st[r - 65][column - 2] == 5){
+                        chosenseat[a+1][0] = r-65;
+                        chosenseat[a+1][1] = column-1;
+                        a++;
+                    }
+                    else if(st[r - 65][column] == 5){
+                        chosenseat[a+1][0] = r-65;
+                        chosenseat[a+1][1] = column+1;
+                        a++;
+                    }
+                }
+                
             }
 
         }
@@ -147,6 +167,18 @@ public class choosingseatsHandler {
                     System.out.print(" ");
                 }
 
+                else if (st[i][j] == 3) {
+                    System.out.print("E");
+                }
+
+                else if (st[i][j] == 4) {
+                    System.out.print("U");
+                }
+
+                else if (st[i][j] == 5) {
+                    System.out.print("C");
+                }
+
                 else {
                     System.out.print(st[i][j]);
                 }
@@ -161,6 +193,9 @@ public class choosingseatsHandler {
         System.out.println("Legend - X Seat: Selected");
         System.out.println("Legend - 0: Unoccupied");
         System.out.println("Legend - 1: Occupied");
+        System.out.println("Legend - E: Elite seats (Unoccupied) - Extra charges with apply");
+        System.out.println("Legend - U: Ultima seats (Unoccupied) - Extra charges with apply");
+        System.out.println("Legend - C: Couple Seat - Seat next to it will be auto selected");
         System.out.println("Legend - space : Alleys and Stairs");
         System.out.println();
         System.out.println("_____________________________________________________");
