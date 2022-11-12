@@ -82,7 +82,7 @@ public class CustomerBookingHandler {
         Scanner scc = new Scanner(System.in);
 
         for (int j = 0; j < optionlist.size(); j++) {
-            System.out.println("___________________________________________________________________________________________________________");
+            System.out.println("___________________________________________________________________________________________________________________________________________");
             Showtime s1 = optionlist.get(j);
             new peakDates();
             String s = "";
