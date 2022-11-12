@@ -1,8 +1,12 @@
 package MOBLIMA.handler;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import MOBLIMA.configurables.peakDates;
 import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrieveMovieTicket;
@@ -58,29 +62,50 @@ public class CustomerTicketHandler {
 
             s1.addSeating(seats[i][0], seats[i][1] - 1);
 
-            System.out.println("What age category ticket would you like?");
-            System.out.println("1: Child");
-            System.out.println("2: Adult");
-            System.out.println("3: Senior Citizen");
+            
+            LocalDate showdate = s1.getDate();
+            LocalTime showtime = s1.getTime();
 
-            int ageopt;
-
-            while (true) {
-                String input = scc.next();
-                ageopt = 0;
-                try {
-                    ageopt = Integer.parseInt(input);
-                    if (ageopt > 3 || ageopt < 1) {
-                        System.out.println("Please key in a valid number!");
-                        continue;
-                    } else {
-                        break;
-                    }
-                } catch (NumberFormatException ne) {
-                    System.out.println("Please key in a number only!");
-                }
+            new peakDates();
+            int peakcat = 0;
+            
+            if (peakDates.isPeak(s1.getDate(), s1.getTime())) {
+                peakcat = 1;
             }
 
+            int ageopt;
+            
+            if(peakcat == 1){
+                System.out.println("Age group pricing is not applicable for this movie.");
+                System.out.println("Age group pricing is only allowed on Mon-Fri before 6pm.");
+                ageopt = 4;
+            }
+
+            else{
+                System.out.println("Age group pricing is applicable for this movie.");
+                System.out.println();
+
+                System.out.println("What age category ticket would you like?");
+                System.out.println("1: Child");
+                System.out.println("2: Adult");
+                System.out.println("3: Senior Citizen");
+
+                while (true) {
+                    String input = scc.next();
+                    ageopt = 0;
+                    try {
+                        ageopt = Integer.parseInt(input);
+                        if (ageopt > 3 || ageopt < 1) {
+                            System.out.println("Please key in a valid number!");
+                            continue;
+                        } else {
+                            break;
+                        }
+                    } catch (NumberFormatException ne) {
+                        System.out.println("Please key in a number only!");
+                    }
+                }
+            }
 
             ageopt = ageopt - 1;
             String age = Integer.toString(ageopt);

@@ -116,6 +116,10 @@ public class FinalPurchaseHandler {
                 agec = "Adult";
             }
 
+            else if (age == 3){
+                agec = "Standard";
+            }
+
             else {
                 agec = "Senior Citizen";
             }

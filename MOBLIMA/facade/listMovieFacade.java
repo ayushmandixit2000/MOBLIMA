@@ -26,6 +26,7 @@ public class listMovieFacade {
 
         CustomerAction CA = new CustomerAction();
         CA.setaction(action);
+        CA.setuser(userId);
         CA.setmovie(chosenMovie);
         CA.getChoice();
     }

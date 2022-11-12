@@ -136,6 +136,10 @@ public class TransactionShowTimeListing implements Listing {
                                 ans = "Senior Citizen";
                             }
 
+                            else if (age == 3) {
+                                ans = "Standard";
+                            }
+
                             System.out.println("Ticket Type: " + ans);
 
                             System.out.println("Seating Row: " + mt.getSeatingRow());
