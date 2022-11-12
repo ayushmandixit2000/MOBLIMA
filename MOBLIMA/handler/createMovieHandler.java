@@ -86,7 +86,7 @@ public class createMovieHandler {
             }
 
             // breaking out of loop when user keys in stop
-            if (userInputCast.equals("stop")) {
+            if (userInputCast.toLowerCase().equals("stop")) {
                 if (cast.size() == 0) {
                     System.out.println("Cast list cannot be empty. Please insert casts.");
                 } else {
