@@ -88,7 +88,7 @@ public class CustomerBookingHandler {
             
             String agep = "";
 
-            if(!peakDates.isDicountApplicable(s1.getDate(), s1.getTime())){
+            if(peakDates.isDicountApplicable(s1.getDate(), s1.getTime())){
                 agep  = "   --Age Group discounts available";
             }
             
