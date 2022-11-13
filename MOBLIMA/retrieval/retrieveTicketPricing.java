@@ -6,13 +6,28 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Helper class to retrieve various pricings from the ticketPricing database.
+ */
 public class retrieveTicketPricing {
+    /**
+     * Converts data read from the file into various pricings
+     * 
+     * @param filename The file path to the file of interest.
+     * @return Different pricings obtained from the file of interest.
+     */
     public static String readTicketPricing(String filename) throws IOException {
         List stringList = read(filename);
         return (String) stringList.get(0);
 
     }
 
+    /**
+     * Reads data from a specific file.
+     * 
+     * @param fileName The file path to the file of interest.
+     * @return Data read from the specific file.
+     */
     public static List read(String fileName) throws IOException {
         List data = new ArrayList();
         Scanner scanner = new Scanner(new FileInputStream(fileName));
@@ -24,14 +39,5 @@ public class retrieveTicketPricing {
             scanner.close();
         }
         return data;
-    }
-
-    public static void main(String[] aArgs) {
-        String filename = "MOBLIMA/databases/ticketPricing.txt";
-        try {
-            System.out.println(retrieveTicketPricing.readTicketPricing(filename));
-        } catch (IOException e) {
-            System.out.println("IOException > " + e.getMessage());
-        }
     }
 }

@@ -8,9 +8,14 @@ import MOBLIMA.facade.searchMovieFacade;
 import MOBLIMA.facade.top5Facade;
 import MOBLIMA.handler.customerVerifcationHandler;
 
-
-
+/**
+ * Displays the options available to the customers and calls the relevant facade
+ * classes to handle operations of.
+ */
 public class customerpanel implements Panel {
+    /**
+     * Displays the options available to cusomters.
+     */
     public void displayChoices() {
         System.out.println();
         System.out.println("_______________________________________________________________________");
@@ -28,21 +33,24 @@ public class customerpanel implements Panel {
         System.out.println();
     }
 
+    /**
+     * Allows moviegoers to sign in and obtains their inputs to execute the relevant
+     * facade classes.
+     * Validates inputs.
+     */
     public void viewApp() {
         printWelcomeMsg();
         try {
 
             String name1 = "";
 
-            while(!isValidEmailAddress(name1)){
+            while (!isValidEmailAddress(name1)) {
                 System.out.println();
                 System.out.println(
-                    "Please enter your EMAIL in CORRECT FORMAT to log in/sign up, ENTER 'guest' to enter ANONOMOUSLY.\nNote: You will not be able to purchase if you enter ananoumously and will be asked to sign out and sign in to purchase");
-                    name1 = CineplexApp.scc.next();
+                        "Please enter your EMAIL in CORRECT FORMAT to log in/sign up, ENTER 'guest' to enter ANONOMOUSLY.\nNote: You will not be able to purchase if you enter ananoumously and will be asked to sign out and sign in to purchase");
+                name1 = CineplexApp.scc.next();
             }
             String name = name1.toLowerCase();
-
-
 
             String userid = "";
 
@@ -121,10 +129,15 @@ public class customerpanel implements Panel {
         System.out.println();
     }
 
+    /**
+     * Helper class to validate moviegoer email input.
+     * 
+     * @param email The moviegoer's inputed email address.
+     * @return The status on the validity of the inputed email address
+     */
     public boolean isValidEmailAddress(String email) {
 
-
-        if(email.equalsIgnoreCase("guest")){
+        if (email.equalsIgnoreCase("guest")) {
             return true;
         }
 
@@ -133,5 +146,4 @@ public class customerpanel implements Panel {
         java.util.regex.Matcher m = p.matcher(email);
         return m.matches();
     }
-
 }

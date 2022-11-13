@@ -5,13 +5,24 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 import MOBLIMA.dataStructure.Movie;
 
+/**
+ * Helper class to retrieve movie objects from the movie database.
+ */
 public class retrieveMovie {
+    /**
+     * Separator used to denote different data boundaries in the movie database.
+     */
     public static final String SEPARATOR = "|";
 
+    /**
+     * Converts data read from the file into fields of the movie object.
+     * 
+     * @param filename The file path to the file of interest.
+     * @return Movie objects obtained from the file of interest.
+     */
     public static ArrayList readMovie(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
         ArrayList alr = new ArrayList();// to store data
@@ -40,6 +51,12 @@ public class retrieveMovie {
         return alr;
     }
 
+    /**
+     * Reads data from a specific file.
+     * 
+     * @param fileName The file path to the file of interest.
+     * @return Data read from the specific file.
+     */
     public static List read(String fileName) throws IOException {
         List data = new ArrayList();
         Scanner scanner = new Scanner(new FileInputStream(fileName));
@@ -51,22 +68,5 @@ public class retrieveMovie {
             scanner.close();
         }
         return data;
-    }
-
-    public static void main(String[] aArgs) {
-        String filename = "MOBLIMA/databases/movie.txt";
-        try {
-            ArrayList al = retrieveMovie.readMovie(filename);
-            for (int i = 0; i < al.size(); i++) {
-                Movie m = (Movie) al.get(i);
-                System.out.println("MovieTitle " + m.getTitle());
-                System.out.println(Arrays.toString(m.getCast()));
-                m.setNumReviews();
-                m.setAvgRating();
-                System.out.println(m.getAvgRating());
-            }
-        } catch (IOException e) {
-            System.out.println("IOException > " + e.getMessage());
-        }
     }
 }

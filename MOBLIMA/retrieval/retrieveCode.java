@@ -2,7 +2,6 @@ package MOBLIMA.retrieval;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieGoer;

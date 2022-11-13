@@ -8,9 +8,21 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 import MOBLIMA.dataStructure.Review;
 
+/**
+ * Helper class to retrieve review objects from the reviews database.
+ */
 public class retrieveReview {
+    /**
+     * Separator used to denote different data boundaries in the reviews database.
+     */
     public static final String SEPARATOR = "|";
 
+    /**
+     * Converts data read from the file into fields of the review object.
+     * 
+     * @param filename The file path to the file of interest.
+     * @return Review objects obtained from the file of interest.
+     */
     public static ArrayList readReview(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
         ArrayList alr = new ArrayList();// to store data
@@ -28,6 +40,12 @@ public class retrieveReview {
         return alr;
     }
 
+    /**
+     * Reads data from a specific file.
+     * 
+     * @param fileName The file path to the file of interest.
+     * @return Data read from the specific file.
+     */
     public static List read(String fileName) throws IOException {
         List data = new ArrayList();
         Scanner scanner = new Scanner(new FileInputStream(fileName));
@@ -40,18 +58,4 @@ public class retrieveReview {
         }
         return data;
     }
-
-    public static void main(String[] aArgs) {
-        String filename = "MOBLIMA/databases/review.txt";
-        try {
-            ArrayList al = retrieveReview.readReview(filename);
-            for (int i = 0; i < al.size(); i++) {
-                Review r = (Review) al.get(i);
-                System.out.println("Review: " + r.getReview());
-            }
-        } catch (IOException e) {
-            System.out.println("IOException > " + e.getMessage());
-        }
-    }
-
 }

@@ -13,11 +13,32 @@ import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.utils.compareDates;
 import MOBLIMA.utils.dateTime;
 
+/**
+ * Helper class to retrieve showtime objects from the showtime database.
+ */
 public class retrieveShowtime {
+    /**
+     * The number of rows in a cinema seating layout.
+     */
     public static final int ROWS = 9;
+
+    /**
+     * The number of columns in
+     * cinema seating layout.
+     */
     public static final int COLUMNS = 19;
+
+    /**
+     * Separator used to denote different data boundaries in the showtime database.
+     */
     public static final String SEPARATOR = "|";
 
+    /**
+     * Converts data read from the file into fields of the showtime object.
+     * 
+     * @param filename The file path to the file of interest.
+     * @return Showtime objects obtained from the file of interest.
+     */
     public static ArrayList readShowtime(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
         ArrayList alr = new ArrayList();// to store data
@@ -47,7 +68,12 @@ public class retrieveShowtime {
         return alr;
     }
 
-    /** Read the contents of the given file. */
+    /**
+     * Reads data from a specific file.
+     * 
+     * @param fileName The file path to the file of interest.
+     * @return Data read from the specific file.
+     */
     public static List read(String fileName) throws IOException {
         List data = new ArrayList();
         Scanner scanner = new Scanner(new FileInputStream(fileName));
@@ -59,45 +85,5 @@ public class retrieveShowtime {
             scanner.close();
         }
         return data;
-    }
-
-    public static void main(String[] aArgs) {
-        String filename = "MOBLIMA/databases/showtime.txt";
-        try {
-            ArrayList al = retrieveShowtime.readShowtime(filename);
-            for (int i = 0; i < al.size(); i++) {
-                Showtime s = (Showtime) al.get(i);
-                System.out.println("MovieId " + s.getMovieId());
-                int[][] array = s.getSeating();
-                // for (int k = 0; k < array.length; k++) {
-                // for (int j = 0; j < array[k].length; j++) {
-                // System.out.print(array[k][j] + " ");
-                // }
-                // System.out.println();
-                // }
-                System.out.println(dateTime.convertDate(s.getDate()));
-                System.out.println(dateTime.convertTime(s.getTime()));
-                System.out.println(s.getShowtimeId());
-            }
-            System.out.println("after sorting");
-            Collections.sort(al, new compareDates());// HELLO AYUSHMAN!
-            for (int i = 0; i < al.size(); i++) {
-                Showtime s = (Showtime) al.get(i);
-                System.out.println("MovieId " + s.getMovieId());
-                int[][] array = s.getSeating();
-                for (int k = 0; k < array.length; k++) {
-                for (int j = 0; j < array[k].length; j++) {
-                System.out.print(array[k][j] + " ");
-                }
-                System.out.println();
-                }
-                System.out.println(dateTime.convertDate(s.getDate()));
-                System.out.println(dateTime.convertTime(s.getTime()));
-                System.out.println(s.getShowtimeId());
-            }
-
-        } catch (IOException e) {
-            System.out.println("IOException > " + e.getMessage());
-        }
     }
 }

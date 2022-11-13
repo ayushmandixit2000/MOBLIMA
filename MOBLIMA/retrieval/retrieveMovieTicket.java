@@ -1,19 +1,29 @@
 package MOBLIMA.retrieval;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-
 import MOBLIMA.dataStructure.MovieTicket;
 
+/**
+ * Helper class to retrieve cinema objects from the movieTicket database.
+ */
 public class retrieveMovieTicket {
+    /**
+     * Separator used to denote different data boundaries in the movieTicket
+     * database.
+     */
     public static final String SEPARATOR = "|";
 
+    /**
+     * Converts data read from the file into fields of the movieTicket object.
+     * 
+     * @param filename The file path to the file of interest.
+     * @return movieTicket objects obtained from the file of interest.
+     */
     public static ArrayList readMovieTicket(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
         ArrayList alr = new ArrayList();// to store data
@@ -30,14 +40,18 @@ public class retrieveMovieTicket {
             String showtimeId = star.nextToken().trim();
             int seatClass = Integer.parseInt(star.nextToken().trim());
 
-
-            MovieTicket mt = new MovieTicket(ageCat, row, column, showtimeId,seatClass); // price is calculated
+            MovieTicket mt = new MovieTicket(ageCat, row, column, showtimeId, seatClass); // price is calculated
             alr.add(mt);
         }
         return alr;
     }
 
-    /** Read the contents of the given file. */
+    /**
+     * Reads data from a specific file.
+     * 
+     * @param fileName The file path to the file of interest.
+     * @return Data read from the specific file.
+     */
     public static List read(String fileName) throws IOException {
         List data = new ArrayList();
         Scanner scanner = new Scanner(new FileInputStream(fileName));
@@ -49,19 +63,5 @@ public class retrieveMovieTicket {
             scanner.close();
         }
         return data;
-    }
-
-    public static void main(String[] aArgs) {
-        String filename = "MOBLIMA/databases/movieTicket.txt";
-        try {
-            ArrayList al = retrieveMovieTicket.readMovieTicket(filename);
-            for (int i = 0; i < al.size(); i++) {
-                MovieTicket mt = (MovieTicket) al.get(i);
-                System.out.println(mt.getMovieTicketId());
-
-            }
-        } catch (IOException e) {
-            System.out.println("IOException > " + e.getMessage());
-        }
     }
 }

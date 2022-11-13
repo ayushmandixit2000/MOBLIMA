@@ -6,12 +6,23 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-
 import MOBLIMA.dataStructure.Cinema;
 
+/**
+ * Helper class to retrieve cinema objects from the cinema database.
+ */
 public class retrieveCinema {
+    /**
+     * Separator used to denote different data boundaries in the cinema database.
+     */
     public static final String SEPARATOR = "|";
 
+    /**
+     * Converts data read from the file into fields of the cinema object.
+     * 
+     * @param filename The file path to the file of interest.
+     * @return Cinema objects obtained from the file of interest.
+     */
     public static ArrayList readCinema(String filename) throws IOException {
         ArrayList stringArray = (ArrayList) read(filename);
         ArrayList alr = new ArrayList();// to store data
@@ -30,6 +41,12 @@ public class retrieveCinema {
         return alr;
     }
 
+    /**
+     * Reads data from a specific file.
+     * 
+     * @param fileName The file path to the file of interest.
+     * @return Data read from the specific file.
+     */
     public static List read(String fileName) throws IOException {
         List data = new ArrayList();
         Scanner scanner = new Scanner(new FileInputStream(fileName));
@@ -41,18 +58,5 @@ public class retrieveCinema {
             scanner.close();
         }
         return data;
-    }
-
-    public static void main(String[] aArgs) {
-        String filename = "MOBLIMA/databases/Cinema.txt";
-        try {
-            ArrayList al = retrieveCinema.readCinema(filename);
-            for (int i = 0; i < al.size(); i++) {
-                Cinema c = (Cinema) al.get(i);
-                System.out.println("CinemaId " + c.getCinema());
-            }
-        } catch (IOException e) {
-            System.out.println("IOException > " + e.getMessage());
-        }
     }
 }
