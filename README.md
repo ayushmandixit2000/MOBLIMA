@@ -8,7 +8,7 @@ The application is a Console-based application (non-Graphical UI) made on the Ja
 
 ## Steps to run
 - Open the app on your preferred IDE and run java at CineplexApp.java
-- Password for admin is "SC2002"
+- Password for admin is "ilovesc2002"
 
 ## Contributors:
 - [Dixit Ayushman](https://github.com/ayushmandixit2000)
