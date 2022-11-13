@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5064a2be-68ee-4223-a68f-0adc2da3b398" name="Changes" comment="" />
+    <list default="true" id="ad152bf6-8aa5-487c-ad65-499d2ec28af0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +10,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="2HUTqfrGeCAG1Sk1zTsszGYAnCW" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HUUkU1c6VgXBRTRwOMx0dyBydc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -20,22 +23,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.appearance"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5064a2be-68ee-4223-a68f-0adc2da3b398" name="Changes" comment="" />
-      <created>1668338855860</created>
+      <changelist id="ad152bf6-8aa5-487c-ad65-499d2ec28af0" name="Changes" comment="" />
+      <created>1668339299796</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1668338855860</updated>
-      <workItem from="1668338857458" duration="302000" />
+      <updated>1668339299796</updated>
+      <workItem from="1668339301533" duration="267000" />
     </task>
     <servers />
   </component>
