@@ -1,24 +1,27 @@
 package MOBLIMA.save;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 import MOBLIMA.dataStructure.Transaction;
 import MOBLIMA.retrieval.retrieveTransaction;
 import MOBLIMA.utils.dateTime;
-
 import java.util.ArrayList;
 
+/**
+ * Helper class to save transaction objects into the transactions database.
+ */
 public class saveTransaction extends save {
+    /**
+     * Converts the fields of transaction objects into data.
+     * 
+     * @param filename The file path to the file to be written into.
+     * @param al       The transaction objects to be converted into data.
+     */
     public static void saveTransactionArray(String filename, List al) throws IOException {
-        List alw = new ArrayList();// to store data
+        List alw = new ArrayList();
         for (int i = 0; i < al.size(); i++) {
-
-            // todo
-            Transaction t = (Transaction) al.get(i); // moving through the object to get the necessary info
+            Transaction t = (Transaction) al.get(i);
             StringBuilder st = new StringBuilder();
-
             st.append(t.getTransactionId());
             st.append(SEPARATOR);
             st.append(dateTime.convertDate(t.getPurchaseDate()));
@@ -32,24 +35,9 @@ public class saveTransaction extends save {
                 st.append(t.getArrayofMovieTickets()[j]);
                 st.append(',');
             }
-
             st.setLength(st.length() - 1);
             alw.add(st.toString());
         }
         write(filename, alw);
-    }
-
-    public static void main(String[] aArgs) throws IOException {
-        String filename = "MOBLIMA/databases/transactions.txt";
-        ArrayList transactionArray = retrieveTransaction.readTransaction(filename); // retrieve current array
-
-        // add new transaction
-        int[][] seatings = { { 1, 2 }, { 4, 5 } };
-
-        Transaction t = new Transaction("2022/12/20", "1900", "userid", new String[] {"ABC2022/12/12190014"});
-        transactionArray.add(t);
-
-        // save to same file
-        saveTransaction.saveTransactionArray(filename, transactionArray);
     }
 }

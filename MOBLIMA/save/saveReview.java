@@ -2,13 +2,20 @@ package MOBLIMA.save;
 
 import java.io.IOException;
 import java.util.List;
-
 import MOBLIMA.dataStructure.Review;
 import MOBLIMA.retrieval.retrieveReview;
-
 import java.util.ArrayList;
 
+/**
+ * Helper class to save review objects into the reviews database.
+ */
 public class saveReview extends save {
+    /**
+     * Converts the fields of review objects into data.
+     * 
+     * @param filename The file path to the file to be written into.
+     * @param al       The review objects to be converted into data.
+     */
     public static void saveReviewArray(String filename, List al) throws IOException {
         List alw = new ArrayList();// to store data
         for (int i = 0; i < al.size(); i++) {

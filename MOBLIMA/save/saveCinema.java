@@ -4,9 +4,17 @@ import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import MOBLIMA.dataStructure.Cinema;
-import MOBLIMA.retrieval.retrieveCinema;
 
+/**
+ * Helper class to save cinema objects into the cinema database.
+ */
 public class saveCinema extends save {
+    /**
+     * Converts the fields of cinema objects into data.
+     * 
+     * @param filename The file path to the file to be written into.
+     * @param al       The cinema objects to be converted into data.
+     */
     public static void saveCinemaArray(String filename, List al) throws IOException {
         List alw = new ArrayList();// to store data
         for (int i = 0; i < al.size(); i++) {
@@ -21,15 +29,5 @@ public class saveCinema extends save {
             alw.add(st.toString());
         }
         write(filename, alw);
-    }
-
-    public static void main(String[] aArgs) throws IOException {
-        String filename = "MOBLIMA/databases/cinema.txt";
-        ArrayList cinemaArray = retrieveCinema.readCinema(filename); // retrieve current array
-        // add new cinema
-        Cinema c = new Cinema("cin", 1, 1);
-        cinemaArray.add(c);
-        // save to same file
-        saveCinema.saveCinemaArray(filename, cinemaArray);
     }
 }

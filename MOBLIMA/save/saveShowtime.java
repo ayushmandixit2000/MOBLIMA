@@ -4,23 +4,35 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.utils.dateTime;
-
 import java.util.ArrayList;
 
+/**
+ * Helper class to save showtime objects into the showtime database.
+ */
 public class saveShowtime extends save {
+    /**
+     * The number of rows in the seating availability of a showtime object.
+     */
     public static final int ROWS = 9;
+    /**
+     * The number of columns in the seating availability of a showtime object.
+     */
     public static final int COLUMNS = 19;
 
+    /**
+     * Converts the fields of showtime objects into data.
+     * 
+     * @param filename The file path to the file to be written into.
+     * @param al       The showtime objects to be converted into data.
+     */
     public static void saveShowtimeArray(String filename, List al) throws IOException {
-        List alw = new ArrayList();// to store data
+        List alw = new ArrayList();
         for (int i = 0; i < al.size(); i++) {
-            Showtime s = (Showtime) al.get(i); // moving through the object to get the necessary info
+            Showtime s = (Showtime) al.get(i);
             StringBuilder st = new StringBuilder();
-
             st.append(s.getCinema());
             st.append(SEPARATOR);
             st.append(dateTime.convertDate(s.getDate()));
@@ -39,35 +51,10 @@ public class saveShowtime extends save {
                 st.append('.');
             }
             st.setLength(st.length() - 1);
-
             st.append(SEPARATOR);
             st.append(s.getShowtimeId());
-
             alw.add(st.toString());
         }
         write(filename, alw);
-    }
-
-    public static void main(String[] aArgs) throws IOException {
-        String filename = "MOBLIMA/databases/Showtime.txt";
-        ArrayList showtimeArray = retrieveShowtime.readShowtime(filename); // retrieve current array
-
-        // add new showtime
-        int[][] seating = { { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
-        { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
-        { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
-        { 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
-        { 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
-        { 2, 0, 0, 0, 0, 3, 3, 4, 4, 2, 4, 4, 3, 3, 0, 0, 0, 0, 2 },
-        { 2, 0, 0, 0, 0, 3, 3, 4, 4, 2, 4, 4, 3, 3, 0, 0, 0, 0, 2 },
-        { 2, 0, 0, 0, 0, 3, 3, 4, 4, 2, 4, 4, 3, 3, 0, 0, 0, 0, 2 },
-        { 2, 0, 0, 0, 0, 3, 3, 4, 4, 2, 2, 2, 3, 3, 0, 0, 0, 0, 2 } };
-        LocalDate date = dateTime.convertDate("2022/12/20");
-        LocalTime time = dateTime.convertTime("1900");
-        Showtime s = new Showtime("Ao2", date, time, 1, seating);
-        showtimeArray.add(s);
-
-        // save to same file
-        saveShowtime.saveShowtimeArray(filename, showtimeArray);
     }
 }

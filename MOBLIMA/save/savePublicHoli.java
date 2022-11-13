@@ -3,12 +3,19 @@ package MOBLIMA.save;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
-import MOBLIMA.retrieval.retrievePH;
 import MOBLIMA.utils.dateTime;
 import java.util.ArrayList;
 
+/**
+ * Helper class to LocalDate objects into the peakDates database.
+ */
 public class savePublicHoli extends save {
-
+    /**
+     * Converts LocalDate objects into data.
+     * 
+     * @param filename The file path to the file to be written into.
+     * @param al       The LocalDate objects to be written.
+     */
     public static void savePHArray(String filename, List al) throws IOException {
         List alw = new ArrayList();// to store data
         for (int i = 0; i < al.size(); i++) {
@@ -16,14 +23,5 @@ public class savePublicHoli extends save {
             alw.add(dateTime.convertDate(date));
         }
         write(filename, alw);
-    }
-
-    public static void main(String[] aArgs) throws IOException {
-        String filename = "MOBLIMA/databases/publicholidays.txt";
-        ArrayList phArray = retrievePH.readPH(filename); // retrieve current array
-        LocalDate date = dateTime.convertDate("2023/04/07");
-        phArray.add(date);
-        // save to same file
-        savePublicHoli.savePHArray(filename, phArray);
     }
 }

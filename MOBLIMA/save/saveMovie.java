@@ -6,7 +6,16 @@ import java.util.ArrayList;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.retrieval.retrieveMovie;
 
+/**
+ * Helper class to save movie objects into the movie database.
+ */
 public class saveMovie extends save {
+    /**
+     * Converts the fields of movie objects into data.
+     * 
+     * @param filename The file path to the file to be written into.
+     * @param al       The movie objects to be converted into data.
+     */
     public static void saveMovieArray(String filename, List al) throws IOException {
         List alw = new ArrayList();// to store data
         for (int i = 0; i < al.size(); i++) {
@@ -45,18 +54,5 @@ public class saveMovie extends save {
             alw.add(st.toString());
         }
         write(filename, alw);
-    }
-
-    public static void main(String[] aArgs) throws IOException {
-        String filename = "MOBLIMA/databases/movie.txt";
-        ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
-
-        // add new movie
-        Movie m = new Movie(2, "title", 2, "director", new String[] { "cast1", "cast2" }, "synopsis", 1, 1, 0);
-        m.setShowStatus(3);
-        movieArray.add(m);
-
-        // save to same file
-        saveMovie.saveMovieArray(filename, movieArray);
     }
 }

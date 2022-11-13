@@ -1,18 +1,21 @@
 package MOBLIMA.save;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
-
 import MOBLIMA.dataStructure.MovieTicket;
 import MOBLIMA.retrieval.retrieveMovieTicket;
-import MOBLIMA.retrieval.retrieveShowtime;
-
 import java.util.ArrayList;
 
+/**
+ * Helper class to save movieTicket objects into the movieTicket database.
+ */
 public class saveMovieTicket extends save {
-
+    /**
+     * Converts the fields of movieTicket objects into data.
+     * 
+     * @param filename The file path to the file to be written into.
+     * @param al       The movieTicket objects to be converted into data.
+     */
     public static void saveMovieTicketArray(String filename, List al) throws IOException {
         List alw = new ArrayList();// to store data
         for (int i = 0; i < al.size(); i++) {
@@ -33,20 +36,8 @@ public class saveMovieTicket extends save {
             st.append(SEPARATOR);
             st.append(mt.getSeatClass());
 
-
             alw.add(st.toString());
         }
         write(filename, alw);
-    }
-
-    public static void main(String[] aArgs) throws IOException {
-        String filename = "MOBLIMA/databases/MovieTicket.txt";
-        ArrayList movieTicketArray = retrieveMovieTicket.readMovieTicket(filename); // retrieve current array
-
-        // add new showtime
-        MovieTicket mt = new MovieTicket("0", 1, 5, "Dog2022/12/141630",0);
-        movieTicketArray.add(mt);
-        // save to same file
-        saveMovieTicket.saveMovieTicketArray(filename, movieTicketArray);
     }
 }

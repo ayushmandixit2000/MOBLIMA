@@ -1,11 +1,14 @@
 package MOBLIMA;
 
 import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import MOBLIMA.panel.adminpanel;
 import MOBLIMA.panel.customerpanel;
 
+/**
+ * The starting point of the app.
+ * Based on the user's choice, it will call the relevant panels.
+ */
 public class CineplexApp {
         public static Scanner scc = new Scanner(System.in);
 
@@ -75,6 +78,9 @@ public class CineplexApp {
 
         }
 
+        /**
+         * Displays the welcome message.
+         */
         private static void printHRPSTitle() {
                 System.out.println();
                 System.out.println(
@@ -113,7 +119,10 @@ public class CineplexApp {
                                 "╚═════════════════════════════════════════════════════════════════════════════════════════════════════╝");
         }
 
-        private static void printThankYouMsg(){
+        /**
+         * Displays the farewell message.
+         */
+        private static void printThankYouMsg() {
                 System.out.println("████████╗██╗  ██╗ █████╗ ███╗   ██╗██╗  ██╗    ██╗   ██╗ ██████╗ ██╗   ██╗██╗");
                 System.out.println("╚══██╔══╝██║  ██║██╔══██╗████╗  ██║██║ ██╔╝    ╚██╗ ██╔╝██╔═══██╗██║   ██║██║");
                 System.out.println("   ██║   ███████║███████║██╔██╗ ██║█████╔╝      ╚████╔╝ ██║   ██║██║   ██║██║");
@@ -122,8 +131,5 @@ public class CineplexApp {
                 System.out.println("   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝       ╚═╝    ╚═════╝  ╚═════╝ ╚═╝");
                 System.out.println();
         }
-                                                                             
-
-
 
 }
