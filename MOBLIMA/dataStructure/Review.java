@@ -5,8 +5,6 @@ import java.io.IOException;
 /**
  * Represents a Review that can be created by any user for a particular movie.
  * 
- * @author Wong Yu Fei
- * @version 1.0
  */
 public class Review {
     /**

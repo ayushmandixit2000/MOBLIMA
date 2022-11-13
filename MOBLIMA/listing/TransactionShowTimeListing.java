@@ -12,16 +12,31 @@ import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveMovieTicket;
 import MOBLIMA.retrieval.retrieveShowtime;
 
+/**
+ * Helper class to display the details of a particular transaction.
+ */
 public class TransactionShowTimeListing implements Listing {
 
+    /**
+     * Transaction to display details of.
+     */
     private Transaction t;
 
+    /**
+     * Change the selected transaction to display details of.
+     * 
+     * @param t1 The new selected transaction to display details of.
+     */
     public void sett(Transaction t1) {
         this.t = t1;
     }
 
+    /**
+     * Displays the details of the selected transaction.
+     * Transverses movieticket, showtime and movie databases to retrieve relevant
+     * details.
+     */
     public void displayListing() throws IOException {
-        // TODO Auto-generated method stub
         String filename = "MOBLIMA/databases/movieTicket.txt";
         ArrayList al = retrieveMovieTicket.readMovieTicket(filename);
 
@@ -147,13 +162,10 @@ public class TransactionShowTimeListing implements Listing {
 
                             break;
                         }
-
                     }
                     break;
                 }
-
             }
         }
     }
-
 }

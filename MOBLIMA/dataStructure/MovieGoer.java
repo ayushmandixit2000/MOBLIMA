@@ -4,8 +4,6 @@ package MOBLIMA.dataStructure;
  * Represents a MovieGoer that has been registered with MOBLIMA app.
  * Each MovieGoer can use the customer panel of the MOBLIMA app.
  * 
- * @author Wong Yu Fei
- * @version 1.0
  */
 
 public class MovieGoer {

@@ -4,19 +4,43 @@ import java.io.IOException;
 import java.util.Scanner;
 import MOBLIMA.dataStructure.Showtime;
 
+/**
+ * Helper class used to process the seat indicated by the moviegoer.
+ */
 public class SeatAvailabilityHandler {
+    /**
+     * The showtime selected by the moviegoer.
+     */
     private Showtime s;
 
+    /**
+     * The id of the moviegoer.
+     */
     private String user;
 
+    /**
+     * Changes the id of the moviegoer.
+     * 
+     * @param ui The new id of the moviegoer.
+     */
     public void setuser(String ui) {
         this.user = ui;
     }
 
+    /**
+     * Changes the showtime of the movieticket(s).
+     * 
+     * @param s The moveticket(s)'s new showtime.
+     */
     public void setshow(Showtime s1) {
         this.s = s1;
     }
 
+    /**
+     * Displays the relevant option and obtains moviegoer's inputs for the specified
+     * seat.
+     * 
+     */
     public void display() throws IOException {
         Scanner scc = new Scanner(System.in);
         int[][] st = s.getSeating();
@@ -42,15 +66,13 @@ public class SeatAvailabilityHandler {
             for (int j = 0; j < st[i].length; j++) {
                 if (st[i][j] == 2) {
                     System.out.print(" ");
-                } 
-                else if(st[i][j] == 3){
+                } else if (st[i][j] == 3) {
                     System.out.print("E");
-                }
-                else if(st[i][j] == 4){
+                } else if (st[i][j] == 4) {
                     System.out.print("U");
                 }
 
-                else if(st[i][j] == 5){
+                else if (st[i][j] == 5) {
                     System.out.print("C");
                 }
 
@@ -74,20 +96,19 @@ public class SeatAvailabilityHandler {
         System.out.println();
         System.out.println("_____________________________________________________");
 
-       
         int isg = 0;
 
-        if(user.equalsIgnoreCase("guest1")){
+        if (user.equalsIgnoreCase("guest1")) {
             isg = 1;
         }
 
-        if(isg == 1){
+        if (isg == 1) {
             System.out.println();
             System.out.println("You're logged in as guest!");
             System.out.println("Please quit and login to book");
             return;
         }
-       
+
         System.out.println("Would you like to select seats? ");
         System.out.println("1: Yes");
         System.out.println("2: No");

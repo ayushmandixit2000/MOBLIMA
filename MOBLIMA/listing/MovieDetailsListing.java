@@ -4,10 +4,21 @@ import MOBLIMA.dataStructure.Movie;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Help class to display various attributes of a selected movie.
+ */
 public class MovieDetailsListing implements Listing {
 
+    /**
+     * The selected movie to display attributes of.
+     */
     private Movie m1;
 
+    /**
+     * Changes the selected movie to display attributes of.
+     * 
+     * @param m The new selected movie to display attributes of.
+     */
     public void setmovie(Movie m) {
         this.m1 = m;
     }
@@ -72,7 +83,6 @@ public class MovieDetailsListing implements Listing {
         else if (m1.getMovieRating() == 5) {
             rat = "R21";
         }
-
 
         System.out.println("Movie Rating:   " + rat);
 

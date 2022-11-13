@@ -33,10 +33,12 @@ public class editShowtimeFacade {
         // Cineplex Listing
         CineplexListing cpxl = new CineplexListing();
         cpxl.displayListing();
-        cineplex = cpxl.getListing();
+        cpxl.getUserInput();
+        cineplex = cpxl.getCineplex();
         CinemaListing cnml = new CinemaListing();
         cnml.displayListing();
-        cinema = cnml.getListing();
+        cnml.getUserInput();
+        cinema = cnml.getCinema();
         int cineplexlength = cineplex.length();
         String cinemaCode = String.valueOf(cineplex.charAt(0)) + String.valueOf(cineplex.charAt(cineplexlength - 1))
                 + String.valueOf(cinema);

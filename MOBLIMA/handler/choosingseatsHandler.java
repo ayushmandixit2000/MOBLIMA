@@ -6,7 +6,7 @@ import MOBLIMA.dataStructure.Showtime;
 
 /**
  * Helper class to display the cinema's seat availability and validate the seat
- * indicated by moviegoer to be an appropriate one.
+ * indicated by moviegoer
  */
 public class choosingseatsHandler {
     /**
@@ -29,9 +29,9 @@ public class choosingseatsHandler {
     }
 
     /**
-     * Changes the showtime of the movie being screened.
+     * Changes the showtime of the chosen seat.
      * 
-     * @param s
+     * @param s The new showtime of the chose seat.
      */
     public void setshow(Showtime s) {
         this.s1 = s;

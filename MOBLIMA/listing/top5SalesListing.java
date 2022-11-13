@@ -8,10 +8,21 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
+/**
+ * Helper class to display top 5 movie based on sales and obtains the user's
+ * selected movie.
+ */
 public class top5SalesListing {
 
+    /**
+     * The selected movie.
+     */
     private Movie m1;
 
+    /**
+     * Displays top 5 movie ranked on sales from the movie database and obtains the
+     * moviegoer's selected movie.
+     */
     public void displayListing() throws IOException {
 
         Scanner scc = new Scanner(System.in);
@@ -122,35 +133,66 @@ public class top5SalesListing {
             }
         }
     }
+
+    /**
+     * Gets the selected movie.
+     * 
+     * @return The selected movie.
+     */
     public Movie getmovie() {
         return this.m1;
     }
 }
 
+/**
+ * Helper class to compare movies, used for ranking by sales.
+ */
 class titleSales implements Comparable<titleSales> {
+    /**
+     * The movie's title.
+     */
     private String title;
+
+    /**
+     * The movie's customer rating.
+     */
     private Double totalSales;
 
+    /**
+     * Creates a TitleRating with the following attributes:
+     * 
+     * @param title  The movie's title.
+     * @param rating The movie's customer rating.
+     */
     public titleSales(String title, Double totalSales) {
         this.title = title;
         this.totalSales = totalSales;
     }
 
+    /**
+     * Gets the movie's title.
+     * 
+     * @return The movie's title.
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Gets the movie's sales.
+     * 
+     * @return The movie's sales.
+     */
     public Double getTotalSales() {
         return totalSales;
     }
 
+    /**
+     * Compares 2 movies based on their sales and title.
+     * 
+     * @return a result indicating which movie is ordered first.
+     */
     public int compareTo(titleSales o) {
-        /*
-         * if(this.totalSales != o.getTotalSales())
-         * {
-         * return this.totalSales - o.getTotalSales();
-         * }
-         */
         return this.title.compareTo(o.getTitle());
     }
 }

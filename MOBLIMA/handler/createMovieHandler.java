@@ -11,7 +11,7 @@ import java.util.Scanner;
 import java.util.Hashtable;
 
 /**
- * Helper class to create a movie with the admin's input/
+ * Helper class to create a movie with the admin's input
  */
 public class createMovieHandler {
     /**

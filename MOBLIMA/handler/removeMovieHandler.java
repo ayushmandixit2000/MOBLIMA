@@ -3,23 +3,29 @@ package MOBLIMA.handler;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.listing.movieListing;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.save.saveMovie;
 
+/**
+ * Helper class to remove indicated movie by the admin.
+ */
 public class removeMovieHandler {
+    /**
+     * Displays options and obtains information to delete the intended movie.
+     * Validates the user inputs.
+     * Saves the changes into the movie database.
+     * 
+     * @return The status of the movie removal process.
+     */
     public boolean movieRemove() throws IOException {
-
         Scanner sc = new Scanner(System.in);
         boolean flag;
 
         // read data from database
         String filename = "MOBLIMA/databases/movie.txt";
-        ArrayList movieArray = retrieveMovie.readMovie(filename); // retrieve current array
-
-        // intialitlizing valid movie and movie listings
+        ArrayList movieArray = retrieveMovie.readMovie(filename);
         movieListing showValidMovies = new movieListing(true);
         ArrayList<Movie> validMovies = showValidMovies.getValidMovies();
 
@@ -30,8 +36,6 @@ public class removeMovieHandler {
         }
 
         int removeMovieOption = -1;
-
-        // to prevent users from keying in data that is not string
         do {
             try {
                 // display movies
@@ -52,13 +56,9 @@ public class removeMovieHandler {
             }
         } while (flag);
         sc.nextLine();
-
-        // setting movie as deleted
         Movie fromValidMovie = (Movie) validMovies.get(removeMovieOption - 1);
         Movie toDelete = (Movie) movieArray.get(fromValidMovie.getMovieId());
-
         int confirmDelete = -1;
-        // to prevent users from keying in data that is not string
         do {
             try {
                 System.out.println("Movie to remove: " + toDelete.getTitle());
@@ -78,7 +78,6 @@ public class removeMovieHandler {
             }
         } while (flag);
         sc.nextLine();
-
         switch (confirmDelete) {
             case 1:
                 System.out.println("Deleting " + toDelete.getTitle() + " .......");
@@ -92,9 +91,6 @@ public class removeMovieHandler {
                 System.out.println("Discarding changes.");
                 break;
         }
-
         return true;
-
     }
-
 }

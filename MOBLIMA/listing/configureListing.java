@@ -3,7 +3,15 @@ package MOBLIMA.listing;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Helper class to list configurable options.
+ */
 public class configureListing implements Listing {
+    private int option;
+
+    /**
+     * List configurable options.
+     */
     public void displayListing() throws IOException {
         System.out.println();
         System.out.println("_____________________________________________________________");
@@ -16,7 +24,16 @@ public class configureListing implements Listing {
         System.out.println("_____________________________________________________________");
     }
 
-    public int userInput() {
+    public int getOption() {
+        return option;
+    }
+
+    /**
+     * Obtains admin's input of intended option.
+     * 
+     * @return the admin's intended option.
+     */
+    public void getUserInput() {
         Scanner sc = new Scanner(System.in);
         int option;
         while (true) {
@@ -34,6 +51,6 @@ public class configureListing implements Listing {
                 System.out.println("Please key in a number only!");
             }
         }
-        return option;
+        return;
     }
 }

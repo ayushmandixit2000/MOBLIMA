@@ -6,8 +6,6 @@ package MOBLIMA.dataStructure;
  * Each Cinema has a fixed seating layout which moviegoers can book seats for
  * (seat allocation is done in Showtime)
  * 
- * @author Wong Yu Fei
- * @version 1.0
  */
 public class Cinema {
     /**

@@ -5,20 +5,41 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.Showtime;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.utils.compareDates;
 
+/**
+ * Helper class to display showtimes of a movie screening at a particular
+ * cinema and obtains the moviegoer's selected showtime.
+ */
 public class ShowtimeListing implements Listing {
 
+    /**
+     * The showtime's cineplex.
+     */
     private String cineplex;
+    /**
+     * The showtime's cinema's number.
+     */
     private int cinema;
+    /**
+     * The showtime's cinema's code.
+     */
     private String cinemaCode;
+    /**
+     * Counter for number of showtimes available at that specific cinema and
+     * cineplex,
+     * screening that movie.
+     */
     private int validShowtimes;
 
+    /**
+     * Obtains the showtimes of a particular movie at a particular cinema and
+     * cineplex.
+     */
     public void displayListing() throws IOException {
 
         String filename = "MOBLIMA/databases/showtime.txt";
@@ -59,6 +80,12 @@ public class ShowtimeListing implements Listing {
         }
     }
 
+    /**
+     * Obtains the moviegoer's input for a particular showtime.
+     * Input is validated with
+     * 
+     * @return The time of the showtime.
+     */
     public LocalTime getListing() throws IOException {
 
         String filename = "MOBLIMA/databases/showtime.txt";
@@ -83,27 +110,26 @@ public class ShowtimeListing implements Listing {
         return time;
     }
 
-    // populate the attributes
+    /**
+     * Changes the following attributes:
+     * 
+     * @param cnplx The new showtime's cineplex.
+     * @param cnm   The new showtime's cinema's number.
+     * @param cc    The new showtime's cinema's code.
+     */
     public void populate(String cnplx, int cnm, String cc) {
         this.cineplex = cnplx;
         this.cinema = cnm;
         this.cinemaCode = cc;
     }
 
-    public static void main(String[] args) throws IOException {
-        ShowtimeListing listing = new ShowtimeListing();
-
-        listing.populate("Ang Mo Kio", 2, "Ao2");
-
-        listing.displayListing();
-
-        LocalTime lt = listing.getListing();
-
-        System.out.println(lt);
-
-    }
-
-    public int getValidShowtimes(){
+    /**
+     * Gets the number of showtimes available at that specific cinema and cineplex,
+     * screening that movie.
+     * 
+     * @return the number of showtimes available for the mentioned criteria.
+     */
+    public int getValidShowtimes() {
         return this.validShowtimes;
     }
 

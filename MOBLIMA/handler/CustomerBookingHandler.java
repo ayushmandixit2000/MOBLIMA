@@ -28,14 +28,19 @@ public class CustomerBookingHandler {
      */
     private String user;
 
+    /**
+     * Changes the id of the moviegoer.
+     * 
+     * @param ui The new id of the moviegoer.
+     */
     public void setuser(String ui) {
         this.user = ui;
     }
 
     /**
-     * Changes the movie selected by the moviegoer.
+     * Changes the showtime of the movieticket(s).
      * 
-     * @param m1 The new movie selected by the moviegoer.
+     * @param s The moveticket(s)'s new showtime.
      */
     public void setmovie(Movie m1) {
         this.m = m1;
@@ -55,12 +60,10 @@ public class CustomerBookingHandler {
             movt = "--Blockbuster";
         }
 
-        if(m.getMovieType() == 2){
+        if (m.getMovieType() == 2) {
             movt = "--2D";
         }
-        
-        
-        
+
         if (m.getShowStatus() == 0) {
             System.out.println("This movie is coming soon, please check back in a few days");
             return;

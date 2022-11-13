@@ -46,10 +46,19 @@ public class FinalPurchaseHandler {
         this.customertickers = ct;
     }
 
+    /**
+     * Changes the showtime of the movieticket(s).
+     * 
+     * @param s The moveticket(s)'s new showtime.
+     */
     public void setshow(Showtime s) {
         this.s = s;
     }
 
+    /**
+     * Display the selected information on the generated movie ticket.
+     * 
+     */
     public void display() throws IOException {
 
         String title = "";

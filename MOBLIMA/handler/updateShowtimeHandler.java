@@ -19,10 +19,26 @@ import MOBLIMA.save.saveShowtime;
 import MOBLIMA.utils.compareDates;
 import MOBLIMA.utils.dateTime;
 
+/**
+ * Helper class to update the showtime with attributes indicated by the admin.
+ */
 public class updateShowtimeHandler {
+    /**
+     * The file path to the showtime databse.
+     */
     private static String filename = "MOBLIMA/databases/showtime.txt";
+    /**
+     * The showtimes stored in the showtime database.
+     */
     private static ArrayList showTimeArray;
 
+    /**
+     * Replaces the showtime object with the updates showtime object.
+     * Saves changes into the showtime database.
+     * 
+     * @param st Updated showtime object.
+     * @param id Id of the showtime object to be replaced.
+     */
     public static void update(Showtime st, String id) throws IOException {
         try {
             for (int i = 0; i < showTimeArray.size(); i++) {
@@ -39,6 +55,13 @@ public class updateShowtimeHandler {
         }
     }
 
+    /**
+     * Displays the options and obtains inputs to update the showtime attributes.
+     * 
+     * @param cplx The showtime's cineplex.
+     * @param cnm  The showtime's cinema's number.
+     * @param cc   The showtime's cinema's code.
+     */
     public static void run(String cplx, int cnm, String cc) throws IOException {
         Scanner sc = new Scanner(System.in);
         LocalTime time = dateTime.convertTime("0100");

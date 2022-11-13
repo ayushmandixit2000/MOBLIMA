@@ -6,23 +6,61 @@ import java.util.*;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.retrieval.retrieveMovie;
 
+/**
+ * Helper class to display the appropriate movies based on the user and obtains
+ * the a selected
+ * movie.
+ */
 public class movieListing implements Listing {
+    /**
+     * The id of the user
+     */
     private String user;
+    /**
+     * The movie selected by the user.
+     */
     private Movie chosenMovie;
+    /**
+     * The movies obtained from the movie database.
+     */
     private ArrayList movieArray;
+    /*
+     * The file path to the movie database.
+     */
     private String filename = "MOBLIMA/databases/movie.txt";
+    /**
+     * The appropriate movies obtained from the MovieArray
+     */
     private ArrayList<Movie> validMovies;
+    /**
+     * The user's admin privileges.
+     */
     private boolean isAdmin = false;
 
+    /**
+     * Changes the user's admin privileges
+     * 
+     * @param ui The user's new admin privileges
+     */
     public void setuser(String ui) {
         this.user = ui;
     }
 
+    /**
+     * Gets the appropriate movies.
+     * 
+     * @return The apppropriate movies.
+     */
     public ArrayList<Movie> getValidMovies() {
         return this.validMovies;
     }
 
-    // need constructor
+    /**
+     * Obtains movies from the movie database.
+     * Populates movies based on user's admin privileges.
+     * 
+     * @param admin The user's admin privileges
+     */
     public movieListing(boolean admin) throws IOException {
         isAdmin = admin;
         movieArray = retrieveMovie.readMovie(filename);
@@ -32,6 +70,9 @@ public class movieListing implements Listing {
         }
     }
 
+    /**
+     * Displays the appropriate movies (if any).
+     */
     public void displayListing() throws IOException {
         if (validMovies.size() == 0) {
             System.out.println("No movies available currently.");
@@ -48,6 +89,9 @@ public class movieListing implements Listing {
         }
     }
 
+    /**
+     * Obtains the user's input for a selected movie from the appropriate movies.
+     */
     public void show() throws IOException {
         Scanner scc = new Scanner(System.in);
         displayListing();
@@ -77,12 +121,21 @@ public class movieListing implements Listing {
         }
     }
 
+    /**
+     * Gets the user's id.
+     * 
+     * @return The id of the user.
+     */
     public String getUser() {
         return user;
     }
 
+    /**
+     * Gets the selected movie.
+     * 
+     * @return The selected movie.
+     */
     public Movie getChosenMovie() {
         return chosenMovie;
     }
-
 }

@@ -9,8 +9,6 @@ import MOBLIMA.retrieval.retrieveReview;
  * Represents a Movie that can be screened at a cinema.
  * Each movie has configurable attributes.
  * 
- * @author Wong Yu Fei
- * @version 1.0
  */
 public class Movie implements Serializable {
     /**

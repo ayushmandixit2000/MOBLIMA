@@ -3,10 +3,18 @@ package MOBLIMA.listing;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Helper class to list cineplexes available.
+ */
 public class CineplexListing implements Listing {
-
+    /**
+     * Name of cineplex indicated by the moviegoer.
+     */
     private String cineplex;
 
+    /**
+     * List cineplexes available.
+     */
     public void displayListing() throws IOException {
         System.out.println("The cineplex are shown below:\n"
                 + "0 - VivoCity\n"
@@ -14,7 +22,14 @@ public class CineplexListing implements Listing {
                 + "2 - Ang Mo Kio\n");
     }
 
-    public String getListing() {
+    public String getCineplex() {
+        return cineplex;
+    }
+
+    /**
+     * Obtains moviegoer's input of intended cineplex.
+     */
+    public void getUserInput() {
         Scanner sc = new Scanner(System.in);
         int cineplexchoice = -1;
         boolean flag = false;
@@ -52,6 +67,6 @@ public class CineplexListing implements Listing {
 
         }
         System.out.println("The cineplex chosen is " + cineplex + "\n");
-        return cineplex;
+        return;
     }
 }

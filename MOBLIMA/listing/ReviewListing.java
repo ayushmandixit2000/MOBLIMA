@@ -6,14 +6,28 @@ import MOBLIMA.retrieval.retrieveReview;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Helper class to list customer reviews and ratings of a particular movie.
+ */
 public class ReviewListing implements Listing {
 
+    /**
+     * The selected movie to view reviews of.
+     */
     private Movie m1;
 
+    /**
+     * Changes the selected movie.
+     * 
+     * @param m The new selected movie.
+     */
     public void setmovie(Movie m) {
         this.m1 = m;
     }
 
+    /**
+     * Displays the customer ratings and reviews of the selected movie.
+     */
     public void displayListing() throws IOException {
         int movid = m1.getMovieId();
 

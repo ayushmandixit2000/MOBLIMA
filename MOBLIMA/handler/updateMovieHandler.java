@@ -12,16 +12,32 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Helper class to update the movie with the intended attributes stated by the
+ * admin.
+ */
 public class updateMovieHandler {
+    /**
+     * The movie's type.
+     */
     private Dictionary type = new Hashtable();
+    /**
+     * The movie's rating
+     */
     private Dictionary rating = new Hashtable();
+    /**
+     * The movie's show status.
+     */
     private Dictionary status = new Hashtable();
 
+    /**
+     * Populates the different attributes with the possible options.
+     */
     public updateMovieHandler() {
         // dictionary for movie type
         this.type.put(0, "3D");
         this.type.put(1, "Blockbuster");
-        this.type.put(2,"2D");
+        this.type.put(2, "2D");
 
         // dictionary for rating
         this.rating.put(0, "G");
@@ -37,7 +53,13 @@ public class updateMovieHandler {
         this.status.put(3, "End of Showing");
     }
 
-    // getting movie type
+    /**
+     * Displays the options and obtains the information required to update a
+     * specific movie with the intended attributes.
+     * Saves the changes into the movie database.
+     * 
+     * @return Status of the movie update process.
+     */
     public boolean movieUpdate() throws IOException {
         Scanner sc = new Scanner(System.in);
 
@@ -99,7 +121,7 @@ public class updateMovieHandler {
                 try {
                     System.out.println("Select field to edit: ");
                     System.out.println(
-                              "1: Movie Title \n2: Show Status \n3: Director \n4: Cast \n5: Synopsis \n6: Movie Rating \n7: Movie Type \n8: Change Deleted Status \n9: Confirm Changes");
+                            "1: Movie Title \n2: Show Status \n3: Director \n4: Cast \n5: Synopsis \n6: Movie Rating \n7: Movie Type \n8: Change Deleted Status \n9: Confirm Changes");
                     editOption = sc.nextInt();
                     flag = false;
                 } catch (Exception e) {
@@ -441,7 +463,8 @@ public class updateMovieHandler {
                         // to prevent users from keying in data that is not string
                         do {
                             try {
-                                System.out.println("Select Movie Rating: \n1: G \n2: PG \n3: PG13 \n4: NC16 \n5: M18 \n6: R21");
+                                System.out.println(
+                                        "Select Movie Rating: \n1: G \n2: PG \n3: PG13 \n4: NC16 \n5: M18 \n6: R21");
                                 newMovieRating = (sc.nextInt());
                             } catch (Exception e) {
                                 System.out.println("Inavlid input. Please enter intergers only.");
@@ -518,16 +541,15 @@ public class updateMovieHandler {
                     System.out.println();
 
                     int deleteMovie = -1;
-                     // to prevent users from keying in data that is not string
-                     do {
+                    // to prevent users from keying in data that is not string
+                    do {
                         try {
                             System.out.println("Delete Movie: \n1: Yes \n2: No");
                             deleteMovie = sc.nextInt();
-                            if(deleteMovie>2 || deleteMovie<1){
+                            if (deleteMovie > 2 || deleteMovie < 1) {
                                 System.out.println("Invalid option. Please try again.");
                                 flag = true;
-                            }
-                            else{
+                            } else {
                                 flag = false;
                             }
                         } catch (Exception e) {
@@ -538,10 +560,9 @@ public class updateMovieHandler {
                     } while (flag);
                     sc.nextLine();
 
-                    if(deleteMovie == 1){
+                    if (deleteMovie == 1) {
                         editMovie.setIsDeleted(deleteMovie);
-                    }
-                    else{
+                    } else {
                         editMovie.setIsDeleted(0);
                     }
                     break;

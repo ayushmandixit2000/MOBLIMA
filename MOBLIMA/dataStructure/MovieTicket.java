@@ -8,8 +8,6 @@ import MOBLIMA.utils.dateTime;
 /**
  * Represents a MovieTicket that has selected by a MovieGoer.
  * 
- * @author Wong Yu Fei
- * @version 1.0
  */
 public class MovieTicket {
     /**
