@@ -20,14 +20,32 @@ public class createMovieHandler {
         movieListing showValidMovies = new movieListing(true);
         showValidMovies.displayListing();
 
+        // getting list of all movies
+        movieListing allMovies = new movieListing(false);
+        ArrayList<Movie> moviesAll = allMovies.getValidMovies();
+
         // getting movie title
+        boolean isRepeat;
         System.out.print("Enter new movie title: ");
         String movieTitle = sc.nextLine();
+
         while (movieTitle.isBlank() || movieTitle.isEmpty()) {
             System.out.println("Input cannot be empty. Please key in a valid input.");
             System.out.print("Enter new movie title: ");
             movieTitle = sc.nextLine();
         }
+
+        // checking for duplicate movie
+        for(int i = 0; i<moviesAll.size(); i++){
+            if(moviesAll.get(i).getTitle().equalsIgnoreCase(movieTitle)){
+                System.out.println("Movie already exists.");
+                System.out.println("Returning to main menu....");
+                System.out.println();
+                return false;
+            }
+        }
+
+
         // getting show status
         Dictionary status = new Hashtable();
         status.put(0, "Coming Soon");
