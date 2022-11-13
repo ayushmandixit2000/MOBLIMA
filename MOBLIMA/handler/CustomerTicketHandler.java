@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import MOBLIMA.configurables.peakDates;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.dataStructure.MovieTicket;
@@ -14,24 +13,58 @@ import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.retrieval.retrieveMovieTicket;
 import MOBLIMA.save.saveMovieTicket;
 
+/**
+ * 
+ * Helper class to identify the showtime the moviegoer is interested in
+ * booking.
+ */
+
 public class CustomerTicketHandler {
+    /**
+     * The showtime selected by the movie-goer.
+     */
     private Showtime s1;
+    /**
+     * The seat availability of the selected showtime.
+     */
     private int[][] seats;
 
+    /**
+     * The id of the moviegoer.
+     */
     private String user;
 
+    /**
+     * Changes the id of the moviegoer.
+     * 
+     * @param ui The new id of the moviegoer.
+     */
     public void setuser(String ui) {
         this.user = ui;
     }
 
+    /**
+     * Changes the selected showtime by the moviegoer.
+     * 
+     * @param s The new selected showtime of the moviegoer.
+     */
     public void setshow(Showtime s) {
         this.s1 = s;
     }
 
+    /**
+     * Changes the seat availability of the selected showtime of the moviegoer.
+     * 
+     * @param seatarray
+     */
     public void setseats(int[][] seatarray) {
         this.seats = seatarray;
     }
 
+    /**
+     * Displays the relevant options and obtains the moviegoer's input for the
+     * required information to book.
+     */
     public void display() throws IOException {
 
         MovieTicket[] ticketsarray = new MovieTicket[seats.length];
@@ -82,15 +115,13 @@ public class CustomerTicketHandler {
             ArrayList movieArray = retrieveMovie.readMovie(filename0);
             for (int o = 0; o < movieArray.size(); o++) {
                 Movie m = (Movie) movieArray.get(o);
-                if(m.getMovieId() == movietype){
+                if (m.getMovieId() == movietype) {
                     mov = m;
                     break;
                 }
             }
 
             int mt11 = mov.getMovieRating();
-
-
 
             int ageopt;
 
@@ -100,7 +131,7 @@ public class CustomerTicketHandler {
                 ageopt = 4;
             }
 
-            else if(mt11 == 3 || mt11 == 4 || mt11 == 5){
+            else if (mt11 == 3 || mt11 == 4 || mt11 == 5) {
                 System.out.println("Age group pricing is not applicable to movies rated NC16 and above");
                 ageopt = 4;
             }
@@ -160,5 +191,4 @@ public class CustomerTicketHandler {
         fp.setuser(user);
         fp.display();
     }
-
 }

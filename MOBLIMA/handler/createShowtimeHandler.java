@@ -15,21 +15,62 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 
+/**
+ * Helper class to create a showtime with the admin's input/
+ */
 public class createShowtimeHandler {
+    /**
+     * The showtime's time.
+     */
     private static LocalTime showtime;
+
+    /**
+     * The showtime's date in String.
+     */
     private static String inputDate;
+
+    /**
+     * The showtime's movie's id.
+     */
     private static int movieId;
+
+    /**
+     * The showtime's time in String
+     */
     private static String inputTime;
+
+    /**
+     * The file path to the showtime database.
+     */
     private static String filename = "MOBLIMA/databases/Showtime.txt";
+
+    /**
+     * The list of showtimes retrieved from the database.
+     */
     private static ArrayList showTimeArray;
 
+    /**
+     * Adds the additional showtime object and saves the addition into the showtime
+     * database.
+     * 
+     * @param s The new showtime object to be added into the showtime database
+     */
     public static void save(Showtime s) throws IOException {
-        showTimeArray = retrieveShowtime.readShowtime(filename); // retrieve current array
+        showTimeArray = retrieveShowtime.readShowtime(filename);
         showTimeArray.add(s);
         saveShowtime.saveShowtimeArray(filename, showTimeArray);
         System.out.println("Created successfully");
     }
 
+    /**
+     * Displays the current showtime attributes, creates the showtime, confirms the
+     * detail and saves it into the showtime database.
+     * Validates the admin inputs.
+     * 
+     * @param cnplx The showtime's indcated cineplex.
+     * @param cnm   The showtime's cinema's number
+     * @param cc    The showtime's cinema's code.
+     */
     public static void run(String cnplx, int cnm, String cc) {
         Scanner sc = new Scanner(System.in);
 
@@ -54,10 +95,8 @@ public class createShowtimeHandler {
                 }
             } while (flag);
 
-            // date
             DateTimeFormatter strictDateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
-            // error handling for invalid input
             do {
                 try {
                     System.out.println("Enter Date in the format YYYY/MM/DD");

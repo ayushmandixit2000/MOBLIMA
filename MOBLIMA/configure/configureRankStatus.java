@@ -2,9 +2,13 @@ package MOBLIMA.configure;
 
 import java.io.IOException;
 import java.util.Scanner;
-
 import MOBLIMA.configurables.rankStatus;
 
+/**
+ * Represents a configure class to determine what a customer can list the top 5
+ * movies by.
+ * 
+ */
 public class configureRankStatus implements configure {
 
     public void displaySetting() throws IOException {
@@ -26,6 +30,9 @@ public class configureRankStatus implements configure {
         }
     }
 
+    /**
+     * Obtains the user console input for a new top 5 viewing option.
+     */
     public void getNewSetting() throws IOException {
         Scanner sc = new Scanner(System.in);
         int selection = -1;

@@ -10,7 +10,21 @@ import java.util.Dictionary;
 import java.util.Scanner;
 import java.util.Hashtable;
 
+/**
+ * Helper class to create a movie with the admin's input/
+ */
 public class createMovieHandler {
+    /**
+     * Display the options users have and to instantantiate related classes and
+     * execute their required functionalities.
+     */
+    /**
+     * Displays the current movies and gets user's option to edit each attribute of
+     * the movie, confirms the detail and saves it into the movie database.
+     * Validates the admin inputs.
+     * 
+     * @return The status of the movie creation process.
+     */
     public boolean movieCreate() throws IOException {
 
         Scanner sc = new Scanner(System.in);
@@ -176,7 +190,7 @@ public class createMovieHandler {
         Dictionary type = new Hashtable();
         type.put(0, "3D");
         type.put(1, "Blockbuster");
-        type.put(2,"2D");
+        type.put(2, "2D");
         int movieType = -1;
         loop = true;
         while (loop) {

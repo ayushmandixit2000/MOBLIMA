@@ -10,7 +10,15 @@ import MOBLIMA.configure.configureRankStatus;
 import MOBLIMA.configure.configureTicketPricing;
 import MOBLIMA.listing.configureListing;
 
+/**
+ * Consolidated class to link all the required classes together to execute the
+ * Configure Setting functionality.
+ */
 public class configureSettingsFacade {
+    /**
+     * Display the options users have and to instantantiate related classes and
+     * execute their required functionalities.
+     */
     public static void configureSettings() throws IOException {
         configureListing c = new configureListing();
         boolean loop = true;

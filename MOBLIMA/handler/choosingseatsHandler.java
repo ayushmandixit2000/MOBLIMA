@@ -2,22 +2,46 @@ package MOBLIMA.handler;
 
 import java.io.IOException;
 import java.util.Scanner;
-
 import MOBLIMA.dataStructure.Showtime;
 
+/**
+ * Helper class to display the cinema's seat availability and validate the seat
+ * indicated by moviegoer to be an appropriate one.
+ */
 public class choosingseatsHandler {
+    /**
+     * The showtime of the movie being screened.
+     */
     private Showtime s1;
 
+    /**
+     * The id of the moviegoer.
+     */
     private String user;
 
+    /**
+     * Changes the id of the moviegoer.
+     * 
+     * @param ui The moviegoer's new id.
+     */
     public void setuser(String ui) {
         this.user = ui;
     }
 
+    /**
+     * Changes the showtime of the movie being screened.
+     * 
+     * @param s
+     */
     public void setshow(Showtime s) {
         this.s1 = s;
     }
 
+    /**
+     * Prints and prompts the moviegoer ticket booking requirements such as quantity
+     * and ticket's seat's row and column
+     * 
+     */
     public void display() throws IOException {
         Scanner scc = new Scanner(System.in);
         System.out.println("How many tickets will you like to purchase?");
@@ -113,26 +137,26 @@ public class choosingseatsHandler {
                 chosenseat[a][0] = r - 65;
                 chosenseat[a][1] = column;
 
-                if(st[r - 65][column - 1] == 5){
-                    if(a + 1 == num){
-                        System.out.println("You can't buy a couple seat because you will have to buy both seat. Please update your number of tickets and try again");
+                if (st[r - 65][column - 1] == 5) {
+                    if (a + 1 == num) {
+                        System.out.println(
+                                "You can't buy a couple seat because you will have to buy both seat. Please update your number of tickets and try again");
                         return;
                     }
-                    
+
                     System.out.println("You have selected a couple seat, the seat next to it will be auto selected");
-                    
-                    if(st[r - 65][column - 2] == 5){
-                        chosenseat[a+1][0] = r-65;
-                        chosenseat[a+1][1] = column-1;
+
+                    if (st[r - 65][column - 2] == 5) {
+                        chosenseat[a + 1][0] = r - 65;
+                        chosenseat[a + 1][1] = column - 1;
                         a++;
-                    }
-                    else if(st[r - 65][column] == 5){
-                        chosenseat[a+1][0] = r-65;
-                        chosenseat[a+1][1] = column+1;
+                    } else if (st[r - 65][column] == 5) {
+                        chosenseat[a + 1][0] = r - 65;
+                        chosenseat[a + 1][1] = column + 1;
                         a++;
                     }
                 }
-                
+
             }
 
         }

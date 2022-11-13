@@ -4,20 +4,33 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import MOBLIMA.dataStructure.Transaction;
 import MOBLIMA.listing.TransactionDetailsListing;
 import MOBLIMA.retrieval.retrieveTransaction;
 import MOBLIMA.utils.dateTime;
 
+/**
+ * Consolidated class to link all the required classes together to execute the
+ * view Past Transactions functionality.
+ */
 public class pastTransactionsFacade {
+    /**
+     * The id of the user requesting past transactions.
+     */
     private static String userid;
 
+    /**
+     * Entry point into the facade.
+     */
     public static void run(String userId) throws IOException {
         userid = userId;
         display();
     }
 
+    /**
+     * Display the options users have and to instantantiate related classes and
+     * execute their required functionalities.
+     */
     public static void display() throws IOException {
         Scanner scc = new Scanner(System.in);
         String filename = "MOBLIMA/databases/transactions.txt";
@@ -76,6 +89,5 @@ public class pastTransactionsFacade {
                 }
             }
         }
-
     }
 }

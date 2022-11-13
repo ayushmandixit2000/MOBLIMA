@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
-
 import MOBLIMA.configurables.peakDates;
 import MOBLIMA.dataStructure.Cinema;
 import MOBLIMA.dataStructure.Movie;
@@ -14,28 +13,45 @@ import MOBLIMA.retrieval.retrieveCinema;
 import MOBLIMA.retrieval.retrieveShowtime;
 import MOBLIMA.utils.compareDates;
 
+/**
+ * Helper class to identify the showtime the moviegoer is interested in
+ * booking.
+ */
 public class CustomerBookingHandler {
+    /**
+     * The movie selected by the moviegoer.
+     */
     private Movie m;
 
+    /**
+     * The id of the moviegoer.
+     */
     private String user;
 
     public void setuser(String ui) {
         this.user = ui;
     }
 
+    /**
+     * Changes the movie selected by the moviegoer.
+     * 
+     * @param m1 The new movie selected by the moviegoer.
+     */
     public void setmovie(Movie m1) {
         this.m = m1;
     }
 
+    /**
+     * Displays the relevant options and obtains the moviegoer's input for the
+     * required information to book.
+     */
     public void display() throws IOException {
-
         String movt = "";
-
-        if(m.getMovieType() == 0){
+        if (m.getMovieType() == 0) {
             movt = "--3D";
         }
 
-        if(m.getMovieType() == 1){
+        if (m.getMovieType() == 1) {
             movt = "--Blockbuster";
         }
 
@@ -66,7 +82,7 @@ public class CustomerBookingHandler {
         String filename = "MOBLIMA/databases/showtime.txt";
         ArrayList showTimeArray = retrieveShowtime.readShowtime(filename);
         List<Showtime> optionlist = new ArrayList<Showtime>();
-        Collections.sort(showTimeArray, new compareDates()); // added just this line
+        Collections.sort(showTimeArray, new compareDates());
 
         for (int i = 0; i < showTimeArray.size(); i++) {
             Showtime s = (Showtime) showTimeArray.get(i);
@@ -75,7 +91,7 @@ public class CustomerBookingHandler {
             }
         }
 
-        if(optionlist.size() == 0){
+        if (optionlist.size() == 0) {
             System.out.println();
             System.out.println("This movie currently have no showitmes, please try again later!");
             System.out.println();
@@ -86,24 +102,24 @@ public class CustomerBookingHandler {
         Scanner scc = new Scanner(System.in);
 
         for (int j = 0; j < optionlist.size(); j++) {
-            System.out.println("__________________________________________________________________________________________________________________________________________________________");
+            System.out.println(
+                    "__________________________________________________________________________________________________________________________________________________________");
             Showtime s1 = optionlist.get(j);
             new peakDates();
             String s = "";
             if (peakDates.isPeak(s1.getDate())) {
                 s = "\t--Peak period";
-            }
-            else if(peakDates.isThurs(s1.getDate())){
+            } else if (peakDates.isThurs(s1.getDate())) {
                 s = "\t--Thursday";
             }
-            
+
             String agep = "";
 
-            if(peakDates.isDicountApplicable(s1.getDate(), s1.getTime()) && m.getMovieRating()!= 3 && m.getMovieRating()!= 4 && m.getMovieRating()!= 5){
-                agep  = "\t--Age Group discounts available";
+            if (peakDates.isDicountApplicable(s1.getDate(), s1.getTime()) && m.getMovieRating() != 3
+                    && m.getMovieRating() != 4 && m.getMovieRating() != 5) {
+                agep = "\t--Age Group discounts available";
             }
-            
-            
+
             String suite = "";
 
             String filename4 = "MOBLIMA/databases/Cinema.txt";
@@ -113,8 +129,7 @@ public class CustomerBookingHandler {
                 if (c.getCinema().equals(s1.getCinema())) {
                     if (c.getMovieClass() == 1) {
                         suite = "\t--Premium Movie Suite";
-                    }
-                    else{
+                    } else {
                         suite = "";
                     }
                     break;
@@ -122,7 +137,7 @@ public class CustomerBookingHandler {
             }
 
             System.out.println(j + 1 + ": Cinema :" + s1.getCinema() + " ||" + "Date: " + s1.getDate() + " ||"
-                    + "Time: " + s1.getTime() + " ||Movie Type: " +  movt + s + suite + agep);
+                    + "Time: " + s1.getTime() + " ||Movie Type: " + movt + s + suite + agep);
         }
 
         System.out.println();
@@ -134,9 +149,8 @@ public class CustomerBookingHandler {
         System.out.println("3: Movies on Public Holidays, Weekends and Cinema indicated peak days will cost more");
         System.out.println("4: Movies in Premium Cinemas will cost more");
 
-        
-        
-        System.out.println("___________________________________________________________________________________________________________");
+        System.out.println(
+                "___________________________________________________________________________________________________________");
 
         System.out.println("Please select a show for " + m.getTitle());
         int option;
@@ -161,14 +175,11 @@ public class CustomerBookingHandler {
             if (option == l + 1) {
                 Showtime s2 = optionlist.get(l);
 
-                
-
                 SeatAvailabilityHandler sa = new SeatAvailabilityHandler();
                 sa.setshow(s2);
                 sa.setuser(user);
                 sa.display();
             }
         }
-
     }
 }

@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.util.Scanner;
 import MOBLIMA.configurables.ageGroupPricing;
 
+/**
+ * Represents a configure class to display age category ticket pricing and
+ * obtains the
+ * user's input.
+ */
 public class configureTicketPricing implements configure {
     public void displaySetting() throws IOException {
         System.out.println("Current ticket pricing for each age category:");
@@ -16,6 +21,9 @@ public class configureTicketPricing implements configure {
         System.out.println("_____________________________________________________________");
     }
 
+    /**
+     * Obtains the user console input for a new age category ticket pricing.
+     */
     public void getNewSetting() throws IOException {
         Scanner sc = new Scanner(System.in);
         Double price = (double) 0;

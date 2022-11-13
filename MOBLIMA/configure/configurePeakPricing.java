@@ -4,7 +4,14 @@ import java.io.IOException;
 import java.util.Scanner;
 import MOBLIMA.configurables.peakPricing;
 
+/**
+ * Represents a configure class to display the current settings and obtains the
+ * user's input.
+ */
 public class configurePeakPricing implements configure {
+    /**
+     * Prints on the console the current saved ticket pricing settings.
+     */
     public void displaySetting() throws IOException {
         System.out.println("Current Ticket Pricing Multipliers:");
         System.out.print("Non-peak (Mon,Tues,Wed,Fri): x ");
@@ -22,6 +29,9 @@ public class configurePeakPricing implements configure {
         System.out.println("_____________________________________________________________");
     }
 
+    /**
+     * Obtains the user console input for a new set of ticket pricing settings..
+     */
     public void getNewSetting() throws IOException {
         Scanner sc = new Scanner(System.in);
         Double multiplier = (double) 0;

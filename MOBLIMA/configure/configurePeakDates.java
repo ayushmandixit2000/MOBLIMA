@@ -9,7 +9,15 @@ import MOBLIMA.configurables.peakDates;
 import MOBLIMA.utils.comparePH;
 import MOBLIMA.utils.dateTime;
 
+/**
+ * Represents a configure class to display the current settings and obtains the
+ * user's input.
+ */
 public class configurePeakDates {
+    /**
+     * Prints on the console the current saved list of peak dates.
+     * 
+     */
     public void displaySetting() throws IOException {
         System.out.println("Current peak dates (Other than Fridays after 6pm and Weekends):");
         ArrayList datesArray = peakDates.getPublicHoli();
@@ -22,6 +30,9 @@ public class configurePeakDates {
         System.out.println("_____________________________________________________________");
     }
 
+    /**
+     * Obtains the user console input for a new date to be considered peak.
+     */
     public void getNewSetting() throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please indicate new peak dates in format of YYYY/MM/DD");

@@ -10,16 +10,38 @@ import MOBLIMA.retrieval.retrieveCinema;
 import MOBLIMA.retrieval.retrieveMovie;
 import MOBLIMA.save.saveMovie;
 
+/**
+ * Helper class to generate the details of the purchased movieticket(s).
+ */
 public class FinalPurchaseHandler {
+    /**
+     * The id of the purchased movieticket(s).
+     */
     private MovieTicket[] customertickers;
+    /**
+     * The showtime of the movieticket(s).
+     */
     private Showtime s;
 
+    /**
+     * The id of the moviegoer.
+     */
     private String user;
 
+    /**
+     * Changes the id of the moviegoer.
+     * 
+     * @param ui The new id of the moviegoer.
+     */
     public void setuser(String ui) {
         this.user = ui;
     }
 
+    /**
+     * Changes the id(s) of the movieticket(s).
+     * 
+     * @param ct The new id(s) of the movieticket(s).
+     */
     public void settickets(MovieTicket[] ct) {
         this.customertickers = ct;
     }
@@ -60,10 +82,9 @@ public class FinalPurchaseHandler {
             }
         }
 
-
         String ct = "Standard Suite";
 
-        if(cinematype == 1){
+        if (cinematype == 1) {
             ct = "Platinum Movie Suite";
         }
 
@@ -120,7 +141,7 @@ public class FinalPurchaseHandler {
                 agec = "Adult";
             }
 
-            else if (age == 3){
+            else if (age == 3) {
                 agec = "Standard";
             }
 
@@ -131,23 +152,21 @@ public class FinalPurchaseHandler {
             int SC = customertickers[z].getSeatClass();
 
             String seatc = "";
-            if(SC == 0){
+            if (SC == 0) {
                 seatc = "Normal Seat";
             }
 
-            else if(SC == 1){
+            else if (SC == 1) {
                 seatc = "Elite Seat";
             }
 
-            else if(SC == 2){
+            else if (SC == 2) {
                 seatc = "Ultima Seat";
             }
 
-            else if(SC == 3){
+            else if (SC == 3) {
                 seatc = "Couple Seat";
             }
-
-            
 
             System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
             System.out.println("_____________________________________________________________________");
@@ -171,9 +190,9 @@ public class FinalPurchaseHandler {
         System.out.println("Total cost: $" + totalprice);
 
         Double sales1 = m1.getSales();
-        int roundVal= (int) Math.round(totalprice);
+        int roundVal = (int) Math.round(totalprice);
         sales1 = sales1 + roundVal;
-        
+
         ArrayList movieArray1 = retrieveMovie.readMovie(filename);
         for (int i = 0; i < movieArray1.size(); i++) {
             Movie m = (Movie) movieArray1.get(i);
@@ -181,7 +200,7 @@ public class FinalPurchaseHandler {
                 m.setSales(sales1);
                 movieArray1.set(m1.getMovieId(), m);
                 saveMovie.saveMovieArray(filename, movieArray1);
-            }   
+            }
         }
         TransactionProccessingHandler tp = new TransactionProccessingHandler();
         tp.settickets(customertickers);

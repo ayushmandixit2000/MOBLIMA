@@ -1,12 +1,15 @@
 package MOBLIMA.facade;
 
 import java.io.IOException;
-
 import MOBLIMA.action.CustomerAction;
 import MOBLIMA.dataStructure.Movie;
 import MOBLIMA.listing.MovieDetailsListing;
 import MOBLIMA.listing.searchListing;
 
+/**
+ * Consolidated class to link all the required classes together to execute the
+ * Search Movie functionality.
+ */
 public class searchMovieFacade {
     public static void run(String userId) throws IOException {
         int action = 0;

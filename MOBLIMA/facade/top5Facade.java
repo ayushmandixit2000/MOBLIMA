@@ -9,9 +9,16 @@ import MOBLIMA.listing.MovieDetailsListing;
 import MOBLIMA.listing.top5RatingListing;
 import MOBLIMA.listing.top5SalesListing;
 
+/**
+ * Consolidated class to link all the required classes together to execute the
+ * Configure Setting functionality.
+ */
 public class top5Facade {
+    /**
+     * Display the options users have and to instantantiate related classes and
+     * execute their required functionalities.
+     */
     public static void show(String userid) throws IOException {
-
         int config = rankStatus.getStatus();
         int action = 0;
         int choicerank = 0;
@@ -35,7 +42,6 @@ public class top5Facade {
             System.out.println("Please enter how you would like your movies to be sorted:");
             System.out.println("(1) By Sales (2) By Ratings");
             Scanner scc = new Scanner(System.in);
-
             while (true) {
                 String input = scc.next();
                 choicerank = 0;
@@ -57,7 +63,6 @@ public class top5Facade {
             top5SalesListing sales = new top5SalesListing();
             sales.displayListing();
             Movie m = sales.getmovie();
-
             if (m != null) {
                 MovieDetailsListing moviedetails = new MovieDetailsListing();
                 moviedetails.setmovie(m);
@@ -69,17 +74,14 @@ public class top5Facade {
                 CA.getChoice();
             }
         }
-
         if (choicerank == 2) {
             top5RatingListing ratings = new top5RatingListing();
             ratings.displayListing();
             Movie m = ratings.getmovie();
-
             if (m != null) {
                 MovieDetailsListing moviedetails = new MovieDetailsListing();
                 moviedetails.setmovie(m);
                 moviedetails.displayListing();
-
                 CustomerAction CA = new CustomerAction();
                 CA.setaction(action);
                 CA.setuser(userid);
