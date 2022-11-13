@@ -24,8 +24,7 @@ public class configureSettingsFacade {
         boolean loop = true;
         while (loop) {
             c.displayListing();
-            c.getUserInput();
-            int option = c.getOption();
+            int option = c.getUserInput();
             switch (option) {
                 case 1:
                     new ageGroupPricing();

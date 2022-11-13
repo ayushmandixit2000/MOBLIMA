@@ -24,16 +24,12 @@ public class configureListing implements Listing {
         System.out.println("_____________________________________________________________");
     }
 
-    public int getOption() {
-        return option;
-    }
-
     /**
      * Obtains admin's input of intended option.
      * 
      * @return the admin's intended option.
      */
-    public void getUserInput() {
+    public int getUserInput() {
         Scanner sc = new Scanner(System.in);
         int option;
         while (true) {
@@ -51,6 +47,6 @@ public class configureListing implements Listing {
                 System.out.println("Please key in a number only!");
             }
         }
-        return;
+        return option;
     }
 }
