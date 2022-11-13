@@ -13,6 +13,6 @@ The application is a Console-based application (non-Graphical UI) made on the Ja
 ## Contributors:
 - [Dixit Ayushman](https://github.com/ayushmandixit2000)
 - [Jodi](https://github.com/isjods)
-- [Summit Bajaj](https://github.com/summitbajaj)
 - [Marcus Hooi](https://github.com/marcushooi)
+- [Summit Bajaj](https://github.com/summitbajaj)
 - [Wong Yu Fei](https://github.com/Ranchu2000)
