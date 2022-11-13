@@ -38,6 +38,10 @@ public class CustomerBookingHandler {
         if(m.getMovieType() == 1){
             movt = "--Blockbuster";
         }
+
+        if(m.getMovieType() == 2){
+            movt = "--2D";
+        }
         
         
         
