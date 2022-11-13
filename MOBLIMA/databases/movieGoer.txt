@@ -1,18 +1,7 @@
-xiaoming91234567|Xiao Ming|91234567|xiaoming@gmail.com
-tom92345678|Tom|92345678|tom@gmail.com
-userid|name|91223132|email
-userid|name|91223132|email
-userid|name|91223132|email
-userid|name|91223132|email
-Ayushman96431460|Ayushman|96431460|ayushmandixit2000@gmail.com
-shubu111|shubu|111|shubu@shubu.com
-somesh98302555|somesh|98302555|someshies@gmail.com
-Summit93365678|Summit|93365678|summitbajaj@gmail.com
-userid|name|91223132|email
-adv98731245|adv|98731245|adv@gmail.com
-shawn93729961|shawn|93729961|shaen@mail.com
-yufei91227471|yufei|91227471|yufei.sg@gmail.com
-ewq912330022|ewq|912330022|qwe
-usman93365678|usman|93365678|daddyyufeiisHot@gmail.com
-Hello98372453|Hello|98372453|hello@helloworld.com
-NewUser93810394|NewUser|93810394|NewUser@gmail.com
+guest1|guest|1|guest
+tom98765432|tom|98765432|tom@gmail.com
+Ayushman96431450|Ayushman|96431450|ayushmandixit@gmail.com
+somesh98183824|somesh|98183824|somesh2gmail.com
+summit98456789|summit|98456789|summit@gmail.com
+ayushman98782435|ayushman|98782435|ayushman@hotmail.com
+demo91227471|demo|91227471|demo@gmail.com

@@ -61,6 +61,7 @@ public class customerpanel implements Panel {
                         break;
                     case 2:
                     case 3:
+                        listMovieFacade.setAction(0);
                         listMovieFacade.run(userid);
                         break;
                     case 4:

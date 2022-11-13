@@ -72,7 +72,7 @@ public class peakPricing {
     }
 
     public static void saveMultipliers() throws IOException {
-        String data = String.valueOf(getNonPeakMultiplier()) + "," + "," + String.valueOf(getThursMultiplier()) + ","
+        String data = String.valueOf(getNonPeakMultiplier()) + "," + String.valueOf(getThursMultiplier()) + ","
                 + String.valueOf(getPeakMultiplier()) + ","
                 + String.valueOf(getPremiumPrice()) + "," + String.valueOf(getPriceOfElite()) + ","
                 + String.valueOf(getPriceOfUltima());
